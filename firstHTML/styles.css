@@ -1,0 +1,31 @@
+
+body {
+    background-image: url(images/starry-sky-1655503.jpg);
+    background-size: cover;    
+    background-color: #cccccc;
+}
+h1 {
+    font-size: 100px; 
+}
+h2 {
+    font-size: 80px; 
+}
+h3 {
+    font-size: 60px; 
+}
+.first-heading, .second-heading, .third-heading {
+    color: beige;
+}
+
+.hoverable:hover {
+    color: rgb(245, 15, 37);
+}
+.gray-square {
+    width: 400px;
+    background-color: gray;
+    padding:20px;
+    box-shadow: 2px 2px 8px 2px beige;
+    border: 2px solid black;
+    border-radius: 8px; 
+    margin: 0 auto;
+}
