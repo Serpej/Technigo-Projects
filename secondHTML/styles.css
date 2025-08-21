@@ -29,8 +29,21 @@ hr {
     border: 1px solid black;
     box-shadow:5px 5px 5px #0f51a7;
 }
+    #Mobile {
+        display: none;
+    }
+    #Desktop {
+        display: block;
+    }
+
 
 @media (max-width: 666px) {
+    #Mobile {
+        display: block;
+    }
+    #Desktop {
+        display: none;
+    }
     .text-container {
         background-color: #1196EE;
         box-shadow:5px 5px 5px #ac4602;
