@@ -60,6 +60,10 @@ hr {
     color: white;
     font-size: bold;
 }
+.column:hover {
+    background-color: white;
+    color: black;
+}
 
 
 @media (max-width: 666px) {
