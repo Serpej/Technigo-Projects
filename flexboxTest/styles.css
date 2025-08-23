@@ -1,0 +1,46 @@
+.flex-parent {
+  border: 2px solid blue;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  margin: 10px;
+}
+.red {
+    border: 2px solid red;
+}
+
+.flex-child {
+  margin: 5px;
+  width: 100%;
+  height: 40px;
+  flex:20%;
+}
+.blue {
+    flex:50 0 20%;
+}
+
+.redd {
+  border: 2px solid red;
+  flex-direction: column;
+}
+
+.sun {
+  height: 20px;
+  margin: 5px;
+}
+
+.blue {
+  background: blue;
+}
+
+.pink {
+  background: pink;
+}
+
+.orange {
+  background: orange;
+}
