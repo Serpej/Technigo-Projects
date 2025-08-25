@@ -1,4 +1,38 @@
-html {
-  background: #0025ff;
-  color: #fff;
+body {
+  background-image: url(https://images.unsplash.com/photo-1618596507180-78f8bf634823?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-color: rgba(255,255,255,0.2);
+  background-blend-mode: lighten;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  width: 320px;
+  height: 800px;/* Just for now */
+}
+
+.inner-wrapper {
+width: 80%;
+}
+.inner-wrapper > *{
+  border: 1px solid black;
+  width: 100%;
+}
+
+/* Header styling */
+header {
+  border: 1px solid black;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3;
+}
+.nav-logo-container {
+  grid-column: 1;
+}
+.nav-menu-container {
+  grid-column: 3;
+}
+
+/* Hero styling */
+.big-news-container {
+}
+.hero-text{
 }
