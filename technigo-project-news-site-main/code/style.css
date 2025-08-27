@@ -8,7 +8,7 @@ body {
   background-blend-mode: lighten;
   color: #000000;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
   width: 320px;
@@ -45,20 +45,26 @@ header img {
 .inner-wrapper {
   width: 80%;
   display:grid;
-  grid-template-rows: repeat(3, 3fr);
+  grid-template-rows: repeat(3, auto);
   gap: 10px;
 }
 .inner-wrapper > *{ 
   gap: 30px;
+  display: inline-;
 }
 
 /* Text content styling */
-.big-news-container, 
-.small-news-container {
+.hero-div, 
+.small-news-div {
+  display: grid;
+}
+.hero-div, 
+.small-news-div {
   background-color: #c5c3c2;
   background-blend-mode: lighten;
   border: 1px solid black;
   margin: 20px;
+  box-shadow: 3px 3px 10px 1px;
 }
 .big-news-container img,
 .small-news-img-container img {
@@ -68,17 +74,10 @@ header img {
   border: 1px solid black;
   margin: 10px;
 }
-
-.big-news-img-container, 
-.small-news-img-container, 
-.hero-div, 
-.small-news-div {
-  display: grid;
-}
 .hero-text ,
 .small-news-text,
 h2,  
-h4 {
+h3 {
   justify-self: center;
   margin: 10px;
 }
@@ -93,7 +92,7 @@ h4 {
   width: 80%;
   height: auto;
   border: 1px solid black;
-  box-shadow: 2px 2px 3px 2px;
+  box-shadow: 3px 3px 10px 1px;
   margin: 20px;
 }
 
@@ -115,4 +114,7 @@ footer ul{
 li {
   font-size: small;
   list-style-type: none;
+}
+li a{
+  color:#000000
 }
