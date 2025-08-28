@@ -99,7 +99,16 @@ h3 {
   height: auto;
   border: 1px solid black;
   box-shadow: 3px 3px 10px 1px;
-  margin: 20px;
+  margin: 20px 20px 0px 20px;
+}
+figcaption {
+  font-size: 12px;
+  text-align: center;
+  color: aliceblue;
+  font-weight: 800;
+}
+figure {
+  margin: 0px;
 }
 
 /* Footer styling */
