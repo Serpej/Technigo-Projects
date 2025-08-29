@@ -7,4 +7,4 @@ Replace this readme with your own information about the project. You can include
 - If I had more time, I would definitly give thanks to the rest of the creators of all the images I took, but since the figure tag gave me a headache I skipped the ones inside the articles.
 
 ## View it live
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://splendorous-churros-eeeec8.netlify.app/
