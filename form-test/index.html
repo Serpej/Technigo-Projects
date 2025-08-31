@@ -12,20 +12,32 @@
 
         <fieldset>
             <label>
-                Name
-                <input type="text">
+                <span>Name</span>
+                <input type="text" name="name">
             </label>
             <label>
-                Email
-                <input type="mail">
+                <span>Email</span>
+                <input type="email" name="email">
             </label>
             <label>
-                adress
-                <input type="text">
+                <span>Address</span>
+                <input type="text" name="address">
             </label>
-                <label>
-                Country
-                <input type="text">
+            <label>
+                <span>City</span>
+                <input type="text" name="city">
+            </label>
+            <label>
+                <span>Postal Code</span>
+                <input type="text" name="postalCode">
+            </label>
+            <label>
+                <span>Country</span>
+                <select name="country">
+                    <option value="SE">Sweden</option>
+                    <option value="US">United States</option>
+                    <option value="FR">France</option>
+                </select>
             </label>
         </fieldset>
     </form>

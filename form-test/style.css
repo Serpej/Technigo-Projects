@@ -8,3 +8,38 @@ body {
 * {
     box-sizing: border-box;
 }
+
+form {
+    border: 1px solid #e8e8fb;
+    border-radius: 4px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-top: 0;
+}
+
+fieldset {
+    border: none;
+    background: white;
+    border-radius: 4px;
+    padding: none;
+    box-shadow: 0 1px 3px 0 rgba(50, 50, 93, 0.15), 0 4px 6px 0 rgba(112, 157, 199, 0.15);
+}
+
+label {
+    display: flex;
+    border-bottom: 1px solid #f0f5fa;
+}
+
+label:last-child {
+    border-bottom: none;
+}
+
+span {
+    width: 30%;
+}
