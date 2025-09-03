@@ -1,5 +1,37 @@
-/* After you've linked the CSS file in the HTML,
-this should turn the background blue ;) */
-body {
-  background: blue;
+* {
+  box-sizing: border-box;}
+
+html {
+  height: 800px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 3;
+}
+
+.hero-section {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: 100%;
+}
+
+.hero-section > * {
+  border: 1px solid black;
+}
+
+.logo {
+  width: 10%;
+  height: auto;
+}
+
+video {
+  width: 200px;
+}
+
+.sign-in-section {
+background-color: #222;
+color: white;
+grid-column: 2 / span 3;
 }
