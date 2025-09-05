@@ -78,7 +78,27 @@ a {
   color: white;
 }
 
-.sign-in {
+fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+
+fieldset h3 {
+  text-transform: uppercase;
+}
+
+label {
+  padding: 10px;
+}
+
+button {
+  appearance: none;
+  align-self: flex-start;
+  background-color: #731fa1;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
 }
 
 
