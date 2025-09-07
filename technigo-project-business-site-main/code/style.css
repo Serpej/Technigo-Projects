@@ -2,9 +2,9 @@
   box-sizing: border-box;}
 
 html {
-  height: 800px;
   height: 100%;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
 }
 
 body {
@@ -14,14 +14,14 @@ body {
 
 main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
 }
 
 .hero-section {
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 100%;
 }
 
 .logo-container {
@@ -30,18 +30,20 @@ main {
   justify-content: center;
   align-items: center;
   width: 100%;
+  /* Här kanske vi måste sätta en min width för desktop */
 }
 
 h1 {
   width: 100%;
-  margin-left: 0 40px;
   text-align: center;
+  font-size: clamp(1.2rem, 6vw, 1.8rem);
+  white-space: nowrap;
 }
 
 .logo {
   width: 10%;
   height: auto;
-  margin: 10px;
+  margin: 10px 10px 10px 10px;
 }
 
 video {
@@ -56,21 +58,19 @@ video {
 }
 
 .sign-in-section {
-background-color: #0B1C11;
-border:1px solid #000;
-color: white;
-width: 100%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+  background-color: #0B1C11;
+  border:1px solid #000;
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .sign-up {
   text-align: end;
-  position:absolute;
-  top: 0;
-  right: 0;
   margin: 10px;
 }
 
@@ -131,4 +131,32 @@ button {
   box-shadow:  0px 0px 7px rgb(210, 153, 255);;
 }
 
+.video-container, .footer-container, .logo {
+  display: none;
+}
 
+/* Desktop */
+@media (min-width: 1025px) {
+
+  main {
+    flex-direction: row;
+  }
+
+  .logo {
+    margin-left: 20px;
+  }
+
+  .hero-section {
+    width: 30%;
+  }
+
+  .sign-up {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .video-container, .footer-container, .logo {
+    display: block;
+  }
+}
