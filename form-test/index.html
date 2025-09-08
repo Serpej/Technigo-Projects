@@ -7,17 +7,17 @@
     <title></title>
 </head>
 <body>
-    <form >
+    <form action="http://httpbin.org/anything" method="post">
         <h2>shipping & billing information</h2>
 
         <fieldset>
             <label>
                 <span>Name</span>
-                <input type="text" name="name" placeholder="Jenny Rosén">
+                <input type="text" name="name" placeholder="Jenny Rosén" required>
             </label>
             <label>
                 <span>Email</span>
-                <input type="email" name="email" placeholder="dippdapp@snapp.se">
+                <input type="email" name="email" placeholder="dippdapp@snapp.se" required>
             </label>
             <label>
                 <span>Address</span>
