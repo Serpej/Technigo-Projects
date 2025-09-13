@@ -31,6 +31,7 @@ if(foodMenu === `1`) {
   foodChoice = `Salad`;
 } else {
   alert(`Invalid input, you have to choose a number between 1 and 3`);
+  throw new Error("Terminating script due to invalid input.");
 }
 
 // Step 3 - Subtype choice
@@ -93,10 +94,53 @@ let subTypeChoice = "";
     }
  } else {
     alert(`Invalid input, you have to choose a number between 1 and 3`);
+    throw new Error("Terminating script due to invalid input.");
  }
 
 // Step 4 - Age
-// Your code goes here
+const ageMenu = prompt(
+  `Is the meal for an adult or a child
+  Enter your age:`
+);
+
+let confirmOrder = "";
+
+let ageAsNumber = parseInt(ageMenu);
+
+if (ageAsNumber > 15) {
+  confirmOrder = prompt (
+    `${customerName}, you have ordered a ${subTypeChoice} for the cost of 20€. You you confirm this order?
+    
+    Enter a number:
+    1 - Yes
+    2 - No`
+  );
+  if (confirmOrder === `2`) {
+    alert (`Alright, cancelling order`);
+    throw new Error("Terminating script due to cancellation.");
+  };
+} else if (ageAsNumber <= 15 && ageAsNumber > 0) {
+  confirmOrder = prompt (
+    `${customerName}, you have ordered a ${subTypeChoice} for the cost of 15€. You you confirm this order?
+    
+    Enter a number:
+    1 - Yes
+    2 - No`
+  );
+
+  if (confirmOrder === `2`) {
+    alert (`Alright, cancelling order`);
+    throw new Error("Terminating script due to cancellation.");
+  };
+
+} else {
+  alert (`Well that's an invalid age`);
+  throw new Error("Terminating script due to invalid input.");
+}
+
+alert(
+  `Thank you for your order. Your food will be delivered to in but a moments notice, Enjoy!`
+);
 
 // Step 5 - Order confirmation
 // Your code goes here
