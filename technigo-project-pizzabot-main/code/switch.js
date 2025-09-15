@@ -22,25 +22,33 @@ const foodMenu = prompt(
 
 let foodChoice = "";
 
-if(foodMenu === `1`) {
-  alert (`You chose pizza.`);
-  foodChoice = `Pizza`;
-} else if (foodMenu === `2`) {
-  alert(`You chose pasta.`);
-  foodChoice = `Pasta`;
-} else if (foodMenu === `3`) {
-  alert (`You chose salad`);
-  foodChoice = `Salad`;
-} else {
-  alert(`Invalid input, you have to choose a number between 1 and 3`);
-  throw new Error("Terminating script due to invalid input.");
+switch (foodMenu) {
+  case `1`:
+    alert (`You chose pizza.`);
+    foodChoice = `Pizza`;
+    break;
+
+  case `2`:
+    alert(`You chose pasta.`);
+    foodChoice = `Pasta`;
+    break;
+  
+  case `3`:
+    alert (`You chose salad`);
+    foodChoice = `Salad`;
+    break;
+
+  default:
+    alert(`Invalid input, you have to choose a number between 1 and 3`);
+    throw new Error("Terminating script due to invalid input.");
 }
 
 // Step 3 - Subtype choice
 
 let subTypeChoice = "";
 
- if(foodChoice === `Pizza`) {
+switch (foodChoice) {
+  case `Pizza`:
     subTypeMenu = prompt(
       `What pizza would you like to order.
       Enter a number:
@@ -48,56 +56,95 @@ let subTypeChoice = "";
       2 - Quattro Straggione
       3 - Vegetale`
     );
-    if (subTypeMenu === `1`) {
-      subTypeChoice = `Hawaiian`;
-      alert(`You chose ${subTypeChoice}`);
-    } else if (subTypeMenu === `2`) {
-      subTypeChoice = `Quattro Straggione`;
-      alert(`You chose ${subTypeChoice}`);
-    } else if (subTypeMenu === `3`) {
-      subTypeChoice = `Vegetale`;
-      alert(`You chose ${subTypeChoice}`);
-    }
- } else if(foodChoice === `Pasta`) {
+
+    switch (subTypeMenu) {
+      case `1`:
+        subTypeChoice = `Hawaiian`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+
+      case `2`:
+        subTypeChoice = `Quattro Straggione`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+      
+      case `3`:
+        subTypeChoice = `Vegetale`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+
+      default:
+        alert(`Invalid input, you have to choose a number between 1 and 3`);
+        throw new Error("Terminating script due to invalid input.");
+    };
+    break;
+
+  case `Pasta`:
     subTypeMenu = prompt(
-      `What pizza would you like to order.
+      `What pasta would you like to order.
       Enter a number:
       1 - Bolognese
       2 - Carabonara
       3 - Pasta Pesto`
     );
-    if (subTypeMenu === `1`) {
-      subTypeChoice = `Bolognese`;
-      alert(`You chose ${subTypeChoice}`);
-    } else if (subTypeMenu === `2`) {
-      subTypeChoice = `Carabonara`;
-      alert(`You chose ${subTypeChoice}`);
-    } else if (subTypeMenu === `3`) {
-      subTypeChoice = `Pasta Pesto`;
-      alert(`You chose ${subTypeChoice}`);
-    }
- } else if(foodChoice === `Salad`) {
+
+    switch (subTypeMenu) {
+      case `1`:
+        subTypeChoice = `Bolognese`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+
+      case `2`:
+        subTypeChoice = `Carabonara`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+      
+      case `3`:
+        subTypeChoice = `Pasta Pesto`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+
+      default:
+        alert(`Invalid input, you have to choose a number between 1 and 3`);
+        throw new Error("Terminating script due to invalid input.");
+    };
+    break;
+  
+  case `Salad`:
     subTypeMenu = prompt(
-      `What pizza would you like to order.
+      `What salad would you like to order.
       Enter a number:
       1 - Greek Style
       2 - Asian Style
       3 - Pasta Salad`
     );
-    if (subTypeMenu === `1`) {
-      subTypeChoice = `Greek Style`;
-      alert(`You chose ${subTypeChoice}`);
-    } else if (subTypeMenu === `2`) {
-      subTypeChoice = `Asian Style`;
-      alert(`You chose ${subTypeChoice}`);
-    } else if (subTypeMenu === `3`) {
-      subTypeChoice = `Pasta Salad`;
-      alert(`You chose ${subTypeChoice}`);
-    }
- } else {
+
+    switch (subTypeMenu) {
+      case `1`:
+        subTypeChoice = `Greek Style`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+
+      case `2`:
+        subTypeChoice = `Asian Style`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+      
+      case `3`:
+        subTypeChoice = `Pasta Salad`;
+        alert(`You chose ${subTypeChoice}`);
+        break;
+
+      default:
+        alert(`Invalid input, you have to choose a number between 1 and 3`);
+        throw new Error("Terminating script due to invalid input.");
+    };
+    break;
+
+  default:
     alert(`Invalid input, you have to choose a number between 1 and 3`);
     throw new Error("Terminating script due to invalid input.");
- }
+};
 
 // Step 4 - Age
 

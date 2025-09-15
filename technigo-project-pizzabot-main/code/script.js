@@ -60,7 +60,7 @@ let subTypeChoice = "";
     }
  } else if(foodChoice === `Pasta`) {
     subTypeMenu = prompt(
-      `What pizza would you like to order.
+      `What pasta would you like to order.
       Enter a number:
       1 - Bolognese
       2 - Carabonara
@@ -78,7 +78,7 @@ let subTypeChoice = "";
     }
  } else if(foodChoice === `Salad`) {
     subTypeMenu = prompt(
-      `What pizza would you like to order.
+      `What salad would you like to order.
       Enter a number:
       1 - Greek Style
       2 - Asian Style
