@@ -57,14 +57,14 @@ input {
     outline: none;
 }
 
-button{
-    background: #666ee8;
+.btn {
+    background: white;
     appearance: none;
     border: none;
     border-radius: 4px;
     width: 100%;
     font-size: 16px;
-    color: white;
+    color: black;
     font-weight: bold;
     padding: 10px;
     margin-top: 20px
@@ -94,3 +94,26 @@ select {
 :-moz-placeholder { /* Firefox 18- */
   color: #aab7c4;
 }
+
+body.darkmode {
+  background: #181a1b;
+  color: #e0e0e0;
+}
+
+body.darkmode .btn {
+    background: black;
+    color: white;
+}
+
+body.darkmode fieldset {
+    background: black;
+    color: white;
+}
+
+body.darkmode input {
+    background: black;
+    color: white;
+}
+
+
+
