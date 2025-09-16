@@ -95,25 +95,14 @@ select {
   color: #aab7c4;
 }
 
-body.darkmode {
+body.darkmode, 
+body.darkmode input, 
+body.darkmode .btn, 
+body.darkmode fieldset {
   background: #181a1b;
   color: #e0e0e0;
 }
 
-body.darkmode .btn {
-    background: black;
-    color: white;
-}
-
-body.darkmode fieldset {
-    background: black;
-    color: white;
-}
-
-body.darkmode input {
-    background: black;
-    color: white;
-}
 
 
 
