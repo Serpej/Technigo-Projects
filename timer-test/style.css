@@ -13,12 +13,33 @@ height: 100%;
   align-items: center;
 }
 
-.timerContainer {
+.timerContainer,
+ #startTimer{
   background-color:#5A9CE3;
-  width: 15%;
-  height: 12%;
   border: 2px solid #38105e;
   border-radius: 4px;
+}
+
+#startTimer {
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  box-shadow: 0px 4px 8px;
+}
+
+#startTimer:hover {
+background-color:#4a78aa;
+}
+
+.timerContainer {
+  width: 15%;
+  height: 12%;
+}
+
+
+h1 {
+font-size: 3rem;
 }
 
 p {
