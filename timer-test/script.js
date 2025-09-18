@@ -1,18 +1,33 @@
 const timer = document.getElementById("timer");
 const button = document.getElementById("startTimer");
-const number = 4;
 
 const viewOnScreen = (number) => {
   timer.textContent = number;
 }
-const timerInterval = setInterval(viewOnScreen(number), 1000);
 
-const Countdown = (timerInterval, number) => {
-  for(let i = number; i > 0; i--) {
-    timerInterval
+const startingPrompt = prompt(`Enter a number for the timer`);
+const startNumber = startingPrompt;
+
+viewOnScreen(startNumber);
+
+
+
+const updateCountdown = (currentNumber, intervalID) => {
+  currentNumber--;
+  viewOnScreen(currentNumber);
+  if (currentNumber === 0) {
+    clearInterval(intervalID)
   }
+  return currentNumber;
 }
 
-Countdown(timerInterval, 4);
+const Countdown = () => {
+  let currentNumber = startNumber;
+  const intervalID = setInterval(() => {
+    currentNumber = updateCountdown(currentNumber, intervalID)
+  }, 1000);
+}
+
+button.onclick = Countdown;
 
 
