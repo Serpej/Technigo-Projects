@@ -83,18 +83,35 @@ nameAndIdThanks();
 const catchPokemon = name => {
   // add a pokemon with a name of your choice to the list,
   // print the list so you see its there.
+  pokemons.push(name);
+  console.log(pokemons);
 };
+catchPokemon("SCYTHER");
 
 const didICatchIt = name => {
   // check the pokemons to see if a specific pokemon is in the array
+  return pokemons.includes(name);
 };
+console.log(didICatchIt("SCYTHER"));
 
 const addInThirdPlace = () => {
   // add the pokemon "Clefairy" in the third place of the array
   // print the list so you see its there.
+
+  return pokemons.splice(2, 0, "Clefairy");
 };
+addInThirdPlace();
+console.log(pokemons);
 
 // ***BONUS***
 const theLongestName = () => {
   // find the pokemon with the longest name
+  let theLongestName = "";
+  pokemons.forEach(element => {
+    if (element.length > theLongestName.length) {
+      theLongestName = element;
+    }
+  });
+  console.log(theLongestName);
 };
+theLongestName();
