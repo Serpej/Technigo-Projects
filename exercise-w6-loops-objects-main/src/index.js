@@ -19,24 +19,49 @@ const pokemons = [
 // the pokemons from the pokemons array
 // invoke the function to see that it works
 
+const loopOverArray = ( array => {
+  array.forEach(element => {
+    console.log(element);
+  });
+})
+//loopOverArray(pokemons);
+
 // 2)
 // Create an object for the pokemon Pikachu.
 // it could have properties such as name, element,
 // strength, color, amountOfLegs or something like that.
+
+const pokemon = {
+  name: "Pikachu",
+  type: "Electric",
+  generation: 1,
+  weakness: ["Ground"],
+  resistant: ["Electric", "Flying"]
+}
 
 // 3)
 // console.log something like
 // 'Pikachu is a electricity pokemon with the strength of 32'
 // Selecting some of the information about your pikachu object.
 
+console.log(`${pokemon.name} is an ${pokemon.type} pokémon who is weak against ${pokemon.weakness} pokémon.`);
+
 // 4)
 // Add the property stillToCatch: true to the Pikachu object.
+
+pokemon.stillToCatch = true;
 
 // 5)
 // change the value of the key strength in the Pikachu object.
 
+pokemon.generation = 2;
+
 // 6)
 // Delete a property from the Pikachu object.
+
+ delete pokemon.resistant;
+
+ console.log(pokemon);
 
 // 7)
 // Fill up this array with a few more pokemons.
