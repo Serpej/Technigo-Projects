@@ -71,20 +71,44 @@ pokemon.generation = 2;
 const moreAboutPokemons = [
   {
     name: "Bulbasaur",
-    element: "water",
+    element: "grass",
     strength: 13
   },
   {
     name: "Charmander",
     element: "fire",
     strength: 32
+  }, 
+  {
+    name: "Squirtle",
+    element: "water",
+    strength: 20
+  }, 
+  {
+    name: "Pigeot",
+    element: "flying",
+    strength: 13
+  }, 
+  {
+    name: "Geodude",
+    element: "Rock",
+    strength: 36
   }
 ];
 
 // 8)
 // Print out all the NAMES of the pokemons in this new array.
 
+/* moreAboutPokemons.forEach((pokemon) => {
+  console.log(pokemon.name);
+}); */
+
 // 9)
 // Print out something like
 // 'Bulbasaur is a water pokemon with the strength of 32'
 // Do this for all the pokemons.
+
+
+for (let i = 0; i < moreAboutPokemons.length; i++) {
+  console.log(`${moreAboutPokemons[i].name} is a ${moreAboutPokemons[i].element} pokemon with a strength of ${moreAboutPokemons[i].strength}`)
+}
