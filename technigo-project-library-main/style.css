@@ -1,3 +1,34 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+}
+
+html {
+  height: 100%;
+}
+
 body {
-  background: blue;
+  background: #1FA29E;
+  display: flex;
+  height: 100%;
+  margin: 0;
+}
+
+.commander-container {
+  background-color: #A048B7;
+  width: 20%;
+  height: 100%;
+  border-right: solid 2px #723382;
+}
+
+.commander-container img {
+  border-radius: 4.75% / 3.5%;
+  flex-shrink: 1;
+  width: 30%;
+  height: auto;
+}
+
+p {
+text-align: center;
 }
