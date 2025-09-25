@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background: #1FA29E;
+  background: white;
   display: flex;
   height: 100%;
   margin: 0;
@@ -29,6 +29,25 @@ body {
   height: auto;
 }
 
-p {
-text-align: center;
+.container-right-side {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
+
+.deck-container {
+  height: 100%;
+  background-color: #1FA29E;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#decklist {
+height: 30%;
+width: 10%;
+border:solid 1px #723382;
+background-color: #A048B7;
+}
+

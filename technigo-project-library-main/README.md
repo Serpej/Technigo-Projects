@@ -3,6 +3,8 @@
 Replace this readme with your own information about the project. You can include things like:
 
 - In this assignment I built a digital library, using an array of data. To the data I added some filters.
+  1. Sktech up a rough design by hand.
+  2. get my containers in order.
 - How you approached the task, what tools and techniques you used, and how you planned it
 - If you had more time, what would be next?
 

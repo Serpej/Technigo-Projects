@@ -7,10 +7,37 @@
   <title>Library</title>
 </head>
 <body>
-
   <div class="commander-container">
     <h3>Commander</h3>
     <img id="commander-img" src="/deck-images/zozu.webp" alt="">
+  </div>
+  <div class="container-right-side">
+    <div class="search-container">
+      <form action="">
+        <fieldset>
+          <div>
+            <label>Search for a card</label>
+            <input type="search" name="" id="card-search">
+            <label>Type</label>
+          </div>
+          <div>
+          <label for="Type">Filter By Type</label>
+            <select name="Type" id="type">
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+              <option value=""></option>
+            </select>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="deck-container">
+      <div id="decklist"></div>
+      <div id="hover-img">  </div>
+    </div>
   </div>
 
 
