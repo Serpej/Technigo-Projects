@@ -8,27 +8,29 @@
 </head>
 <body>
   <div class="commander-container">
-    <h3>Commander</h3>
+    <h3>Zozu, The Punisher</h3>
     <img id="commander-img" src="/deck-images/zozu.webp" alt="">
   </div>
-  <div class="container-right-side">
+  <div class="container-for-deck-box">
     <div class="search-container">
-      <form action="">
-        <fieldset>
-          <div>
-            <label>Search for a card</label>
+      <form>
+        <fieldset class="form">
+          <div class="search-container">
+            <span class="label-container"><label>Search for a card</label></span>
             <input type="search" name="" id="card-search">
-            <label>Type</label>
           </div>
-          <div>
-          <label for="Type">Filter By Type</label>
+          <div class="search-container">
+          <span class="label-container"><label for="Type">Filter By Type</label></span>
             <select name="Type" id="type">
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
-              <option value=""></option>
+              <option value="artifact">artifact</option>
+              <option value="battle">battle</option>
+              <option value="creature">creature</option>
+              <option value="enchantment">enchantment</option>
+              <option value="instant">instant</option>
+              <option value="kindred">kindred</option>
+              <option value="land">land</option>
+              <option value="planeswalker">planeswalker</option>
+              <option value="sorcery">sorcery</option>
             </select>
           </div>
         </fieldset>
