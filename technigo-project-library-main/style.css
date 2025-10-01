@@ -68,13 +68,18 @@ body {
 #decklist {
   list-style-type: none;
   margin: 0px 20px 0px 0px;
-  padding: 0;
+  padding: 20px 30px 20px 20px;
   line-height: 30px;
+  background-color: #793832;
+  border: 2px solid #877578;
+  border-radius: 4px;
+  
 }
 
 #decklist > li{
   font-size: 1.1rem;
   position: relative;
+  font-weight: 500;
 }
 
 .hover-img {
@@ -83,10 +88,9 @@ body {
   left: 100%;
   bottom: 70%;
   margin-left: 5px;
-  width: clamp(130px, 180px, 180px);
+  width: clamp(180px, 180px, 180px);
   height: auto;
   border-radius: 4.75% / 3.5%;
-  background-color: #793832;
   box-shadow: 4px, 4px, 4px, 0.5;
   z-index: 10;
   }
