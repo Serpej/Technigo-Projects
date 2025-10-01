@@ -1,20 +1,17 @@
 
-const cardsInDeck = [
-  {
-    name: "Mountain",
-    type: "land",
-    manaValue: 0,
-    oracleText: "Tap: add R to you manapool",
-    img: "./deck-images/mountain.webp"
-  },
-  {    
-    name: "Lightning Bolt",
-    type: "instant",
-    manaValue: 1,
-    oracleText: "Deal 3 damage to any target.",
-    img: "./deck-images/Lightning-Bolt.webp"
+function card (name, manaValue, type, oracleText, img) {
+  this.name = name;
+  this.manaValue = manaValue;
+  this.type = type;
+  this.oracleText = oracleText;
+  this.img = img;
+}
 
-  }
+const mountain = new card("Mountain", 0, "land", "Tap: add R to you manapool.","./deck-images/mountain.webp");
+const lightningBolt = new card("Lightning Bolt", 1, "instant", "Deal 3 damage to any target.", "./deck-images/Lightning-Bolt.webp");
+
+const cardsInDeck = [
+  mountain, lightningBolt
 ]
 
 

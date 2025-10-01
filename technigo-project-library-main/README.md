@@ -2,11 +2,12 @@
 
 Replace this readme with your own information about the project. You can include things like:
 
-- In this assignment I built a digital library, using an array of data. To the data I added some filters.
+- In this assignment I built a digital library, using an array of data. To the data I added some filters. I worked in the following order:
   1. Sktech up a rough design by hand.
   2. get my containers in order.
-  3. Choose my styling
-- How you approached the task, what tools and techniques you used, and how you planned it
+  3. Choose my styling.
+  4. started making the JS needed, like objects and hover effects for the cards.
+
 - If you had more time, what would be next?
 
 ## View it live
