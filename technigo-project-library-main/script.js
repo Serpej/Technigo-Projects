@@ -15,6 +15,7 @@ const bigScore = new card ("Big Score", 4 , "instant", "As an additional cost to
 const blasphemousAct = new card ("Blasphemous Act", 9, "sorcery", "This spell costs 1 less to cast for each creature on the battlefield. Blasphemous Act deals 13 damage to each creature.", "deck-images/BlasphemousAct.webp");
 const bloodMoon = new card ("Blood Moon", 3, "enchantment", "Nonbasic lands are Mountains.", "deck-images/BloodMoon.webp");
 const brashTaunter = new card ("Brash Taunter", 5, "creature", "Indestructible. Whenever this creature is dealt damage, it deals that much damage to target opponent. 2R, : This creature fights another target creature. 1/1", "deck-images/BrashTaunter.webp");
+const burningInquiry = new card ("Burning Inquiry", 1, "sorcery", "Each player draws three cards, then discards three cards at random.", "deck-images/BurningInquiry.webp");
 const cemeteryGatekeeper =  new card ("Cemetery Gatekeeper", 2, "creature", "First strike. When this creature enters, exile a card from a graveyard. Whenever a player plays a land or casts a spell, if it shares a card type with the exiled card, this creature deals 2 damage to that player.", "deck-images/CemeteryGatekeeper.webp");
 const chandraTorchOfDefiance = new card ("Chandra, Torch of Defiance", 4, "planeswalker", "+1: Exile the top card of your library. You may cast that card. If you don't, Chandra deals 2 damage to each opponent. +1:Add RR. -3: Chandra deals 4 damage to target creature. -7: You get an emblem with 'Whenever you cast a spell, this emblem deals 5 damage to any target.'. Starting loyalty: 4.", "deck-images/ChandraTorchofDefiance.webp");
 const chaosWarp = new card ("Chaos Warp", 3, "instant", "The owner of target permanent shuffles it into their library, then reveals the top card of their library. If it's a permanent card, they put it onto the battlefield.", "deck-images/ChaosWarp.webp");
@@ -27,14 +28,30 @@ const dictateOfTheTwinGods = new card ("Dictate of the Twin Gods", 5, "enchantme
 const disruptDecorum =  new card ("Disrupt Decorum", 4, "sorcery", "Goad all creatures you don't control. (Until your next turn, those creatures attack each combat if able and attack a player other than you if able.)", "deck-images/DisruptDecorum.webp");
 const dwarvenMine = new card ("Dwarven Mine", 0, "land", "(Tap: Add R.) This land enters tapped unless you control three or more other Mountains. When this land enters untapped, create a 1/1 red Dwarf creature token.", "deck-images/DwarvenMine.webp");
 const fieryEmancipation = new card ("Fiery Emancipation", 6, "enchantment", "If a source you control would deal damage to a permanent or player, it deals triple that damage to that permanent or player instead.", "deck-images/FieryEmancipation.webp");
-
+const fieryGambit = new card ("Fiery Gambit", 3, "sorcery", "Flip a coin until you lose a flip or choose to stop flipping. If you lose a flip, Fiery Gambit has no effect. If you win one or more flips, Fiery Gambit deals 3 damage to target creature. If you win two or more flips, Fiery Gambit deals 6 damage to each opponent. If you win three or more flips, draw nine cards and untap all lands you control.", "deck-images/FieryGambit.webp");
+const flameRift = new card ("Flame Rift", 2, "sorcery", "Flame Rift", "deck-images/FlameRift.webp");
+const forgottenCave = new card ("Forgotten Cave", 0, "land", "This land enters tapped. Tap: Add R. Cycling R (R, Discard this card: Draw a card.)", "deck-images/ForgottenCave.webp");
+const furnaceOfRath = new card ("Furnace of Rath", 4, "enchantment", "If a source would deal damage to a permanent or player, it deals double that damage to that permanent or player instead.", "deck-images/FurnaceOfRath.webp");
+const gamble = new card("Gamble", 1, "sorcery", "Search your library for a card, put that card into your hand, discard a card at random, then shuffle.", "deck-images/Gamble.webp");
+const gildedLotus = new card ("Gilded Lotus", 5, "artifact", "Tap: Add three mana of any one color.", "deck-images/GildedLotus.webp");
+const goblinCratermaker = new card ("Goblin Cratermaker", 2, "creature", ", Sacrifice this creature: Choose one — This creature deals 2 damage to target creature. Destroy target colorless nonland permanent. 2/2", "deck-images/GoblinCratermaker.webp");
+const hourOfDevastation = new card ("Hour of Devastation", 5, "sorcery", "All creatures lose indestructible until end of turn. Hour of Devastation deals 5 damage to each creature and each non-Bolas planeswalker.", "deck-images/HourOfDevastation.webp");
+const infernoTitan = new card ("Inferno Titan", 6, "creature", "R: This creature gets +1/+0 until end of turn. Whenever this creature enters or attacks, it deals 3 damage divided as you choose among one, two, or three targets. 6/6", "deck-images/InfernoTitan.webp");
+const jeskasWill = new card ("Jeska's Will", 3, "sorcery", "Choose one. If you control a commander as you cast this spell, you may choose both instead. Add  for each card in target opponent's hand. Exile the top three cards of your library. You may play them this turn.", "deck-images/Jeska'sWill.webp");
+const lightningBolt = new card("Lightning Bolt", 1, "instant", "Deal 3 damage to any target.", "./deck-images/Lightning-Bolt.webp");
+const lightningGreaves = new card ("Lightning Greaves",2 , "artifact", "Equipped creature has haste and shroud. (It can't be the target of spells or abilities.) Equip 0", "deck-images/LightningGreaves.webp");
+const lotusPetal = new card ("Lotus Petal", 0, "artifact", "Tap, Sacrifice this artifact: Add one mana of any color.", "deck-images/lotusPetal.webp");
+const magmaticForce = new card ("Magmatic Force", 8, "creature", "At the beginning of each upkeep, this creature deals 3 damage to any target. 7/7", "deck-images/MagmaticForce.webp");
+const magusOfTheWheel = new card ("Magus of the Wheel", 3, "creature", "1R, Tap, Sacrifice this creature: Each player discards their hand, then draws seven cards.", "deck-images/MagusOfTheWheel.webp");
+const manabarbs = new card ("Manabarbs", 4, "enchantment", "Whenever a player taps a land for mana, this enchantment deals 1 damage to that player.", "deck-images/Manabarbs.webp");
+const manaGeyser = new card ("Mana Geyser", 5, "sorcery", "Add R for each tapped land your opponents control.", "deck-images/ManaGeyser.webp");
 
 //fortsätt i bokstavsordning här.
 
-const burningInquiry = new card ("Burning Inquiry", 1, "sorcery", "Each player draws three cards, then discards three cards at random.", "deck-images/BurningInquiry.webp");
+
 
 const mountain = new card("Mountain", 0, "land", "Tap: add R to you manapool.", "./deck-images/mountain.webp");
-const lightningBolt = new card("Lightning Bolt", 1, "instant", "Deal 3 damage to any target.", "./deck-images/Lightning-Bolt.webp");
+
 
 const cardsInDeck = [
   angerOfTheGods, 
@@ -58,6 +75,23 @@ const cardsInDeck = [
   disruptDecorum,
   dwarvenMine,
   fieryEmancipation,
+  fieryGambit,
+  flameRift,
+  forgottenCave,
+  furnaceOfRath,
+  gamble,
+  gildedLotus,
+  goblinCratermaker,
+  hourOfDevastation,
+  infernoTitan,
+  jeskasWill,
+  lightningBolt,
+  lightningGreaves,
+  lotusPetal,
+  magmaticForce,
+  magusOfTheWheel,
+  manabarbs,
+  manaGeyser,
 ]
 
 
@@ -66,7 +100,11 @@ ul.id = "decklist";
 
 cardsInDeck.forEach((card => {
   const li = document.createElement("li");
-  li.textContent = `1x ${card.name}`;
+  if (card.name === "mountain") {
+    li.textContent = `26x ${card.name}`;
+  } else{
+    li.textContent = `1x ${card.name}`;
+  }
   const cardImg = document.createElement("img");
   cardImg.classList.add("hover-img");
   li.appendChild(cardImg);
