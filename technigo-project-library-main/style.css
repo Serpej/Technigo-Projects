@@ -83,10 +83,6 @@ body {
 
 .hover-img {
   visibility: hidden;
-  position: absolute;
-  left: 100%;
-  bottom: 70%;
-  margin-left: 5px;
   width: clamp(180px, 180px, 180px);
   height: auto;
   border-radius: 4.75% / 3.5%;

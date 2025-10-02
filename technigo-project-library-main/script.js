@@ -7,6 +7,15 @@ function card (name, manaValue, type, oracleText, img) {
   this.img = img;
 }
 
+function modalCard (name, manaValue, type, oracleText, img, img2) {
+  this.name = name;
+  this.manaValue = manaValue;
+  this.type = type;
+  this.oracleText = oracleText;
+  this.img = img;
+  this.img2 = img2;
+}
+
 const angerOfTheGods = new card ("Anger of the Gods", 3, "sorcery", "Anger of the Gods deals 3 damage to each creature. If a creature dealt damage this way would die this turn, exile it instead.", "deck-images/AngeroftheGods.webp");
 const ankhOfMishra = new card ("Ankh of Mishra", 2, "artifact", "Whenever a land enters, this artifact deals 2 damage to that land's controller.", "deck-images/AnkhofMishra.webp");
 const arcaneSignet =  new card("Arcane Signet", 2, "artifact", "Tap:: Add one mana of any color in your commander's color identity.", ".//deck-images/Arcane-signet.webp");
@@ -45,6 +54,11 @@ const magmaticForce = new card ("Magmatic Force", 8, "creature", "At the beginni
 const magusOfTheWheel = new card ("Magus of the Wheel", 3, "creature", "1R, Tap, Sacrifice this creature: Each player discards their hand, then draws seven cards.", "deck-images/MagusOfTheWheel.webp");
 const manabarbs = new card ("Manabarbs", 4, "enchantment", "Whenever a player taps a land for mana, this enchantment deals 1 damage to that player.", "deck-images/Manabarbs.webp");
 const manaGeyser = new card ("Mana Geyser", 5, "sorcery", "Add R for each tapped land your opponents control.", "deck-images/ManaGeyser.webp");
+const mechanizedWarfare = new card ("Mechanized Warfare", 3, "enchantment", "If a red or artifact source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 1 instead.", "deck-images/mechanizedWarfare.webp");
+const mizzixsMastery = new card("Mizzix's Mastery", 4, "sorcery", "Exile target card that's an instant or sorcery from your graveyard. For each card exiled this way, copy it, and you may cast the copy without paying its mana cost. Exile Mizzix's Mastery. Overload 5RRR (You may cast this spell for its overload cost. If you do, change 'target' in its text to 'each.')", "deck-images/mizzix'sMastery.webp");
+const moltenPrimordial = new card("Molten Primordial", 7, "creature", "Haste.When this creature enters, for each opponent, gain control of up to one target creature that player controls until end of turn. Untap those creatures. They gain haste until end of turn. 6/4", "deck-images/moltenPrimordial.webp");
+const nykthosShrineToNyx = new card ("Nykthos, Shrine to Nyx", 0, "land", ": Add C. 2, Tap: Choose a color. Add an amount of mana of that color equal to your devotion to that color. (Your devotion to a color is the number of mana symbols of that color in the mana costs of permanents you control.)", "deck-images/nykthosShrineToNyx.webp");
+const ojerAxonilDeepestMightOrTempleOfPower = new modalCard ("Ojer Axonil, Deepest Might // Temple of Power", 4, "creature", "Trample. If a red source you control would deal an amount of noncombat damage less than Ojer Axonil's power to an opponent, that source deals damage equal to Ojer Axonil's power instead. When Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner's control. 4/4", "deck-images/ojerAxonilDeepestMightORtempleOfPower1.webp", "deck-images/ojerAxonilDeepestMightORtempleOfPower2.webp");
 
 //fortsätt i bokstavsordning här.
 
@@ -92,6 +106,11 @@ const cardsInDeck = [
   magusOfTheWheel,
   manabarbs,
   manaGeyser,
+  mechanizedWarfare,
+  mizzixsMastery,
+  moltenPrimordial,
+  nykthosShrineToNyx,
+  ojerAxonilDeepestMightOrTempleOfPower,
 ]
 
 
@@ -100,24 +119,47 @@ ul.id = "decklist";
 
 cardsInDeck.forEach((card => {
   const li = document.createElement("li");
-  if (card.name === "mountain") {
-    li.textContent = `26x ${card.name}`;
-  } else{
-    li.textContent = `1x ${card.name}`;
-  }
+
+  // Create wrapper for images
+  const imgWrapper = document.createElement("div");
+  imgWrapper.style.cssText = ` 
+    display: flex;
+    position: absolute;
+    left: 100%;
+    bottom: 70%;
+  `;
+
+  // Add more if it's a mountain
+  li.textContent = card.name === "mountain" ? `26x ${card.name}` : `1x ${card.name}`;
+ 
   const cardImg = document.createElement("img");
+  let cardImg2;
   cardImg.classList.add("hover-img");
-  li.appendChild(cardImg);
+  imgWrapper.appendChild(cardImg);
+
+  if(card instanceof modalCard) {
+    cardImg2 = document.createElement("img");
+    cardImg2.classList.add("hover-img");
+    cardImg.classList.add("hover-img");
+    imgWrapper.appendChild(cardImg2);
+  }
 
   li.addEventListener("mouseenter", () => {
     cardImg.src = card.img;
     cardImg.style.visibility = "visible";
+    if(card instanceof modalCard) {
+      cardImg2.src = card.img2
+      cardImg2.style.visibility = "visible";
+    }
   })
 
   li.addEventListener("mouseleave", () => {
     cardImg.style.visibility = "hidden";
+    if(card instanceof modalCard) {
+      cardImg2.style.visibility = "hidden";
+    }
   })
-
+  li.appendChild(imgWrapper);
   ul.appendChild(li);
 }));
 
