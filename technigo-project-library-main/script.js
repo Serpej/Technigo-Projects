@@ -59,6 +59,18 @@ const mizzixsMastery = new card("Mizzix's Mastery", 4, "sorcery", "Exile target 
 const moltenPrimordial = new card("Molten Primordial", 7, "creature", "Haste.When this creature enters, for each opponent, gain control of up to one target creature that player controls until end of turn. Untap those creatures. They gain haste until end of turn. 6/4", "deck-images/moltenPrimordial.webp");
 const nykthosShrineToNyx = new card ("Nykthos, Shrine to Nyx", 0, "land", ": Add C. 2, Tap: Choose a color. Add an amount of mana of that color equal to your devotion to that color. (Your devotion to a color is the number of mana symbols of that color in the mana costs of permanents you control.)", "deck-images/nykthosShrineToNyx.webp");
 const ojerAxonilDeepestMightOrTempleOfPower = new modalCard ("Ojer Axonil, Deepest Might // Temple of Power", 4, "creature", "Trample. If a red source you control would deal an amount of noncombat damage less than Ojer Axonil's power to an opponent, that source deals damage equal to Ojer Axonil's power instead. When Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner's control. 4/4", "deck-images/ojerAxonilDeepestMightORtempleOfPower1.webp", "deck-images/ojerAxonilDeepestMightORtempleOfPower2.webp");
+const priceOfProgress =  new card ("Price of Progress", 2, "instant", "Price of Progress deals damage to each player equal to twice the number of nonbasic lands that player controls", "deck-images/priceOfProgress.webp");
+const pyreticRitual = new card ("Pyretic Ritual", 2, "instant", "Add RRR.", "deck-images/pyreticRitual.webp");
+const pyroclasm = new card ("Pyroclasm", 2, "sorcery", "Pyroclasm", "deck-images/pyroclasm.webp");
+const pyrohemia = new card ("Pyrohemia", 4, "enchantment", "At the beginning of the end step, if no creatures are on the battlefield, sacrifice this enchantment. R: This enchantment deals 1 damage to each creature and each player.", "deck-images/pyrohemia.webp");
+const quakebringer = new card ("Quakebringer", 5, "creature", "Your opponents can't gain life. At the beginning of your upkeep, Quakebringer deals 2 damage to each opponent. This ability triggers only if Quakebringer is on the battlefield or if Quakebringer is in your graveyard and you control a Giant. Foretell 2RR. 5/4", "deck-images/quakebringer.webp");
+const questForPureFlame = new card ("Quest for Pure Flame", 1, "enchantment", "Whenever a source you control deals damage to an opponent, you may put a quest counter on this enchantment. Remove four quest counters from this enchantment and sacrifice it: If any source you control would deal damage to a permanent or player this turn, it deals double that damage to that permanent or player instead.", "deck-images/questForPureFlame.webp");
+const rampagingFerocidon = new card ("Rampaging Ferocidon", 3, "creature", "Menace. Players can't gain life. Whenever another creature enters, this creature deals 1 damage to that creature's controller. 3/3", "deck-images/rampagingFerocidon.webp");
+const razorkinNeedlehead = new card ("Razorkin Needlehead", 2, "creature", "This creature has first strike during your turn. Whenever an opponent draws a card, this creature deals 1 damage to them. 2/2", "deck-images/razorkinNeedlehead.webp");
+const repercussion = new card ("Repercussion", 3, "enchantment", "Whenever a creature is dealt damage, this enchantment deals that much damage to that creature's controller.", "deck-images/repercussion.webp");
+const roilingVortex =  new card ("Roiling Vortex", 2, "enchantment", "At the beginning of each player's upkeep, this enchantment deals 1 damage to them. Whenever a player casts a spell, if no mana was spent to cast that spell, this enchantment deals 5 damage to that player. R: Your opponents can't gain life this turn.", "deck-images/roilingVortex.webp");
+const rousingRefrain = new card  ("Rousing Refrain", 5, "socrcery", "Add R for each card in target opponent's hand. Until end of turn, you don't lose this mana as steps and phases end. Exile Rousing Refrain with three time counters on it.Suspend 3 — 1R (Rather than cast this card from your hand, you may pay 1R and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)", "deck-images/rousingRefrain.webp");
+const rubyMedallion = new card ("Ruby Medallion", 2, "artfact", "Red spells you cast cost 1 less to cast.", "deck-images/rubyMedallion.webp");
 
 //fortsätt i bokstavsordning här.
 
@@ -111,6 +123,18 @@ const cardsInDeck = [
   moltenPrimordial,
   nykthosShrineToNyx,
   ojerAxonilDeepestMightOrTempleOfPower,
+  priceOfProgress,
+  pyreticRitual,
+  pyroclasm,
+  pyrohemia,
+  quakebringer,
+  questForPureFlame,
+  rampagingFerocidon,
+  razorkinNeedlehead,
+  repercussion,
+  roilingVortex,
+  rousingRefrain,
+  rubyMedallion
 ]
 
 
