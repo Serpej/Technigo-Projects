@@ -122,11 +122,12 @@ cardsInDeck.forEach((card => {
 
   // Create wrapper for images
   const imgWrapper = document.createElement("div");
-  imgWrapper.style.cssText = ` 
+  imgWrapper.style.cssText = `
     display: flex;
     position: absolute;
     left: 100%;
-    bottom: 70%;
+    bottom: -350%;
+    margin-left: 2px;
   `;
 
   // Add more if it's a mountain

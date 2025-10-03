@@ -50,8 +50,8 @@ body {
 }
 
 #deck-container {
-  height: 100%;
   width: calc(100% - 40px);
+  height: 100vh;
   background-color: #CFCEE0;
   border: 2px solid #877578;
   display: flex;
@@ -73,20 +73,26 @@ body {
   background-color: #793832;
   border: 2px solid #877578;
   border-radius: 4px;
+  width: calc(60% - 40px);
+  height: 80vh;
+  column-width: 180px;
+ /*  column-gap: 32px; */
 }
 
 #decklist > li{
   font-size: 1.1rem;
   position: relative;
   font-weight: 500;
+  width: auto;
+  white-space: normal;
+  display: inline-block;
 }
 
 .hover-img {
   visibility: hidden;
   width: clamp(180px, 180px, 180px);
-  height: auto;
+  height: 100%;
   border-radius: 4.75% / 3.5%;
-  box-shadow: 4px, 4px, 4px, 0.5;
   z-index: 10;
   }
 
