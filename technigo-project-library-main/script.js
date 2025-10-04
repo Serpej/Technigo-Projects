@@ -57,6 +57,7 @@ const manaGeyser = new card ("Mana Geyser", 5, "sorcery", "Add R for each tapped
 const mechanizedWarfare = new card ("Mechanized Warfare", 3, "enchantment", "If a red or artifact source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 1 instead.", "deck-images/mechanizedWarfare.webp");
 const mizzixsMastery = new card("Mizzix's Mastery", 4, "sorcery", "Exile target card that's an instant or sorcery from your graveyard. For each card exiled this way, copy it, and you may cast the copy without paying its mana cost. Exile Mizzix's Mastery. Overload 5RRR (You may cast this spell for its overload cost. If you do, change 'target' in its text to 'each.')", "deck-images/mizzix'sMastery.webp");
 const moltenPrimordial = new card("Molten Primordial", 7, "creature", "Haste.When this creature enters, for each opponent, gain control of up to one target creature that player controls until end of turn. Untap those creatures. They gain haste until end of turn. 6/4", "deck-images/moltenPrimordial.webp");
+const mountain = new card("Mountain", 0, "land", "Tap: add R to you manapool.", "./deck-images/mountain.webp");
 const nykthosShrineToNyx = new card ("Nykthos, Shrine to Nyx", 0, "land", ": Add C. 2, Tap: Choose a color. Add an amount of mana of that color equal to your devotion to that color. (Your devotion to a color is the number of mana symbols of that color in the mana costs of permanents you control.)", "deck-images/nykthosShrineToNyx.webp");
 const ojerAxonilDeepestMightOrTempleOfPower = new modalCard ("Ojer Axonil, Deepest Might // Temple of Power", 4, "creature", "Trample. If a red source you control would deal an amount of noncombat damage less than Ojer Axonil's power to an opponent, that source deals damage equal to Ojer Axonil's power instead. When Ojer Axonil dies, return it to the battlefield tapped and transformed under its owner's control. 4/4", "deck-images/ojerAxonilDeepestMightORtempleOfPower1.webp", "deck-images/ojerAxonilDeepestMightORtempleOfPower2.webp");
 const priceOfProgress =  new card ("Price of Progress", 2, "instant", "Price of Progress deals damage to each player equal to twice the number of nonbasic lands that player controls", "deck-images/priceOfProgress.webp");
@@ -71,12 +72,28 @@ const repercussion = new card ("Repercussion", 3, "enchantment", "Whenever a cre
 const roilingVortex =  new card ("Roiling Vortex", 2, "enchantment", "At the beginning of each player's upkeep, this enchantment deals 1 damage to them. Whenever a player casts a spell, if no mana was spent to cast that spell, this enchantment deals 5 damage to that player. R: Your opponents can't gain life this turn.", "deck-images/roilingVortex.webp");
 const rousingRefrain = new card  ("Rousing Refrain", 5, "socrcery", "Add R for each card in target opponent's hand. Until end of turn, you don't lose this mana as steps and phases end. Exile Rousing Refrain with three time counters on it.Suspend 3 — 1R (Rather than cast this card from your hand, you may pay 1R and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)", "deck-images/rousingRefrain.webp");
 const rubyMedallion = new card ("Ruby Medallion", 2, "artfact", "Red spells you cast cost 1 less to cast.", "deck-images/rubyMedallion.webp");
+const scavengerGrounds = new card ("Scavenger Grounds", 0, "land", ": Add 1. Tap, 2, Sacrifice a Desert: Exile all graveyards.", "deck-images/scavengerGrounds.webp");
+const scytheclawRaptor =  new card ("Scytheclaw Raptor", 3, "creature", "Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them. 4/3", "deck-images/scytheclawRaptor.webp");
+const simianSpiritGuide = new card ("Simian Spirit Guide", 3, "creature", "Exile this card from your hand: Add R. 2/2", "deck-images/simianSpiritGuide.webp");
+const smolderingCrater = new card ("Smoldering Crater", 0, "land", "This land enters tapped. Tap: Add R. Cycling 2 (2, Discard this card: Draw a card.)", "deck-images/smolderingCrater.webp");
+const solphimMayhemDominus = new card ("Solphim, Mayhem Dominus", 4, "creature", "If a source you control would deal noncombat damage to an opponent or a permanent an opponent controls, it deals double that damage to that player or permanent instead.1RR, Discard two cards: Put an indestructible counter on Solphim. ( can be paid with either  or 2 life.) 5/4", "deck-images/solphimMayhemDominus.webp");
+const solRing = new card ("Sol Ring", 1, "artifact", "Tap: Add 2.", "deck-images/solRing.webp");
+const spellshock = new card ("Spellshock", 3, "enchantment", "Whenever a player casts a spell, this enchantment deals 2 damage to that player.", "deck-images/spellshock.webp");
+const stigmaLasher = new card ("Stigma Lasher", 2, "creature", "Wither (This deals damage to creatures in the form of -1/-1 counters.) Whenever this creature deals damage to a player, that player can't gain life for the rest of the game. 2/2", "deck-images/stigmaLasher.webp");
+const sulfuricVortex = new card ("Sulfuric Vortex", 2, "enchantment", "At the beginning of each player's upkeep, this enchantment deals 2 damage to that player. If a player would gain life, that player gains no life instead.", "deck-images/sulfuricVortex.webp");
+const sunspineLynx = new card ("Sunspine Lynx", 4, "creature", "Players can't gain life. Damage can't be prevented. When this creature enters, it deals damage to each player equal to the number of nonbasic lands that player controls. 5/4", "deck-images/sunspineLynx.webp");
+const swelteringSuns = new card ("Sweltering Suns", 3, "sorcery", "Sweltering Suns deals 3 damage to each creature. Cycling 3 (3, Discard this card: Draw a card.)", "deck-images/swelteringSuns.webp");
+const torbranThaneOfRedFell = new card ("Torbran, Thane of Red Fell", 4, "creature", "If a red source you control would deal damage to an opponent or a permanent an opponent controls, it deals that much damage plus 2 instead. 2/4", "deck-images/torbranThaneofRedFell.webp");
+const underworldBreach = new card ("Underworld Breach", 2, "enchantment", "Each nonland card in your graveyard has escape. The escape cost is equal to the card's mana cost plus exile three other cards from your graveyard. (You may cast cards from your graveyard for their escape cost.) At the beginning of the end step, sacrifice this enchantment.", "deck-images/underworldBreach.webp");
+const valakutAwakeningORValakutStoneforge = new modalCard ("Valakut Awakening // Valakut Stoneforge", 3, "instant", "Put any number of cards from your hand on the bottom of your library, then draw that many cards plus one.", "deck-images/valakutAwakeningORValakutStoneforge1.webp", "deck-images/valakutAwakeningORValakutStoneforge2.webp");
+const vandalblast = new card ("Vandalblast", 1, "sorcery", "Destroy target artifact you don't control. Overload 4R (You may cast this spell for its overload cost. If you do, change 'target' in its text to 'each.')", "deck-images/vandalblast.webp");
+const wayfarersBauble = new card ("Wayfarer's Bauble", 1, "artifact", "2, Tap, Sacrifice this artifact: Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.", "deck-images/wayfarersBauble.webp");
+const WheelOfMisfortune = new card ("Wheel of Misfortune", 3, "sorcery", "Each player secretly chooses a number 0 or greater, then all players reveal those numbers simultaneously and determine the highest and lowest numbers revealed this way. Wheel of Misfortune deals damage equal to the highest number to each player who chose that number. Each player who didn't choose the lowest number discards their hand, then draws seven cards.", "deck-images/wheelOfMisfortune.webp");
+const worldfire = new card ("Worldfire", 9, "sorcery", "Exile all permanents. Exile all cards from all hands and graveyards. Each player's life total becomes 1.", "deck-images/worldfire.webp");
 
-//fortsätt i bokstavsordning här.
 
 
 
-const mountain = new card("Mountain", 0, "land", "Tap: add R to you manapool.", "./deck-images/mountain.webp");
 
 
 const cardsInDeck = [
@@ -121,6 +138,7 @@ const cardsInDeck = [
   mechanizedWarfare,
   mizzixsMastery,
   moltenPrimordial,
+  mountain,
   nykthosShrineToNyx,
   ojerAxonilDeepestMightOrTempleOfPower,
   priceOfProgress,
@@ -134,7 +152,25 @@ const cardsInDeck = [
   repercussion,
   roilingVortex,
   rousingRefrain,
-  rubyMedallion
+  rubyMedallion,
+  scavengerGrounds,
+  scytheclawRaptor,
+  simianSpiritGuide,
+  smolderingCrater,
+  solphimMayhemDominus,
+  solRing,
+  spellshock,
+  stigmaLasher,
+  sulfuricVortex,
+  sunspineLynx,
+  swelteringSuns,
+  torbranThaneOfRedFell,
+  underworldBreach,
+  valakutAwakeningORValakutStoneforge,
+  vandalblast,
+  wayfarersBauble,
+  WheelOfMisfortune,
+  worldfire
 ]
 
 
