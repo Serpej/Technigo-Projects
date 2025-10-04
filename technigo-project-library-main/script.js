@@ -176,6 +176,7 @@ const cardsInDeck = [
 
 const ul = document.createElement("ul");
 ul.id = "decklist";
+const deckContainer = document.getElementById("deck-container");
 
 cardsInDeck.forEach((card => {
   const li = document.createElement("li");
@@ -185,9 +186,8 @@ cardsInDeck.forEach((card => {
   imgWrapper.style.cssText = `
     display: flex;
     position: absolute;
-    left: 100%;
-    bottom: -350%;
-    margin-left: 2px;
+    left: 77%;
+    top: 20%;
   `;
 
   // Add more if it's a mountain
@@ -220,9 +220,8 @@ cardsInDeck.forEach((card => {
       cardImg2.style.visibility = "hidden";
     }
   })
-  li.appendChild(imgWrapper);
+  deckContainer.appendChild(imgWrapper);
   ul.appendChild(li);
 }));
 
 document.getElementById("deck-container").appendChild(ul);
-/* ul.appendChild(cardImg); */

@@ -19,7 +19,7 @@ body {
   flex-direction: column;
 }
 
-.commander-container {
+#commander-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,17 +29,16 @@ body {
   height: 100%;
 }
 
-.commander-container > h3 {
+#commander-container > h3 {
   font-size: 2.2rem;
   color: #171411;
   text-align: center;
 }
 
-.commander-container img {
+#commander-container > img {
   border-radius: 4.75% / 3.5%;
   width: clamp(130px, 180px, 180px);
   height: auto;
-  margin: 10px;
 }
 
 .container-for-deck-box {
@@ -61,8 +60,17 @@ body {
   border-radius: 4px;
 }
 
+.hover-img {
+  visibility: hidden;
+  border-radius: 4.75% / 3.5%;
+  z-index: 10;
+  border-radius: 4.75% / 3.5%;
+  width: clamp(130px, 180px, 180px);
+  height: auto;
+}
+
 .fillerBox {
-  width: 15%;
+  width: 10%;
 }
 
 #decklist {
@@ -76,7 +84,6 @@ body {
   width: calc(60% - 40px);
   height: 80vh;
   column-width: 160px;
- /*  column-gap: 32px; */
 }
 
 #decklist > li{
@@ -87,14 +94,6 @@ body {
   white-space: normal;
   display: inline-block;
 }
-
-.hover-img {
-  visibility: hidden;
-  width: clamp(180px, 180px, 180px);
-  height: 100%;
-  border-radius: 4.75% / 3.5%;
-  z-index: 10;
-  }
 
 fieldset {
   display: flex;
@@ -142,18 +141,27 @@ fieldset {
     flex-direction: row;
   }
 
-  .commander-container {
+  #commander-container {
     width:clamp(345px, 40%, 30vw);
     border-right: solid 2px #877578;
     border-bottom: none;
   }
 
-  .commander-container > h3{
-    margin-top: 55px;
+  #commander-container > h3{
+    margin-top: 30px;
+    margin-bottom: 45px;
   }
 
-  .commander-container > img{
-    margin-top: 50px;
+  #commander-container img{
+    margin-top: 0;
+    width: clamp(180px, 200px, 25vw);
+  }
+
+  #commander-img {
+    margin-top: 40px;
+  }
+
+  .hover-img {
     width: clamp(180px, 200px, 25vw);
   }
 }
