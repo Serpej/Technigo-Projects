@@ -1,4 +1,9 @@
 
+const ul = document.createElement("ul");
+ul.id = "decklist";
+const deckContainer = document.getElementById("deck-container");
+const selectType = document.getElementById("type");
+
 function card (name, manaValue, type, oracleText, img) {
   this.name = name;
   this.manaValue = manaValue;
@@ -173,12 +178,6 @@ const cardsInDeck = [
   worldfire
 ]
 
-
-const ul = document.createElement("ul");
-ul.id = "decklist";
-const deckContainer = document.getElementById("deck-container");
-const html = document.getElementsByTagName("html");
-
 cardsInDeck.forEach((card => {
   const li = document.createElement("li");
 
@@ -223,9 +222,111 @@ cardsInDeck.forEach((card => {
       cardImg2.style.visibility = "hidden";
     }
   })
-  //deckContainer.appendChild(imgWrapper);
+
   li.appendChild(imgWrapper)
   ul.appendChild(li);
 }));
 
-document.getElementById("deck-container").appendChild(ul);
+deckContainer.appendChild(ul);
+
+const liElements = ul.querySelectorAll("li");
+
+
+const resetDeckList = (deck) => {
+  deck.forEach((card, i) => {
+    liElements[i].style.display = "";
+  });
+}
+selectType.addEventListener("change", () => {
+
+  switch (selectType.value) {
+    case "none":
+      resetDeckList(cardsInDeck);
+      break;
+
+    case "artifact":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("artifact")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+
+    case "battle":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("battle")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+
+    case "creature":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("creature")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+
+    case "enchantment":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("enchantment")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+
+    case "instant":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("instant")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+  
+    case "kindred":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("kindred")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+
+    case "land":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("land")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+
+    case "planeswalker":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("planeswalker")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+  
+    case "sorcery":
+      resetDeckList(cardsInDeck);
+      cardsInDeck.forEach((card, i) => {
+        if (!card.type.includes("sorcery")) {
+        liElements[i].style.display = "none";
+        };
+      });
+      break;
+
+    default:
+      break;
+  }
+});
+
