@@ -62,7 +62,6 @@ body {
 
 .hover-img {
   visibility: hidden;
-  border-radius: 4.75% / 3.5%;
   z-index: 10;
   border-radius: 4.75% / 3.5%;
   width: clamp(130px, 180px, 180px);
@@ -135,7 +134,7 @@ fieldset {
 }
 
 
-@media (min-width:667px) {
+@media (min-width:1000px) {
   body {
     display: flex;
     flex-direction: row;

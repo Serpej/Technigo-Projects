@@ -177,6 +177,7 @@ const cardsInDeck = [
 const ul = document.createElement("ul");
 ul.id = "decklist";
 const deckContainer = document.getElementById("deck-container");
+const html = document.getElementsByTagName("html");
 
 cardsInDeck.forEach((card => {
   const li = document.createElement("li");
@@ -198,6 +199,7 @@ cardsInDeck.forEach((card => {
   cardImg.classList.add("hover-img");
   imgWrapper.appendChild(cardImg);
 
+  // Add a second img if the card is modal
   if(card instanceof modalCard) {
     cardImg2 = document.createElement("img");
     cardImg2.classList.add("hover-img");
@@ -205,6 +207,7 @@ cardsInDeck.forEach((card => {
     imgWrapper.appendChild(cardImg2);
   }
 
+  // Show img on hover
   li.addEventListener("mouseenter", () => {
     cardImg.src = card.img;
     cardImg.style.visibility = "visible";
@@ -220,7 +223,8 @@ cardsInDeck.forEach((card => {
       cardImg2.style.visibility = "hidden";
     }
   })
-  deckContainer.appendChild(imgWrapper);
+  //deckContainer.appendChild(imgWrapper);
+  li.appendChild(imgWrapper)
   ul.appendChild(li);
 }));
 
