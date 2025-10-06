@@ -50,13 +50,13 @@ body {
 
 #deck-container {
   width: calc(100% - 40px);
-  height: 100vh;
   background-color: #CFCEE0;
   border: 2px solid #877578;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin: 20px;
+  padding: 20px 0;
   border-radius: 4px;
 }
 
@@ -82,7 +82,7 @@ body {
   border: 2px solid #877578;
   border-radius: 4px;
   width: calc(60% - 40px);
-  height: 80vh;
+  height: 100%;
   column-width: 160px;
 }
 
