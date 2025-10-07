@@ -66,6 +66,7 @@ body {
   border-radius: 4.75% / 3.5%;
   width: clamp(130px, 180px, 180px);
   height: auto;
+  pointer-events: none;
 }
 
 .fillerBox {

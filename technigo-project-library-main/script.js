@@ -186,8 +186,8 @@ cardsInDeck.forEach((card => {
   imgWrapper.style.cssText = `
     display: flex;
     position: absolute;
-    left: 77%;
-    top: 20%;
+    left: 100%;
+    top: -100%;
   `;
 
   // Add more if it's a mountain
@@ -237,6 +237,15 @@ const resetDeckList = (deck) => {
     liElements[i].style.display = "";
   });
 }
+
+const showByType = (deck, type) => {
+  deck.forEach ((card, i) => {
+    if (!card.type.includes(type)) {
+    liElements[i].style.display = "none";
+    };
+  });
+}
+
 selectType.addEventListener("change", () => {
 
   switch (selectType.value) {
@@ -246,83 +255,47 @@ selectType.addEventListener("change", () => {
 
     case "artifact":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("artifact")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "artifact");
       break;
 
     case "battle":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("battle")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "battle");
       break;
 
     case "creature":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("creature")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "creature");
       break;
 
     case "enchantment":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("enchantment")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "enchantment");
       break;
 
     case "instant":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("instant")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "instant");
       break;
   
     case "kindred":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("kindred")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "kindred");
       break;
 
     case "land":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("land")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "land");
       break;
 
     case "planeswalker":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("planeswalker")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "planeswalker");
       break;
   
     case "sorcery":
       resetDeckList(cardsInDeck);
-      cardsInDeck.forEach((card, i) => {
-        if (!card.type.includes("sorcery")) {
-        liElements[i].style.display = "none";
-        };
-      });
+      showByType(cardsInDeck, "sorcery");
       break;
 
     default:
