@@ -3,6 +3,7 @@ const ul = document.createElement("ul");
 ul.id = "decklist";
 const deckContainer = document.getElementById("deck-container");
 const selectType = document.getElementById("type");
+const searchByName = document.getElementById("card-search");
 
 function card (name, manaValue, type, oracleText, img) {
   this.name = name;
@@ -229,8 +230,9 @@ cardsInDeck.forEach((card => {
 
 deckContainer.appendChild(ul);
 
-const liElements = ul.querySelectorAll("li");
 
+// Type filter logic
+const liElements = ul.querySelectorAll("li");
 
 const resetDeckList = (deck) => {
   deck.forEach((card, i) => {
@@ -303,3 +305,18 @@ selectType.addEventListener("change", () => {
   }
 });
 
+
+const form  = document.querySelector("form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+// Search by name
+searchByName.addEventListener("search", () => {
+  resetDeckList(cardsInDeck);
+  const userQuery = searchByName.value.trim().toLowerCase();
+  cardsInDeck.forEach((card, i) => {
+    if (!card.name.toLowerCase().includes(userQuery)) {
+      liElements[i].style.display = "none";
+    };
+  });
+});
