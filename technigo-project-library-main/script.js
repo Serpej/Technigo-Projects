@@ -4,6 +4,8 @@ ul.id = "decklist";
 const deckContainer = document.getElementById("deck-container");
 const selectType = document.getElementById("type");
 const searchByName = document.getElementById("card-search");
+const form  = document.querySelector("form");
+const sortSelector = document.getElementById("sort");
 
 function card (name, manaValue, type, oracleText, img) {
   this.name = name;
@@ -77,7 +79,7 @@ const razorkinNeedlehead = new card ("Razorkin Needlehead", 2, "creature", "This
 const repercussion = new card ("Repercussion", 3, "enchantment", "Whenever a creature is dealt damage, this enchantment deals that much damage to that creature's controller.", "deck-images/repercussion.webp");
 const roilingVortex =  new card ("Roiling Vortex", 2, "enchantment", "At the beginning of each player's upkeep, this enchantment deals 1 damage to them. Whenever a player casts a spell, if no mana was spent to cast that spell, this enchantment deals 5 damage to that player. R: Your opponents can't gain life this turn.", "deck-images/roilingVortex.webp");
 const rousingRefrain = new card  ("Rousing Refrain", 5, "socrcery", "Add R for each card in target opponent's hand. Until end of turn, you don't lose this mana as steps and phases end. Exile Rousing Refrain with three time counters on it.Suspend 3 — 1R (Rather than cast this card from your hand, you may pay 1R and exile it with three time counters on it. At the beginning of your upkeep, remove a time counter. When the last is removed, you may cast it without paying its mana cost.)", "deck-images/rousingRefrain.webp");
-const rubyMedallion = new card ("Ruby Medallion", 2, "artfact", "Red spells you cast cost 1 less to cast.", "deck-images/rubyMedallion.webp");
+const rubyMedallion = new card ("Ruby Medallion", 2, "artifact", "Red spells you cast cost 1 less to cast.", "deck-images/rubyMedallion.webp");
 const scavengerGrounds = new card ("Scavenger Grounds", 0, "land", ": Add 1. Tap, 2, Sacrifice a Desert: Exile all graveyards.", "deck-images/scavengerGrounds.webp");
 const scytheclawRaptor =  new card ("Scytheclaw Raptor", 3, "creature", "Whenever a player casts a spell, if it's not their turn, this creature deals 4 damage to them. 4/3", "deck-images/scytheclawRaptor.webp");
 const simianSpiritGuide = new card ("Simian Spirit Guide", 3, "creature", "Exile this card from your hand: Add R. 2/2", "deck-images/simianSpiritGuide.webp");
@@ -179,68 +181,72 @@ const cardsInDeck = [
   worldfire
 ]
 
-cardsInDeck.forEach((card => {
-  const li = document.createElement("li");
+const renderDeckList = ((deck) =>{
+  deck.forEach((card => {
+    const li = document.createElement("li");
 
-  // Create wrapper for images
-  const imgWrapper = document.createElement("div");
-  imgWrapper.style.cssText = `
-    display: flex;
-    position: absolute;
-    left: 100%;
-    top: -100%;
-  `;
+    // Create wrapper for images
+    const imgWrapper = document.createElement("div");
+    imgWrapper.style.cssText = `
+      display: flex;
+      position: absolute;
+      left: 100%;
+      top: -100%;
+    `;
 
-  // Add more if it's a mountain
-  li.textContent = card.name === "mountain" ? `26x ${card.name}` : `1x ${card.name}`;
- 
-  const cardImg = document.createElement("img");
-  let cardImg2;
-  cardImg.classList.add("hover-img");
-  imgWrapper.appendChild(cardImg);
+    // Add more if it's a mountain
+    li.textContent = card.name === "mountain" ? `26x ${card.name}` : `1x ${card.name}`;
 
-  // Add a second img if the card is modal
-  if(card instanceof modalCard) {
-    cardImg2 = document.createElement("img");
-    cardImg2.classList.add("hover-img");
+    const cardImg = document.createElement("img");
+    let cardImg2;
     cardImg.classList.add("hover-img");
-    imgWrapper.appendChild(cardImg2);
-  }
+    imgWrapper.appendChild(cardImg);
 
-  // Show img on hover
-  li.addEventListener("mouseenter", () => {
-    cardImg.src = card.img;
-    cardImg.style.visibility = "visible";
+    // Add a second img if the card is modal
     if(card instanceof modalCard) {
-      cardImg2.src = card.img2
-      cardImg2.style.visibility = "visible";
+      cardImg2 = document.createElement("img");
+      cardImg2.classList.add("hover-img");
+      cardImg.classList.add("hover-img");
+      imgWrapper.appendChild(cardImg2);
     }
-  })
 
-  li.addEventListener("mouseleave", () => {
-    cardImg.style.visibility = "hidden";
-    if(card instanceof modalCard) {
-      cardImg2.style.visibility = "hidden";
-    }
-  })
+    // Show img on hover
+    li.addEventListener("mouseenter", () => {
+      cardImg.src = card.img;
+      cardImg.style.visibility = "visible";
+      if(card instanceof modalCard) {
+        cardImg2.src = card.img2
+        cardImg2.style.visibility = "visible";
+      }
+    })
 
-  li.appendChild(imgWrapper)
-  ul.appendChild(li);
-}));
+    li.addEventListener("mouseleave", () => {
+      cardImg.style.visibility = "hidden";
+      if(card instanceof modalCard) {
+        cardImg2.style.visibility = "hidden";
+      }
+    })
 
+    li.appendChild(imgWrapper)
+    ul.appendChild(li);
+  }));
+});
+
+renderDeckList(cardsInDeck);
 deckContainer.appendChild(ul);
 
 
 // Type filter logic
-const liElements = ul.querySelectorAll("li");
 
 const resetDeckList = (deck) => {
+  const liElements = ul.querySelectorAll("li");
   deck.forEach((card, i) => {
     liElements[i].style.display = "";
   });
 }
 
 const showByType = (deck, type) => {
+  const liElements = ul.querySelectorAll("li");
   deck.forEach ((card, i) => {
     if (!card.type.includes(type)) {
     liElements[i].style.display = "none";
@@ -249,6 +255,8 @@ const showByType = (deck, type) => {
 }
 
 selectType.addEventListener("change", () => {
+
+const liElements = ul.querySelectorAll("li");
 
   switch (selectType.value) {
     case "none":
@@ -305,13 +313,14 @@ selectType.addEventListener("change", () => {
   }
 });
 
-
-const form  = document.querySelector("form");
+// Prevents searchbar from reloading page
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
+
 // Search by name
 searchByName.addEventListener("search", () => {
+  const liElements = ul.querySelectorAll("li");
   resetDeckList(cardsInDeck);
   const userQuery = searchByName.value.trim().toLowerCase();
   cardsInDeck.forEach((card, i) => {
@@ -319,4 +328,37 @@ searchByName.addEventListener("search", () => {
       liElements[i].style.display = "none";
     };
   });
+});
+
+const removeElementsAndRenderDeck = (deck) => {
+  
+  //Remove all children from decklist
+   while(ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  };
+  //Put all elements back again
+  renderDeckList(deck);
+};
+
+sortSelector.addEventListener("change", () => {
+  switch (sortSelector.value) {
+
+    case "name":
+      cardsInDeck.sort((a, b) => a.name.localeCompare(b.name));
+      removeElementsAndRenderDeck(cardsInDeck);
+      break;
+  
+    case "mana value":
+      cardsInDeck.sort((a, b) => a.manaValue - b.manaValue);
+      removeElementsAndRenderDeck(cardsInDeck);   
+      break;
+  
+    case "type":
+      cardsInDeck.sort((a, b) => a.type.localeCompare(b.type));
+      removeElementsAndRenderDeck(cardsInDeck);  
+      break;
+  
+    default:
+      break;
+  }
 });
