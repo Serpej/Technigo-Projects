@@ -117,7 +117,8 @@ fieldset {
 
 #type, 
 #sort,
-#card-search {
+#card-search,
+#random-card-button {
   max-width: 60%;
 }
 

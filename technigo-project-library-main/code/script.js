@@ -6,6 +6,7 @@ const selectType = document.getElementById("type");
 const searchByName = document.getElementById("card-search");
 const form  = document.querySelector("form");
 const sortSelector = document.getElementById("sort");
+const randomCardButton = document.getElementById("random-card-button");
 let userQuery = "";
 let currentTypeFilter = "none";
 
@@ -101,11 +102,6 @@ const wayfarersBauble = new card ("Wayfarer's Bauble", 1, "artifact", "2, Tap, S
 const WheelOfMisfortune = new card ("Wheel of Misfortune", 3, "sorcery", "Each player secretly chooses a number 0 or greater, then all players reveal those numbers simultaneously and determine the highest and lowest numbers revealed this way. Wheel of Misfortune deals damage equal to the highest number to each player who chose that number. Each player who didn't choose the lowest number discards their hand, then draws seven cards.", "../deck-images/wheelOfMisfortune.webp");
 const worldfire = new card ("Worldfire", 9, "sorcery", "Exile all permanents. Exile all cards from all hands and graveyards. Each player's life total becomes 1.", "../deck-images/worldfire.webp");
 
-
-
-
-
-
 const cardsInDeck = [
   angerOfTheGods, 
   ankhOfMishra, 
@@ -181,7 +177,7 @@ const cardsInDeck = [
   wayfarersBauble,
   WheelOfMisfortune,
   worldfire
-]
+];
 
 const renderDeckList = ((deck) =>{
   deck.forEach((card => {
@@ -236,6 +232,14 @@ const renderDeckList = ((deck) =>{
 
 renderDeckList(cardsInDeck);
 deckContainer.appendChild(ul);
+
+const getRandomCard = ((deck => {
+  const randomCardIndex = Math.floor(Math.random() * deck.length);
+  const liElements = ul.querySelectorAll("li");
+    deck.forEach((_, i) => {
+      liElements[i].style.display = (i === randomCardIndex) ? "" : "none";
+    });
+}));
 
 const typeFiltering = ((value) => {
 
@@ -312,7 +316,6 @@ const typeFiltering = ((value) => {
   }
 });
 
-// Type filter logic
 const resetDeckListVisibility = (deck) => {
   const liElements = ul.querySelectorAll("li");
   deck.forEach((card, i) => {
@@ -320,9 +323,10 @@ const resetDeckListVisibility = (deck) => {
   });
 }
 
+// Type filter logic
 const showByType = (deck, type) => {
   const liElements = ul.querySelectorAll("li");
-  deck.forEach ((card, i) => {
+  deck.forEach((card, i) => {
     if (!card.type.includes(type)) {
     liElements[i].style.display = "none";
     };
@@ -360,6 +364,13 @@ const checkSearchQuery = ((deck, userQuery) => {
   };
 });
 
+//Random Card Event
+randomCardButton.addEventListener("click", () => {
+  resetDeckListVisibility(cardsInDeck);
+  getRandomCard(cardsInDeck);
+});
+
+//Type Filter Event
 selectType.addEventListener("change", () => {
 const liElements = ul.querySelectorAll("li");
   typeFiltering(selectType.value);
@@ -371,7 +382,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-
+//Search Event
 searchByName.addEventListener("search", () => {
   resetDeckListVisibility(cardsInDeck);
   checkFilter(currentTypeFilter);
@@ -380,6 +391,7 @@ searchByName.addEventListener("search", () => {
   searchToExcludeCards(cardsInDeck, userQuery);
 });
 
+//Sort Event
 sortSelector.addEventListener("change", () => {
   switch (sortSelector.value) {
 
