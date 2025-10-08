@@ -6,6 +6,8 @@ const selectType = document.getElementById("type");
 const searchByName = document.getElementById("card-search");
 const form  = document.querySelector("form");
 const sortSelector = document.getElementById("sort");
+let userQuery = "";
+let currentTypeFilter = "none";
 
 function card (name, manaValue, type, oracleText, img) {
   this.name = name;
@@ -235,10 +237,83 @@ const renderDeckList = ((deck) =>{
 renderDeckList(cardsInDeck);
 deckContainer.appendChild(ul);
 
+const typeFiltering = ((value) => {
+
+  switch (value) {
+    case "none":
+      resetDeckListVisibility(cardsInDeck);
+      break;
+
+    case "artifact":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "artifact");
+      currentTypeFilter = "artifact";
+      break;
+
+    case "battle":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "battle");
+      currentTypeFilter = "battle";
+      break;
+
+    case "creature":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "creature");
+      currentTypeFilter = "creature";
+      break;
+
+    case "enchantment":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "enchantment");
+      currentTypeFilter = "enchantment";
+      break;
+
+    case "instant":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "instant");
+      currentTypeFilter = "instant";
+      break;
+  
+    case "kindred":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "kindred");
+      currentTypeFilter = "kindred";
+      break;
+
+    case "land":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "land");
+      currentTypeFilter = "land";
+      break;
+
+    case "planeswalker":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "planeswalker");
+      currentTypeFilter = "planeswalker";
+      break;
+  
+    case "sorcery":
+      resetDeckListVisibility(cardsInDeck);
+      checkSearchQuery(cardsInDeck, userQuery);
+      showByType(cardsInDeck, "sorcery");
+      currentTypeFilter = "sorcery";
+      break;
+
+    default:
+      break;
+  }
+});
 
 // Type filter logic
-
-const resetDeckList = (deck) => {
+const resetDeckListVisibility = (deck) => {
   const liElements = ul.querySelectorAll("li");
   deck.forEach((card, i) => {
     liElements[i].style.display = "";
@@ -254,108 +329,82 @@ const showByType = (deck, type) => {
   });
 }
 
-selectType.addEventListener("change", () => {
-
-const liElements = ul.querySelectorAll("li");
-
-  switch (selectType.value) {
-    case "none":
-      resetDeckList(cardsInDeck);
-      break;
-
-    case "artifact":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "artifact");
-      break;
-
-    case "battle":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "battle");
-      break;
-
-    case "creature":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "creature");
-      break;
-
-    case "enchantment":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "enchantment");
-      break;
-
-    case "instant":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "instant");
-      break;
-  
-    case "kindred":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "kindred");
-      break;
-
-    case "land":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "land");
-      break;
-
-    case "planeswalker":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "planeswalker");
-      break;
-  
-    case "sorcery":
-      resetDeckList(cardsInDeck);
-      showByType(cardsInDeck, "sorcery");
-      break;
-
-    default:
-      break;
-  }
+// Search by name logic
+const searchToExcludeCards = ((deck, query) => {
+  const liElements = ul.querySelectorAll("li");
+  deck.forEach((card, i) => {
+  if (liElements[i].style.display !== "none") {
+    if (!card.name.toLowerCase().includes(query)) {
+      liElements[i].style.display = "none";
+    };
+  };
+  });
 });
+
+
+const removeElementsinList = () => {
+  while(ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  };
+};
+
+const checkFilter = ((currentTypeFilter) => {
+  if (currentTypeFilter !== "none") {
+    typeFiltering(currentTypeFilter);
+  };
+});
+
+const checkSearchQuery = ((deck, userQuery) => {
+  if (userQuery !== "") {
+    searchToExcludeCards(deck, userQuery);
+  };
+});
+
+selectType.addEventListener("change", () => {
+const liElements = ul.querySelectorAll("li");
+  typeFiltering(selectType.value);
+});
+
 
 // Prevents searchbar from reloading page
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-// Search by name
-searchByName.addEventListener("search", () => {
-  const liElements = ul.querySelectorAll("li");
-  resetDeckList(cardsInDeck);
-  const userQuery = searchByName.value.trim().toLowerCase();
-  cardsInDeck.forEach((card, i) => {
-    if (!card.name.toLowerCase().includes(userQuery)) {
-      liElements[i].style.display = "none";
-    };
-  });
-});
 
-const removeElementsAndRenderDeck = (deck) => {
-  
-  //Remove all children from decklist
-   while(ul.firstChild) {
-    ul.removeChild(ul.firstChild);
-  };
-  //Put all elements back again
-  renderDeckList(deck);
-};
+searchByName.addEventListener("search", () => {
+  resetDeckListVisibility(cardsInDeck);
+  checkFilter(currentTypeFilter);
+
+  userQuery = searchByName.value.trim().toLowerCase();
+  searchToExcludeCards(cardsInDeck, userQuery);
+});
 
 sortSelector.addEventListener("change", () => {
   switch (sortSelector.value) {
 
     case "name":
+      removeElementsinList();
       cardsInDeck.sort((a, b) => a.name.localeCompare(b.name));
-      removeElementsAndRenderDeck(cardsInDeck);
+      renderDeckList(cardsInDeck)
+      checkFilter(currentTypeFilter);
+      checkSearchQuery(cardsInDeck, userQuery);
       break;
   
     case "mana value":
+      removeElementsinList();
       cardsInDeck.sort((a, b) => a.manaValue - b.manaValue);
-      removeElementsAndRenderDeck(cardsInDeck);   
+      renderDeckList(cardsInDeck)
+      checkFilter(currentTypeFilter);
+      checkSearchQuery(cardsInDeck, userQuery);
       break;
   
     case "type":
+      removeElementsinList();
       cardsInDeck.sort((a, b) => a.type.localeCompare(b.type));
-      removeElementsAndRenderDeck(cardsInDeck);  
+      renderDeckList(cardsInDeck);
+      checkFilter(currentTypeFilter);
+      checkSearchQuery(cardsInDeck, userQuery);
       break;
   
     default:
