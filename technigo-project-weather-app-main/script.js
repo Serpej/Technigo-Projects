@@ -2,9 +2,9 @@ const todaysContainer = document.getElementById("today-container");
 const todaysTemperatureContainer = document.getElementById("temp-container");
 const cityContainer = document.getElementById("city-container");
 const weatherDescriptionContainer = document.getElementById("description-container");
-const sunriseSunsetContainer = document.getElementById("Sunrise-Sunset-container");
+const sunriseSunsetContainer = document.getElementById("sunrise-sunset-container");
 const futureDaysContainer = document.getElementById("future-forecast-container");
-const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 
 roundToInteger = (number) => {
@@ -21,11 +21,17 @@ const fetchDataTodaysForecast =  async () => {
 
     // Get todays temp rounded
     const todaysTemperature = document.createElement("span");
+    todaysTemperature.id = "temperature";
     const todaysTemperatureRounded = roundToInteger(data.main.temp);
-    todaysTemperature.textContent = `${todaysTemperatureRounded}°C`
+    const tempUnit = document.createElement("span");
+    tempUnit.id = "temp-unit"
+
+    todaysTemperature.textContent = `${todaysTemperatureRounded}`
+    tempUnit.textContent = "°C"
 
     // Get city
     const city = document.createElement("span");
+    city.id = "city";
     city.textContent = `${data.name}`;
 
     // Get Weather description
@@ -50,6 +56,7 @@ const fetchDataTodaysForecast =  async () => {
 
     // Append Children
     todaysTemperatureContainer.appendChild(todaysTemperature);
+    todaysTemperatureContainer.appendChild(tempUnit);
     cityContainer.appendChild(city);
     weatherDescriptionContainer.appendChild(weatherDescription);
     sunriseSunsetContainer.appendChild(sunrise);
@@ -84,6 +91,7 @@ const fetchDataNextFiveDaysForecast = async () => {
         day = dateOfTime.getDay();
       
         const futureDay = document.createElement("li");
+        futureDay.classList.add("listOfDays")
         futureDay.textContent = `${dayNames[day]}`;
 
         daysList.appendChild(futureDay);
