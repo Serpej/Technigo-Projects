@@ -36,11 +36,14 @@ const fetchDataTodaysForecast =  async () => {
 
     // Get Weather description
     const weatherDescription = document.createElement("span");
+    weatherDescription.id = "description";
     weatherDescription.textContent = `${data.weather[0].main}`;
 
     // Get sunrise and sunset
     const sunrise = document.createElement("span");
     const sunset = document.createElement("span");
+    sunrise.id = "sunrise";
+    sunset.id = "sunset";
     
     // Convert to seconds and format to "00:00"
     const sunriseTime = new Date(data.sys.sunrise * 1000);
