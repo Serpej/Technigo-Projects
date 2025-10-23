@@ -4,8 +4,11 @@ const cityContainer = document.getElementById("city-container");
 const weatherDescriptionContainer = document.getElementById("description-container");
 const sunriseSunsetContainer = document.getElementById("sunrise-sunset-container");
 const futureDaysContainer = document.getElementById("future-forecast-container");
+const todaysIconContainer = document.getElementById("todays-weather-icon-container");
 const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+const weatherIcons = ["http://openweathermap.org/img/wn/01d@2x.png", "http://openweathermap.org/img/wn/01n@2x.png", "http://openweathermap.org/img/wn/02d@2x.png", "http://openweathermap.org/img/wn/02n@2x.png","http://openweathermap.org/img/wn/03d@2x.png", "http://openweathermap.org/img/wn/04n@2x.png", "http://openweathermap.org/img/wn/09n@2x.png", "http://openweathermap.org/img/wn/10d@2x.png", "http://openweathermap.org/img/wn/10n@2x.png", "http://openweathermap.org/img/wn/11n@2x.png", "http://openweathermap.org/img/wn/13n@2x.png", "http://openweathermap.org/img/wn/50n@2x.png"];
 
+//weatherIcons = ["./assets/sun.png", "./assets/moon.png", "./assets/cloudySun.png", "./assets/cloudyMoon.png","./assets/scatteredClouds.png", "/.assets/brokenClouds.png", "/.assets/showerRain.png", "/.assets/sunRain.png", "/.assets/moonRain.png", "/.assets/thunderstorm.png", "/.assets/snow.png", "/.assets/mist.png"];
 
 roundToInteger = (number) => {
   return Math.round(number);
@@ -37,7 +40,8 @@ const fetchDataTodaysForecast =  async () => {
     // Get Weather description
     const weatherDescription = document.createElement("span");
     weatherDescription.id = "description";
-    weatherDescription.textContent = `${data.weather[0].main}`;
+    const currentWeather = data.weather[0].main;
+    weatherDescription.textContent = `${currentWeather}`;
 
     // Get sunrise and sunset
     const sunrise = document.createElement("span");
@@ -48,18 +52,32 @@ const fetchDataTodaysForecast =  async () => {
     // Convert to seconds and format to "00:00"
     const sunriseTime = new Date(data.sys.sunrise * 1000);
     const sunsetTime = new Date(data.sys.sunset * 1000);
-    sunrise.textContent = `Sunrise: ${sunriseTime.toLocaleTimeString("en-GB", {
+    sunriseTimeTwoDigits = sunriseTime.toLocaleTimeString("en-GB", {
       hour: "2-digit",
       minute: "2-digit"
-    })}`;
-    sunset.textContent = `Sunset: ${sunsetTime.toLocaleTimeString("en-GB", {
+    });
+    sunsetTimeTwoDigits = sunsetTime.toLocaleTimeString("en-GB", {
       hour: "2-digit",
       minute: "2-digit"
-    })}`;
+    });
+
+    sunrise.textContent = `Sunrise: ${sunriseTimeTwoDigits}`;
+    sunset.textContent = `Sunset: ${sunsetTimeTwoDigits}`;
+
+    // Get weather icon
+    const todaysIconImage = document.createElement("img");
+    const currentHour = new Date(data.dt).getHours();
+    const sunriseHour = sunriseTime.getHours();
+    const sunsetHour = sunsetTime.getHours();
+    const currentIcon = getWeatherIcon(currentWeather, currentHour, sunriseHour, sunsetHour);
+    todaysIconImage.src = currentIcon;
+    todaysIconImage.alt = ""
+    
 
     // Append Children
     todaysTemperatureContainer.appendChild(todaysTemperature);
     todaysTemperatureContainer.appendChild(tempUnit);
+    todaysIconContainer.appendChild(todaysIconImage);
     cityContainer.appendChild(city);
     weatherDescriptionContainer.appendChild(weatherDescription);
     sunriseSunsetContainer.appendChild(sunrise);
@@ -69,7 +87,6 @@ const fetchDataTodaysForecast =  async () => {
   } catch (error) {
     console.log(`Error occured!`, error);
   }
-
 }
 fetchDataTodaysForecast();
 
@@ -106,3 +123,61 @@ const fetchDataNextFiveDaysForecast = async () => {
   }
 }
 fetchDataNextFiveDaysForecast()
+
+console.log(weatherIcons[0]);
+
+/* This function takes the the following parameters:
+  - Weather description
+  - Current Hour
+  - Sunrise Hour
+  - Sunset Hour
+  Then it returns img-link to the correct icon to display from an array
+  returns: String 
+*/
+const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
+  switch (weather) {
+    case "Clear sky":
+      if (time >= sunriseHour && time <= sunsetHour) {
+        return weatherIcons[0];
+      } else {
+        return weatherIcons[1];
+      }
+  
+    case "Few clouds":
+      if (time >= sunriseHour && time <= sunsetHour) {
+        return weatherIcons[2];
+      } else {
+        return weatherIcons[3];
+      }
+
+    case "Scattered clouds":
+      weatherIcons[4];
+      break;
+
+    case "Broken clouds":
+      return weatherIcons[5];
+
+    case "Shower rain":
+      return weatherIcons[6];
+
+    case "Rain":
+      if (time >= sunriseHour && time <= sunsetHour) {
+        return weatherIcons[7];
+      } else {
+        return weatherIcons[8];
+      }
+
+    case "Thunderstorm":
+      return weatherIcons[9];
+
+    case "Snow":
+       return weatherIcons[10];
+    
+    case "Mist":
+      return weatherIcons[11];
+  
+    default:
+      console.log("The weather case does not match the description")
+      break;
+  }
+}

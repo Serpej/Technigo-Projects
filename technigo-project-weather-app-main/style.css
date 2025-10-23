@@ -36,6 +36,9 @@ body {
 #today-container * {
   color: #FFFFFF;
 }
+#todays-weather-icon-container {
+
+}
 
 #temperature {
   font-size: 5rem;
