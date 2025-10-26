@@ -28,10 +28,23 @@ body {
   left: -25%;
   width: 150%; 
   height: 100%;
-  background: linear-gradient(135deg, #8589FF, #E8E9FF);
   border-bottom-left-radius: 50% 90px;
   border-bottom-right-radius: 50% 90px;
   z-index: -1;
+}
+
+#today-container.day::before {
+  background: linear-gradient(135deg, #8589FF, #E8E9FF);
+}
+
+#today-container.night::before {
+  background: linear-gradient( 
+    to right,
+   #6264A2 0%,
+   #6264A2 50%,
+   #222350 50%,
+   #222350 100%
+  );
 }
 
 #today-container * {
@@ -41,13 +54,12 @@ body {
 #todays-weather-icon-container {
   position: absolute;
   top: 10%;
-  right: 25%;
+  right: 20%;
 }
 
 #todays-Weather-Icon {
   width: 155%;
   height: auto;
-  margin-right: 20px;
 }
 
 #temperature {
@@ -67,11 +79,11 @@ body {
 
 #sunrise-sunset-container {
   display: flex;
-  justify-content: center;
   margin: 16px 8px 16px 0px;
+  word-spacing: 0.8rem;
 }
 #sun-Filler {
-  flex-grow: 1;
+  flex:0.8;
 }
 
 #temp-city-description {

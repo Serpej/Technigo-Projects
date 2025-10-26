@@ -1,4 +1,5 @@
 const todaysContainer = document.getElementById("today-container");
+const backgroundOfTodaysWeather = document.getElementById("today-container::before");
 const todaysTemperatureContainer = document.getElementById("temp-container");
 const cityContainer = document.getElementById("city-container");
 const weatherDescriptionContainer = document.getElementById("description-container");
@@ -68,14 +69,21 @@ const fetchDataTodaysForecast =  async () => {
 
     // Get weather icon
     const todaysIconImage = document.createElement("img");
-    const currentHour = new Date(data.dt).getHours();
+    const currentHour = new Date(data.dt * 1000).getHours();
     const sunriseHour = sunriseTime.getHours();
     const sunsetHour = sunsetTime.getHours();
     const currentIcon = getWeatherIcon(currentWeather, currentHour, sunriseHour, sunsetHour);
     todaysIconImage.id = "todays-Weather-Icon"
     todaysIconImage.src = currentIcon;
     todaysIconImage.alt = "Icon for the current weather"
-    
+  // Get background color
+    if (isDay(currentHour, sunriseHour, sunsetHour)) {
+      todaysContainer.classList.add("day");
+      todaysContainer.classList.remove("night");
+    } else {
+      todaysContainer.classList.add("night");
+      todaysContainer.classList.remove("day");
+    };
 
     // Append Children
     todaysTemperatureContainer.appendChild(todaysTemperature);
@@ -131,7 +139,23 @@ const fetchDataNextFiveDaysForecast = async () => {
 fetchDataNextFiveDaysForecast()
 
 
-/* This function takes the the following parameters:
+/* 
+  This function returns true if it's day and false if it's night
+  - Current Hour
+  - Sunrise Hour
+  - Sunset Hour
+  returns: boolean
+ */
+const isDay = (time, sunriseHour, sunsetHour) => {
+  if (time >= sunriseHour && time <= sunsetHour) {
+    return true;
+  } else {
+    return false;
+  };
+}
+
+/* 
+  This function takes the the following parameters:
   - Weather description
   - Current Hour
   - Sunrise Hour
@@ -142,14 +166,14 @@ fetchDataNextFiveDaysForecast()
 const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
   switch (weather) {
     case "Clear":
-      if (time >= sunriseHour && time <= sunsetHour) {
+      if (isDay(time, sunriseHour, sunsetHour)) {
         return weatherIcons[0];
       } else {
         return weatherIcons[1];
       };
   
     case "Clouds":
-      if (time >= sunriseHour && time <= sunsetHour) {
+      if (isDay(time, sunriseHour, sunsetHour)) {
         return weatherIcons[2];
       } else {
         return weatherIcons[3];
@@ -169,7 +193,7 @@ const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
       return weatherIcons[6];
 
     case "Rain":
-      if (time >= sunriseHour && time <= sunsetHour) {
+      if (isDay(time, sunriseHour, sunsetHour)) {
         return weatherIcons[7];
       } else {
         return weatherIcons[8];
