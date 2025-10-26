@@ -124,7 +124,6 @@ const fetchDataNextFiveDaysForecast = async () => {
 }
 fetchDataNextFiveDaysForecast()
 
-console.log(weatherIcons[0]);
 
 /* This function takes the the following parameters:
   - Weather description
@@ -136,14 +135,14 @@ console.log(weatherIcons[0]);
 */
 const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
   switch (weather) {
-    case "Clear sky":
+    case "Clear":
       if (time >= sunriseHour && time <= sunsetHour) {
         return weatherIcons[0];
       } else {
         return weatherIcons[1];
       }
   
-    case "Few clouds":
+    case "Clouds":
       if (time >= sunriseHour && time <= sunsetHour) {
         return weatherIcons[2];
       } else {
@@ -160,6 +159,9 @@ const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
     case "Shower rain":
       return weatherIcons[6];
 
+    case "Drizzle":
+      return weatherIcons[6];
+
     case "Rain":
       if (time >= sunriseHour && time <= sunsetHour) {
         return weatherIcons[7];
@@ -174,6 +176,30 @@ const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
        return weatherIcons[10];
     
     case "Mist":
+      return weatherIcons[11];
+  
+    case "Smoke":
+      return weatherIcons[11];
+  
+    case "Haze":
+      return weatherIcons[11];
+  
+    case "Dust":
+      return weatherIcons[11];
+  
+    case "Sand":
+      return weatherIcons[11];
+  
+    case "Dust":
+      return weatherIcons[11];
+  
+    case "Ash":
+      return weatherIcons[11];
+  
+    case "Squall":
+      return weatherIcons[11];
+  
+    case "Tornado":
       return weatherIcons[11];
   
     default:
