@@ -8,7 +8,7 @@ const todaysIconContainer = document.getElementById("todays-weather-icon-contain
 const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const weatherIcons = ["http://openweathermap.org/img/wn/01d@2x.png", "http://openweathermap.org/img/wn/01n@2x.png", "http://openweathermap.org/img/wn/02d@2x.png", "http://openweathermap.org/img/wn/02n@2x.png","http://openweathermap.org/img/wn/03d@2x.png", "http://openweathermap.org/img/wn/04n@2x.png", "http://openweathermap.org/img/wn/09n@2x.png", "http://openweathermap.org/img/wn/10d@2x.png", "http://openweathermap.org/img/wn/10n@2x.png", "http://openweathermap.org/img/wn/11n@2x.png", "http://openweathermap.org/img/wn/13n@2x.png", "http://openweathermap.org/img/wn/50n@2x.png"];
 
-//weatherIcons = ["./assets/sun.png", "./assets/moon.png", "./assets/cloudySun.png", "./assets/cloudyMoon.png","./assets/scatteredClouds.png", "/.assets/brokenClouds.png", "/.assets/showerRain.png", "/.assets/sunRain.png", "/.assets/moonRain.png", "/.assets/thunderstorm.png", "/.assets/snow.png", "/.assets/mist.png"];
+
 
 roundToInteger = (number) => {
   return Math.round(number);
@@ -46,7 +46,9 @@ const fetchDataTodaysForecast =  async () => {
     // Get sunrise and sunset
     const sunrise = document.createElement("span");
     const sunset = document.createElement("span");
+    const sunfiller = document.createElement("span");
     sunrise.id = "sunrise";
+    sunfiller.id = "sun-Filler"
     sunset.id = "sunset";
     
     // Convert to seconds and format to "00:00"
@@ -70,8 +72,9 @@ const fetchDataTodaysForecast =  async () => {
     const sunriseHour = sunriseTime.getHours();
     const sunsetHour = sunsetTime.getHours();
     const currentIcon = getWeatherIcon(currentWeather, currentHour, sunriseHour, sunsetHour);
+    todaysIconImage.id = "todays-Weather-Icon"
     todaysIconImage.src = currentIcon;
-    todaysIconImage.alt = ""
+    todaysIconImage.alt = "Icon for the current weather"
     
 
     // Append Children
@@ -81,8 +84,8 @@ const fetchDataTodaysForecast =  async () => {
     cityContainer.appendChild(city);
     weatherDescriptionContainer.appendChild(weatherDescription);
     sunriseSunsetContainer.appendChild(sunrise);
+    sunriseSunsetContainer.appendChild(sunfiller);
     sunriseSunsetContainer.appendChild(sunset);
-
 
   } catch (error) {
     console.log(`Error occured!`, error);
@@ -106,6 +109,7 @@ const fetchDataNextFiveDaysForecast = async () => {
     eachDay.forEach((day) =>{
       const time = day.dt_txt;
 
+      // Get the day and append the right name in the list
       if (time.includes("12:00:00")) {
         dateOfTime = new Date(time);
         day = dateOfTime.getDay();
@@ -117,11 +121,13 @@ const fetchDataNextFiveDaysForecast = async () => {
         daysList.appendChild(futureDay);
       }
     });
+
     futureDaysContainer.appendChild(daysList);
   } catch (error) {
     console.log(`Error occured!`, error);
   }
 }
+
 fetchDataNextFiveDaysForecast()
 
 
@@ -140,14 +146,14 @@ const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
         return weatherIcons[0];
       } else {
         return weatherIcons[1];
-      }
+      };
   
     case "Clouds":
       if (time >= sunriseHour && time <= sunsetHour) {
         return weatherIcons[2];
       } else {
         return weatherIcons[3];
-      }
+      };
 
     case "Scattered clouds":
       weatherIcons[4];
@@ -167,7 +173,7 @@ const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
         return weatherIcons[7];
       } else {
         return weatherIcons[8];
-      }
+      };
 
     case "Thunderstorm":
       return weatherIcons[9];
@@ -205,5 +211,5 @@ const getWeatherIcon = (weather, time, sunriseHour, sunsetHour) => {
     default:
       console.log("The weather case does not match the description")
       break;
-  }
-}
+  };
+};
