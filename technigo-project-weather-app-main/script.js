@@ -122,11 +122,11 @@ const fetchDataNextFiveDaysForecast = async () => {
       if (time.includes("12:00:00")) {
         dateOfTime = new Date(time);
         weekDay = dateOfTime.getDay();
-        const futureDay = document.createElement("li");
-        futureDay.classList.add("listOfDays")
+        const futureDayListItem = document.createElement("li");
+        futureDayListItem.classList.add("listOfDays")
 
         // Add right day to list
-        futureDay.textContent = `${dayNames[weekDay]}`;
+        futureDayListItem.textContent = `${dayNames[weekDay]}`;
 
         // Add right icon to list
         const futureDayImg = document.createElement("img");
@@ -136,8 +136,15 @@ const fetchDataNextFiveDaysForecast = async () => {
         futureDayImg.src = `${futureDaysIcon}`;
         futureDayImg.id = "future-day-img";
 
-        daysList.appendChild(futureDay);
-        futureDay.appendChild(futureDayImg);
+        // Add highest and lowest temp
+        const futureTempContainer = document.createElement("span");
+        const highesTemp = Math.round(day.main.temp_max);
+        const lowestTemp = Math.round(day.main.temp_min);
+        futureTempContainer.textContent = `${highesTemp}/${lowestTemp}°C`
+
+        daysList.appendChild(futureDayListItem);
+        futureDayListItem.appendChild(futureDayImg);
+        futureDayListItem.appendChild(futureTempContainer);
       }
     });
 
