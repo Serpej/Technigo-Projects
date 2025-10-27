@@ -110,3 +110,8 @@ body {
 .listOfDays:hover {
   background-color: #00000005;
 }
+
+#future-day-img{
+  width: 5%;
+  height: auto;
+}
