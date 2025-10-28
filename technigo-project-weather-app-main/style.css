@@ -104,16 +104,30 @@ body {
 
 .listOfDays {
   display: flex;
-  justify-content: space-between;
   border-radius: 76px;
   padding: 16px 8px 16px 20px;
+  font-size: 1rem;
   margin-bottom: 1px;
 }
 .listOfDays:hover {
   background-color: #00000005;
 }
 
+#img-and-temp-container {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+}
+
+#future-temp-container {
+  font-size: 1rem;
+}
+
+#future-filler {
+  flex: 0.8;
+}
+
 #future-day-img{
-  width: 5%;
+  width: clamp(25%,30%,30%);
   height: auto;
 }
