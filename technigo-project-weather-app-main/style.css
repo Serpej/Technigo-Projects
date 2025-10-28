@@ -106,7 +106,8 @@ body {
   display: flex;
   border-radius: 76px;
   padding: 16px 8px 16px 20px;
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 1rem, 2rem);
+  align-items: center;
   margin-bottom: 1px;
 }
 .listOfDays:hover {
@@ -117,10 +118,11 @@ body {
   display: flex;
   justify-content: space-between;
   width: 40%;
+  align-items: center;
 }
 
 #future-temp-container {
-  font-size: 1rem;
+  font-size: clamp(0.7rem, 1rem, 2rem);
 }
 
 #future-filler {
