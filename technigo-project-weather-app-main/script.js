@@ -6,6 +6,7 @@ const weatherDescriptionContainer = document.getElementById("description-contain
 const sunriseSunsetContainer = document.getElementById("sunrise-sunset-container");
 const futureDaysContainer = document.getElementById("future-forecast-container");
 const todaysIconContainer = document.getElementById("todays-weather-icon-container");
+const stars = ["./assets/figmaAssets/stars/Group 3.svg", "./assets/figmaAssets/stars/Group 4.svg", "./assets/figmaAssets/stars/Group 5.svg", "./assets/figmaAssets/stars/Group 6.svg", "./assets/figmaAssets/stars/Group 8.svg", "./assets/figmaAssets/stars/Group 9.svg", "./assets/figmaAssets/stars/Group 10.svg", "./assets/figmaAssets/stars/Group 11.svg"];
 const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const weatherIcons = ["http://openweathermap.org/img/wn/01d@2x.png", "http://openweathermap.org/img/wn/01n@2x.png", "http://openweathermap.org/img/wn/02d@2x.png", "http://openweathermap.org/img/wn/02n@2x.png","http://openweathermap.org/img/wn/03d@2x.png", "http://openweathermap.org/img/wn/04n@2x.png", "http://openweathermap.org/img/wn/09n@2x.png", "http://openweathermap.org/img/wn/10d@2x.png", "http://openweathermap.org/img/wn/10n@2x.png", "http://openweathermap.org/img/wn/11n@2x.png", "http://openweathermap.org/img/wn/13n@2x.png", "http://openweathermap.org/img/wn/50n@2x.png"];
 
@@ -77,12 +78,14 @@ const fetchDataTodaysForecast =  async () => {
     todaysIconImage.id = "todays-Weather-Icon"
     todaysIconImage.src = currentIcon;
     todaysIconImage.alt = "Icon for the current weather"
-  // Get background color
+
+    // Get background colo
     if (isDay(currentHour, sunriseHour, sunsetHour)) {
       todaysContainer.classList.add("day");
       todaysContainer.classList.remove("night");
     } else {
       todaysContainer.classList.add("night");
+      addStars();
       todaysContainer.classList.remove("day");
     };
 
@@ -163,6 +166,29 @@ const fetchDataNextFiveDaysForecast = async () => {
 
 fetchDataNextFiveDaysForecast()
 
+/* 
+  This function randomizes a number and returns it as a string with a % sign.
+ */
+const randomizePosition = () => {
+const randomPosition = Math.floor((Math.random() * 70) + 7);
+return `${randomPosition}%`;
+};
+
+
+/* 
+  This function adds stars to the background of todays container at a randomized position.
+ */
+const addStars = () => {
+  stars.forEach ((starSrc) =>{
+    const star = document.createElement("img");
+    star.src = starSrc;
+    star.classList.add("stars");
+    star.style.top = randomizePosition();
+    star.style.left = randomizePosition();
+    todaysContainer.appendChild(star);
+  });
+  
+};
 
 /* 
   This function returns true if it's day and false if it's night

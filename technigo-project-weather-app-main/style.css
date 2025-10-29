@@ -21,6 +21,11 @@ body {
   overflow: hidden;
 }
 
+.stars {
+  position: absolute;
+  z-index: 1;
+}
+
 #today-container::before {
   content: "";
   position: absolute;
@@ -45,6 +50,7 @@ body {
    #222350 50%,
    #222350 100%
   );
+  
 }
 
 #today-container * {
