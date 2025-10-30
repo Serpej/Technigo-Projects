@@ -3,7 +3,7 @@
   font-size: 16px;
 }
 html {
-  height: 100%;
+  height: 100vh;
   width: auto;
 
 }
@@ -114,7 +114,7 @@ body {
   display: flex;
   border-radius: 76px;
   padding: 16px 8px 16px 20px;
-  font-size: clamp(0.7rem, 4vw, 2.2rem);
+  font-size: clamp(0.9rem, 4vw, 2.2rem);
   align-items: center;
   margin-bottom: 1px;
 }
@@ -130,7 +130,7 @@ body {
 }
 
 #future-temp-container {
-  font-size: clamp(0.7rem, 4vw, 2.2rem);
+  font-size: clamp(0.9rem, 4vw, 2.2rem);
 }
 
 #future-filler {
@@ -143,48 +143,65 @@ body {
 }
 
 @media (min-width: 860px) {
- body {
-  display: flex;
-  height: 100%;
- }
+  body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
 
-#today-container {
-display: flex;
-  height: 100%;
-  width: 60%;
-}
+  #today-container {
+    display: flex;
+    padding-top: 50px;
+    height: 100%;
+    width: 60%;
+  }
 
-#today-container::before {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
+  #today-container::before {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 
-#today-inner-wrapper {
-  display: flex;
-  height: 100%;
-}
+  #today-inner-wrapper {
+    display: flex;
+    height: 100%;
+  }
 
-#temp-city-description {
- display: flex;
- flex-direction: column;
- justify-content: space-between;
- height: 80%;
- padding-left: 15%;
-} 
-
-#sunrise-sunset-container {
+  #temp-city-description {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
+  justify-content: space-between;
+  height: 100%;
+  padding-left: 15%;
+  } 
 
-#todays-weather-icon-container {
-  top: 15%;
-  right: 25%;
-}
+  #sunrise-sunset-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 
-#todays-Weather-Icon {
-  width: clamp(155%, 150% + 4vw, 250%);
-}
+  #todays-weather-icon-container {
+    top: 15%;
+    right: 25%;
+  }
+
+  #todays-Weather-Icon {
+    width: clamp(155%, 150% + 4vw, 250%);
+  }
+
+  #future-forecast-container {
+    display: flex;
+    width: 40%;
+  }
+
+  #futureDayList {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+  }
 
 }
