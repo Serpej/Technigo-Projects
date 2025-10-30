@@ -157,6 +157,10 @@ body {
     width: 60%;
   }
 
+  #today-container.night::before {
+    background: linear-gradient(135deg, #6264A2, #222350); 
+  }
+
   #today-container::before {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
@@ -172,7 +176,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding-left: 15%;
+  padding-left: 12%;
   } 
 
   #sunrise-sunset-container {
