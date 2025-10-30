@@ -141,3 +141,50 @@ body {
   width: clamp(25%,30%,30%);
   height: auto;
 }
+
+@media (min-width: 860px) {
+ body {
+  display: flex;
+  height: 100%;
+ }
+
+#today-container {
+display: flex;
+  height: 100%;
+  width: 60%;
+}
+
+#today-container::before {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+#today-inner-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+#temp-city-description {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ height: 80%;
+ padding-left: 15%;
+} 
+
+#sunrise-sunset-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#todays-weather-icon-container {
+  top: 15%;
+  right: 25%;
+}
+
+#todays-Weather-Icon {
+  width: clamp(155%, 150% + 4vw, 250%);
+}
+
+}

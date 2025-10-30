@@ -198,7 +198,7 @@ const addStars = () => {
   returns: boolean
  */
 const isDay = (time, sunriseHour, sunsetHour) => {
-  if (time >= sunriseHour && time <= sunsetHour) {
+  if (time > sunriseHour && time < sunsetHour) {
     return true;
   } else {
     return false;
