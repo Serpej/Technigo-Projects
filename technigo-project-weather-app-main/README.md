@@ -11,7 +11,7 @@ Replace this readme with your own information about the project. You can include
   5. Styled each container and created pseudo elements where needed
   6. Created a switch between night and day mode depending on the hour
   7. Make the webpage responsive to width.
-- If I had more time, I would make the day and night mode respond to minutes. I would also work more on how to clamp() the fontsoze to make them scale smoother with the size of the screen. And honestly probably find some nicer Weather Icons...
+- If I had more time, I would make the day and night mode respond to minutes. I would also work more on how to clamp() the fontsoze to make them scale smoother with the size of the screen. And honestly probably find some nicer Weather
 
 ## View it live
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+https://javascriptweatherappproject.netlify.app/
