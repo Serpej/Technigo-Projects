@@ -1,39 +1,104 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const reverseWord = (word) => word.split('').reverse().join('');
-const capitalizeWord = (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-const repeatWord = (word, times) => word.repeat(times);
+const reverseWord = (wordValue) => wordValue.split('').reverse().join('');
+const capitalizeWord = (wordValue) => wordValue.charAt(0).toUpperCase() + wordValue.slice(1).toLowerCase();
+const repeatWord = (wordValue, paramValue) => wordValue.repeat(paramValue);
 // catered for swedish - feel free to change 😊
-const countVowels = (word) => (word.match(/[aeiouyåäö]/gi) || []).length;
-const transformWord = (operation, word, param) => {
-    switch (operation) {
+const countVowels = (wordValue) => (wordValue.match(/[aeiouyåäö]/gi) || []).length;
+// Check for correct types
+const word = document.getElementById('word');
+const wordValue = turnElementInputIntoString(word);
+const operation = document.getElementById('operation');
+const operationSelectElement = checkIfSelectElement(operation);
+const param = document.getElementById('param');
+const button = document.getElementById('transformButton');
+const buttonElement = checkIfButtonElement(button);
+const transformWord = (operationValue, wordValue, paramValue) => {
+    switch (operationValue) {
         case 'reverse':
-            return reverseWord(word);
+            return reverseWord(wordValue);
         case 'capitalize':
-            return capitalizeWord(word);
+            return capitalizeWord(wordValue);
         case 'repeat':
-            return repeatWord(word, param);
+            return repeatWord(wordValue, paramValue);
         case 'countVowels':
-            return countVowels(word);
+            return countVowels(wordValue);
         default:
             return "Invalid operation";
     }
 };
+function turnElementInputIntoString(variable) {
+    if (variable instanceof HTMLInputElement) {
+        return variable.value;
+    }
+    ;
+    return '';
+}
+;
+function turnElementSelectIntoString(variable) {
+    if (variable instanceof HTMLSelectElement) {
+        return variable.value;
+    }
+    ;
+    return '';
+}
+;
+function turnElementInputIntoNumber(variable) {
+    if (variable instanceof HTMLInputElement) {
+        return parseInt(variable.value);
+    }
+    ;
+    return 0;
+}
+function checkIfString(variable) {
+    if (typeof variable === "string") {
+        return variable;
+    }
+    else if (typeof variable === "number") {
+        return variable.toString();
+    }
+    return '';
+}
+function checkIfDivElement(variable) {
+    if (variable instanceof HTMLDivElement) {
+        return variable;
+    }
+    ;
+    throw new Error(`Variable is not a HTMLDivElement`);
+}
+;
+function checkIfSelectElement(variable) {
+    if (variable instanceof HTMLSelectElement) {
+        return variable;
+    }
+    ;
+    throw new Error(`Variable is not a HTMLSelectElement`);
+}
+;
+function checkIfButtonElement(variable) {
+    if (variable instanceof HTMLButtonElement) {
+        return variable;
+    }
+    ;
+    throw new Error(`Variable is not a HTMLButtonElement`);
+}
+;
 const runTransformation = () => {
-    var _a, _b, _c;
-    const word = ((_a = document.querySelector('#word')) === null || _a === void 0 ? void 0 : _a.value) || '';
-    const operation = ((_b = document.querySelector('#operation')) === null || _b === void 0 ? void 0 : _b.value) || '';
-    const param = parseInt(((_c = document.querySelector('#param')) === null || _c === void 0 ? void 0 : _c.value) || '');
-    const result = transformWord(operation, word, param);
+    const wordValue = turnElementInputIntoString(word);
+    const operationValue = turnElementSelectIntoString(operation);
+    const paramValue = turnElementInputIntoNumber(param);
+    const result = transformWord(operationValue, wordValue, paramValue);
+    const resultAsString = checkIfString(result);
     const resultContainer = document.getElementById('result');
-    resultContainer.textContent = `Result: ${result}`;
-    resultContainer.classList.toggle('active', result !== '');
+    const resultDiv = checkIfDivElement(resultContainer);
+    resultDiv.textContent = `Result: ${resultAsString}`;
+    resultDiv.classList.toggle('active', resultAsString !== '');
 };
 // Show/hide param input based on selected operation
-document.getElementById('operation').addEventListener('change', function () {
+operationSelectElement.addEventListener('change', function () {
     const paramContainer = document.getElementById('paramContainer');
-    paramContainer.classList.toggle('active', this.value === 'repeat');
+    const paramDiv = checkIfDivElement(paramContainer);
+    paramDiv.classList.toggle('active', this.value === 'repeat');
 });
 // Event listener for transform button
-document.getElementById('transformButton').addEventListener('click', runTransformation);
+buttonElement.addEventListener('click', runTransformation);
+export {};
 //# sourceMappingURL=word-transformer.js.map
