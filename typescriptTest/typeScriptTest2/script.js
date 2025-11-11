@@ -24,16 +24,20 @@ function addTask(taskList, userInput) {
     const newTask = document.createElement("li");
     newTask.classList.add("taskListElement");
     newTask.textContent = userInput;
+    addListButton(newTask);
     taskList.appendChild(newTask);
-    console.log("Hej");
 }
+function addListButton(newTask) {
+    const completeButton = document.createElement("button");
+    completeButton.textContent = "Completed";
+    completeButton.id = "listButton";
+    completeButton.addEventListener("click", (event) => {
+        newTask.classList.add(sortToggle.completed);
+    });
+    newTask.appendChild(completeButton);
+}
+;
 export {};
-/**
-Function to addTask
-  1. Create li element
-  2. Add text to element
-  3. Add element to #ul
- */
 /**
 Function to addButton
  1. Create button element

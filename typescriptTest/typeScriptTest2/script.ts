@@ -26,6 +26,7 @@ addTaskButton.addEventListener("click", (event) =>{
   const userInput: string = userTaskInput.value;
   if(userInput.trim()) {
     addTask(taskList, userInput);
+    
   }
 });
 
@@ -33,17 +34,21 @@ function addTask(taskList: HTMLUListElement, userInput: string):void {
   const newTask: HTMLLIElement = document.createElement("li");
   newTask.classList.add("taskListElement");
   newTask.textContent = userInput;
+  addListButton(newTask);
   taskList.appendChild(newTask);
-  console.log("Hej")
 }
 
-/**
-Function to addTask
-  1. Create li element 
-  2. Add text to element
-  3. Add element to #ul
- */
+function addListButton(newTask: HTMLLIElement):void {
+  const completeButton = document.createElement("button") as HTMLButtonElement;
+  completeButton.textContent = "Completed";
+  completeButton.id = "listButton";
 
+  completeButton.addEventListener("click", (event) => {
+
+    newTask.classList.add(sortToggle.completed)
+  });
+  newTask.appendChild(completeButton);
+};
  /**
  Function to addButton
   1. Create button element

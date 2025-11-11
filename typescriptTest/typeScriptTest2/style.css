@@ -28,6 +28,7 @@ form {
   border-radius: 4px;
   background-color: #d7f6f9;
   min-width: 360px;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -72,11 +73,31 @@ button:hover {
   border:none;
 }
 
-#result {
-  
+#taskList {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
 }
 
-#taskList {
-  list-style-type: none;;
+.taskListElement {
+  display: flex;
+  flex-grow: 1;
+  min-width: 360px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 53px;
+  background-color: #fbf4f4;
+  font-size: 1.1rem;
+  border-radius: 2px;
+  border: 1px solid black;
+  font-weight: 600;
 }
+
+#listButton {
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+
 
