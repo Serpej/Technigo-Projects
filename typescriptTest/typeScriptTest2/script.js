@@ -1,11 +1,12 @@
 // Color palette https://www.color-hex.com/color-palette/57051
-import { VisibilityState } from "./Enums/enums";
-const resultDiv = document.getElementById("result");
+import { SortState, VisibilityState } from "./Enums/enums.js";
+const resultDiv = getElement("result");
 const taskList = document.createElement("ul");
 taskList.id = "taskList";
 resultDiv.appendChild(taskList);
-const addTaskButton = document.getElementById("addTaskButton");
-const userTaskInput = document.getElementById("userTask");
+const addTaskButton = getElement("addTaskButton");
+const userTaskInput = getElement("userTask");
+//Task Array
 let taskArray = [];
 addTaskButton.addEventListener("click", (event) => {
     event.preventDefault();
@@ -17,19 +18,41 @@ addTaskButton.addEventListener("click", (event) => {
             text: userInput,
             completed: false,
         };
-        addTask(taskList, userInput);
+        taskArray.push(task);
+        userTaskInput.value = "";
+        renderTask(taskList, task);
     }
 });
-function addTask(taskList, userInput) {
-    const newTask = document.createElement("li");
-    newTask.classList.add("taskListElement");
-    newTask.textContent = userInput;
-    addListButton(newTask);
-    taskList.appendChild(newTask);
+// Render the current task (SortState.all as default)
+function renderTask(taskList, task, sort = SortState.all) {
+    let sortedTasks = taskArray;
+    if (sort === SortState.active) {
+        sortedTasks = taskArray.filter(task => !task.completed);
+    }
+    else if (sort === SortState.completed) {
+        sortedTasks = taskArray.filter(task => task.completed);
+    }
+    ;
+    sortedTasks.map(task => {
+        const listElement = document.createElement("li");
+        listElement.classList.add("taskListElement");
+        listElement.textContent = task.text;
+        taskList.appendChild(listElement);
+    });
+    //Need a way to replace the old List elements everytime I render the new one. 
+    // Also add styling to elements, so that they end up in a column
+}
+;
+function addTask(taskList, task) {
+    const listElement = getElement("li");
+    listElement.classList.add("taskListElement");
+    listElement.textContent = task.text;
+    addListButton(listElement);
+    taskList.appendChild(listElement);
 }
 function addListButton(newTask) {
-    const completeButton = document.createElement("button");
-    completeButton.textContent = "Completed";
+    const completeButton = getElement("button");
+    completeButton.textContent = "Complete";
     completeButton.id = "listButton";
     completeButton.addEventListener("click", (e) => {
         e.preventDefault();
@@ -51,4 +74,13 @@ completeTask
   1. Toggle class to "hide"
   2. Make text crossed out
 */
+//Helper function to safely get DOM elements
+function getElement(id) {
+    const element = document.getElementById(id);
+    if (!element) {
+        throw new Error(`Element with id '${id}' not found.`);
+    }
+    ;
+    return element;
+}
 //# sourceMappingURL=script.js.map

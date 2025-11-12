@@ -1,43 +1,69 @@
 // Color palette https://www.color-hex.com/color-palette/57051
 
-import { SortState, VisibilityState } from "./Enums/enums";
+import { SortState, VisibilityState } from "./Enums/enums.js";
 import {Task} from "./Interfaces/interfaces"
 
-const resultDiv = document.getElementById("result") as HTMLDivElement; 
-const taskList: HTMLUListElement = document.createElement("ul");
+const resultDiv = getElement<HTMLDivElement>("result"); 
+const taskList = document.createElement("ul") as HTMLUListElement;
 taskList.id = "taskList";
 resultDiv.appendChild(taskList);
 
-const addTaskButton = document.getElementById("addTaskButton") as HTMLButtonElement;
-const userTaskInput = document.getElementById("userTask") as HTMLInputElement;
+const addTaskButton = getElement<HTMLButtonElement>("addTaskButton");
+const userTaskInput = getElement<HTMLInputElement>("userTask");
+
+//Task Array
 let taskArray: Task[] = [];
 
 addTaskButton.addEventListener("click", (event) =>{
   event.preventDefault();
   const userInput: string = userTaskInput.value;
   if(userInput.trim()) {
+
       // Ett nytt task object.
       const task: Task = {
       id: Date.now(),
       text: userInput,
       completed: false,
   };
-    addTask(taskList, userInput);
+    taskArray.push(task);
+    userTaskInput.value = "";
+    renderTask(taskList, task);
     
   }
 });
 
-function addTask(taskList: HTMLUListElement, userInput: string):void {
-  const newTask: HTMLLIElement = document.createElement("li");
-  newTask.classList.add("taskListElement");
-  newTask.textContent = userInput;
-  addListButton(newTask);
-  taskList.appendChild(newTask);
+// Render the current task (SortState.all as default)
+function renderTask(taskList: HTMLUListElement, task: Task, sort: SortState = SortState.all) {
+  let sortedTasks = taskArray; 
+  if (sort === SortState.active) {
+    sortedTasks = taskArray.filter(task => !task.completed);
+  } else if (sort === SortState.completed) {
+    sortedTasks = taskArray.filter(task => task.completed);
+  };
+
+  sortedTasks.map(task => {
+    const listElement = document.createElement("li") as HTMLLIElement;
+    listElement.classList.add("taskListElement");
+    listElement.textContent = task.text;
+    taskList.appendChild(listElement);
+  })
+  //Need a way to replace the old List elements everytime I render the new one. 
+  // Also add styling to elements, so that they end up in a column
+};
+
+function addTask(taskList: HTMLUListElement, task: Task):void {
+  const listElement = getElement<HTMLLIElement>("li");
+  listElement.classList.add("taskListElement");
+  listElement.textContent = task.text;
+  addListButton(listElement);
+  taskList.appendChild(listElement);
 }
 
+
+
 function addListButton(newTask: HTMLLIElement):void {
-  const completeButton = document.createElement("button") as HTMLButtonElement;
-  completeButton.textContent = "Completed";
+  const completeButton = getElement<HTMLButtonElement>("button");
+  completeButton.textContent = "Complete";
   completeButton.id = "listButton";
 
   completeButton.addEventListener("click", (e) => {
@@ -60,5 +86,18 @@ function addListButton(newTask: HTMLLIElement):void {
     1. Toggle class to "hide"
     2. Make text crossed out 
   */
+
+
+
+
+//Helper function to safely get DOM elements
+function getElement<T extends HTMLElement>(id: string):T {
+  const element = document.getElementById(id) as T;
+  if (!element) {
+    throw new Error(`Element with id '${id}' not found.`);
+  };
+  return element;
+}
+  
 
 
