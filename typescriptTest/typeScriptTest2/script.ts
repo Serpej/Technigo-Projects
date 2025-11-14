@@ -41,10 +41,7 @@ function renderTask(taskList: HTMLUListElement, task: Task, sort: SortState = So
   } else if (sort === SortState.completed) {
     sortedTasks = taskArray.filter(task => task.completed);
   } else if (sort === SortState.all) {
-      //Need a way to replace the old List elements everytime I render the new one. Does not work
-      for (let i= 0; i < sortedTasks.length; i++) {
-      sortedTasks.shift()     
-      };
+    taskList.innerHTML = "";
   };
  
 

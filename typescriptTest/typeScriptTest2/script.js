@@ -33,11 +33,7 @@ function renderTask(taskList, task, sort = SortState.all) {
         sortedTasks = taskArray.filter(task => task.completed);
     }
     else if (sort === SortState.all) {
-        //Need a way to replace the old List elements everytime I render the new one. 
-        for (let i = 0; i < sortedTasks.length; i++) {
-            sortedTasks.shift();
-        }
-        ;
+        taskList.innerHTML = "";
     }
     ;
     sortedTasks.map(task => {
