@@ -4,14 +4,22 @@ import { SortState, VisibilityState } from "./Enums/enums.js";
 const resultDiv = getElement("result");
 const addTaskButton = getElement("addTaskButton");
 const userTaskInput = getElement("userTask");
+const filterButtonsContainer = getElement("filterButtonsContainer");
 const taskList = document.createElement("ul");
 taskList.id = "taskList";
 resultDiv.appendChild(taskList);
 const filterAllButton = document.createElement("button");
+filterAllButton.textContent = "Filter All";
 const filterActiveButton = document.createElement("button");
+filterActiveButton.textContent = "Filter Active";
 const filterCompleteButton = document.createElement("button");
-//Task Array
+filterCompleteButton.textContent = "Filter Complete";
+filterButtonsContainer.appendChild(filterAllButton);
+filterButtonsContainer.appendChild(filterActiveButton);
+filterButtonsContainer.appendChild(filterCompleteButton);
+// Task Array
 let taskArray = [];
+// Add Eventlisteners to buttons
 addTaskButton.addEventListener("click", (event) => {
     event.preventDefault();
     const userInput = userTaskInput.value;
@@ -26,6 +34,15 @@ addTaskButton.addEventListener("click", (event) => {
         renderTask(taskList, task);
     }
 });
+filterAllButton.addEventListener("click", () => {
+    renderTask(taskList);
+});
+filterActiveButton.addEventListener("click", () => {
+    renderTask(taskList);
+});
+filterCompleteButton.addEventListener("click", () => {
+    renderTask(taskList);
+});
 // Render the current task (SortState.all as default)
 function renderTask(taskList, task, sort = SortState.all) {
     let sortedTasks = taskArray; //Make refrence
@@ -36,9 +53,10 @@ function renderTask(taskList, task, sort = SortState.all) {
         sortedTasks = taskArray.filter(task => task.completed);
     }
     else if (sort === SortState.all) {
-        taskList.innerHTML = "";
+        taskList.innerHTML = ""; //Doesn't work with the filtering buttons
     }
     ;
+    //Maybe need an If statement here?
     sortedTasks.map(task => {
         const listElement = document.createElement("li");
         listElement.classList.add("taskListElement");
@@ -52,8 +70,7 @@ function addListButton(newTask) {
     const completeButton = document.createElement("button");
     completeButton.textContent = "Complete";
     completeButton.id = "listButton";
-    completeButton.addEventListener("click", (e) => {
-        e.preventDefault();
+    completeButton.addEventListener("click", () => {
         newTask.style.textDecorationLine = "line-through";
         newTask.style.visibility = VisibilityState.hidden;
     });

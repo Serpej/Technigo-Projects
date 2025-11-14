@@ -73,6 +73,10 @@ button:hover {
   border:none;
 }
 
+#filterButtonsContainer {
+
+}
+
 #taskList {
   display: flex;
   flex-direction: column;

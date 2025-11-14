@@ -7,18 +7,26 @@ import {Task} from "./Interfaces/interfaces"
 const resultDiv = getElement<HTMLDivElement>("result"); 
 const addTaskButton = getElement<HTMLButtonElement>("addTaskButton");
 const userTaskInput = getElement<HTMLInputElement>("userTask");
+const filterButtonsContainer = getElement<HTMLDivElement>("filterButtonsContainer");
 
 const taskList = document.createElement("ul") as HTMLUListElement;
 taskList.id = "taskList";
 resultDiv.appendChild(taskList);
 
 const filterAllButton = document.createElement("button") as HTMLButtonElement;
+filterAllButton.textContent = "Filter All";
 const filterActiveButton = document.createElement("button") as HTMLButtonElement;
+filterActiveButton.textContent = "Filter Active";
 const filterCompleteButton = document.createElement("button") as HTMLButtonElement;
+filterCompleteButton.textContent = "Filter Complete";
+filterButtonsContainer.appendChild(filterAllButton);
+filterButtonsContainer.appendChild(filterActiveButton);
+filterButtonsContainer.appendChild(filterCompleteButton);
 
-//Task Array
+// Task Array
 let taskArray: Task[] = [];
 
+// Add Eventlisteners to buttons
 addTaskButton.addEventListener("click", (event) =>{
   event.preventDefault();
   const userInput: string = userTaskInput.value;
@@ -34,8 +42,18 @@ addTaskButton.addEventListener("click", (event) =>{
   }
 });
 
+filterAllButton.addEventListener("click", () => {
+  renderTask(taskList);
+});
+filterActiveButton.addEventListener("click", () => {
+  renderTask(taskList);
+});
+filterCompleteButton.addEventListener("click", () => {
+  renderTask(taskList);
+});
+
 // Render the current task (SortState.all as default)
-function renderTask(taskList: HTMLUListElement, task: Task, sort: SortState = SortState.all) {
+function renderTask(taskList: HTMLUListElement, task?: Task, sort: SortState = SortState.all) {
   let sortedTasks = taskArray; //Make refrence
 
   if (sort === SortState.active) {
@@ -43,9 +61,11 @@ function renderTask(taskList: HTMLUListElement, task: Task, sort: SortState = So
   } else if (sort === SortState.completed) {
     sortedTasks = taskArray.filter(task => task.completed);
   } else if (sort === SortState.all) {
-    taskList.innerHTML = "";
+    taskList.innerHTML = ""; //Doesn't work with the filtering buttons
   };
 
+
+  //Maybe need an If statement here?
   sortedTasks.map(task => {
     const listElement = document.createElement("li") as HTMLLIElement;
     listElement.classList.add("taskListElement");
@@ -60,8 +80,7 @@ function addListButton(newTask: HTMLLIElement):void {
   completeButton.textContent = "Complete";
   completeButton.id = "listButton";
 
-  completeButton.addEventListener("click", (e) => {
-    e.preventDefault();
+  completeButton.addEventListener("click", () => {
     newTask.style.textDecorationLine = "line-through"; 
     newTask.style.visibility = VisibilityState.hidden;
   });
