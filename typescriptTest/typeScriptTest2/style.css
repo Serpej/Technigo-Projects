@@ -75,6 +75,8 @@ button:hover {
 
 #taskList {
   display: flex;
+  flex-direction: column;
+  gap:1px;
   list-style-type: none;
   padding: 0;
 }

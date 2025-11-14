@@ -34,21 +34,27 @@ addTaskButton.addEventListener("click", (event) =>{
 
 // Render the current task (SortState.all as default)
 function renderTask(taskList: HTMLUListElement, task: Task, sort: SortState = SortState.all) {
-  let sortedTasks = taskArray; 
+  let sortedTasks = taskArray; //Make refrence
+
   if (sort === SortState.active) {
     sortedTasks = taskArray.filter(task => !task.completed);
   } else if (sort === SortState.completed) {
     sortedTasks = taskArray.filter(task => task.completed);
+  } else if (sort === SortState.all) {
+      //Need a way to replace the old List elements everytime I render the new one. Does not work
+      for (let i= 0; i < sortedTasks.length; i++) {
+      sortedTasks.shift()     
+      };
   };
+ 
+
 
   sortedTasks.map(task => {
     const listElement = document.createElement("li") as HTMLLIElement;
     listElement.classList.add("taskListElement");
     listElement.textContent = task.text;
     taskList.appendChild(listElement);
-  })
-  //Need a way to replace the old List elements everytime I render the new one. 
-  // Also add styling to elements, so that they end up in a column
+  });
 };
 
 function addTask(taskList: HTMLUListElement, task: Task):void {
