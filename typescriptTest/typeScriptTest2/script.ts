@@ -50,6 +50,7 @@ function renderTask(taskList: HTMLUListElement, task: Task, sort: SortState = So
     const listElement = document.createElement("li") as HTMLLIElement;
     listElement.classList.add("taskListElement");
     listElement.textContent = task.text;
+    addListButton(listElement);
     taskList.appendChild(listElement);
   });
 };
@@ -58,14 +59,13 @@ function addTask(taskList: HTMLUListElement, task: Task):void {
   const listElement = getElement<HTMLLIElement>("li");
   listElement.classList.add("taskListElement");
   listElement.textContent = task.text;
-  addListButton(listElement);
   taskList.appendChild(listElement);
 }
 
 
 
 function addListButton(newTask: HTMLLIElement):void {
-  const completeButton = getElement<HTMLButtonElement>("button");
+  const completeButton = document.createElement("button") as HTMLButtonElement;
   completeButton.textContent = "Complete";
   completeButton.id = "listButton";
 

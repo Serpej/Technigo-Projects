@@ -40,6 +40,7 @@ function renderTask(taskList, task, sort = SortState.all) {
         const listElement = document.createElement("li");
         listElement.classList.add("taskListElement");
         listElement.textContent = task.text;
+        addListButton(listElement);
         taskList.appendChild(listElement);
     });
 }
@@ -48,11 +49,10 @@ function addTask(taskList, task) {
     const listElement = getElement("li");
     listElement.classList.add("taskListElement");
     listElement.textContent = task.text;
-    addListButton(listElement);
     taskList.appendChild(listElement);
 }
 function addListButton(newTask) {
-    const completeButton = getElement("button");
+    const completeButton = document.createElement("button");
     completeButton.textContent = "Complete";
     completeButton.id = "listButton";
     completeButton.addEventListener("click", (e) => {
