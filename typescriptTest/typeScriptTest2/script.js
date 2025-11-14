@@ -1,18 +1,21 @@
 // Color palette https://www.color-hex.com/color-palette/57051
 import { SortState, VisibilityState } from "./Enums/enums.js";
+//DOM Elements
 const resultDiv = getElement("result");
+const addTaskButton = getElement("addTaskButton");
+const userTaskInput = getElement("userTask");
 const taskList = document.createElement("ul");
 taskList.id = "taskList";
 resultDiv.appendChild(taskList);
-const addTaskButton = getElement("addTaskButton");
-const userTaskInput = getElement("userTask");
+const filterAllButton = document.createElement("button");
+const filterActiveButton = document.createElement("button");
+const filterCompleteButton = document.createElement("button");
 //Task Array
 let taskArray = [];
 addTaskButton.addEventListener("click", (event) => {
     event.preventDefault();
     const userInput = userTaskInput.value;
     if (userInput.trim()) {
-        // Ett nytt task object.
         const task = {
             id: Date.now(),
             text: userInput,
@@ -45,12 +48,6 @@ function renderTask(taskList, task, sort = SortState.all) {
     });
 }
 ;
-function addTask(taskList, task) {
-    const listElement = getElement("li");
-    listElement.classList.add("taskListElement");
-    listElement.textContent = task.text;
-    taskList.appendChild(listElement);
-}
 function addListButton(newTask) {
     const completeButton = document.createElement("button");
     completeButton.textContent = "Complete";
@@ -63,18 +60,6 @@ function addListButton(newTask) {
     newTask.appendChild(completeButton);
 }
 ;
-/**
-Function to addButton
- 1. Create button element
- 2. Add class to button
-   2a. Add Event Listener to button
- 3. Add button to li element
- */
-/**
-completeTask
-  1. Toggle class to "hide"
-  2. Make text crossed out
-*/
 //Helper function to safely get DOM elements
 function getElement(id) {
     const element = document.getElementById(id);

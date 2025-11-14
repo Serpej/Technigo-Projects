@@ -3,13 +3,18 @@
 import { SortState, VisibilityState } from "./Enums/enums.js";
 import {Task} from "./Interfaces/interfaces"
 
+//DOM Elements
 const resultDiv = getElement<HTMLDivElement>("result"); 
+const addTaskButton = getElement<HTMLButtonElement>("addTaskButton");
+const userTaskInput = getElement<HTMLInputElement>("userTask");
+
 const taskList = document.createElement("ul") as HTMLUListElement;
 taskList.id = "taskList";
 resultDiv.appendChild(taskList);
 
-const addTaskButton = getElement<HTMLButtonElement>("addTaskButton");
-const userTaskInput = getElement<HTMLInputElement>("userTask");
+const filterAllButton = document.createElement("button") as HTMLButtonElement;
+const filterActiveButton = document.createElement("button") as HTMLButtonElement;
+const filterCompleteButton = document.createElement("button") as HTMLButtonElement;
 
 //Task Array
 let taskArray: Task[] = [];
@@ -18,8 +23,6 @@ addTaskButton.addEventListener("click", (event) =>{
   event.preventDefault();
   const userInput: string = userTaskInput.value;
   if(userInput.trim()) {
-
-      // Ett nytt task object.
       const task: Task = {
       id: Date.now(),
       text: userInput,
@@ -28,7 +31,6 @@ addTaskButton.addEventListener("click", (event) =>{
     taskArray.push(task);
     userTaskInput.value = "";
     renderTask(taskList, task);
-    
   }
 });
 
@@ -43,8 +45,6 @@ function renderTask(taskList: HTMLUListElement, task: Task, sort: SortState = So
   } else if (sort === SortState.all) {
     taskList.innerHTML = "";
   };
- 
-
 
   sortedTasks.map(task => {
     const listElement = document.createElement("li") as HTMLLIElement;
@@ -54,15 +54,6 @@ function renderTask(taskList: HTMLUListElement, task: Task, sort: SortState = So
     taskList.appendChild(listElement);
   });
 };
-
-function addTask(taskList: HTMLUListElement, task: Task):void {
-  const listElement = getElement<HTMLLIElement>("li");
-  listElement.classList.add("taskListElement");
-  listElement.textContent = task.text;
-  taskList.appendChild(listElement);
-}
-
-
 
 function addListButton(newTask: HTMLLIElement):void {
   const completeButton = document.createElement("button") as HTMLButtonElement;
@@ -76,22 +67,6 @@ function addListButton(newTask: HTMLLIElement):void {
   });
   newTask.appendChild(completeButton);
 };
- /**
- Function to addButton
-  1. Create button element
-  2. Add class to button
-    2a. Add Event Listener to button
-  3. Add button to li element
-  */
-
-  /**
-  completeTask
-    1. Toggle class to "hide"
-    2. Make text crossed out 
-  */
-
-
-
 
 //Helper function to safely get DOM elements
 function getElement<T extends HTMLElement>(id: string):T {
