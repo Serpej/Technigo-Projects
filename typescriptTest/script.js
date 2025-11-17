@@ -49,4 +49,54 @@ let anotherPerson = {
     age: 342,
     email: "Bla",
 };
+;
+let newEmployee = {
+    name: "Jesper",
+    age: 32,
+    email: "Bla",
+    isActive: true,
+    employerId: 55,
+    department: "Skatteverket"
+};
+;
+function displayProduct(product) {
+    return `${product.name} - ${product.price} kr - ${product.name} (${product.inStock ? "In Stock" : "Out of Stock"}) `;
+}
+let laptop = {
+    id: 12345,
+    name: "TUF-GoldBird-497",
+    price: 11599,
+    inStock: false
+};
+// Generic types. Liek a type variable it could represent anything
+let arrayOfStrings = ["hello", "baby", "darling"];
+let arrayOfNumbers = [1, 2, 3, 4, 5];
+let arrayMixed = [1, "Yes", arrayOfStrings[0]];
+function firstElement(arr) {
+    return arr[2];
+}
+;
+;
+// A specific class box for numbers. The class must provide its own implementation of everything in the interface. Implementation is like a contract for the class.
+// It needs to contain everything from Box<number>, but not exclusively though.
+class NumberBox {
+    content;
+    // The constructor takes a number parameter
+    constructor(content) {
+        this.content = content;
+    }
+    ;
+    // Implementation of the required describe method
+    describe() {
+        return `Box containing number: ${this.content}`;
+    }
+}
+const numberInABox = new NumberBox(4);
+//console.log(numberInABox.describe());
+// Function that swaps between two types
+let twoStringTuple = ["Hello", "Goodbye"];
+function swap(pair) {
+    return [pair[1], pair[0]];
+}
+console.log(swap(twoStringTuple));
 //# sourceMappingURL=script.js.map

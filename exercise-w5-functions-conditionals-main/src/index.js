@@ -51,7 +51,7 @@ const theCoders = (driver, navigator) => {
   or alert('23! Younger than Zlatan') or something like that.
   Add as many conditonals as you want.
   */
-  
+
   //let userAge = prompt("How old are you?");
   const checkAge = (userAge) => {
     if (userAge > 27) {
@@ -65,22 +65,31 @@ const theCoders = (driver, navigator) => {
     } 
   }
 
-  checkAge(userAge);
+  //checkAge(userAge);
 
   const calculationTest = () => {
-    /*
-    5)
-    In this function we want to give the user a mathematical calculation to 
-    give us the answer to. Something like prompt('What is 5 + 6?')  
-    If the answer is correct, congratulate the user. 'Yay! Correct'
-    If not, give the user the correct answer so they can learn. 'Noooo, the answer is 11'
-    You choose if to use addition, subtraction, multiplication or division. 
-    */
+
+    let randomNumber1 = Math.floor((Math.random() * 10) + 1);
+    let randomNumber2 = Math.floor((Math.random() * 10) + 1);
+    let answer = randomNumber2 + randomNumber1;
+    let userAnswer = prompt(`What is ${randomNumber1} + ${randomNumber2 }?`);
+
+      let chosenNumber = parseInt(userAnswer);
+
+    if (chosenNumber === answer) {
+      console.log("Yay! Correct!");
+    } else {
+      console.log(`Noooo, the answer is ${answer}.`);
+    }
   };
+
+  calculationTest();
   
   /*
   6) **BONUS**
   Make the calculation machine we just made show random calculations everytime you invoke the function.
   But hey, maybe limit the randomness to be numbers between 0-10?
   */
+
+
   

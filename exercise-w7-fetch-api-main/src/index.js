@@ -9,59 +9,122 @@
 // started, we've created some variables for you to use later on:
 
 const image = document.getElementById("image");
-const name = document.getElementById("name");
+const pokeName = document.getElementById("name");
 const weight = document.getElementById("weight");
 const height = document.getElementById("height");
 const types = document.getElementById("types");
 
-// 1) Start with updating the fetchPokemons function so that
-//    it's fetching the pokemons from the pokemon endpoint and
-//    logs the results in the console.
-//    HINT --> Don't forget to invoke the function
+pokeName.innerHTML = "";
+weight.innerHTML = "";
+height.innerHTML = "";
+types.innerHTML = "";
 
-const fetchPokemons = () => {
-  /*Fetch all pokemons here*/
+
+
+/* const fetchPokemons = async () => {
+  try {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data =  await response.json()
+    let pokemonArray = Array.from(data.results);    
+    console.log(pokemonArray[103]);
+    
+  } catch(error) {
+    console.log("Error occured!", error);
+  }
+}; */
+
+//fetchPokemons();
+
+const fetchCuboneData = async () => {
+  try {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon/104/");
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`)
+    };
+    const data = await response.json();
+    const cuboneTypes = Array.from(data.types);
+
+    image.src = data.sprites.front_default;
+    
+    const pokemonName =  document.createElement("span");
+    const pokemonWeight =  document.createElement("span");
+    const pokemonType =  document.createElement("span");
+    const pokemonHeight =  document.createElement("span");
+
+    pokemonName.textContent = data.name;
+    pokemonWeight.textContent = data.weight;
+    pokemonType.textContent = cuboneTypes[0].type.name;
+    pokemonHeight.textContent = data.height;
+
+
+    pokeName.appendChild(pokemonName);
+    weight.appendChild(pokemonWeight);
+    types.appendChild(pokemonType);
+    height.appendChild(pokemonHeight);
+
+    
+  } catch (error) {
+    console.log("Error occured!", error);
+  }
 };
-
-// 2) a) As you can see, we get some metadata as well as
-//    the results of the fetch. Change the console.log so
-//    that you only log the array of pokemon objects.
-
-//    b) Log only the name of the first pokemon in the
-//    pokemon objects array
-
-//    c) Log the names of all pokemons in the array
-
-// 3) You might know that there are more than 20 pokemons
-//    in the pokedex. Add a query parameter
-//    called "limit" to the URL, and set it to a number of your
-//    choice, like this: https://pokeapi.co/api/v2/pokemon/?limit=151
-//    and pick a pokemon that you would like to continue
-//    working with. Copy the pokemon's URL.
-
-// 4) Now that we've picked a pokemon, we will do a new fetch
-//    to the URL we copied. Since that's another endpoint,
-//    we will create a new fetch inside the fetchBulbasaurData
-//    function (change the function's name to fit your pokemon).
-//    Log the data in the console and see what you find.
-
-const fetchBulbasaurData = () => {
-  /*Fetch singular pokemon here*/
-};
-
-// 5) After familiarizing with the data, we will use the data
-//    to change our table. We will give you the image as a start.
-//    If you named the data something else than json, you change the
-//    word json below so it corresponds with your code. Here goes:
-//    image.src = json.sprites.front_default;
-//    Copy that line into the fetchBulbasaurData and hopefully
-//    the image in the HTML updates.
-
-// 6) Update the innerHTML of the other rows as well after
-//    you've found the correct path in the json.
-//    HINT --> Log stuff in the console to try things out
-//    HINT --> If it's an array - map over the array
+fetchCuboneData();
 
 // ***BONUS***
 // Check out the API's documentation and try to fetch from another
 // endpoint! There are many - as you can see in the first link
+
+
+// Min tanke här är att fetcha alla pokemons med fetchPokemon. Sen finns det en URL i alla pokemon objects
+// som jag vill fetcha med get id och loopa över alla pokemons för att hämta id.
+
+const getId = (pokemonURL) => {
+  const fetchIds = async () => {
+    try {
+      const response  = await fetch(pokemonURL);
+      if (!response.ok) {
+        throw new Error(`Error! Status ${response.status}`);
+      };
+      const json = await response.json();
+      const pokemon = json;
+        console.log(`${pokemon.name} has the id number ${pokemon.id}.`)
+    } catch (error) {
+      console.log(`Error occured`, error);
+    };
+  };
+  fetchIds();
+};
+
+const fetchPokemons = async () => {
+  try {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=151")
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data =  await response.json()
+    let pokemonArray = Array.from(data.results);    
+    pokemonArray.forEach( (pokemon) => {
+        getId(pokemon.url);
+    });
+  } catch(error) {
+    console.log("Error occured!", error);
+  }
+};
+fetchPokemons()
+
+const fetchEvoluton = async () => {
+  try {
+    const response = await fetch("https://pokeapi.co/api/v2/evolution-chain/102")
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data =  await response.json()
+    console.log(data);
+  } catch(error) {
+    console.log("Error occured!", error);
+  }
+};
+
+fetchEvoluton()
