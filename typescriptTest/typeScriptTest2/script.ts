@@ -15,16 +15,80 @@ resultDiv.appendChild(taskList);
 
 const filterAllButton = document.createElement("button") as HTMLButtonElement;
 filterAllButton.textContent = "Filter All";
+filterAllButton.type = "button";
+
 const filterActiveButton = document.createElement("button") as HTMLButtonElement;
 filterActiveButton.textContent = "Filter Active";
-const filterCompleteButton = document.createElement("button") as HTMLButtonElement;
-filterCompleteButton.textContent = "Filter Complete";
+filterActiveButton.type = "button";
+
+const filterdeleteButton = document.createElement("button") as HTMLButtonElement;
+filterdeleteButton.textContent = "Filter Complete";
+filterdeleteButton.type = "button";
+
 filterButtonsContainer.appendChild(filterAllButton);
 filterButtonsContainer.appendChild(filterActiveButton);
-filterButtonsContainer.appendChild(filterCompleteButton);
+filterButtonsContainer.appendChild(filterdeleteButton);
 
 // Task Array
 let taskArray: Task[] = [];
+
+// Render the current task (SortState.all as default)
+function renderTask(sort: SortState = SortState.all) {
+  taskList.innerHTML = "";
+
+  let sortedTasks = taskArray; //Make refrence
+
+  // Filter based on sort state
+  if (sort === SortState.active) {
+    sortedTasks = taskArray.filter(task => !task.completed);
+  } else if (sort === SortState.completed) {
+    sortedTasks = taskArray.filter(task => task.completed);
+  };
+
+  sortedTasks.forEach(task => {
+  const listElement = document.createElement("li") as HTMLLIElement;
+  listElement.classList.add("taskListElement");
+  listElement.textContent = task.text;
+  addListButton(listElement, task.id);
+  taskList.appendChild(listElement);
+  });
+};
+
+// Delete task
+function deleteTask(id: number):void {
+  taskArray = taskArray.filter(task => task.id !== id);
+  renderTask()
+};
+
+// Toggle completed
+function toggleCompleted(id: number):void {
+  taskArray = taskArray.map(task => task.id === id ? {...task, completed: !task.completed} : task);
+  renderTask()
+}
+
+// Adds a button to a list element
+function addListButton(newTask: HTMLLIElement, id: number):void {
+  const deleteButton = document.createElement("button") as HTMLButtonElement;
+  deleteButton.textContent = "Delete";
+  deleteButton.id = "listButton";
+
+  deleteButton.addEventListener("click", () => {
+/*     newTask.style.textDecorationLine = "line-through"; 
+    newTask.style.visibility = VisibilityState.hidden; */
+    toggleCompleted(id)
+    deleteTask(id);
+  });
+  newTask.appendChild(deleteButton);
+};
+
+// Helper function to safely get DOM elements
+function getElement<T extends HTMLElement>(id: string):T {
+  const element = document.getElementById(id) as T;
+  if (!element) {
+    throw new Error(`Element with id '${id}' not found.`);
+  };
+  return element;
+}
 
 // Eventlisteners
 addTaskButton.addEventListener("click", (event) =>{
@@ -38,68 +102,12 @@ addTaskButton.addEventListener("click", (event) =>{
   };
     taskArray.push(task);
     userTaskInput.value = "";
-    renderTask(task);
+    renderTask();
   }
 });
-filterAllButton.addEventListener("click", () => {
-
-});
-filterActiveButton.addEventListener("click", () => {
-
-});
-filterCompleteButton.addEventListener("click", () => {
-
-});
-
-
-
-// Render the current task (SortState.all as default)
-function renderTask(task?: Task, sort: SortState = SortState.all) {
-  taskList.innerHTML = "";
-  let sortedTasks = taskArray; //Make refrence
-
-  if (sort === SortState.active) {
-    sortedTasks = taskArray.filter(task => !task.completed);
-  } else if (sort === SortState.completed) {
-    sortedTasks = taskArray.filter(task => task.completed);
-  };
-
-  sortedTasks.map(task => {
-  const listElement = document.createElement("li") as HTMLLIElement;
-  listElement.classList.add("taskListElement");
-  listElement.textContent = task.text;
-  addListButton(listElement, task.id);
-  taskList.appendChild(listElement);
-  });
-};
-
-function deleteTask(id: number):void {
-  taskArray = taskArray.filter(task => task.id !== id);
-  renderTask()
-};
-
-// Adds a button to a list element
-function addListButton(newTask: HTMLLIElement, id: number):void {
-  const completeButton = document.createElement("button") as HTMLButtonElement;
-  completeButton.textContent = "Delete";
-  completeButton.id = "listButton";
-
-  completeButton.addEventListener("click", () => {
-    newTask.style.textDecorationLine = "line-through"; 
-    newTask.style.visibility = VisibilityState.hidden;
-    deleteTask(id);
-  });
-  newTask.appendChild(completeButton);
-};
-
-// Helper function to safely get DOM elements
-function getElement<T extends HTMLElement>(id: string):T {
-  const element = document.getElementById(id) as T;
-  if (!element) {
-    throw new Error(`Element with id '${id}' not found.`);
-  };
-  return element;
-}
+filterAllButton.addEventListener("click", () => {renderTask(); console.log("All button clicked")});
+filterActiveButton.addEventListener("click", () => {renderTask(SortState.active); console.log("Active button clicked")});
+filterdeleteButton.addEventListener("click", () => {renderTask(SortState.completed); console.log("Delete button clicked")});
 
 //inital render
 renderTask();
