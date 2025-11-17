@@ -48,10 +48,6 @@ function renderTask(sort: SortState = SortState.all) {
     sortedTasks = taskArray.filter(task => task.completed);
   };
 
-/*   As it stands the "Active" filter works correctly.
-  The "completed" filter shows nothing, and the 
-  "All" filter shows the "Active" tasks */
-
   return sortedTasks.map(task => {
   const listElement = document.createElement("li") as HTMLLIElement;
   listElement.classList.add("taskListElement");
@@ -63,12 +59,6 @@ function renderTask(sort: SortState = SortState.all) {
   taskList.appendChild(listElement);
   });
 };
-
-// Delete task
-/* function deleteTask(id: number):void {
-  taskArray = taskArray.filter(task => task.id !== id);
-  renderTask()
-}; */
 
 // Toggle completed
 function toggleCompleted(id: number):void {
