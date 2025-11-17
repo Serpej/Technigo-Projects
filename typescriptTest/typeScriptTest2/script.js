@@ -35,16 +35,14 @@ addTaskButton.addEventListener("click", (event) => {
     }
 });
 filterAllButton.addEventListener("click", () => {
-    renderTask(taskList);
 });
 filterActiveButton.addEventListener("click", () => {
-    renderTask(taskList);
 });
 filterCompleteButton.addEventListener("click", () => {
-    renderTask(taskList);
 });
 // Render the current task (SortState.all as default)
 function renderTask(taskList, task, sort = SortState.all) {
+    taskList.innerHTML = "";
     let sortedTasks = taskArray; //Make refrence
     if (sort === SortState.active) {
         sortedTasks = taskArray.filter(task => !task.completed);
@@ -52,11 +50,7 @@ function renderTask(taskList, task, sort = SortState.all) {
     else if (sort === SortState.completed) {
         sortedTasks = taskArray.filter(task => task.completed);
     }
-    else if (sort === SortState.all) {
-        taskList.innerHTML = ""; //Doesn't work with the filtering buttons
-    }
     ;
-    //Maybe need an If statement here?
     sortedTasks.map(task => {
         const listElement = document.createElement("li");
         listElement.classList.add("taskListElement");
