@@ -19,7 +19,7 @@ filterButtonsContainer.appendChild(filterActiveButton);
 filterButtonsContainer.appendChild(filterCompleteButton);
 // Task Array
 let taskArray = [];
-// Add Eventlisteners to buttons
+// Eventlisteners
 addTaskButton.addEventListener("click", (event) => {
     event.preventDefault();
     const userInput = userTaskInput.value;
@@ -31,7 +31,7 @@ addTaskButton.addEventListener("click", (event) => {
         };
         taskArray.push(task);
         userTaskInput.value = "";
-        renderTask(taskList, task);
+        renderTask(task);
     }
 });
 filterAllButton.addEventListener("click", () => {
@@ -41,7 +41,7 @@ filterActiveButton.addEventListener("click", () => {
 filterCompleteButton.addEventListener("click", () => {
 });
 // Render the current task (SortState.all as default)
-function renderTask(taskList, task, sort = SortState.all) {
+function renderTask(task, sort = SortState.all) {
     taskList.innerHTML = "";
     let sortedTasks = taskArray; //Make refrence
     if (sort === SortState.active) {
@@ -55,23 +55,30 @@ function renderTask(taskList, task, sort = SortState.all) {
         const listElement = document.createElement("li");
         listElement.classList.add("taskListElement");
         listElement.textContent = task.text;
-        addListButton(listElement);
+        addListButton(listElement, task.id);
         taskList.appendChild(listElement);
     });
 }
 ;
-function addListButton(newTask) {
+function deleteTask(id) {
+    taskArray = taskArray.filter(task => task.id !== id);
+    renderTask();
+}
+;
+// Adds a button to a list element
+function addListButton(newTask, id) {
     const completeButton = document.createElement("button");
-    completeButton.textContent = "Complete";
+    completeButton.textContent = "Delete";
     completeButton.id = "listButton";
     completeButton.addEventListener("click", () => {
         newTask.style.textDecorationLine = "line-through";
         newTask.style.visibility = VisibilityState.hidden;
+        deleteTask(id);
     });
     newTask.appendChild(completeButton);
 }
 ;
-//Helper function to safely get DOM elements
+// Helper function to safely get DOM elements
 function getElement(id) {
     const element = document.getElementById(id);
     if (!element) {
@@ -80,4 +87,6 @@ function getElement(id) {
     ;
     return element;
 }
+//inital render
+renderTask();
 //# sourceMappingURL=script.js.map
