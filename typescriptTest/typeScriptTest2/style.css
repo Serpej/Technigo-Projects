@@ -69,8 +69,13 @@ input {
   font-size: 1.1rem;
 }
 button:hover {
-  background-color: #e2f7f9;
-  border:none;
+  background-color: #333838;
+  color: #e2f7f9;
+  border-radius: 4px;
+}
+
+.filterButtons {
+  margin: 5px 5px 0 0;
 }
 
 #taskList {
