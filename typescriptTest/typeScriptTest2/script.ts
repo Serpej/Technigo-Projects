@@ -14,20 +14,23 @@ taskList.id = "taskList";
 resultDiv.appendChild(taskList);
 
 const filterAllButton = document.createElement("button") as HTMLButtonElement;
+filterAllButton.classList.add("filterButtons");
 filterAllButton.textContent = "Filter All";
 filterAllButton.type = "button";
 
 const filterActiveButton = document.createElement("button") as HTMLButtonElement;
+filterActiveButton.classList.add("filterButtons");
 filterActiveButton.textContent = "Filter Active";
 filterActiveButton.type = "button";
 
-const filterdeleteButton = document.createElement("button") as HTMLButtonElement;
-filterdeleteButton.textContent = "Filter Complete";
-filterdeleteButton.type = "button";
+const filtercompleteButton = document.createElement("button") as HTMLButtonElement;
+filtercompleteButton.classList.add("filterButtons");
+filtercompleteButton.textContent = "Filter Complete";
+filtercompleteButton.type = "button";
 
 filterButtonsContainer.appendChild(filterAllButton);
 filterButtonsContainer.appendChild(filterActiveButton);
-filterButtonsContainer.appendChild(filterdeleteButton);
+filterButtonsContainer.appendChild(filtercompleteButton);
 
 // Task Array
 let taskArray: Task[] = [];
@@ -36,7 +39,7 @@ let taskArray: Task[] = [];
 function renderTask(sort: SortState = SortState.all) {
   taskList.innerHTML = "";
 
-  let sortedTasks = taskArray; //Make refrence
+  let sortedTasks = taskArray; // Make refrence
 
   // Filter based on sort state
   if (sort === SortState.active) {
@@ -45,20 +48,27 @@ function renderTask(sort: SortState = SortState.all) {
     sortedTasks = taskArray.filter(task => task.completed);
   };
 
-  sortedTasks.forEach(task => {
+/*   As it stands the "Active" filter works correctly.
+  The "completed" filter shows nothing, and the 
+  "All" filter shows the "Active" tasks */
+
+  return sortedTasks.map(task => {
   const listElement = document.createElement("li") as HTMLLIElement;
   listElement.classList.add("taskListElement");
   listElement.textContent = task.text;
+  if(task.completed) {
+    listElement.style.textDecorationLine = "line-through"; 
+  };
   addListButton(listElement, task.id);
   taskList.appendChild(listElement);
   });
 };
 
 // Delete task
-function deleteTask(id: number):void {
+/* function deleteTask(id: number):void {
   taskArray = taskArray.filter(task => task.id !== id);
   renderTask()
-};
+}; */
 
 // Toggle completed
 function toggleCompleted(id: number):void {
@@ -68,17 +78,14 @@ function toggleCompleted(id: number):void {
 
 // Adds a button to a list element
 function addListButton(newTask: HTMLLIElement, id: number):void {
-  const deleteButton = document.createElement("button") as HTMLButtonElement;
-  deleteButton.textContent = "Delete";
-  deleteButton.id = "listButton";
+  const completeButton = document.createElement("button") as HTMLButtonElement;
+  completeButton.textContent = "Completed";
+  completeButton.id = "listButton";
 
-  deleteButton.addEventListener("click", () => {
-/*     newTask.style.textDecorationLine = "line-through"; 
-    newTask.style.visibility = VisibilityState.hidden; */
+  completeButton.addEventListener("click", () => {
     toggleCompleted(id)
-    deleteTask(id);
   });
-  newTask.appendChild(deleteButton);
+  newTask.appendChild(completeButton);
 };
 
 // Helper function to safely get DOM elements
@@ -105,9 +112,9 @@ addTaskButton.addEventListener("click", (event) =>{
     renderTask();
   }
 });
-filterAllButton.addEventListener("click", () => {renderTask(); console.log("All button clicked")});
-filterActiveButton.addEventListener("click", () => {renderTask(SortState.active); console.log("Active button clicked")});
-filterdeleteButton.addEventListener("click", () => {renderTask(SortState.completed); console.log("Delete button clicked")});
+filterAllButton.addEventListener("click", () => {renderTask()});
+filterActiveButton.addEventListener("click", () => {renderTask(SortState.active)});
+filtercompleteButton.addEventListener("click", () => {renderTask(SortState.completed)});
 
 //inital render
 renderTask();
