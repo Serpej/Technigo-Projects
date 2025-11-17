@@ -1,6 +1,6 @@
 // Color palette https://www.color-hex.com/color-palette/57051
 
-import { SortState, VisibilityState } from "./Enums/enums.js";
+import { SortState} from "./Enums/enums.js";
 import {Task} from "./Interfaces/interfaces"
 
 //DOM Elements

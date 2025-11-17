@@ -1,9 +1,3 @@
-export var VisibilityState;
-(function (VisibilityState) {
-    VisibilityState["visible"] = "visible";
-    VisibilityState["hidden"] = "hidden";
-})(VisibilityState || (VisibilityState = {}));
-;
 export var SortState;
 (function (SortState) {
     SortState["all"] = "all";
