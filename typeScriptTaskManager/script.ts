@@ -1,29 +1,30 @@
 // Color palette https://www.color-hex.com/color-palette/57051
 
-import { SortState} from "./Enums/enums.js";
-import {Task} from "./Interfaces/interfaces"
+import {SortState} from "./Enums/enums.js";
+import {Task} from "./Interfaces/interfaces";
+import {getButtonElement, getDivElement, getInputElement} from "./Utils/domHelpers.js";
 
 //DOM Elements
-const resultDiv = getElement<HTMLDivElement>("result"); 
-const addTaskButton = getElement<HTMLButtonElement>("addTaskButton");
-const userTaskInput = getElement<HTMLInputElement>("userTask");
-const filterButtonsContainer = getElement<HTMLDivElement>("filterButtonsContainer");
+const resultDiv = getDivElement("result"); 
+const addTaskButton = getButtonElement("addTaskButton");
+const userTaskInput = getInputElement("userTask");
+const filterButtonsContainer = getDivElement("filterButtonsContainer");
 
-const taskList = document.createElement("ul") as HTMLUListElement;
+const taskList = document.createElement("ul");
 taskList.id = "taskList";
 resultDiv.appendChild(taskList);
 
-const filterAllButton = document.createElement("button") as HTMLButtonElement;
+const filterAllButton = document.createElement("button");
 filterAllButton.classList.add("filterButtons");
 filterAllButton.textContent = "Filter All";
 filterAllButton.type = "button";
 
-const filterActiveButton = document.createElement("button") as HTMLButtonElement;
+const filterActiveButton = document.createElement("button");
 filterActiveButton.classList.add("filterButtons");
 filterActiveButton.textContent = "Filter Active";
 filterActiveButton.type = "button";
 
-const filtercompleteButton = document.createElement("button") as HTMLButtonElement;
+const filtercompleteButton = document.createElement("button");
 filtercompleteButton.classList.add("filterButtons");
 filtercompleteButton.textContent = "Filter Complete";
 filtercompleteButton.type = "button";
@@ -49,7 +50,7 @@ function renderTask(sort: SortState = SortState.all) {
   };
 
   return sortedTasks.map(task => {
-  const listElement = document.createElement("li") as HTMLLIElement;
+  const listElement = document.createElement("li");
   listElement.classList.add("taskListElement");
   listElement.textContent = task.text;
   if(task.completed) {
@@ -68,7 +69,7 @@ function toggleCompleted(id: number):void {
 
 // Adds a button to a list element
 function addListButton(newTask: HTMLLIElement, id: number):void {
-  const completeButton = document.createElement("button") as HTMLButtonElement;
+  const completeButton = document.createElement("button");
   completeButton.textContent = "Completed";
   completeButton.id = "listButton";
 
@@ -77,15 +78,6 @@ function addListButton(newTask: HTMLLIElement, id: number):void {
   });
   newTask.appendChild(completeButton);
 };
-
-// Helper function to safely get DOM elements
-function getElement<T extends HTMLElement>(id: string):T {
-  const element = document.getElementById(id) as T;
-  if (!element) {
-    throw new Error(`Element with id '${id}' not found.`);
-  };
-  return element;
-}
 
 // Eventlisteners
 addTaskButton.addEventListener("click", (event) =>{
