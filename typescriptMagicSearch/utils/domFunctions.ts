@@ -7,3 +7,8 @@ export function getInputElement(id: string) {
   const inputElement = getElement(id);
   return inputElement as HTMLInputElement;
 }
+
+export function getSelectElement(id: string) {
+  const inputElement = getElement(id);
+  return inputElement as HTMLSelectElement;
+}

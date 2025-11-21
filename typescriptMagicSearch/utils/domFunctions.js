@@ -7,4 +7,8 @@ export function getInputElement(id) {
     const inputElement = getElement(id);
     return inputElement;
 }
+export function getSelectElement(id) {
+    const inputElement = getElement(id);
+    return inputElement;
+}
 //# sourceMappingURL=domFunctions.js.map
