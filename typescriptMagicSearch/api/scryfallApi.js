@@ -1,19 +1,22 @@
 export async function getScryfallFetch(searchOptions) {
-    const url = new URL(`https://api.scryfall.com/cards/search?q=`);
+    const url = new URL(`https://api.scryfall.com/cards/search`);
     //Array for all querys
     const queryParts = [];
+    //Name
     if (searchOptions.name) {
         queryParts.push(`${searchOptions.name}`);
     }
+    //Oracle Text
     if (searchOptions.oracle_text) {
-        queryParts.push(`o:${searchOptions.oracle_text}`);
+        queryParts.push(`o:"${searchOptions.oracle_text}"`);
     }
+    //Type
     if (searchOptions.type_line) {
         queryParts.push(`t:${searchOptions.type_line}`);
     }
     const query = queryParts.join(" ");
     url.searchParams.set("q", query);
-    console.log(url.searchParams);
+    console.log(url.toString());
     const response = await fetch(url);
     let result = await response.json();
     if (!response.ok) {

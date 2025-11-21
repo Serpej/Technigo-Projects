@@ -8,16 +8,11 @@ const oracleTextInput = getInputElement("oracleTextInput");
 const cardTypeSelect = getSelectElement("cardTypeSelect");
 async function loadCards() {
     try {
-        let searchOptions = {};
-        if (searchOptions.name) {
-            searchOptions.name = searchNameInput.value;
-        }
-        if (searchOptions.oracle_text) {
-            searchOptions.oracle_text = oracleTextInput.value;
-        }
-        if (searchOptions.type_line) {
-            searchOptions.name = cardTypeSelect.value;
-        }
+        const searchOptions = {
+            name: searchNameInput.value,
+            oracle_text: oracleTextInput.value,
+            type_line: cardTypeSelect.value,
+        };
         // Clear the result Div
         resultDiv.innerHTML = "";
         // Awaits the result as a promise(json)
@@ -27,7 +22,7 @@ async function loadCards() {
         cards.forEach(card => {
             const img = document.createElement("img");
             if (card.image_uris !== undefined) {
-                img.src = `${card.image_uris.small}`;
+                img.src = `${card.image_uris.normal}`;
                 resultDiv.appendChild(img);
             }
         });
