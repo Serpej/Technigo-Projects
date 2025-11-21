@@ -4,6 +4,7 @@ import { getElement } from "./utils/domFunctions.js";
 
 // DOM Elements
 const resultDiv = getElement("result");
+const searchButton = getElement("searchButton");
 
 async function loadCards() {
   try{
@@ -26,7 +27,11 @@ async function loadCards() {
   }
 }; 
 
-loadCards();
+searchButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  loadCards();
+});
+
 
 
 

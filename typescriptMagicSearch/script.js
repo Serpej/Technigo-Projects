@@ -2,6 +2,7 @@ import { getScryfallFetch } from "./api/scryfallApi.js";
 import { getElement } from "./utils/domFunctions.js";
 // DOM Elements
 const resultDiv = getElement("result");
+const searchButton = getElement("searchButton");
 async function loadCards() {
     try {
         // Awaits the result as a promise(json)
@@ -22,5 +23,8 @@ async function loadCards() {
     }
 }
 ;
-loadCards();
+searchButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    loadCards();
+});
 //# sourceMappingURL=script.js.map
