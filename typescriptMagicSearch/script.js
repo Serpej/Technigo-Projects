@@ -1,5 +1,5 @@
-import { getScryfallFetch } from "./api/scryfallApi";
-import { getElement } from "./utils/domFunctions";
+import { getScryfallFetch } from "./api/scryfallApi.js";
+import { getElement } from "./utils/domFunctions.js";
 // DOM Elements
 const resultDiv = getElement("result");
 async function loadCards() {
@@ -8,13 +8,14 @@ async function loadCards() {
         const result = await getScryfallFetch("black lotus");
         //Gets the data array
         const cards = result.data;
-        cards.forEach(card => {
-            const img = document.createElement("img");
-            if (card.image_uris !== undefined) {
-                img.src = `${card.image_uris.normal}`;
-                resultDiv.appendChild(img);
-            }
-        });
+        /*     cards.forEach(card => {
+              const img = document.createElement("img");
+              if(card.image_uris !== undefined) {
+              img.src = `${card.image_uris.normal}`;
+              resultDiv.appendChild(img);
+              }
+            }); */
+        resultDiv.textContent = `${cards[0]}`;
     }
     catch (error) {
         console.error(error);
@@ -22,4 +23,5 @@ async function loadCards() {
     }
 }
 ;
+loadCards();
 //# sourceMappingURL=script.js.map

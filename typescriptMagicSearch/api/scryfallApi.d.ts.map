@@ -1,1 +1,1 @@
-{"version":3,"file":"scryfallApi.d.ts","sourceRoot":"","sources":["scryfallApi.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAC,oBAAoB,EAAE,YAAY,EAAC,MAAM,0BAA0B,CAAC;AAEjF,wBAAsB,gBAAgB,CAAC,KAAK,EAAE,MAAM,GAAG,OAAO,CAAC,oBAAoB,CAAC,YAAY,CAAC,CAAC,CAQjG"}
+{"version":3,"file":"scryfallApi.d.ts","sourceRoot":"","sources":["scryfallApi.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAC,oBAAoB,EAAe,MAAM,0BAA0B,CAAC;AAEjF,wBAAsB,gBAAgB,CAAC,KAAK,EAAE,MAAM,GAAG,OAAO,CAAC,oBAAoB,CAAC,CAQnF"}

@@ -1,6 +1,6 @@
 import type {ScryfallListResponse, ScryfallCard} from "../interfaces/interfaces";
 
-export async function getScryfallFetch(query: string): Promise<ScryfallListResponse<ScryfallCard>> {
+export async function getScryfallFetch(query: string): Promise<ScryfallListResponse> {
   const url =`https://api.scryfall.com/cards/search?q=${encodeURIComponent(query)}`;
   const response = await fetch(url);
   let data = await response.json();

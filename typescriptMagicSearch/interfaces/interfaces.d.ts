@@ -1,9 +1,9 @@
-export interface ScryfallListResponse<T> {
+export interface ScryfallListResponse {
     object: string;
     total_cards: number;
     has_more: boolean;
     next_page?: string;
-    data: T[];
+    data: string[];
 }
 export interface ImageUris {
     small: string;
