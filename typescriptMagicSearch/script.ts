@@ -1,5 +1,5 @@
 import {getScryfallFetch} from "./api/scryfallApi.js"
-import type {ScryfallListResponse} from "./interfaces/interfaces.ts";
+import type {ScryfallListResponse, SearchOptions} from "./interfaces/interfaces.ts";
 import {getElement, getInputElement} from "./utils/domFunctions.js";
 
 // DOM Elements
@@ -9,12 +9,14 @@ const searchNameInput = getInputElement("cardNameSearchInput");
 
 async function loadCards() {
   try{
-
-    let searchCondition: string = searchNameInput.value;
+    let searchOptions: SearchOptions = {};
+    if (searchNameInput.value !== "") {
+      searchOptions.name = searchNameInput.value;
+    };
     resultDiv.innerHTML = "";
 
     // Awaits the result as a promise(json)
-    const result: ScryfallListResponse = await getScryfallFetch(searchCondition);
+    const result: ScryfallListResponse = await getScryfallFetch(searchOptions.name);
 
     //Gets the data array
     const cards =  result.data; //ScryfallCard[]

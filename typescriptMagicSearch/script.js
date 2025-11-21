@@ -6,10 +6,14 @@ const searchButton = getElement("searchButton");
 const searchNameInput = getInputElement("cardNameSearchInput");
 async function loadCards() {
     try {
-        let searchCondition = searchNameInput.value;
+        let searchOptions = {};
+        if (searchNameInput.value !== "") {
+            searchOptions.name = searchNameInput.value;
+        }
+        ;
         resultDiv.innerHTML = "";
         // Awaits the result as a promise(json)
-        const result = await getScryfallFetch(searchCondition);
+        const result = await getScryfallFetch(searchOptions.name);
         //Gets the data array
         const cards = result.data; //ScryfallCard[]
         cards.forEach(card => {

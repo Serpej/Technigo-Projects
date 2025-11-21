@@ -26,4 +26,9 @@ export interface ScryfallCard {
     image_uris?: ImageUris;
     card_faces?: Cardface[];
 }
+export interface SearchOptions {
+    name?: string;
+    oracle_text?: string;
+    type_line?: string;
+}
 //# sourceMappingURL=interfaces.d.ts.map

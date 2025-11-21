@@ -21,7 +21,6 @@ export interface Cardface {
   image_uris?: ImageUris;
 }
 
-
 export interface ScryfallCard {
   id: string;
   name: string;
@@ -29,4 +28,10 @@ export interface ScryfallCard {
   oracle_text?: string;
   image_uris?: ImageUris;
   card_faces?: Cardface[];
+}
+
+export interface SearchOptions {
+  name?: string;
+  oracle_text?: string;
+  type_line?: string
 }
