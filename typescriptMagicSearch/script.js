@@ -1,12 +1,15 @@
 import { getScryfallFetch } from "./api/scryfallApi.js";
-import { getElement } from "./utils/domFunctions.js";
+import { getElement, getInputElement } from "./utils/domFunctions.js";
 // DOM Elements
 const resultDiv = getElement("result");
 const searchButton = getElement("searchButton");
+const searchNameInput = getInputElement("cardNameSearchInput");
 async function loadCards() {
     try {
+        let searchCondition = searchNameInput.value;
+        resultDiv.innerHTML = "";
         // Awaits the result as a promise(json)
-        const result = await getScryfallFetch("black lotus");
+        const result = await getScryfallFetch(searchCondition);
         //Gets the data array
         const cards = result.data; //ScryfallCard[]
         cards.forEach(card => {
