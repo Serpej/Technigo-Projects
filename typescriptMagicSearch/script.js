@@ -7,15 +7,14 @@ async function loadCards() {
         // Awaits the result as a promise(json)
         const result = await getScryfallFetch("black lotus");
         //Gets the data array
-        const cards = result.data;
-        /*     cards.forEach(card => {
-              const img = document.createElement("img");
-              if(card.image_uris !== undefined) {
-              img.src = `${card.image_uris.normal}`;
-              resultDiv.appendChild(img);
-              }
-            }); */
-        resultDiv.textContent = `${cards[0]}`;
+        const cards = result.data; //ScryfallCard[]
+        cards.forEach(card => {
+            const img = document.createElement("img");
+            if (card.image_uris !== undefined) {
+                img.src = `${card.image_uris.small}`;
+                resultDiv.appendChild(img);
+            }
+        });
     }
     catch (error) {
         console.error(error);

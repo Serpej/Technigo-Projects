@@ -1,5 +1,5 @@
 import {getScryfallFetch} from "./api/scryfallApi.js"
-import type { ScryfallCard, ScryfallListResponse} from "./interfaces/interfaces.ts";
+import type {ScryfallListResponse, ScryfallCard} from "./interfaces/interfaces.ts";
 import { getElement } from "./utils/domFunctions.js";
 
 // DOM Elements
@@ -12,15 +12,14 @@ async function loadCards() {
     const result: ScryfallListResponse = await getScryfallFetch("black lotus");
 
     //Gets the data array
-    const cards =  result.data;
-/*     cards.forEach(card => {
+    const cards =  result.data; //ScryfallCard[]
+    cards.forEach(card => {
       const img = document.createElement("img");
       if(card.image_uris !== undefined) {
-      img.src = `${card.image_uris.normal}`;
+      img.src = `${card.image_uris.small}`;
       resultDiv.appendChild(img);
       }
-    }); */
-    resultDiv.textContent = `${cards[0]}`;
+    });
   } catch(error) {
     console.error(error);
     resultDiv.textContent = "Failed to Load cards."

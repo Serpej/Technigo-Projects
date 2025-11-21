@@ -3,7 +3,7 @@ export interface ScryfallListResponse {
   total_cards: number;
   has_more: boolean;
   next_page?: string;
-  data: string[];
+  data: ScryfallCard[];
 }
 
 export interface ImageUris {
@@ -20,6 +20,7 @@ export interface Cardface {
   oracle_text?: string;
   image_uris?: ImageUris;
 }
+
 
 export interface ScryfallCard {
   id: string;
