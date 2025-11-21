@@ -1,5 +1,5 @@
 import {getScryfallFetch} from "./api/scryfallApi.js"
-import type {ScryfallListResponse, ScryfallCard} from "./interfaces/interfaces.ts";
+import type {ScryfallListResponse} from "./interfaces/interfaces.ts";
 import { getElement } from "./utils/domFunctions.js";
 
 // DOM Elements
