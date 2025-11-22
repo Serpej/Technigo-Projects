@@ -14,6 +14,9 @@ export async function getScryfallFetch(searchOptions) {
     if (searchOptions.type_line) {
         queryParts.push(`t:${searchOptions.type_line}`);
     }
+    if (searchOptions.cmc && searchOptions.cmc_criteria) {
+        queryParts.push(`mv${searchOptions.cmc_criteria}${searchOptions.cmc}`);
+    }
     const query = queryParts.join(" ");
     url.searchParams.set("q", query);
     console.log(url.toString());

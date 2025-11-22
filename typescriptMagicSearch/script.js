@@ -6,12 +6,16 @@ const searchButton = getElement("searchButton");
 const searchNameInput = getInputElement("cardNameSearchInput");
 const oracleTextInput = getInputElement("oracleTextInput");
 const cardTypeSelect = getSelectElement("cardTypeSelect");
+const manaValueSelect = getSelectElement("manaValueSelect");
+const manaValueInput = getInputElement("manaValueInput");
 async function loadCards() {
     try {
         const searchOptions = {
             name: searchNameInput.value,
             oracle_text: oracleTextInput.value,
             type_line: cardTypeSelect.value,
+            cmc_criteria: manaValueSelect.value,
+            cmc: manaValueInput.value,
         };
         // Clear the result Div
         resultDiv.innerHTML = "";
@@ -21,10 +25,18 @@ async function loadCards() {
         const cards = result.data; //ScryfallCard[]
         cards.forEach(card => {
             const img = document.createElement("img");
-            if (card.image_uris !== undefined) {
-                img.src = `${card.image_uris.normal}`;
-                resultDiv.appendChild(img);
-            }
+            const imageUri = card.image_uris;
+            //Safecuard against undefined.
+            if (!imageUri)
+                return;
+            img.src = `${imageUri.small}`;
+            img.addEventListener("mouseover", () => {
+                const bigImage = document.createElement("img");
+                bigImage.src = `${imageUri.normal}`;
+                img.classList.add("cardImg");
+                resultDiv.appendChild(bigImage);
+            });
+            resultDiv.appendChild(img);
         });
     }
     catch (error) {

@@ -33,5 +33,13 @@ export interface ScryfallCard {
 export interface SearchOptions {
   name?: string;
   oracle_text?: string;
-  type_line?: string
+  type_line?: string;
+  cmc_criteria?: string;
+  cmc?: string;
+}
+
+export interface ImageObject {
+  id: string;
+  small: string;
+  normal: string;
 }
