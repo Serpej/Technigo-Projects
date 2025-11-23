@@ -27,6 +27,7 @@ async function loadCards() {
             const imgSpan = document.createElement("span");
             imgSpan.classList.add("imgSpan");
             const img = document.createElement("img");
+            img.classList.add("cardImg");
             const bigImage = document.createElement("img");
             bigImage.classList.add("bigCardImg");
             const imageUri = card.image_uris;

@@ -1,14 +1,42 @@
 html * {
   margin: 0;
   box-sizing: border-box;
+  color: #fff;
+}
+body {
+  background-color: #222;
 }
 
 form {
   margin: 10px;
+  padding: 5px;
+  appearance: none;
+}
+
+form, fieldset {
+  border-radius: 4px;
+  border: 1px solid #c999e6;
+}
+
+label {
+  color: #c999e6;
+}
+
+input, select, option {
+  color: #222;
+}
+
+h2 {
+  text-align: center;
 }
 
 .imgSpan {
   position: relative;
+}
+
+.cardImg, .bigCardImg {
+  border-radius: 4.75% / 3.5%;
+  margin: 1px;
 }
 
 .bigCardImg {
@@ -19,4 +47,7 @@ form {
   width: 180%;
   height: auto;
   overflow: hidden;
+}
+button {
+  color: #222;
 }
