@@ -1,3 +1,18 @@
-.cardImg:hover {
-  
+html * {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+.imgSpan {
+  position: relative;
+}
+
+.bigCardImg {
+  position: absolute;
+  left: 100%;
+  visibility: hidden;
+  z-index: 10;
+  width: 180%;
+  height: auto;
 }

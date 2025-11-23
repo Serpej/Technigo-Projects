@@ -24,19 +24,26 @@ async function loadCards() {
         //Gets the data array
         const cards = result.data; //ScryfallCard[]
         cards.forEach(card => {
+            const imgSpan = document.createElement("span");
+            imgSpan.classList.add("imgSpan");
             const img = document.createElement("img");
+            const bigImage = document.createElement("img");
+            bigImage.classList.add("bigCardImg");
             const imageUri = card.image_uris;
             //Safecuard against undefined.
             if (!imageUri)
                 return;
             img.src = `${imageUri.small}`;
-            img.addEventListener("mouseover", () => {
-                const bigImage = document.createElement("img");
-                bigImage.src = `${imageUri.normal}`;
-                img.classList.add("cardImg");
-                resultDiv.appendChild(bigImage);
+            bigImage.src = `${imageUri.normal}`;
+            img.addEventListener("mouseenter", () => {
+                bigImage.style.visibility = "visible";
             });
-            resultDiv.appendChild(img);
+            img.addEventListener("mouseleave", () => {
+                bigImage.style.visibility = "hidden";
+            });
+            imgSpan.appendChild(bigImage);
+            imgSpan.appendChild(img);
+            resultDiv.appendChild(imgSpan);
         });
     }
     catch (error) {
