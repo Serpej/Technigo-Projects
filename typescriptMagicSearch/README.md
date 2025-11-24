@@ -4,3 +4,5 @@ This project is an exercise in using API:s to fetch and display data, while usin
 2. Setting upp interfaces for the APIfetch, the response.data and the structure to 
 separate concerns.
 3. Connect fetch, button and input
+4. Styled the web page and made it responsive
+5. Added additional logic for double-faced cards

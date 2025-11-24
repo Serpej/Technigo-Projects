@@ -31,9 +31,24 @@ async function loadCards() {
             const bigImage = document.createElement("img");
             bigImage.classList.add("bigCardImg");
             const imageUri = card.image_uris;
+            let frontSideUri;
+            let backSideUri;
             //Safecuard against undefined.
             if (!imageUri)
                 return;
+            // Check for doublesided cards
+            if (card.card_faces?.length == 2 &&
+                card.card_faces[0]?.image_uris &&
+                card.card_faces[1]?.image_uris) {
+                const frontSideUri = card.card_faces[0].image_uris;
+                const backSideUri = card.card_faces[1].image_uris; //Use this later when mouse over??
+                img.src = `${frontSideUri.small}`;
+                bigImage.src = `${frontSideUri.normal}`;
+            }
+            else if (card.image_uris) {
+                img.src = `${imageUri.small}`;
+                bigImage.src = `${imageUri.normal}`;
+            }
             img.src = `${imageUri.small}`;
             bigImage.src = `${imageUri.normal}`;
             img.addEventListener("mouseenter", () => {

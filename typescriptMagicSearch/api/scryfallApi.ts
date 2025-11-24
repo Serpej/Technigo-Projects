@@ -21,6 +21,7 @@ export async function getScryfallFetch(searchOptions: SearchOptions): Promise<Sc
     queryParts.push(`t:${searchOptions.type_line}`)
   }
 
+  //Mana value
   if (searchOptions.cmc && searchOptions.cmc_criteria) {
     queryParts.push(`mv${searchOptions.cmc_criteria}${searchOptions.cmc}`)
   }

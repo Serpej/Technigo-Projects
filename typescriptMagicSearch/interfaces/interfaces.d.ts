@@ -5,19 +5,6 @@ export interface ScryfallListResponse {
     next_page?: string;
     data: ScryfallCard[];
 }
-export interface ImageUris {
-    small: string;
-    normal: string;
-    large: string;
-    png: string;
-    art_crop: string;
-    border_crop: string;
-}
-export interface Cardface {
-    name: string;
-    oracle_text?: string;
-    image_uris?: ImageUris;
-}
 export interface ScryfallCard {
     id: string;
     name: string;
@@ -25,6 +12,19 @@ export interface ScryfallCard {
     oracle_text?: string;
     image_uris?: ImageUris;
     card_faces?: Cardface[];
+}
+export interface Cardface {
+    name: string;
+    oracle_text?: string;
+    image_uris?: ImageUris;
+}
+export interface ImageUris {
+    small: string;
+    normal: string;
+    large: string;
+    png: string;
+    art_crop: string;
+    border_crop: string;
 }
 export interface SearchOptions {
     name?: string;

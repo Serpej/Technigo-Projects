@@ -6,13 +6,13 @@ export interface ScryfallListResponse {
   data: ScryfallCard[];
 }
 
-export interface ImageUris {
-  small: string;
-  normal: string;
-  large: string;
-  png: string;
-  art_crop: string
-  border_crop: string
+export interface ScryfallCard {
+  id: string;
+  name: string;
+  type_line: string;
+  oracle_text?: string;
+  image_uris?: ImageUris;
+  card_faces?: Cardface[];
 }
 
 export interface Cardface {
@@ -21,13 +21,13 @@ export interface Cardface {
   image_uris?: ImageUris;
 }
 
-export interface ScryfallCard {
-  id: string;
-  name: string;
-  type_line: string;
-  oracle_text?: string;
-  image_uris?: ImageUris;
-  card_faces?: Cardface[];
+export interface ImageUris {
+  small: string;
+  normal: string;
+  large: string;
+  png: string;
+  art_crop: string
+  border_crop: string
 }
 
 export interface SearchOptions {
