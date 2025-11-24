@@ -38,7 +38,8 @@ async function loadCards() {
       const bigImage = document.createElement("img");
       bigImage.classList.add("bigCardImg");
       const imageUri = card.image_uris;
-      let frontSideUri: string;
+      let frontSideUriSmall: string;
+      let frontSideUriNormal: string;
       let backSideUri: string;
 
       
@@ -49,13 +50,15 @@ async function loadCards() {
           if (card.card_faces?.length == 2 && 
           card.card_faces[0]?.image_uris && 
           card.card_faces[1]?.image_uris) {
-            const frontSideUri = card.card_faces[0].image_uris;
+            frontSideUriSmall = card.card_faces[0].image_uris.small;
+            frontSideUriNormal = card.card_faces[0].image_uris.normal;
             
             //Use this later when mouse over??
-            const backSideUri = card.card_faces[1].image_uris; 
+            const backSideCardObject = card.card_faces[1].image_uris;
 
-            img.src = `${frontSideUri.small}`;
-            bigImage.src = `${frontSideUri.normal}`;
+            img.src = `${card.card_faces[0].image_uris.small}`;
+            console.log(frontSideUriNormal);
+            bigImage.src = `${card.card_faces[0].image_uris.normal}`;
           } else {
             console.error("No Image URI found for double faced card.")
             return;
@@ -64,10 +67,6 @@ async function loadCards() {
         img.src = `${imageUri.small}`;
         bigImage.src = `${imageUri.normal}`;
       }
- 
-
-      img.src = `${imageUri.small}`;
-      bigImage.src = `${imageUri.normal}`;
       
       img.addEventListener( "mouseenter", () => {
         bigImage.style.visibility = "visible";
@@ -92,3 +91,6 @@ searchButton.addEventListener("click", (e) => {
   loadCards();
 });
 
+function ObjectOrURI<Type>(arg:Type): Type {
+  return arg;
+}

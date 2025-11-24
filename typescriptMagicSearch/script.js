@@ -31,7 +31,8 @@ async function loadCards() {
             const bigImage = document.createElement("img");
             bigImage.classList.add("bigCardImg");
             const imageUri = card.image_uris;
-            let frontSideUri;
+            let frontSideUriSmall;
+            let frontSideUriNormal;
             let backSideUri;
             // Check for doublesided cards
             //Safecuard against undefined at top level.
@@ -39,11 +40,13 @@ async function loadCards() {
                 if (card.card_faces?.length == 2 &&
                     card.card_faces[0]?.image_uris &&
                     card.card_faces[1]?.image_uris) {
-                    const frontSideUri = card.card_faces[0].image_uris;
+                    frontSideUriSmall = card.card_faces[0].image_uris.small;
+                    frontSideUriNormal = card.card_faces[0].image_uris.normal;
                     //Use this later when mouse over??
-                    const backSideUri = card.card_faces[1].image_uris;
-                    img.src = `${frontSideUri.small}`;
-                    bigImage.src = `${frontSideUri.normal}`;
+                    const backSideCardObject = card.card_faces[1].image_uris;
+                    img.src = `${card.card_faces[0].image_uris.small}`;
+                    console.log(frontSideUriNormal);
+                    bigImage.src = `${card.card_faces[0].image_uris.normal}`;
                 }
                 else {
                     console.error("No Image URI found for double faced card.");
@@ -54,8 +57,6 @@ async function loadCards() {
                 img.src = `${imageUri.small}`;
                 bigImage.src = `${imageUri.normal}`;
             }
-            img.src = `${imageUri.small}`;
-            bigImage.src = `${imageUri.normal}`;
             img.addEventListener("mouseenter", () => {
                 bigImage.style.visibility = "visible";
             });
@@ -77,4 +78,7 @@ searchButton.addEventListener("click", (e) => {
     e.preventDefault();
     loadCards();
 });
+function ObjectOrURI(arg) {
+    return arg;
+}
 //# sourceMappingURL=script.js.map
