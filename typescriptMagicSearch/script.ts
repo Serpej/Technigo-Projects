@@ -38,9 +38,13 @@ async function loadCards() {
       const bigImage = document.createElement("img");
       bigImage.classList.add("bigCardImg");
       const imageUri = card.image_uris;
-      let frontSideUriSmall: string;
-      let frontSideUriNormal: string;
-      let backSideUri: string;
+
+      //Double faced cards
+      let frontSideUriSmall: string = "";
+      let frontSideUriNormal: string = "";
+      let backSideUriSmall: string = "";
+      let backSideUriNormal: string = "";
+      const transformButtonDiv = document.createElement("div");
 
       
 
@@ -50,19 +54,20 @@ async function loadCards() {
           if (card.card_faces?.length == 2 && 
           card.card_faces[0]?.image_uris && 
           card.card_faces[1]?.image_uris) {
+
             frontSideUriSmall = card.card_faces[0].image_uris.small;
             frontSideUriNormal = card.card_faces[0].image_uris.normal;
-            
-            //Use this later when mouse over??
-            const backSideCardObject = card.card_faces[1].image_uris;
+            backSideUriSmall = card.card_faces[1].image_uris.small;
+            backSideUriNormal = card.card_faces[1].image_uris.normal;
 
-            img.src = `${card.card_faces[0].image_uris.small}`;
-            console.log(frontSideUriNormal);
-            bigImage.src = `${card.card_faces[0].image_uris.normal}`;
+            img.src = `${frontSideUriSmall}`;
+            bigImage.src = `${frontSideUriNormal}`;
+
           } else {
             console.error("No Image URI found for double faced card.")
             return;
           }
+
       } else if (card.image_uris) {
         img.src = `${imageUri.small}`;
         bigImage.src = `${imageUri.normal}`;
@@ -74,6 +79,11 @@ async function loadCards() {
       img.addEventListener( "mouseleave", () => {
         bigImage.style.visibility = "hidden";
       });
+      
+      if (frontSideUriSmall !== "") {
+        imgSpan.appendChild(transformButtonDiv);
+        transformButtonDiv.classList.add("transformButtonDiv");
+      }
 
       imgSpan.appendChild(bigImage);
       imgSpan.appendChild(img);
@@ -91,6 +101,3 @@ searchButton.addEventListener("click", (e) => {
   loadCards();
 });
 
-function ObjectOrURI<Type>(arg:Type): Type {
-  return arg;
-}

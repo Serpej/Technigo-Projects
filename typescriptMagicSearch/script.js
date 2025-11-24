@@ -31,9 +31,12 @@ async function loadCards() {
             const bigImage = document.createElement("img");
             bigImage.classList.add("bigCardImg");
             const imageUri = card.image_uris;
-            let frontSideUriSmall;
-            let frontSideUriNormal;
-            let backSideUri;
+            //Double faced cards
+            let frontSideUriSmall = "";
+            let frontSideUriNormal = "";
+            let backSideUriSmall = "";
+            let backSideUriNormal = "";
+            const transformButtonDiv = document.createElement("div");
             // Check for doublesided cards
             //Safecuard against undefined at top level.
             if (!imageUri) {
@@ -42,11 +45,10 @@ async function loadCards() {
                     card.card_faces[1]?.image_uris) {
                     frontSideUriSmall = card.card_faces[0].image_uris.small;
                     frontSideUriNormal = card.card_faces[0].image_uris.normal;
-                    //Use this later when mouse over??
-                    const backSideCardObject = card.card_faces[1].image_uris;
-                    img.src = `${card.card_faces[0].image_uris.small}`;
-                    console.log(frontSideUriNormal);
-                    bigImage.src = `${card.card_faces[0].image_uris.normal}`;
+                    backSideUriSmall = card.card_faces[1].image_uris.small;
+                    backSideUriNormal = card.card_faces[1].image_uris.normal;
+                    img.src = `${frontSideUriSmall}`;
+                    bigImage.src = `${frontSideUriNormal}`;
                 }
                 else {
                     console.error("No Image URI found for double faced card.");
@@ -63,6 +65,10 @@ async function loadCards() {
             img.addEventListener("mouseleave", () => {
                 bigImage.style.visibility = "hidden";
             });
+            if (frontSideUriSmall !== "") {
+                imgSpan.appendChild(transformButtonDiv);
+                transformButtonDiv.classList.add("transformButtonDiv");
+            }
             imgSpan.appendChild(bigImage);
             imgSpan.appendChild(img);
             resultDiv.appendChild(imgSpan);
@@ -78,7 +84,4 @@ searchButton.addEventListener("click", (e) => {
     e.preventDefault();
     loadCards();
 });
-function ObjectOrURI(arg) {
-    return arg;
-}
 //# sourceMappingURL=script.js.map
