@@ -41,20 +41,25 @@ async function loadCards() {
       let frontSideUri: string;
       let backSideUri: string;
 
-      //Safecuard against undefined.
-      if (!imageUri) return;
+      
 
       // Check for doublesided cards
-      if (card.card_faces?.length == 2 && 
+      //Safecuard against undefined at top level.
+      if (!imageUri) {
+          if (card.card_faces?.length == 2 && 
           card.card_faces[0]?.image_uris && 
           card.card_faces[1]?.image_uris) {
+            const frontSideUri = card.card_faces[0].image_uris;
+            
+            //Use this later when mouse over??
+            const backSideUri = card.card_faces[1].image_uris; 
 
-        const frontSideUri = card.card_faces[0].image_uris;
-        const backSideUri = card.card_faces[1].image_uris; //Use this later when mouse over??
-
-        img.src = `${frontSideUri.small}`;
-        bigImage.src = `${frontSideUri.normal}`;
-
+            img.src = `${frontSideUri.small}`;
+            bigImage.src = `${frontSideUri.normal}`;
+          } else {
+            console.error("No Image URI found for double faced card.")
+            return;
+          }
       } else if (card.image_uris) {
         img.src = `${imageUri.small}`;
         bigImage.src = `${imageUri.normal}`;
