@@ -60,7 +60,6 @@ input, select {
   flex-grow: 2;
 }
 
-
 h2 {
   text-align: center;
 }
@@ -86,10 +85,22 @@ option {
   width: 180%;
   height: auto;
 }
+
 button {
   color: #222;
   max-width: 70px;
   height: 25px;
+}
+
+.transformButtonDiv {
+  background-color:black;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top:-140px;
+  right:25px;
+  z-index: 5;
+  opacity: 0.7;
 }
 
 #result {
