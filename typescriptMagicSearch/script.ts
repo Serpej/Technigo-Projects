@@ -87,14 +87,29 @@ async function loadCards() {
         let showingFront = true;
 
         transformButtonDiv.addEventListener("click", () => {
-          if (showingFront) {
-            img.src = backImages.small;
-            bigImage.src = backImages.normal;
-          } else {
-            img.src = frontImages.small;
-            bigImage.src = frontImages.normal;
-          }
-          showingFront = !showingFront;          
+          img.classList.add("transitioning");
+          bigImage.classList.add("transitioning");
+
+          // Creatie a delay for transition to happen
+          setTimeout(() => {
+            
+            // Switch Img
+            if (showingFront) {
+              img.src = backImages.small
+              bigImage.src = backImages.normal;
+            } else {
+              img.src = frontImages.small;
+              bigImage.src = frontImages.normal;
+            }
+            showingFront = !showingFront; 
+
+            setTimeout(() => {
+              img.classList.remove("transitioning");
+               bigImage.classList.remove("transitioning");
+            }, 50);
+
+          }, 50);
+        
         });
 
         imgSpan.appendChild(transformButtonDiv);
