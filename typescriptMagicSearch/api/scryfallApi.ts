@@ -2,6 +2,7 @@ import type {ScryfallListResponse, SearchOptions} from "../interfaces/interfaces
 
 export async function getScryfallFetch(searchOptions: SearchOptions): Promise<ScryfallListResponse> {
   const url = new URL(`https://api.scryfall.com/cards/search`);
+  //http://localhost:3000/scryfall/openSearch
 
   //Array for all querys
   const queryParts: string[] = [];
@@ -36,5 +37,5 @@ export async function getScryfallFetch(searchOptions: SearchOptions): Promise<Sc
   if(!response.ok) {
     throw new Error(`Scryfall error ${response.status}`);
   }
-  return result;
+  return result as ScryfallListResponse;
 };

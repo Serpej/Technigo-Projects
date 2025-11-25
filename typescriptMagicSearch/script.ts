@@ -46,6 +46,7 @@ async function loadCards() {
       let backSideUriNormal: string = "";
       const transformButtonDiv = document.createElement("div");
       transformButtonDiv.classList.add("transformButtonDiv");
+    
 
       // Check for doublesided cards
       //Safecuard against undefined at top level.
@@ -93,8 +94,6 @@ async function loadCards() {
           // Creatie a delay for transition to happen
           setTimeout(() => {
 
-
-            
             // Switch Img
             setTimeout(() => {
             if (showingFront) {

@@ -1,5 +1,6 @@
 export async function getScryfallFetch(searchOptions) {
     const url = new URL(`https://api.scryfall.com/cards/search`);
+    //http://localhost:3000/scryfall/openSearch
     //Array for all querys
     const queryParts = [];
     //Name
