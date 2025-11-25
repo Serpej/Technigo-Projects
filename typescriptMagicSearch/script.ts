@@ -84,14 +84,17 @@ async function loadCards() {
         const frontImages = {small: frontSideUriSmall, normal: frontSideUriNormal};
         const backImages = {small: backSideUriSmall, normal: backSideUriNormal};
         // Set default to front image
-        let currentImages = frontImages;
+        let showingFront = true;
 
         transformButtonDiv.addEventListener("click", () => {
-          // Use Ternary operator to check which object is the current source.
-          currentImages = currentImages === frontImages ? backImages : frontImages;
-          img.src = currentImages.small;
-          bigImage.src = currentImages.normal;
-          
+          if (showingFront) {
+            img.src = backImages.small;
+            bigImage.src = backImages.normal;
+          } else {
+            img.src = frontImages.small;
+            bigImage.src = frontImages.normal;
+          }
+          showingFront = !showingFront;          
         });
 
         imgSpan.appendChild(transformButtonDiv);
