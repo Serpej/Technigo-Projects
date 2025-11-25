@@ -45,8 +45,7 @@ async function loadCards() {
       let backSideUriSmall: string = "";
       let backSideUriNormal: string = "";
       const transformButtonDiv = document.createElement("div");
-
-      
+      transformButtonDiv.classList.add("transformButtonDiv");
 
       // Check for doublesided cards
       //Safecuard against undefined at top level.
@@ -79,17 +78,31 @@ async function loadCards() {
       img.addEventListener( "mouseleave", () => {
         bigImage.style.visibility = "hidden";
       });
-      
+
       if (frontSideUriSmall !== "") {
+        // Make each alternative into it's own object
+        const frontImages = {small: frontSideUriSmall, normal: frontSideUriNormal};
+        const backImages = {small: backSideUriSmall, normal: backSideUriNormal};
+        // Set default to front image
+        let currentImages = frontImages;
+
+        transformButtonDiv.addEventListener("click", () => {
+          // Use Ternary operator to check which object is the current source.
+          currentImages = currentImages === frontImages ? backImages : frontImages;
+          img.src = currentImages.small;
+          bigImage.src = currentImages.normal;
+          
+        });
+
         imgSpan.appendChild(transformButtonDiv);
-        transformButtonDiv.classList.add("transformButtonDiv");
-      }
+      };
 
       imgSpan.appendChild(bigImage);
       imgSpan.appendChild(img);
       resultDiv.appendChild(imgSpan);
       
     });
+
   } catch(error) {
     console.error(error);
     resultDiv.textContent = "Failed to Load cards."
