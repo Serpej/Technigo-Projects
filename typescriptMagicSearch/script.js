@@ -78,20 +78,20 @@ async function loadCards() {
                     // Creatie a delay for transition to happen
                     setTimeout(() => {
                         // Switch Img
-                        if (showingFront) {
-                            img.src = backImages.small;
-                            bigImage.src = backImages.normal;
-                        }
-                        else {
-                            img.src = frontImages.small;
-                            bigImage.src = frontImages.normal;
-                        }
-                        showingFront = !showingFront;
                         setTimeout(() => {
-                            img.classList.remove("transitioning");
-                            bigImage.classList.remove("transitioning");
+                            if (showingFront) {
+                                img.src = backImages.small;
+                                bigImage.src = backImages.normal;
+                            }
+                            else {
+                                img.src = frontImages.small;
+                                bigImage.src = frontImages.normal;
+                            }
+                            showingFront = !showingFront;
                         }, 50);
-                    }, 50);
+                        img.classList.remove("transitioning");
+                        bigImage.classList.remove("transitioning");
+                    }, 100);
                 });
                 imgSpan.appendChild(transformButtonDiv);
             }

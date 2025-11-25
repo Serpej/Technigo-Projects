@@ -77,6 +77,8 @@ option {
 .cardImg, .bigCardImg {
   border-radius: 4.75% / 3.5%;
   margin: 1px;
+  transition: transform 0.1s ease-in-out;
+  transform-style: preserve-3d;
 }
 
 .bigCardImg {
@@ -89,6 +91,7 @@ option {
 }
 .cardImg.transitioning, .bigCardImg.transitioning {
   opacity: 0.5;
+  transform: rotateY(90deg);
 }
 
 button {

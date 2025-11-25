@@ -92,8 +92,11 @@ async function loadCards() {
 
           // Creatie a delay for transition to happen
           setTimeout(() => {
+
+
             
             // Switch Img
+            setTimeout(() => {
             if (showingFront) {
               img.src = backImages.small
               bigImage.src = backImages.normal;
@@ -101,14 +104,15 @@ async function loadCards() {
               img.src = frontImages.small;
               bigImage.src = frontImages.normal;
             }
+
             showingFront = !showingFront; 
 
-            setTimeout(() => {
-              img.classList.remove("transitioning");
-               bigImage.classList.remove("transitioning");
             }, 50);
 
-          }, 50);
+            img.classList.remove("transitioning");
+            bigImage.classList.remove("transitioning");
+
+          }, 100);
         
         });
 
