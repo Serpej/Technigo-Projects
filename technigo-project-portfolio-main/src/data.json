@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "name": "News site",
+      "image": "",
+      "tags": [
+        "HTML5",
+        "CSS3"
+      ],
+      "netlify": "link",
+      "github": "link"
+    },
+    {
+      "name": "Business site",
+      "image": "",
+      "tags": [
+        "HTML5",
+        "CSS3"
+      ],
+      "netlify": "link",
+      "github": "link"
+    },
+    {
+      "name": "Pizzabot",
+      "image": "",
+      "tags": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "netlify": "link",
+      "github": "link"
+    },
+    {
+      "name": "Library",
+      "image": "",
+      "tags": [
+        "HTML5",
+        "CSS3",
+        "JavaScript"
+      ],
+      "netlify": "link",
+      "github": "link"
+    },
+    {
+      "name": "Weather app",
+      "image": "",
+      "tags": [
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "APIs"
+      ],
+      "netlify": "link",
+      "github": "link"
+    }
+  ]
+}
