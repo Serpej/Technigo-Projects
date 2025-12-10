@@ -6,10 +6,11 @@ export const App = () => {
   const { projects } = data;
   console.log(projects);
   const projectList = projects.map((project) => {
+  const  tagString = project.tags.join(", ")
     return <Project key={project.name}
                     name={project.name}
                     image={project.image}
-                    tags={project.tags}
+                    tags={tagString}
                     netlify={project.netlify}
                     github={project.github} />
   });
@@ -19,3 +20,5 @@ export const App = () => {
       {projectList}
     </div>);
 }
+
+
