@@ -11,8 +11,9 @@ export const App = () => {
                     name={project.name}
                     image={project.image}
                     tags={tagString}
-                    netlify={project.netlify}
-                    github={project.github} />
+                    netlifyIcon={project.netlifyIcon}
+                    githubIcon={project.githubIcon}
+                    githubLink={project.githubLink} />
   });
   return (
     <div>

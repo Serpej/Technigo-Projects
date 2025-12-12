@@ -15,9 +15,9 @@ img {
   width: 150px;
 }
 
-.link {
+.githubLink, 
+.netlifyLink {
   width: 25px;
   border-radius: 2px;
-  background-image: url("https://github.com/Serpej/Technigo-Projects/tree/main/technigo-project-business-site-main");
 }
-/* Måste hitta ett annat sätt att länka till hemsidorna */
+

@@ -8,8 +8,10 @@
         "CSS3", 
         "JavaScript"
       ],
-      "netlify": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
-      "github": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png"
+      "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
+      "netlify":"",
+      "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
+      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/technigo-project-business-site-main"
     },
     {
       "name": "Något annat",
