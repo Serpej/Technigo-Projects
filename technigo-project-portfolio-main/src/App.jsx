@@ -12,13 +12,16 @@ export const App = () => {
                     image={project.image}
                     tags={tagString}
                     netlifyIcon={project.netlifyIcon}
+                    netlifyLink={project.netlifyLink}
                     githubIcon={project.githubIcon}
                     githubLink={project.githubLink} />
   });
   return (
     <div>
       <Header />
-      {projectList}
+      <div className="mainContainer">
+        {projectList}
+      </div>
     </div>);
 }
 

@@ -3,13 +3,13 @@ import { ProjectImage } from "./projectComponents/ProjectImage";
 import { ProjectTags } from "./projectComponents/ProjectTags";
 import { Links } from "./projectComponents/Links";
 
-export const Project = ({name, image, tags, netlifyIcon, githubIcon, githubLink}) => {
+export const Project = ({name, image, tags, netlifyIcon,netlifyLink, githubIcon, githubLink}) => {
   return (
-    <div>
+    <div className="project">
       <ProjectName name={name} />
-      <ProjectImage image={image} />
+      <ProjectImage image={image} netlifyLink={netlifyLink}/>
       <ProjectTags tags={tags} />
-      <Links netlifyIcon={netlifyIcon} githubIcon={githubIcon} githubLink={githubLink} />
+      <Links netlifyIcon={netlifyIcon} netlifyLink={netlifyLink} githubIcon={githubIcon} githubLink={githubLink} />
     </div>
   );
 };

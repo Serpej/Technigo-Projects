@@ -7,16 +7,37 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background-color: #8d639c;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-img {
-  width: 150px;
+
+.mainContainer {
+  display: flex;
+  flex-direction: row;
 }
 
-.githubLink, 
-.netlifyLink {
+.project {
+  padding: 10px;
+  background-color: #A482B0;
+  margin: 10px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px 1px #573D60;
+}
+
+.projectImage {
+  max-width: auto;
+  max-height: 150px;
+  border-radius:  4.75% / 3.5%;;
+  box-shadow: 1px 1px 4px 1px #573D60;
+}
+
+.githubIcon, 
+.netlifyIcon {
   width: 25px;
   border-radius: 2px;
 }

@@ -1,16 +1,18 @@
-export const Links = ({netlifyIcon, githubIcon, githubLink})  => {
+export const Links = ({netlifyIcon, netlifyLink, githubIcon, githubLink})  => {
   return( 
     <div>
     <a href={githubLink} target="_blank" rel="noopener noreferrer">
       <img
-        className="githubLink"
+        className="githubIcon"
         src={githubIcon}
         alt="github icon" />
     </a>
-    <img 
-      className="netlifyLink" 
-      src={netlifyIcon} 
-      alt="netlify icon" />
+    <a href={netlifyLink} target="_blank" rel="noopener noreferrer">
+      <img
+        className="netlifyIcon"
+        src={netlifyIcon}
+        alt="netlify icon" />
+    </a>
     </div>
   );
 };
