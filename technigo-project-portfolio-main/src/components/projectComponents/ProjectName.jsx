@@ -1,3 +1,3 @@
 export const ProjectName = ({name})  => {
-  return <div>{name}</div>
+  return <div className="projectName">{name}</div>
 };

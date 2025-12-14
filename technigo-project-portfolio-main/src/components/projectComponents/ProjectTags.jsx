@@ -1,3 +1,3 @@
 export const ProjectTags = ({tags})  => {
-  return <div>{tags}</div>
+  return <div className="projectTags">{tags}</div>
 };

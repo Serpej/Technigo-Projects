@@ -5,15 +5,17 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-body {
-  background-color: #8d639c;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+body {
+  background-color: #3b0d4c;
+  font-size: 16px;
 }
 
 .mainContainer {
@@ -22,18 +24,35 @@ code {
 }
 
 .project {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
-  background-color: #A482B0;
+  background-color: #8d639c;
   margin: 10px;
   border-radius: 4px;
   box-shadow: 1px 1px 4px 1px #573D60;
+  transition: scale 0.25s, background-color 0.25s, box-shadow 0.25s;
+  transition-timing-function: ease-in-out
 }
+
+.project:hover {
+  scale: 1.05;
+  background-color: #A482B0;
+  box-shadow: 1px 1px 4px 1px #8d639c;
+}
+
 
 .projectImage {
   max-width: auto;
   max-height: 150px;
   border-radius:  4.75% / 3.5%;;
   box-shadow: 1px 1px 4px 1px #573D60;
+}
+
+.projectName {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .githubIcon, 
