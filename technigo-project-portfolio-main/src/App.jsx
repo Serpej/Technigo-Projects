@@ -2,6 +2,7 @@ import { Header } from "./components/Header"
 import data from "./data.json"
 import { Project } from "./components/Project";
 
+
 export const App = () => {
   const { projects } = data;
   console.log(projects);
@@ -17,7 +18,7 @@ export const App = () => {
                     githubLink={project.githubLink} />
   });
   return (
-    <div>
+    <div className="bodyContainer">
       <Header />
       <div className="mainContainer">
         {projectList}
