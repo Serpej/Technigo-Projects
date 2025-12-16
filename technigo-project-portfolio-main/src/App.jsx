@@ -7,11 +7,11 @@ export const App = () => {
   const { projects } = data;
   console.log(projects);
   const projectList = projects.map((project) => {
-  const  tagString = project.tags.join(", ")
     return <Project key={project.name}
                     name={project.name}
                     image={project.image}
-                    tags={tagString}
+                    tags={project.tags}
+                    description={project.description}
                     netlifyIcon={project.netlifyIcon}
                     netlifyLink={project.netlifyLink}
                     githubIcon={project.githubIcon}

@@ -1,7 +1,7 @@
-export const Description = () => {
+export const Description = ({description}) => {
   return ( 
     <div className="descriptionContainer">
-      <p>Here is a description of the project! Very insightful.</p>
+      <p>{ description }</p>
     </div>
   )
 }
