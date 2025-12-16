@@ -20,6 +20,7 @@ export const App = () => {
   return (
     <div className="bodyContainer">
       <Header />
+      <h1>Featured Projects</h1>
       <div className="mainContainer">
         {projectList}
       </div>

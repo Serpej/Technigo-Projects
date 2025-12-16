@@ -1,6 +1,6 @@
 export const Links = ({netlifyIcon, netlifyLink, githubIcon, githubLink})  => {
   return( 
-    <div>
+    <div className="linkContainer">
     <a href={githubLink} target="_blank" rel="noopener noreferrer">
       <img
         className="githubIcon"
