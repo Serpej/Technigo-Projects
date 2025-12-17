@@ -93,6 +93,10 @@ body {
   margin: 10px;
 }
 
+.projectName {
+  margin-left: 0;
+}
+
 .projectTags {
   display: flex;
 }
@@ -146,8 +150,23 @@ img {
   z-index: 2;
 }
 
-.projectName {
-  text-align: center;
+.linkContainer {
+  display: flex;
+  flex-direction: column;
+}
+.link {
+  display: flex;
+  flex-direction: row;
+  background-color: #151A1E;
+  margin: 2px;
+  border-radius: 4px;
+  color: #FFFFFF;
+  text-decoration: none;
+  max-width: 50%;
+}
+.link > p {
+  margin: 5px;
+  align-self: center;
 }
 
 .githubIcon, 
