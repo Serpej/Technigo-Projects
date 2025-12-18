@@ -24,7 +24,7 @@ html * {
 }
 
 h1 {
-  font-size: 80px;
+  font-size: clamp(60px, 5vw, 80px);
   font-weight: 700;
   line-height: 100%;
   margin: 20px;
@@ -93,7 +93,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 30px;
   margin: 10px;
   border-radius: 4px;
   transition: scale 0.25s, box-shadow 0.25s;
@@ -126,19 +126,23 @@ body {
   border-radius: 4px;
   flex: 1;
   text-align: center;
-  max-width: 111px;
-  min-width: none;
+  max-width: 125px;
 }
 
-/* Images */
-
 img {
+  max-width: 100%;
+  height: auto;
+}
+
+.project > a {
   min-width: 0;
-  min-height: 0;
+  flex: 1 1 0;
+  display: flex;
 }
 
 .projectImage {
-  width: 50%;
+  max-width: 100%;
+  height: auto;
   border-radius:  4.75% / 3.5%;
   box-shadow: 1px 1px 4px 1px #000000;
 }
@@ -196,41 +200,6 @@ img {
   border-radius: 2px;
 }
 
-@media (min-width: 1440px) {
-  
-  .project {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .mainContainer {
-    padding: 8px 40px;
-  }
-
-  .project > a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 40px;
-  }
-
-  .projectImage {
-    width: auto;
-    max-height: 400px;
-    min-width: 0;
-    flex: 1 0;
-  }
-
-  .projectInfo {
-    margin: 0px;
-    padding: 0px 40px;
-    flex: 1;
-    max-width: 600px;
-    min-width: 400px;
-  }
-
-}
-
 @media (min-width: 744px) {
   
   .project {
@@ -242,26 +211,41 @@ img {
     padding: 8px 40px;
   }
 
-  .project > a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 40px;
-  }
-
   .projectImage {
-    width: auto;
-    max-height: 400px;
-    min-width: 0;
-    flex: 1 0;
+    max-width: 100%;
+    max-height: 400px;;
   }
 
   .projectInfo {
     margin: 0px;
-    padding: 0px 40px;
+    padding-left: 40px;
     flex: 1;
     max-width: 600px;
-    min-width: 400px;
   }
 
 }
+
+@media (min-width: 1440px) {
+  
+  .project {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .mainContainer {
+    padding: 8px 40px;
+  }
+
+  .projectImage {
+    max-height: 400px;
+  }
+
+  .projectInfo {
+    margin: 0px;
+    padding-left: 40px;
+    flex: 1;
+    max-width: 600px;
+  }
+
+}
+
