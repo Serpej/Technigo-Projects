@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Business site",
-      "image": "https://cdn.pixabay.com/photo/2015/01/08/18/30/entrepreneur-593378_1280.jpg",
+      "image": "https://images.unsplash.com/vector-1764141446636-8e37df00eea9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "tags": [
         "HTML5",
         "CSS3", 
@@ -16,7 +16,7 @@
     },
     {
       "name": "Task manager",
-      "image": "https://images.pexels.com/photos/1226398/pexels-photo-1226398.jpeg?_gl=1*1f995is*_ga*MTIyNDkzNTc1OS4xNzU1NTA1NjE2*_ga_8JE65Q40S6*czE3NjU2NTY3NTckbzckZzEkdDE3NjU2NTY3NjIkajU1JGwwJGgw",
+      "image": "https://images.unsplash.com/vector-1764700666463-15720d759ac6?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "tags": [
         "HTML5",
         "CSS3",
@@ -30,7 +30,7 @@
     },
     {
       "name": "Weather app",
-      "image": "https://images.pexels.com/photos/1431822/pexels-photo-1431822.jpeg",
+      "image": "https://images.unsplash.com/vector-1760196134399-5e3cdad48920?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "tags": [
         "HTML5",
         "CSS3",
@@ -44,7 +44,7 @@
     },
     {
       "name": "Magic The Gathering Search",
-      "image": "https://images.pexels.com/photos/3769697/pexels-photo-3769697.jpeg",
+      "image": "https://images.unsplash.com/vector-1760196134551-5539acb32d52?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "tags": [
         "HTML5",
         "CSS3",
