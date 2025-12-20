@@ -28,6 +28,7 @@ h1 {
   font-weight: 700;
   line-height: 100%;
   margin: 20px;
+  text-align: center
 }
 
 h2 {
@@ -56,7 +57,7 @@ body {
 }
 
 .bodyContainer {
-  background-color: #BB834E;
+  background-color: #66594D;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +66,6 @@ body {
 }
 
 .bodyContainer > * {
-  
   padding: 8px 30px 8px 30px;
 }
 
@@ -74,7 +74,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #66594D;
+  background-color: #3C3835;
   text-align: center;
   color: #FFFFFF;
   width: 100%;
@@ -89,11 +89,11 @@ body {
 }
 
 .mainContainer {
-  
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 8px 60px;
+  align-items: center;
+  padding: 8px 0px;
 }
 
 .project {
@@ -108,16 +108,25 @@ body {
 
 .project:hover {
   scale: 1.02;
-  box-shadow: 1px 1px 4px 1px #332C25;
+  box-shadow: 1px 1px 8px 1px #332C25;
 }
 
 .projectInfo {
   display: flex;
   flex-direction: column;
+  max-width: 400px;
   margin: 10px 0px;
+  background-color: #917154;
+  padding: 10px;
+  border-radius: 4.75% / 3.5%;
+  box-shadow: 1px 1px 4px 1px #332C25;
 }
 
 .projectName {
+  margin-left: 0;
+}
+
+.descriptionContainer > p {
   margin-left: 0;
 }
 
@@ -136,19 +145,21 @@ body {
   max-width: 125px;
 }
 
+/* Images */
+
 img {
   max-width: 100%;
   height: auto;
 }
 
 .project > a {
-  min-width: 0;
-  flex: 1 1 0;
+  min-width: 0px;
+  flex: 1;
   display: flex;
 }
 
 .projectImage {
-  max-width: 100%;
+  max-height: 400px;
   height: auto;
   border-radius:  4.75% / 3.5%;
   box-shadow: 1px 1px 4px 1px #332C25;
@@ -213,48 +224,68 @@ img {
   border-radius: 2px;
 }
 
-@media (min-width: 744px) {
+
+@media (min-width: 744px) and (max-width: 1439px) {
   
   .project {
     display: flex;
     flex-direction: row;
   }
 
+  .project > a {
+      margin-right: 100px;
+  }
+
   .projectImage {
-    max-width: 100%;
-    max-height: 400px;;
+    max-height: 400px;
+    min-width: 320px;
   }
 
   .projectInfo {
     margin: 0px;
-    padding-left: 40px;
+    padding: 40px;
     flex: 1;
-    max-width: 600px;
+    min-width: 0px;
+    max-width: 400px;
   }
 
 }
 
 @media (min-width: 1440px) {
+
+  .headerContainer > * {
+    max-width: 730px;
+  }
+
+  .headerContainer > h1 {
+    max-width: none;
+  }
   
   .project {
     display: flex;
     flex-direction: row;
+    padding: 40px 60px
+  }
+
+  .project > a {
+    margin-right: 100px;
   }
 
   .projectImage {
     max-height: 400px;
+    margin-right: 120px;
   }
 
   .projectInfo {
     margin: 0px;
-    padding-left: 40px;
+    padding: 40px;
     flex: 1;
-    max-width: 600px;
+    min-width: 0px;
+    max-width: 400px;
   }
 
 }
 
-/* H1 */
 
 
 
