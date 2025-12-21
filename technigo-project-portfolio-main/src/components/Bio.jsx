@@ -2,7 +2,7 @@ export const Bio = () => {
   return (
     <div className="bioContainer">
       <h1>Bio</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>Jesper is a curious soul with many interests, which as it turns out makes a great foundation for web-and app development! He strives towards making simple and clean code, awesome user experiences and actively listening to the clients needs.</p>
     </div>
   )
 }

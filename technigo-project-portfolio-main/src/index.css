@@ -42,14 +42,14 @@ h3 {
   font-size: 24px;
   font-weight: 500;
   line-height: 100%;
-  margin: 20px;
+  margin: 15px;
 }
 
 p {
   font-size: 16px;
   font-weight: 400;
-  line-height: 100%;
-  margin: 20px;
+  line-height: 150%;
+  margin: 10px;
 }
 
 body {
@@ -100,7 +100,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px 30px;
+  padding: 20px 30px;
   margin: 10px;
   border-radius: 4px;
   transition: scale 0.25s, box-shadow 0.25s;
@@ -146,11 +146,6 @@ body {
 }
 
 /* Images */
-
-img {
-  max-width: 100%;
-  height: auto;
-}
 
 .project > a {
   min-width: 0px;
@@ -205,6 +200,7 @@ img {
 .link {
   display: flex;
   flex-direction: row;
+  align-items: center;
   background-color: #151A1E;
   margin: 2px;
   border-radius: 4px;
@@ -212,7 +208,9 @@ img {
   text-decoration: none;
   max-width: 50%;
   min-width: 95px;
+  padding: 4px;
 }
+
 .link > p {
   margin: 5px;
   align-self: center;
@@ -220,8 +218,10 @@ img {
 
 .githubIcon, 
 .netlifyIcon {
-  width: 25px;
+  max-width: 25px;
+  max-height: 25px;
   border-radius: 2px;
+
 }
 
 
@@ -264,7 +264,6 @@ img {
   .project {
     display: flex;
     flex-direction: row;
-    padding: 40px 60px
   }
 
   .project > a {

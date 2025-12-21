@@ -1,32 +1,18 @@
 {
   "projects": [
     {
-      "name": "Business site",
-      "image": "https://images.unsplash.com/vector-1764141446636-8e37df00eea9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "tags": [
-        "HTML5",
-        "CSS3", 
-        "JavaScript"
-      ],
-      "description": "Here is a description of the project! Very insightful.",
-      "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
-      "netlifyLink":"https://technigo-business-site.netlify.app/",
-      "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
-      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/technigo-project-business-site-main"
-    },
-    {
-      "name": "Task manager",
-      "image": "https://images.unsplash.com/vector-1764700666463-15720d759ac6?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "name": "Magic The Gathering Search",
+      "image": "https://images.unsplash.com/vector-1760196134551-5539acb32d52?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "tags": [
         "HTML5",
         "CSS3",
-        "TypeScript"
+        "JavaScript"
       ],
-      "description": "Here is a description of the project! Very insightful.",
+      "description": "A responsive search engine using Scryfalls open API. Double sided cards have a flip feature.",
       "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
-      "netlifyLink":"https://taskmanagerwithtypescript.netlify.app/",
+      "netlifyLink":"https://magicsearchfrontonly.netlify.app/",
       "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
-      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/typeScriptTaskManager"
+      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/typescriptMagicSearch"
     },
     {
       "name": "Weather app",
@@ -36,26 +22,39 @@
         "CSS3",
         "JavaScript"
       ],
-      "description": "Here is a description of the project! Very insightful.",
+      "description": "A simple weather app using an open API for getting data every third hour.",
       "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
       "netlifyLink":"https://javascriptweatherappproject.netlify.app/",
       "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
       "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/technigo-project-weather-app-main"
     },
     {
-      "name": "Magic The Gathering Search",
-      "image": "https://images.unsplash.com/vector-1760196134551-5539acb32d52?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "name": "Task manager",
+      "image": "https://images.unsplash.com/vector-1764700666463-15720d759ac6?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "tags": [
         "HTML5",
         "CSS3",
+        "TypeScript"
+      ],
+      "description": "A task manager using Enums and Typescript.",
+      "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
+      "netlifyLink":"https://taskmanagerwithtypescript.netlify.app/",
+      "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
+      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/typeScriptTaskManager"
+    },
+    {
+      "name": "Business site",
+      "image": "https://images.unsplash.com/vector-1764141446636-8e37df00eea9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "tags": [
+        "HTML5",
+        "CSS3", 
         "JavaScript"
       ],
-      "description": "Here is a description of the project! Very insightful.",
+      "description": "A simple login page. One of my first projects.",
       "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
-      "netlifyLink":"https://magicsearchfrontonly.netlify.app/",
+      "netlifyLink":"https://technigo-business-site.netlify.app/",
       "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
-      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/typescriptMagicSearch"
+      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/technigo-project-business-site-main"
     }
-
   ]
 }
