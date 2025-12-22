@@ -24,9 +24,14 @@ export const App = () => {
       <div className="mainContainer">
         {projectList}
       </div>
-      <div className="techContainer"></div>
+      <div className="techContainer">
+        <h1>Tech</h1>
+      </div>
       <div className="skillsContainer"></div>
-      <div className="contactContainer"></div>
+        <h1>Skills</h1>
+      <div className="contactContainer">
+        <h1>Say Hi</h1>
+      </div>
     </div>);
 }
 

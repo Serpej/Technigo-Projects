@@ -99,11 +99,11 @@ body {
 .project {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 20px 30px;
   margin: 10px;
   border-radius: 4px;
   transition: scale 0.25s, box-shadow 0.25s;
+  gap: clamp(30px, 6vw, 100px);;
 }
 
 .project:hover {
@@ -145,11 +145,20 @@ body {
   max-width: 125px;
 }
 
+.techContainer {
+  background-color: #3C3835;
+  width: 100%;
+}
+
+.contactContainer{
+  background-color: #3C3835;
+  width: 100%;
+}
 /* Images */
 
 .project > a {
   min-width: 0px;
-  flex: 1;
+  flex: 1 1;
   display: flex;
 }
 
@@ -232,10 +241,6 @@ body {
     flex-direction: row;
   }
 
-  .project > a {
-      margin-right: 100px;
-  }
-
   .projectImage {
     max-height: 400px;
     min-width: 320px;
@@ -266,13 +271,13 @@ body {
     flex-direction: row;
   }
 
-  .project > a {
-    margin-right: 100px;
+  .project:nth-child(even) {
+    flex-direction: row-reverse;
   }
 
   .projectImage {
     max-height: 400px;
-    margin-right: 120px;
+    min-width: 400px;
   }
 
   .projectInfo {

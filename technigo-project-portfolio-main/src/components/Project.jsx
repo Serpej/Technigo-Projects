@@ -8,7 +8,7 @@ export const Project = ({name, image, tags,description, netlifyIcon, netlifyLink
   return (
     <div className="project">
       <ProjectImage image={image} netlifyLink={netlifyLink}/>
-      
+
       <div className="projectInfo">
         <ProjectTags tags={tags} />
         <ProjectName name={name} />
