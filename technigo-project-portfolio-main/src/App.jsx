@@ -26,11 +26,16 @@ export const App = () => {
       </div>
       <div className="techContainer">
         <h1>Tech</h1>
+        <h3>HTML, CSS, JavaScript, TypeScript, JSX, React, APIs, GitHub, Git</h3>
       </div>
-      <div className="skillsContainer"></div>
-        <h1>Skills</h1>
       <div className="contactContainer">
-        <h1>Say Hi</h1>
+        <h1>Say Hi!</h1>
+        <div className="contactInfoContainer">
+          <img className="profileImg" src="https://media.licdn.com/dms/image/v2/D4D03AQGlIeRF3ReILw/profile-displayphoto-scale_200_200/B4DZoMKXRHH4Ac-/0/1761140636054?e=1767830400&v=beta&t=8_ceWv_hsgAoxEyHpLBlPpAp6T7mEDrYayRKzcwDp0g" alt="A picture of Jesper" />
+          <h3>Jesper Hagerman Borgström</h3>
+          <h3>+46(0)76 26 25 922</h3>
+          <h3>Jehag@live.se</h3>
+        </div>
       </div>
     </div>);
 }
