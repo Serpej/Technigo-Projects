@@ -8,9 +8,11 @@ This is a portfolio with th different projects I've made in this technigo course
 
 3. I then made the webside responsive to different screen sizes, and smoothed out the different threshold switches.
 
-4. Lastly I added my contact information and a profile picture down at the bottom.
+4. Added my contact information and a profile picture down at the bottom.
+
+5. Lastly add a netlify.toml file and deploy it there.
 
 If I had more time, i would probably make this page look nicer with more css, also adding additional webpages.
 
 ## View it live
-NETLIFY LINK
+[NETLIFY LINK](https://jesperhagermanportfolio.netlify.app/)
