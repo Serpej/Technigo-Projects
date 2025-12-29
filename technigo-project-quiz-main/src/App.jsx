@@ -1,3 +1,16 @@
+import { QuestionComponent } from "./components/questionComponent"
+import data from './data.json'
+
 export const App = () => {
-  return <div>Magic color personality. Make a couple of questions and then display what color-combination they are.</div>
+const { questions } = data
+const questionArray = questions.map((question) => {
+  return (
+    <QuestionComponent  key={question.header} header={question.header} />
+  )
+})
+  return (
+    <div>
+      {questionArray}
+    </div>
+  )
 }

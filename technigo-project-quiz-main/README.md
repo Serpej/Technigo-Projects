@@ -2,6 +2,9 @@
 
 This is a Buzz Quiz to tell what Magic The Gathering color you are! It's a simple design where you have 6 questions per component, one for each color and one for colorless. In the end It displays the resulting data and gives some information about what the color combination stands for.
 
+1. First I sketched what the question components and final result should look like.
+2. Then I made a data.Json file for my questions and a basic mapping of the data to make the component work.
+
 
 Replace this readme with your own information about the project. You can include things like:
 
