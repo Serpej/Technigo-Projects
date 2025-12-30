@@ -19,9 +19,10 @@ const handleClick = (colorChoice) => {
 };
 
 const statementsArray = questionArray.statements.map((statement) => {
-  let colorChoice = statement.color;
+  let colorKey = statement.key;
+  console.log(colorKey);
   return (
-    <p key={statement.key} className="statementParagraph" onClick={ ({colorChoice}) => handleClick}>{colorChoice}</p>
+    <p key={colorKey} className="statementParagraph" onClick={ ({colorKey}) => handleClick}>{statement.color}</p>
   )
 })
 
