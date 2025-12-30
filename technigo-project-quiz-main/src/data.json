@@ -3,48 +3,120 @@
     {
       "header": "Question 1",
       "statements": [
-        "Blue Statement",
-        "Green Statement",
-        "Black Statement",
-        "White Statement",
-        "Red Statement",
-        "Colorless Statement"
+        {
+          "color": "Blue Statement",
+          "key": "Blue"
+        },
+        {
+          "color": "Green Statement",
+          "key": "Green"
+        },
+        {
+          "color": "Black Statement",
+          "key": "Black"
+        },
+        {
+          "color": "White Statement",
+          "key": "White"
+        },
+        {
+          "color": "Red Statement",
+          "key": "Red"
+        },
+        {
+          "color": "Colorless Statement",
+          "key": "Colorless"
+        }
       ],
       "keyValue":"1"
     },
     {
       "header": "Question 2",
       "statements": [
-        "Blue Statement",
-        "Green Statement",
-        "Black Statement",
-        "White Statement",
-        "Red Statement",
-        "Colorless Statement"
+        {
+          "color": "Blue Statement",
+          "key": "Blue"
+        },
+        {
+          "color": "Green Statement",
+          "key": "Green"
+        },
+        {
+          "color": "Black Statement",
+          "key": "Black"
+        },
+        {
+          "color": "White Statement",
+          "key": "White"
+        },
+        {
+          "color": "Red Statement",
+          "key": "Red"
+        },
+        {
+          "color": "Colorless Statement",
+          "key": "Colorless"
+        }
       ],
       "keyValue":"2"
     },
     {
       "header": "Question 3",
       "statements": [
-        "Blue Statement",
-        "Green Statement",
-        "Black Statement",
-        "White Statement",
-        "Red Statement",
-        "Colorless Statement"
+        {
+          "color": "Blue Statement",
+          "key": "Blue"
+        },
+        {
+          "color": "Green Statement",
+          "key": "Green"
+        },
+        {
+          "color": "Black Statement",
+          "key": "Black"
+        },
+        {
+          "color": "White Statement",
+          "key": "White"
+        },
+        {
+          "color": "Red Statement",
+          "key": "Red"
+        },
+        {
+          "color": "Colorless Statement",
+          "key": "Colorless"
+        }
       ],
       "keyValue":"3"
     },
     {
       "header": "Question 4",
       "statements": [
-        "Blue Statement",
-        "Green Statement",
-        "Black Statement",
-        "White Statement",
-        "Red Statement",
-        "Colorless Statement"
+        {
+          "color": "Blue Statement",
+          "key": "Blue"
+        },
+        {
+          "color": "Green Statement",
+          "key": "Green"
+        },
+        {
+          "color": "Black Statement",
+          "key": "Black"
+        },
+        {
+          "color": "White Statement",
+          "key": "White"
+        },
+        {
+          "color": "Red Statement",
+          "key": "Red"
+        },
+        {
+          "color": "Colorless Statement",
+          "key": "Colorless"
+        }
       ],
       "keyValue":"4"
       }
