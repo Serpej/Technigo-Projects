@@ -1,3 +1,4 @@
+import { Arrow } from "./components/arrow";
 import { QuestionHeader } from "./components/QuestionHeader"
 import data from './data.json'
 import {useState} from "react"
@@ -6,7 +7,10 @@ import {useState} from "react"
 
 export const App = () => {
 
+
 const [index, setIndex] = useState(0);
+
+// useState Hook to remember what choices user has made
 const [colorCounts, setColorCounts] = useState([
   { key: "Blue", count: 0},
   { key: "Green", count: 0},
@@ -23,7 +27,7 @@ let questionArray = questions[index];
 
 // A state function updater. It updates the count of the useState Array with objects.
 const handleColorChoice = (colorKey) => {
-  setColorCounts( previousStateReactArray => {
+  setColorCounts( (previousStateReactArray) => {
     const nextStateReactArray = previousStateReactArray.map(color => {
       const updated = color.key === colorKey ? {...color, count: color.count + 1} : color;
       return updated
@@ -39,21 +43,28 @@ const handleColorChoice = (colorKey) => {
   })
 };
 
-// Clickhandler
-const handleClick = (colorKey) => {
+// Handles clicking on one of the statements
+const handleNextClick = (colorKey) => {
   handleColorChoice(colorKey);
   setIndex(index + 1);
+};
+
+
+// Handles clicking on the previous arrow
+const handlePreviousClick = () => {
+  setIndex(index - 1);
 };
 
 const statementsArray = questionArray.statements.map((statement) => {
   const colorKey = statement.key;
   return (
-    <p key={colorKey} className="statementParagraph" onClick={() => handleClick(colorKey)}>{statement.color}</p>
+    <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey)}>{statement.color}</p>
   )
 })
 
   return (
     <div>
+      <Arrow onClick={handlePreviousClick} />
       <QuestionHeader header={questionArray.header} />
       {statementsArray}
     </div>
