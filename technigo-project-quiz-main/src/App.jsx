@@ -18,7 +18,10 @@ const [colorCounts, setColorCounts] = useState([
   { key: "White", count: 0},
   { key: "Red", count: 0},
   { key: "Colorless", count: 0}
-])
+]);
+
+// Store the last clicked choice if user wants to go back
+const [lastColorKey, setLastColorKey] = useState(null);
 
 // Destructure the questions array from data
 const { questions } = data;
@@ -26,10 +29,10 @@ let questionArray = questions[index];
 
 
 // A state function updater. It updates the count of the useState Array with objects.
-const handleColorChoice = (colorKey) => {
+const handleColorChoice = (colorKey, amount) => {
   setColorCounts( (previousStateReactArray) => {
     const nextStateReactArray = previousStateReactArray.map(color => {
-      const updated = color.key === colorKey ? {...color, count: color.count + 1} : color;
+      const updated = color.key === colorKey ? {...color, count: color.count + amount} : color;
       return updated
     })
 
@@ -45,20 +48,24 @@ const handleColorChoice = (colorKey) => {
 
 // Handles clicking on one of the statements
 const handleNextClick = (colorKey) => {
-  handleColorChoice(colorKey);
+  setLastColorKey(colorKey);
+  handleColorChoice(colorKey, 1);
   setIndex(index + 1);
 };
 
 
 // Handles clicking on the previous arrow
 const handlePreviousClick = () => {
+  if (lastColorKey) {
+    handleColorChoice(lastColorKey, -1);
+  }
   setIndex(index - 1);
 };
 
 const statementsArray = questionArray.statements.map((statement) => {
   const colorKey = statement.key;
   return (
-    <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey)}>{statement.color}</p>
+      <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey)}>{statement.color}</p>
   )
 })
 
