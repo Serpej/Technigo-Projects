@@ -1,5 +1,6 @@
-import { Arrow } from "./components/arrow";
+import { Arrow } from "./components/Arrow";
 import { QuestionHeader } from "./components/QuestionHeader"
+import { Result } from "./components/Result";
 import data from './data.json'
 import {useState} from "react"
 
@@ -36,8 +37,8 @@ const handleColorChoice = (colorKey, amount) => {
       return updated
     })
 
+    // For checking the score of the choices
     const selected = nextStateReactArray.find(c => c.key === colorKey)
-
     if (selected) {
     console.log(`Key changed, ${selected.key} is now ${selected.count}`)
     }
@@ -50,16 +51,26 @@ const handleColorChoice = (colorKey, amount) => {
 const handleNextClick = (colorKey) => {
   setLastColorKey(colorKey);
   handleColorChoice(colorKey, 1);
-  setIndex(index + 1);
+  if(index === questions.length -1) {
+    console.log(`Index is ${index}. End of array`)
+  } else {
+    setIndex(index + 1);
+    console.log(`index is now ${index + 1}. Array Length ${questions.length}`)
+  }
 };
 
 
 // Handles clicking on the previous arrow
 const handlePreviousClick = () => {
-  if (lastColorKey) {
-    handleColorChoice(lastColorKey, -1);
+  if(index === questions.length -3) {
+    console.log(`Index is ${index}. Start of array`)
+  } else {
+    if (lastColorKey) {
+      handleColorChoice(lastColorKey, -1);
+    }
+    setIndex(index - 1);
+    console.log(`index is now ${index + 1}. Array Length ${questions.length}`)
   }
-  setIndex(index - 1);
 };
 
 const statementsArray = questionArray.statements.map((statement) => {
@@ -71,9 +82,14 @@ const statementsArray = questionArray.statements.map((statement) => {
 
   return (
     <div>
-      <Arrow onClick={handlePreviousClick} />
-      <QuestionHeader header={questionArray.header} />
-      {statementsArray}
+      <div className="questionsContainer">
+        <Arrow onClick={handlePreviousClick} />
+        <QuestionHeader header={questionArray.header} />
+        {statementsArray}
+      </div>
+      <div className="resultContainer">
+      <Result />
+      </div>
     </div>
   )
 };
