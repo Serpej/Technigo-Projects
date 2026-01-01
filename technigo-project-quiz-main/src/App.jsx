@@ -21,6 +21,8 @@ const [colorCounts, setColorCounts] = useState([
   { key: "Colorless", count: 0}
 ]);
 
+const [choiceMap, setChoiceMap] = useState(new Map())
+
 // Store the last clicked choice if user wants to go back
 const [lastColorKey, setLastColorKey] = useState(null);
 
@@ -28,67 +30,74 @@ const [lastColorKey, setLastColorKey] = useState(null);
 const { questions } = data;
 let questionArray = questions[index];
 
-
 // A state function updater. It updates the count of the useState Array with objects.
 const handleColorChoice = (colorKey, amount) => {
-  setColorCounts( (previousStateReactArray) => {
-    const nextStateReactArray = previousStateReactArray.map(color => {
+  setColorCounts( (prev) => {
+    const next = prev.map(color => {
       const updated = color.key === colorKey ? {...color, count: color.count + amount} : color;
       return updated
-    })
-
-    // For checking the score of the choices
-    const selected = nextStateReactArray.find(c => c.key === colorKey)
-    if (selected) {
-    console.log(`Key changed, ${selected.key} is now ${selected.count}`)
-    }
-    
-    return nextStateReactArray;
+    });
+    return next;
   })
 };
 
 // Handles clicking on one of the statements
-const handleNextClick = (colorKey) => {
+const handleNextClick = (colorKey, questionIndex) => {
   setLastColorKey(colorKey);
   handleColorChoice(colorKey, 1);
+
+  // Update the setter by cloning previous map and adding the new key: value
+  setChoiceMap(prev => {
+    const next = new Map(prev);
+    next.set(questionIndex, colorKey)
+    console.log(`Map size: ${next.size}`);
+    return next
+  });
+
   if(index === questions.length -1) {
-    console.log(`Index is ${index}. End of array`)
+    console.log(`Index is ${index}. End of array`);
   } else {
     setIndex(index + 1);
-    console.log(`index is now ${index + 1}. Array Length ${questions.length}`)
   }
 };
 
 
 // Handles clicking on the previous arrow
-const handlePreviousClick = () => {
-  if(index === questions.length -3) {
-    console.log(`Index is ${index}. Start of array`)
+const handlePreviousClick = (questionIndex) => {
+  if(index === 0) {
+    console.log(`Index is ${index}. Start of array`);
   } else {
-    if (lastColorKey) {
-      handleColorChoice(lastColorKey, -1);
-    }
+    choiceMap.forEach((colorValue, key) => {
+        // 1. Compare statementIndex with map keys
+      if (key === questionIndex) {
+        handleColorChoice(colorValue, -1);
+        console.log(`Question index ${questionIndex} FOUND.`);
+      } else {
+        console.log(`Question index ${questionIndex} NOT FOUND.`);
+        console.log(`Map size: ${choiceMap.size}`);
+      }
+
+    });
     setIndex(index - 1);
-    console.log(`index is now ${index + 1}. Array Length ${questions.length}`)
   }
-};
+  };
 
-const statementsArray = questionArray.statements.map((statement) => {
+  const statementsArray = questionArray.statements.map((statement, questionIndex) => {
   const colorKey = statement.key;
-  return (
-      <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey)}>{statement.color}</p>
-  )
-})
-
+    return (
+      <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey, questionIndex)}>{statement.color}</p>
+    )
+  })
+    console.log(`index of Question was: ${index}. Questions left: ${questions.length - index}.`)
   return (
     <div>
       <div className="questionsContainer">
-        <Arrow onClick={handlePreviousClick} />
+        <Arrow onClick={() => handlePreviousClick(questionArray.questionIndex)} />
         <QuestionHeader header={questionArray.header} />
         {statementsArray}
       </div>
       <div className="resultContainer">
-      <Result />
+        <Result />
       </div>
     </div>
   )

@@ -28,7 +28,7 @@
           "key": "Colorless"
         }
       ],
-      "keyValue":"1"
+      "questionIndex": 0
     },
     {
       "header": "Question 2",
@@ -58,7 +58,7 @@
           "key": "Colorless"
         }
       ],
-      "keyValue":"2"
+      "questionIndex": 1
     },
     {
       "header": "Question 3",
@@ -88,7 +88,7 @@
           "key": "Colorless"
         }
       ],
-      "keyValue":"3"
+      "questionIndex": 2
     },
     {
       "header": "Question 4",
@@ -118,7 +118,7 @@
           "key": "Colorless"
         }
       ],
-      "keyValue":"4"
+      "questionIndex": 3
       }
   ]
 }
