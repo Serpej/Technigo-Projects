@@ -2,7 +2,7 @@ import { Arrow } from "./components/Arrow";
 import { QuestionHeader } from "./components/QuestionHeader"
 import { Result } from "./components/Result";
 import data from './data.json'
-import {useState} from "react"
+import {useEffect, useState} from "react"
 
 
 
@@ -23,9 +23,6 @@ const [colorCounts, setColorCounts] = useState([
 
 const [choiceMap, setChoiceMap] = useState(new Map())
 
-// Store the last clicked choice if user wants to go back
-const [lastColorKey, setLastColorKey] = useState(null);
-
 // Destructure the questions array from data
 const { questions } = data;
 let questionArray = questions[index];
@@ -43,19 +40,18 @@ const handleColorChoice = (colorKey, amount) => {
 
 // Handles clicking on one of the statements
 const handleNextClick = (colorKey, questionIndex) => {
-  setLastColorKey(colorKey);
+
   handleColorChoice(colorKey, 1);
 
   // Update the setter by cloning previous map and adding the new key: value
   setChoiceMap(prev => {
     const next = new Map(prev);
     next.set(questionIndex, colorKey)
-    console.log(`Map size: ${next.size}`);
     return next
   });
 
   if(index === questions.length -1) {
-    console.log(`Index is ${index}. End of array`);
+    console.log(`End of array`);
   } else {
     setIndex(index + 1);
   }
@@ -64,20 +60,17 @@ const handleNextClick = (colorKey, questionIndex) => {
 
 // Handles clicking on the previous arrow
 const handlePreviousClick = (questionIndex) => {
+
+  // Remove the choice that was made for the specific question
+  choiceMap.forEach((colorValue, key) => {
+    if (key === questionIndex) {
+      handleColorChoice(colorValue, -1);
+    }
+  });
+
   if(index === 0) {
     console.log(`Index is ${index}. Start of array`);
   } else {
-    choiceMap.forEach((colorValue, key) => {
-        // 1. Compare statementIndex with map keys
-      if (key === questionIndex) {
-        handleColorChoice(colorValue, -1);
-        console.log(`Question index ${questionIndex} FOUND.`);
-      } else {
-        console.log(`Question index ${questionIndex} NOT FOUND.`);
-        console.log(`Map size: ${choiceMap.size}`);
-      }
-
-    });
     setIndex(index - 1);
   }
   };
@@ -87,8 +80,11 @@ const handlePreviousClick = (questionIndex) => {
     return (
       <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey, questionIndex)}>{statement.color}</p>
     )
-  })
-    console.log(`index of Question was: ${index}. Questions left: ${questions.length - index}.`)
+  });
+
+  // Logs the counts
+  colorCounts.forEach(color => console.log(`${color.key}: ${color.count}`));
+
   return (
     <div>
       <div className="questionsContainer">
