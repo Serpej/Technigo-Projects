@@ -1,0 +1,196 @@
+{
+  "guilds": [
+    {
+      "monoColored": [
+        { 
+          "name": "Blue",
+          "colors": ["Blue"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/a/a8/Mana_U.png/revision/latest?cb=20130604114015",
+          "description":"You prioritize knowledge, foresight, and continuous self-improvement. You defeat opponents by anticipating outcomes and acting only when success is likely. Naturally, you’re still 'thinking about it' while everyone else has moved on.",
+          "quote": "'Information has a price. Knowledge has a value.'— Rhystic Study"
+        },
+        {
+          "name": "Green",
+          "colors": ["Green"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/f/f7/Mana_G.png/revision/latest?cb=20130604114032",
+          "description":"You value growth, harmony, and the natural order. You defeat opponents through resilience and inevitability. You trust that everything will work out — and hope that nothing ever changes.",
+          "quote": "'Nature doesn’t need your permission.' — Thragtusk"
+        },
+        {
+          "name": "Black",
+          "colors": ["Black"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/a/a6/Mana_B.png/revision/latest?cb=20130604114019",
+          "description":"You focus on self-interest, realism, and personal autonomy. You defeat opponents by exploiting weaknesses and accepting costs others refuse to pay. You call it pragmatism, but it does conveniently justify doing whatever you wanted anyway.",
+          "quote": "'Greatness, at any cost.'— Griselbrand"
+        },
+        {
+          "name": "White",
+          "colors": ["White"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/d/da/Mana_W.png/revision/latest?cb=20130604114009",
+          "description":"You value order, fairness, and shared rules, believing stability comes from structure and mutual responsibility. You defeat opponents by narrowing their options and enforcing boundaries. You’re convinced this is for everyone’s own good, even when no one asked.",
+          "quote": "'Law is order, and order is life.' — Supreme Verdict"
+        },
+        {
+          "name": "Red",
+          "colors":["Red"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/c/ce/Mana_R.png/revision/latest?cb=20130604114022",
+          "description":"You are driven by emotion, passion, and authenticity. You defeat opponents by overwhelming them with speed and intensity. You insist this is freedom, not just a lack of impulse control.",
+          "quote": "'If there’s a chance it’ll work, I’ll take it.' — Faithless Looting"
+        },
+        {
+          "name": "Colorless",
+          "colors":[ "Colorless"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/1/18/Mana_C.png/revision/latest?cb=20160220211117",
+          "description":"You operate outside ideology, emotion, and moral framing entirely. You defeat opponents by ignoring their assumptions and functioning on principles they can’t interact with. You’re not cold or evil—you’re just not playing the same game, which is somehow worse.",
+          "quote": "'It does not think. It does not feel. It does not forgive.' — Kozilek, the Great Distortion"
+        }
+      ]
+    },
+    {
+      "twoColorCombinations": [
+        { 
+          "name": "Azorius",
+          "colors":["Blue", "White"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/3/37/Azorius_Logo.png/revision/latest?cb=20150515150436",
+          "description":"You believe rules and knowledge should work together to create order. You defeat opponents by restricting actions and winning procedurally. You’re confident the system is fair, mostly because you designed it.",
+          "quote": "'The law has no mercy, and no memory.' — Detention Sphere"
+        },
+        {
+          "name": "Dimir",
+          "colors": ["Blue", "Black"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/6/60/Dimir_Logo.png/revision/latest?cb=20150515150437",
+          "description":"You value secrecy, patience, and manipulation. You defeat opponents by controlling information and striking unexpectedly. You insist this is subtlety, not trust issues.",
+          "quote": "'No one ever notices when a secret disappears.' — Psychic Strike"
+        },
+        {
+          "name": "Rakdos",
+          "colors": ["Red", "Black"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/f/f8/Rakdos_Logo.png/revision/latest?cb=20150515150438",
+          "description":"You seek freedom through intensity, excess, and transgression. You defeat opponents by applying chaotic pressure until something breaks. You call it self-expression; everyone else calls it exhausting.",
+          "quote": "'Pain is the truest form of expression.' — Rakdos, Lord of Riots"
+        },
+        {
+          "name": "Selesnya",
+          "colors": ["Green", "White"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/0/08/Selesnya_Logo.png/revision/latest?cb=20150515150439",
+          "description":"You emphasize cooperation, community, and shared growth. You defeat opponents by building resilient, unified systems. You’re very open-minded, as long as everyone agrees with you.",
+          "quote": "'One body, many minds.' — Collective Blessing"
+        },
+        {
+          "name": "Orzhov",
+          "colors": ["Black", "White"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/3/38/Orzhov_Logo.png/revision/latest/scale-to-width-down/200?cb=20150515150438",
+          "description":"You believe order is maintained through obligation and leverage. You defeat opponents by binding them with debts and consequences. You prefer the term “mutual responsibility,” especially when it’s very mutual and mostly their responsibility.",
+          "quote": "'Debt is the most powerful form of control.' — Extort reminder text (Orzhov flavor is famously blunt)"
+        },
+        {
+          "name": "Izzet",
+          "colors": ["Red", "Blue"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/3/3a/Izzet_Logo.png/revision/latest?cb=20150515150438",
+          "description":"You are driven by curiosity, experimentation, and creativity. You defeat opponents through clever improvisation and sudden insight. You have many brilliant ideas, and shockingly few finished projects.",
+          "quote": "Try it now. Try it again later.' — Izzet Guildmage"
+        },
+        {
+          "name": "Golgari",
+          "colors": ["Black", "Green"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/7/76/Golgari_Logo.png/revision/latest?cb=20150515150437",
+          "description":"You are comfortable with decay, loss, and renewal. You defeat opponents by enduring and returning stronger. You’re very 'at peace with death', provided it’s happening to someone else first.",
+          "quote": "'From rot springs life.' — Golgari Germination"
+        },
+        {
+          "name": "Boros",
+          "colors": ["White", "Red"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/8/89/Boros_Logo.png/revision/latest?cb=20150515150437",
+          "description":"You are motivated by justice, loyalty, and decisive action. You defeat opponents through coordinated aggression and moral certainty. You never doubt yourself, which saves a lot of time on reflection.",
+          "quote": "'Justice is its own reward.' — Boros Charm"
+        },
+        {
+          "name": "Simic",
+          "colors": ["Blue", "Green"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/3/3e/Simic_Logo.png/revision/latest?cb=20150515144102",
+          "description":"You focus on adaptation, optimization, and improvement. You defeat opponents by evolving faster than they can respond. You’re sure perfection is just one more mutation away.",
+          "quote": "'The process is never finished.' — Prime Speaker Zegana"
+        }
+        ,{
+          "name": "Gruul",
+          "colors": ["Green", "Red"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/e/e9/Gruul_Logo.png/revision/latest?cb=20150515150437",
+          "description":"You distrust institutions and value instinct and raw presence. You defeat opponents by tearing down structures and overwhelming them with force. You hate civilization an impressive amount for someone who is constantly reacting to it.",
+          "quote": "'Civilization is a disease.' — Rubblebelt Raiders"
+        }
+      ],
+      "threeColorCombinations": [
+        { 
+          "name": "Bant",
+          "colors":["Blue", "White", "Green"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f3/Brokers.png/revision/latest?cb=20220304061922",
+          "description":"You value harmony, discipline, and moral growth. You defeat opponents through steady development and coordinated defense. You prefer conflict that remains tasteful and largely hypothetical.",
+          "quote": "Peace is not absence of conflict, but mastery over it.' — Stoic Angel"
+        },
+        {
+          "name": "Esper",
+          "colors": ["Blue", "Black", "White"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/e/e3/Obscura.png/revision/latest?cb=20220304061414",
+          "description":"You prioritize efficiency, control, and intellectual dominance. You defeat opponents by dictating the terms of engagement. You believe emotions are inefficient, which is convenient since you don’t like dealing with them.",
+          "quote": "'Perfection is achieved, not inherited.' — Sharuum the Hegemon"
+        },
+        {
+          "name": "Grixis",
+          "colors": ["Red", "Black", "Blue"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/2/2e/Maestros.png/revision/latest?cb=20220304061554",
+          "description":"You are driven by ambition, cunning, and emotional intensity. You defeat opponents through manipulation and disruption. You call it honesty, because at least you’re openly terrible.",
+          "quote": "'Your suffering is optional. Mine is not.' — Cruel Ultimatum"
+        },
+        {
+          "name": "Jund",
+          "colors": ["Green", "Red", "Black"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f4/Riveteers.png/revision/latest?cb=20220304061652",
+          "description":"You are driven by ambition, cunning, and emotional intensity. You defeat opponents through manipulation and disruption. You call it honesty, because at least you’re openly terrible.",
+          "quote": "'Only the strong survive.' — Sprouting Thrinax"
+        },
+        {
+          "name": "Naya",
+          "colors": ["Green", "White", "Red"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/2/2f/Cabaretti.png/revision/latest?cb=20220304061801",
+          "description":"You emphasize vitality, tradition, and shared values. You defeat opponents through overwhelming communal force. You love life, nature, and passion — while everyone else just sees the lack of complexity.",
+          "quote": "'Life is loud. Let it roar.' — Realm Razer"
+        },
+        {
+          "name": "Jeskai",
+          "colors": ["Red", "Blue", "White"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/f/f3/Clan_Symbol_Jeskai.png/revision/latest?cb=20140917152151",
+          "description":"You value mastery, awareness, and expressive skill. You defeat opponents through precision and timing. You enjoy explaining how elegantly you won, almost as much as winning.",
+          "quote": "'Strike true, think fast.' — Jeskai Charm"
+        },
+        {
+          "name": "Abzan",
+          "colors": ["Black", "Green", "White"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/2/2e/Clan_Symbol_Abzan.png/revision/latest?cb=20140917151940",
+          "description":"You prioritize endurance, loyalty, and long-term stability. You defeat opponents by outlasting them. You call this wisdom, not an inability to let go.",
+          "quote": "'What endures defines us.' — Abzan Ascendancy"
+        },
+        {
+          "name": "Mardu",
+          "colors": ["White", "Red", "Black"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/4/4e/Clan_Symbol_Mardu.png/revision/latest?cb=20140917152240",
+          "description":"You are driven by action, loyalty, and conquest. You defeat opponents through relentless aggression. You believe hesitation is weakness, especially when it involves thinking.",
+          "quote": "'Speed is life.' — Mardu Ascendancy"
+        },
+        {
+          "name": "Sultai",
+          "colors": ["Blue", "Green", "Black"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/2/22/Clan_Symbol_Sultai.png/revision/latest?cb=20140917152229",
+          "description":"You focus on patience, leverage, and inevitability. You defeat opponents by accumulating advantage over time. You’re very calm about the future, assuming you’re the one controlling it.",
+          "quote": "'Power grows quietly.' — Villainous Wealth"
+        },
+        {
+          "name": "Temur",
+          "colors": ["Blue", "Green", "Red"],
+          "img_src":"https://static.wikia.nocookie.net/mtgsalvation_gamepedia/images/2/2f/Clan_Symbol_Temur.png/revision/latest?cb=20140917152253",
+          "description":"You value instinct, freedom, and lived experience. You defeat opponents by adapting creatively in the moment. You insist structure would only hold you back, even when it clearly would help.",
+          "quote": "'Adapt or die.' — Savage Knuckleblade"
+        }
+      ]
+    }
+  ]
+}

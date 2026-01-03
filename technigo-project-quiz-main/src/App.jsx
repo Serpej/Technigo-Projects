@@ -1,7 +1,7 @@
 import { Arrow } from "./components/Arrow";
 import { QuestionHeader } from "./components/QuestionHeader"
 import { Result } from "./components/Result";
-import data from './data.json'
+import data from './questiondata.json'
 import {useEffect, useState} from "react"
 
 
@@ -21,6 +21,7 @@ const [colorCounts, setColorCounts] = useState([
   { key: "Colorless", count: 0}
 ]);
 
+// A map to remember what choice were made in what question
 const [choiceMap, setChoiceMap] = useState(new Map())
 
 // Destructure the questions array from data
