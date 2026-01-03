@@ -24,11 +24,10 @@ const [colorCounts, setColorCounts] = useState([
 ]);
 
 // A map to remember what choice were made in what question
-const [choiceMap, setChoiceMap] = useState(new Map())
+const [choiceMap, setChoiceMap] = useState(new Map());
 
-// Destructure the questions array from questionsData
-const { questions } = data;
-let questionArray = questions[index];
+// A state to toggle visibility
+const [visibility, setVisibility] = useState(true);
 
 // A state function updater. It updates the count of the useState Array with objects.
 const handleColorChoice = (colorKey, amount) => {
@@ -40,6 +39,11 @@ const handleColorChoice = (colorKey, amount) => {
     return next;
   })
 };
+
+// Destructure the questions array from questionsData
+const { questions } = data;
+let questionArray = questions[index];
+
 
 // Handles clicking on one of the statements
 const handleNextClick = (colorKey, questionIndex) => {
@@ -53,7 +57,8 @@ const handleNextClick = (colorKey, questionIndex) => {
     return next
   });
 
-  if(index === questions.length -1) {
+  if (index === questions.length -1) {
+    setVisibility(false);
     console.log(`End of array`);
   } else {
     setIndex(index + 1);
@@ -90,12 +95,17 @@ const handlePreviousClick = (questionIndex) => {
 
   return (
     <div>
-      <div className="questionsContainer">
+      <div className="questionsContainer"
+      hidden={!visibility}
+      >
         <Arrow onClick={() => handlePreviousClick(questionArray.questionIndex)} />
         <QuestionHeader header={questionArray.header} />
         {statementsArray}
       </div>
-      <div className="resultContainer">
+      <div 
+        className="resultContainer"
+        hidden={visibility}
+      >
         <HeaderResult />
         <Personality />
       </div>
