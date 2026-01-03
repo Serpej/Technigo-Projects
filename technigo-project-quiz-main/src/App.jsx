@@ -1,8 +1,10 @@
 import { Arrow } from "./components/Arrow";
 import { QuestionHeader } from "./components/QuestionHeader"
-import { Result } from "./components/Result";
+import { HeaderResult } from "./components/HeaderResult";
 import data from './questiondata.json'
 import {useEffect, useState} from "react"
+import { Personality } from "./components/Personality";
+
 
 
 
@@ -24,7 +26,7 @@ const [colorCounts, setColorCounts] = useState([
 // A map to remember what choice were made in what question
 const [choiceMap, setChoiceMap] = useState(new Map())
 
-// Destructure the questions array from data
+// Destructure the questions array from questionsData
 const { questions } = data;
 let questionArray = questions[index];
 
@@ -94,7 +96,8 @@ const handlePreviousClick = (questionIndex) => {
         {statementsArray}
       </div>
       <div className="resultContainer">
-        <Result />
+        <HeaderResult />
+        <Personality />
       </div>
     </div>
   )
