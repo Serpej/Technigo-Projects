@@ -12,6 +12,81 @@ code {
     monospace;
 }
 
+/*"#F3E8DF","#E8D1C5","#57595B","#57595B","#452829" */
+html * {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body,
+#root,
+.contentContainer {
+  width: 100vw;
+  height: 100vh;
+}
+
+.contentContainer {
+  padding: 8px 16px;
+  background-color: #F3E8DF;
+}
+
+.questionsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.arrowAndHeaderContainer,
+.headerContainer,
+.questionTextContainer {
+  display: flex;
+  justify-content: center;
+}
+.arrowAndHeaderContainer {
+  position: relative;
+}
+
+
+.header {
+  flex: 1;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
+}
+
+.centerContainer{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.questionTextContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  margin-top: 60px;
+  width: 80%;
+  gap: 30px;
+}
+
+.statementParagraph {
+  padding: 20px;
+  border: 1px solid #57595B;
+}
+
+#arrowButton {
+  padding: 0px;
+  border: 0px;
+  width: 50px;
+  height: auto;
+  appearance: none;
+  position: absolute;
+}
+
 .arrowImg {
   width: 50px;
   height: auto;

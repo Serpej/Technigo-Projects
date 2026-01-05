@@ -13,7 +13,6 @@ const src = colorArray?.monoColored?.[0]?.img_src.trim();
 const name = colorArray?.monoColored?.[0]?.name;
 const description = colorArray?.monoColored?.[0]?.description;
 
-console.log(src);
 return (
   <div>
     <h2>{name}</h2>

@@ -94,13 +94,22 @@ const handlePreviousClick = (questionIndex) => {
   colorCounts.forEach(color => console.log(`${color.key}: ${color.count}`));
 
   return (
-    <div>
-      <div className="questionsContainer"
-      hidden={!visibility}
+    <div className="contentContainer">
+      <div 
+        className="questionsContainer"
+        hidden={!visibility}
       >
-        <Arrow onClick={() => handlePreviousClick(questionArray.questionIndex)} />
-        <QuestionHeader header={questionArray.header} />
-        {statementsArray}
+        <div className="arrowAndHeaderContainer">
+          <Arrow onClick={() => handlePreviousClick(questionArray.questionIndex)} />
+          <QuestionHeader header={questionArray.header} />
+        </div>
+
+        <div className="centerContainer">
+          <div className="questionTextContainer">
+            {statementsArray}
+          </div>
+        </div>
+        
       </div>
       <div 
         className="resultContainer"
