@@ -111,8 +111,7 @@ const handlePreviousClick = (questionIndex) => {
         
       </div>
       <div 
-        className={`resultContainer ${visibility ? 'isHidden' : ''}`}
-      >
+        className={`resultContainer ${visibility ? 'isHidden' : ''}`}>
         <HeaderResult />
         <Personality />
       </div>

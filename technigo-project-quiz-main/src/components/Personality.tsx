@@ -14,13 +14,14 @@ const name = colorArray?.monoColored?.[0]?.name;
 const description = colorArray?.monoColored?.[0]?.description;
 
 return (
-  <div>
-    <h2>{name}</h2>
+  <div className="personalityInformationContainer">
     <img 
+      className="guildImage"
       src={src} 
       alt="guild image"
       referrerPolicy="no-referrer" />
-    <p>{description}</p>
+      <h1>{name}!</h1>
+    <p className="personalityDescription">{description}</p>
   </div>
 )
 }
