@@ -76,6 +76,14 @@ body,
 .statementParagraph {
   padding: 20px;
   border: 1px solid #57595B;
+  transition: scale 0.2s, background-color 0.2s, border 0.2s, color;
+}
+
+.statementParagraph:hover {
+  scale: 1.02;
+  background-color: #57595B;
+  border: 1px solid #452829;
+  color:#F3E8DF;
 }
 
 #arrowButton {
