@@ -96,8 +96,7 @@ const handlePreviousClick = (questionIndex) => {
   return (
     <div className="contentContainer">
       <div 
-        className="questionsContainer"
-        hidden={!visibility}
+        className={`questionsContainer ${!visibility ? 'isHidden' : ''} `}
       >
         <div className="arrowAndHeaderContainer">
           <Arrow onClick={() => handlePreviousClick(questionArray.questionIndex)} />
@@ -112,8 +111,7 @@ const handlePreviousClick = (questionIndex) => {
         
       </div>
       <div 
-        className="resultContainer"
-        hidden={visibility}
+        className={`resultContainer ${visibility ? 'isHidden' : ''}`}
       >
         <HeaderResult />
         <Personality />

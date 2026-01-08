@@ -38,6 +38,10 @@ body,
   height: 100%;
 }
 
+.isHidden {
+  display: none;
+}
+
 .arrowAndHeaderContainer,
 .headerContainer,
 .questionTextContainer {
