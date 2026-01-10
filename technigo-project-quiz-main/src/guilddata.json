@@ -2,6 +2,13 @@
   "guilds": [
     {
       "monoColored": [
+        {
+          "name": "White",
+          "colors": ["White"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/d/da/Mana_W.png/revision/latest?cb=20130604114009",
+          "description":"You value order, fairness, and shared rules, believing stability comes from structure and mutual responsibility. You defeat opponents by narrowing their options and enforcing boundaries. You’re convinced this is for everyone’s own good, even when no one asked.",
+          "quote": "'Law is order, and order is life.' — Supreme Verdict"
+        },
         { 
           "name": "Blue",
           "colors": ["Blue"],
@@ -10,32 +17,26 @@
           "quote": "'Information has a price. Knowledge has a value.'— Rhystic Study"
         },
         {
-          "name": "Green",
-          "colors": ["Green"],
-          "img_src":"https://static.wikia.nocookie.net/mtg/images/f/f7/Mana_G.png/revision/latest?cb=20130604114032",
-          "description":"You value growth, harmony, and the natural order. You defeat opponents through resilience and inevitability. You trust that everything will work out — and hope that nothing ever changes.",
-          "quote": "'Nature doesn’t need your permission.' — Thragtusk"
-        },
-        {
           "name": "Black",
           "colors": ["Black"],
           "img_src":"https://static.wikia.nocookie.net/mtg/images/a/a6/Mana_B.png/revision/latest?cb=20130604114019",
           "description":"You focus on self-interest, realism, and personal autonomy. You defeat opponents by exploiting weaknesses and accepting costs others refuse to pay. You call it pragmatism, but it does conveniently justify doing whatever you wanted anyway.",
           "quote": "'Greatness, at any cost.'— Griselbrand"
         },
-        {
-          "name": "White",
-          "colors": ["White"],
-          "img_src":"https://static.wikia.nocookie.net/mtg/images/d/da/Mana_W.png/revision/latest?cb=20130604114009",
-          "description":"You value order, fairness, and shared rules, believing stability comes from structure and mutual responsibility. You defeat opponents by narrowing their options and enforcing boundaries. You’re convinced this is for everyone’s own good, even when no one asked.",
-          "quote": "'Law is order, and order is life.' — Supreme Verdict"
-        },
+
         {
           "name": "Red",
           "colors":["Red"],
           "img_src":"https://static.wikia.nocookie.net/mtg/images/c/ce/Mana_R.png/revision/latest?cb=20130604114022",
           "description":"You are driven by emotion, passion, and authenticity. You defeat opponents by overwhelming them with speed and intensity. You insist this is freedom, not just a lack of impulse control.",
           "quote": "'If there’s a chance it’ll work, I’ll take it.' — Faithless Looting"
+        },
+        {
+          "name": "Green",
+          "colors": ["Green"],
+          "img_src":"https://static.wikia.nocookie.net/mtg/images/f/f7/Mana_G.png/revision/latest?cb=20130604114032",
+          "description":"You value growth, harmony, and the natural order. You defeat opponents through resilience and inevitability. You trust that everything will work out — and hope that nothing ever changes.",
+          "quote": "'Nature doesn’t need your permission.' — Thragtusk"
         },
         {
           "name": "Colorless",
@@ -118,7 +119,9 @@
           "description":"You distrust institutions and value instinct and raw presence. You defeat opponents by tearing down structures and overwhelming them with force. You hate civilization an impressive amount for someone who is constantly reacting to it.",
           "quote": "'Civilization is a disease.' — Rubblebelt Raiders"
         }
-      ],
+      ]
+    },
+    {
       "threeColorCombinations": [
         { 
           "name": "Bant",

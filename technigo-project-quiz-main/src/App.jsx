@@ -15,11 +15,11 @@ const [index, setIndex] = useState(0);
 
 // useState Hook to remember what choices user has made
 const [colorCounts, setColorCounts] = useState([
-  { key: "Blue", count: 0},
-  { key: "Green", count: 0},
-  { key: "Black", count: 0},
   { key: "White", count: 0},
+  { key: "Blue", count: 0},
+  { key: "Black", count: 0},
   { key: "Red", count: 0},
+  { key: "Green", count: 0},
   { key: "Colorless", count: 0}
 ]);
 
@@ -113,7 +113,8 @@ const handlePreviousClick = (questionIndex) => {
       <div 
         className={`resultContainer ${visibility ? 'isHidden' : ''}`}>
         <HeaderResult />
-        <Personality />
+        <Personality
+          colorCounts= {colorCounts} />
       </div>
     </div>
   )
