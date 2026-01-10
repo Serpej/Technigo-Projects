@@ -5,26 +5,26 @@ type ColorCount = {key: string; count: number};
 
 export const Personality = ({colorCounts}: {colorCounts: ColorCount[]}) => {
 
-const [colorCombinationIndex, setcolorCombinationIndex] = useState(0);
-
-// Destructure information from guildData
 const { guilds } = colorInformation;
-const colorArray = guilds[colorCombinationIndex];
+const { guilds:{ monoColored }} = colorInformation;
 
-// Sort the results including Colorless
-const sortedCountArray = Array.from(colorCounts).sort((a,b) => b.count - a.count);
+const sortedCountResultArray = Array.from(colorCounts).sort((a,b) => b.count - a.count);
 
-// variable of top result
-const monoColoredKey: string = sortedCountArray[0].key;
+const firstColorKey: string = sortedCountResultArray[0].key;
+const secondColorKey: string = sortedCountResultArray[1].key;
+const thirdColorKey: string = sortedCountResultArray[2].key;
 
-// Find corresponding object
-const monoColoredResult = colorArray.monoColored?.find( c => c.colors.includes(monoColoredKey));
+const monoColoredResult = monoColored?.find( c => c.colors.includes(firstColorKey));
 
+
+/*switchcase(onClick)
+
+firstButton === useState(monoColored) || 
+secondButton === useState(twoColored) || 
+thirdButton === useState(threeColored) */
 const src = monoColoredResult?.img_src.trim();
 const name = monoColoredResult?.name;
 const description = monoColoredResult?.description;
-
-
 
 
 // Function for removing Colorless from the array in order to search for multicolored factions 
@@ -38,10 +38,7 @@ const removeColorless = (sortedCountArray: ColorCount[]) => {
     return arrayWithoutColorless
 };
 
-const multicoloredResultArray = removeColorless(sortedCountArray);
-
-
-
+const multicoloredResultArray = removeColorless(sortedCountResultArray);
 
 
 return (

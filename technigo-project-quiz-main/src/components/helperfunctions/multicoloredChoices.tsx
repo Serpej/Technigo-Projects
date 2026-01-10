@@ -10,11 +10,11 @@ type  Guild = {
 
 const { guilds } = guildData;
 
-if (!guilds[1].twoColorCombinations) {
+if (!guilds.twoColorCombinations) {
   throw new Error(`twoColorCombinations doesn't exist`);
 };
 
-const twoColorArray: Guild[] = guilds[1].twoColorCombinations;
+const twoColorArray: Guild[] = guilds.twoColorCombinations;
 
 // A helperfunction for finding the correstponding guild matching the choices made.
 

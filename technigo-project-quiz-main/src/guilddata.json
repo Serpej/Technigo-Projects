@@ -1,6 +1,5 @@
 {
-  "guilds": [
-    {
+  "guilds": {
       "monoColored": [
         {
           "name": "White",
@@ -45,9 +44,7 @@
           "description":"You operate outside ideology, emotion, and moral framing entirely. You defeat opponents by ignoring their assumptions and functioning on principles they can’t interact with. You’re not cold or evil—you’re just not playing the same game, which is somehow worse.",
           "quote": "'It does not think. It does not feel. It does not forgive.' — Kozilek, the Great Distortion"
         }
-      ]
-    },
-    {
+      ],
       "twoColorCombinations": [
         { 
           "name": "Azorius",
@@ -119,9 +116,7 @@
           "description":"You distrust institutions and value instinct and raw presence. You defeat opponents by tearing down structures and overwhelming them with force. You hate civilization an impressive amount for someone who is constantly reacting to it.",
           "quote": "'Civilization is a disease.' — Rubblebelt Raiders"
         }
-      ]
-    },
-    {
+      ],
       "threeColorCombinations": [
         { 
           "name": "Bant",
@@ -194,6 +189,5 @@
           "quote": "'Adapt or die.' — Savage Knuckleblade"
         }
       ]
-    }
-  ]
+  }
 }
