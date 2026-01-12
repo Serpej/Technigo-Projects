@@ -31,94 +31,184 @@
       "questionIndex": 0
     },
     {
-      "header": "Question 2",
+      "header": "Q2: After A Long Work Week, How Do You Spend The Week End?",
       "statements": [
         {
-          "color": "Blue Statement",
+          "color": "Calculate the most optimized way of eating chili cheese.",
           "key": "Blue"
         },
         {
-          "color": "Green Statement",
+          "color": "Go for a hike in the closest nature reserve, weather conditions doesn't bother you.",
           "key": "Green"
         },
         {
-          "color": "Black Statement",
+          "color": "Indulge yourself in dreaming of ways how to murder some of your colleagues.",
           "key": "Black"
         },
         {
-          "color": "White Statement",
+          "color": "Finish the things I didn’t get to during the week.",
           "key": "White"
         },
         {
-          "color": "Red Statement",
+          "color": "Buy all the snacks and eat as many as possible at the same time, while simultaniously having sex and watching 3 movies.",
           "key": "Red"
         },
         {
-          "color": "Colorless Statement",
+          "color": "Power down nonessential processes and travel to an alternate dimension.",
           "key": "Colorless"
         }
       ],
       "questionIndex": 1
     },
     {
-      "header": "Question 3",
+      "header": "Q3: Your Friend Feels Down — How Do You Try To Cheer Them Up?",
       "statements": [
         {
-          "color": "Blue Statement",
+          "color": "I help them reframe the situation so it makes more sense. For example telling them to play more instant speed. It always helps.",
           "key": "Blue"
         },
         {
-          "color": "Green Statement",
+          "color": "I reassure them that this pain is part of being alive through nonverbal grunting. It always helps.",
           "key": "Green"
         },
         {
-          "color": "Black Statement",
+          "color": "I validate their feelings and then help them pursue their vendetta. It always helps.",
           "key": "Black"
         },
         {
-          "color": "White Statement",
+          "color": "I remind them they’re not alone and that things will be okay if they do the right thing. It always helps.",
           "key": "White"
         },
         {
-          "color": "Red Statement",
+          "color": "I tell them to scream it out and dance around a big pyre. It always helps.",
           "key": "Red"
         },
         {
-          "color": "Colorless Statement",
+          "color": "I pierce their mind, identify the source of distress and remove it from existance. It always helps.",
           "key": "Colorless"
         }
       ],
       "questionIndex": 2
     },
     {
-      "header": "Question 4",
+      "header": "Q4: You're Stranded On A Small Island, But Managed To Bring One Thing. What Would It Be?",
       "statements": [
         {
-          "color": "Blue Statement",
+          "color": "A comprehensive reference book.",
           "key": "Blue"
         },
         {
-          "color": "Green Statement",
+          "color": "A 'Home Sweet Home' sign.",
           "key": "Green"
         },
         {
-          "color": "Black Statement",
+          "color": "Cyanide. I have better things to do.",
           "key": "Black"
         },
         {
-          "color": "White Statement",
+          "color": "A shaving kit. One musn't succumb to savagery.",
           "key": "White"
         },
         {
-          "color": "Red Statement",
+          "color": "Fire",
           "key": "Red"
         },
         {
-          "color": "Colorless Statement",
+          "color": "Nothing, I would just rip a whole in reality and stroll out of there.",
           "key": "Colorless"
         }
       ],
       "questionIndex": 3
-      }
+    },
+    {
+      "header": "Q5: Your Making A Character For A DnD Group. What Class Do You Choose?",
+      "statements": [
+        {
+          "color": "Wizard, Enchantment school. For obvious reasons..",
+          "key": "Blue"
+        },
+        {
+          "color": "Druid, I'm gonna ask them if we can play outside too..",
+          "key": "Green"
+        },
+        {
+          "color": "Wizard, subclass Necromancer..",
+          "key": "Black"
+        },
+        {
+          "color": "Cleric, someone needs to keep everyone else alive..",
+          "key": "White"
+        },
+        {
+          "color": "Sorcerer! Wildmagic! Fireball!",
+          "key": "Red"
+        },
+        {
+          "color": "I'll make 100+ characters, because I'm a forever DM...",
+          "key": "Colorless"
+        }
+      ],
+      "questionIndex": 4
+    },
+    {
+      "header": "Q6: What Would You Prefer To Have For Dinner Tonight?",
+      "statements": [
+        {
+          "color": "Something I haven’t tried before. But I'm gonna need about 20 minutes to fiure it out.",
+          "key": "Blue"
+        },
+        {
+          "color": "A leafy salad with some nuts and roots. Or just a deer.",
+          "key": "Green"
+        },
+        {
+          "color": "Meat, very rare. Or just blood.",
+          "key": "Black"
+        },
+        {
+          "color": "The meal doesn't matter aslong as i have nice company!",
+          "key": "White"
+        },
+        {
+          "color": "One piece or scorched anything please, on the double!",
+          "key": "Red"
+        },
+        {
+          "color": "Nutritionally complete sustenance.",
+          "key": "Colorless"
+        }
+      ],
+      "questionIndex": 5
+    },
+    {
+      "header": "Q7: If You Would Learn A New Instrument, What Would It Be?",
+      "statements": [
+        {
+          "color": "The synthesizer",
+          "key": "Blue"
+        },
+        {
+          "color": "The drums.",
+          "key": "Green"
+        },
+        {
+          "color": "A bone flute.",
+          "key": "Black"
+        },
+        {
+          "color": "The conductor's baton",
+          "key": "White"
+        },
+        {
+          "color": "The electric guitar.",
+          "key": "Red"
+        },
+        {
+          "color": "A machine that produces sound on command.",
+          "key": "Colorless"
+        }
+      ],
+      "questionIndex": 6
+    }
   ]
 }

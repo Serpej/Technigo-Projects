@@ -74,8 +74,6 @@ export const App = () => {
     setshowStartScreen(false);
   };
 
-  console.log(Array.isArray(questionObject.statements));
-
   const shuffleArray = (array) => {
     let currentIndex = array.length;
     while (currentIndex != 0) {

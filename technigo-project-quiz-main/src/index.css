@@ -131,6 +131,7 @@ h1 {
   height: auto;
   appearance: none;
   position: absolute;
+  margin: 10px 0 0 10px;
 }
 
 .arrowImg {
