@@ -105,6 +105,8 @@ body {
 .profileImg {
   border-radius: 50%;
   border:solid 2px #3C3835;
+  max-width: 250px;
+  height: auto;
 }
 
 .mainContainer {
