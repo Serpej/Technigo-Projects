@@ -7,79 +7,94 @@ import { Personality } from "./components/Personality";
 
 export const App = () => {
 
-const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
-const [colorCounts, setColorCounts] = useState([
-  { key: "White", count: 0},
-  { key: "Blue", count: 0},
-  { key: "Black", count: 0},
-  { key: "Red", count: 0},
-  { key: "Green", count: 0},
-  { key: "Colorless", count: 0}
-]);
+  const [colorCounts, setColorCounts] = useState([
+    { key: "White", count: 0},
+    { key: "Blue", count: 0},
+    { key: "Black", count: 0},
+    { key: "Red", count: 0},
+    { key: "Green", count: 0},
+    { key: "Colorless", count: 0}
+  ]);
 
-const [choiceMap, setChoiceMap] = useState(new Map());
+  const [choiceMap, setChoiceMap] = useState(new Map());
 
-const [visibility, setVisibility] = useState(true);
-const [showStartScreen, setshowStartScreen] = useState(true);
+  const [visibility, setVisibility] = useState(true);
+  const [showStartScreen, setshowStartScreen] = useState(true);
 
-const handleColorChoice = (colorKey, amount) => {
-  setColorCounts( (prev) => {
-    const next = prev.map(color => {
-      const updated = color.key === colorKey ? {...color, count: color.count + amount} : color;
-      return updated
+  const handleColorChoice = (colorKey, amount) => {
+    setColorCounts( (prev) => {
+      const next = prev.map(color => {
+        const updated = color.key === colorKey ? {...color, count: color.count + amount} : color;
+        return updated
+      });
+      return next;
+    })
+  };
+
+  const { questions } = data;
+  let questionObject = questions[index];
+
+
+  const handleNextClick = (colorKey, questionIndex) => {
+
+    handleColorChoice(colorKey, 1);
+
+    setChoiceMap(prev => {
+      const next = new Map(prev);
+      next.set(questionIndex, colorKey)
+      return next
     });
-    return next;
-  })
-};
 
-const { questions } = data;
-let questionArray = questions[index];
-
-
-const handleNextClick = (colorKey, questionIndex) => {
-
-  handleColorChoice(colorKey, 1);
-
-  setChoiceMap(prev => {
-    const next = new Map(prev);
-    next.set(questionIndex, colorKey)
-    return next
-  });
-
-  if (index === questions.length -1) {
-    setVisibility(false);
-    console.log(`End of array`);
-  } else {
-    setIndex(index + 1);
-  }
-};
-
-const handlePreviousClick = (questionIndex) => {
-
-  choiceMap.forEach((colorValue, key) => {
-    if (key === questionIndex) {
-      handleColorChoice(colorValue, -1);
+    if (index === questions.length -1) {
+      setVisibility(false);
+      console.log(`End of array`);
+    } else {
+      setIndex(index + 1);
     }
-  });
+  };
 
-  if(index === 0) {
-    console.log(`Index is ${index}. Start of array`);
-  } else {
-    setIndex(index - 1);
+  const handlePreviousClick = (questionIndex) => {
+
+    choiceMap.forEach((colorValue, key) => {
+      if (key === questionIndex) {
+        handleColorChoice(colorValue, -1);
+      }
+    });
+
+    if(index === 0) {
+      console.log(`Index is ${index}. Start of array`);
+    } else {
+      setIndex(index - 1);
+    }
+  };
+
+  const handleStartScreen = () => {
+    setshowStartScreen(false);
+  };
+
+  console.log(Array.isArray(questionObject.statements));
+
+  const shuffleArray = (array) => {
+    let currentIndex = array.length;
+    while (currentIndex != 0) {
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    };
   }
-};
 
-const handleStartScreen = () => {
-  setshowStartScreen(false);
-};
+  shuffleArray(questionObject.statements);
 
-const statementsArray = questionArray.statements.map((statement, questionIndex) => {
-const colorKey = statement.key;
-  return (
-    <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey, questionIndex)}>{statement.color}</p>
-  )
-});
+  const statementsArray = questionObject.statements.map((statement, questionIndex) => {
+    const colorKey = statement.key;
+    return (
+      <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey, questionIndex)}>{statement.color}</p>
+    )
+  });
 
   colorCounts.forEach(color => console.log(`${color.key}: ${color.count}`));
 
@@ -93,8 +108,8 @@ const colorKey = statement.key;
         className={`questionsContainer ${!visibility ? 'isHidden' : ''} `}
       >
         <div className="arrowAndHeaderContainer">
-          <Arrow onClick={() => handlePreviousClick(questionArray.questionIndex)} />
-          <QuestionHeader header={questionArray.header} />
+          <Arrow onClick={() => handlePreviousClick(questionObject.questionIndex)} />
+          <QuestionHeader header={questionObject.header} />
         </div>
 
         <div className="centerContainer">

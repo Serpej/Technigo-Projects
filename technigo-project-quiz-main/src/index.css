@@ -180,3 +180,7 @@ h1 {
   color:#F3E8DF;
   border-radius: 4px;
 }
+.startingContainer > button {
+  padding: 30px 40px;
+  font-size: 20px;
+}
