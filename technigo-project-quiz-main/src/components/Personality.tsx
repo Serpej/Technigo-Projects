@@ -46,19 +46,23 @@ const threeColoredResults = threeColored?.find(c =>
 let src: string | undefined = "";
 let name: string | undefined  = "";
 let description: string | undefined  = "";
+let quote: string | undefined = "";
 
 if (colorButton === 0) {
   src = monoColoredResult?.img_src.trim();
   name = monoColoredResult?.name;
   description = monoColoredResult?.description;
+  quote = monoColoredResult?.quote;
 } else if(colorButton === 1) {
   src = twoColoredResults?.img_src.trim();
   name = twoColoredResults?.name;
   description = twoColoredResults?.description;
+  quote = twoColoredResults?.quote;
 } else if (colorButton == 2) {
   src = threeColoredResults?.img_src.trim();
   name = threeColoredResults?.name;
   description = threeColoredResults?.description;
+  quote = threeColoredResults?.quote;
 }
 
 return (
@@ -68,11 +72,14 @@ return (
       src={src} 
       alt="guild image"
       referrerPolicy="no-referrer" />
-      <h1>{name}!</h1>
+    <h1>{name}!</h1>
+    <p className='quote'><i>{quote}</i></p>
     <p className="personalityDescription">{description}</p>
-    <button onClick={() => {setColorButton(0)}}>Mono Colored Result</button>
-    <button onClick={() => {setColorButton(1)}}>Two Colored Result</button>
-    <button onClick={() => {setColorButton(2)}}>Three Colored Result</button>
+    <div className="colorButtonContainer">
+      <button className='colorAmountButton' onClick={() => {setColorButton(0)}}>Mono Colored Result</button>
+      <button className='colorAmountButton' onClick={() => {setColorButton(1)}}>Two Colored Result</button>
+      <button className='colorAmountButton' onClick={() => {setColorButton(2)}}>Three Colored Result</button>
+    </div>
   </div>
 )
 }

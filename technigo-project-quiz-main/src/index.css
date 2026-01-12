@@ -92,13 +92,15 @@ h1 {
   gap: 30px;
 }
 
-.statementParagraph {
+.statementParagraph, 
+.colorAmountButton {
   padding: 20px;
   border: 1px solid #57595B;
   transition: scale 0.2s, background-color 0.2s, border 0.2s, color;
 }
 
-.statementParagraph:hover {
+.statementParagraph, 
+.colorAmountButton:hover {
   scale: 1.02;
   background-color: #57595B;
   border: 1px solid #452829;
@@ -119,6 +121,10 @@ h1 {
   height: auto;
 }
 
+#resultHeader {
+  text-decoration: underline;
+}
+
 .personalityInformationContainer {
   display: flex;
   flex-direction: column;
@@ -131,6 +137,7 @@ h1 {
 .guildImage {
   flex: 1;
   max-width: 250px;
+  max-height: 250px;
 }
 .personalityDescription {
   max-width: 600px;
@@ -142,4 +149,18 @@ h1 {
   border-radius: 4px;
   line-height: 30px;
   background-color: #E8D1C5;
+}
+.colorButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.colorAmountButton {
+  margin-top: 0px;
+  font-weight: 800;
+  box-shadow:4px 4px 4px #57595B;
+  background-color: #452829;
+  color:#F3E8DF;
+  border-radius: 4px;
 }
