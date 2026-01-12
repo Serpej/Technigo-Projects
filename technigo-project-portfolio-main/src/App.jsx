@@ -5,7 +5,6 @@ import { Project } from "./components/Project";
 
 export const App = () => {
   const { projects } = data;
-  console.log(projects);
   const projectList = projects.map((project) => {
     return <Project key={project.name}
                     name={project.name}
