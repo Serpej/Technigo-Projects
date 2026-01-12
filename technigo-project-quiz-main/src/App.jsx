@@ -5,15 +5,10 @@ import data from './questiondata.json'
 import {useEffect, useState} from "react"
 import { Personality } from "./components/Personality";
 
-
-
-
 export const App = () => {
-
 
 const [index, setIndex] = useState(0);
 
-// useState Hook to remember what choices user has made
 const [colorCounts, setColorCounts] = useState([
   { key: "White", count: 0},
   { key: "Blue", count: 0},
@@ -23,13 +18,11 @@ const [colorCounts, setColorCounts] = useState([
   { key: "Colorless", count: 0}
 ]);
 
-// A map to remember what choice were made in what question
 const [choiceMap, setChoiceMap] = useState(new Map());
 
-// A state to toggle visibility
 const [visibility, setVisibility] = useState(true);
+const [showStartScreen, setshowStartScreen] = useState(true);
 
-// A state function updater. It updates the count of the useState Array with objects.
 const handleColorChoice = (colorKey, amount) => {
   setColorCounts( (prev) => {
     const next = prev.map(color => {
@@ -40,17 +33,14 @@ const handleColorChoice = (colorKey, amount) => {
   })
 };
 
-// Destructure the questions array from questionsData
 const { questions } = data;
 let questionArray = questions[index];
 
 
-// Handles clicking on one of the statements
 const handleNextClick = (colorKey, questionIndex) => {
 
   handleColorChoice(colorKey, 1);
 
-  // Update the setter by cloning previous map and adding the new key: value
   setChoiceMap(prev => {
     const next = new Map(prev);
     next.set(questionIndex, colorKey)
@@ -65,11 +55,8 @@ const handleNextClick = (colorKey, questionIndex) => {
   }
 };
 
-
-// Handles clicking on the previous arrow
 const handlePreviousClick = (questionIndex) => {
 
-  // Remove the choice that was made for the specific question
   choiceMap.forEach((colorValue, key) => {
     if (key === questionIndex) {
       handleColorChoice(colorValue, -1);
@@ -81,20 +68,27 @@ const handlePreviousClick = (questionIndex) => {
   } else {
     setIndex(index - 1);
   }
-  };
+};
 
-  const statementsArray = questionArray.statements.map((statement, questionIndex) => {
-  const colorKey = statement.key;
-    return (
-      <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey, questionIndex)}>{statement.color}</p>
-    )
-  });
+const handleStartScreen = () => {
+  setshowStartScreen(false);
+};
 
-  // Logs the counts
+const statementsArray = questionArray.statements.map((statement, questionIndex) => {
+const colorKey = statement.key;
+  return (
+    <p key={colorKey} className="statementParagraph" onClick={() => handleNextClick(colorKey, questionIndex)}>{statement.color}</p>
+  )
+});
+
   colorCounts.forEach(color => console.log(`${color.key}: ${color.count}`));
 
   return (
     <div className="contentContainer">
+      <div className={`startingContainer ${!showStartScreen ? 'isHidden' : ''}`}>
+        <h1 className="header">Magic Personality Quiz</h1>
+        <button className="interactiveButton" onClick={() => handleStartScreen()}>Start Quiz</button>
+      </div>
       <div 
         className={`questionsContainer ${!visibility ? 'isHidden' : ''} `}
       >

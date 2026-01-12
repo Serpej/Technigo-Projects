@@ -76,9 +76,9 @@ return (
     <p className='quote'><i>{quote}</i></p>
     <p className="personalityDescription">{description}</p>
     <div className="colorButtonContainer">
-      <button className='colorAmountButton' onClick={() => {setColorButton(0)}}>Mono Colored Result</button>
-      <button className='colorAmountButton' onClick={() => {setColorButton(1)}}>Two Colored Result</button>
-      <button className='colorAmountButton' onClick={() => {setColorButton(2)}}>Three Colored Result</button>
+      <button className='interactiveButton' onClick={() => {setColorButton(0)}}>Mono Colored Result</button>
+      <button className='interactiveButton' onClick={() => {setColorButton(1)}}>Two Colored Result</button>
+      <button className='interactiveButton' onClick={() => {setColorButton(2)}}>Three Colored Result</button>
     </div>
   </div>
 )
