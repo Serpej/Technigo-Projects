@@ -45,7 +45,7 @@
           "quote": "'It does not think. It does not feel. It does not forgive.' — Kozilek, the Great Distortion"
         }
       ],
-      "twoColorCombinations": [
+      "twoColored": [
         { 
           "name": "Azorius",
           "colors":["Blue", "White"],
@@ -117,7 +117,7 @@
           "quote": "'Civilization is a disease.' — Rubblebelt Raiders"
         }
       ],
-      "threeColorCombinations": [
+      "threeColored": [
         { 
           "name": "Bant",
           "colors":["Blue", "White", "Green"],
