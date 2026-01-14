@@ -69,6 +69,18 @@ export const App = () => {
       setIndex(index - 1);
     }
   };
+// DEn här ska göras om
+  const resetTest = () => {
+    setColorCounts( (prev) => {
+      const next = prev.map(color => {
+        const updated = color.key === color.key ? {...color, count: 0} : color;
+        return updated
+      });
+      return next;
+    });
+    setIndex(0);
+    setVisibility(true);
+  };
 
   const handleStartScreen = () => {
     setshowStartScreen(false);
@@ -83,7 +95,7 @@ export const App = () => {
 
       [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     };
-  }
+  };
 
   shuffleArray(questionObject.statements);
 
@@ -120,6 +132,7 @@ export const App = () => {
       <div 
         className={`resultContainer ${visibility ? 'isHidden' : ''}`}>
         <HeaderResult />
+        <button id="resetButton" onClick={() => resetTest()}>Retake the Test!</button>
         <Personality
           colorCounts= {colorCounts} />
       </div>

@@ -22,14 +22,17 @@ html * {
 
 html,
 body,
-#root,
-.contentContainer {
-  width: 100vw;
-  height: 100vh;
+#root {
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+
 }
 
 .contentContainer {
   background-color: #F3E8DF;
+  width: 100%;
+  min-height: 100%;
   position: relative;
 }
 
@@ -48,7 +51,7 @@ button,
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   z-index: 10;
   position: absolute;
   background-color: #F3E8DF;
@@ -61,14 +64,12 @@ button,
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
 }
 
 .resultContainer {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
   gap: 30px;
   align-items: center;
 }
@@ -101,9 +102,7 @@ button,
   justify-content: center;
   align-items: flex-start;
   width: 100%;
-  height: 100%;
 }
-
 
 .questionTextContainer {
   display: grid;
@@ -134,7 +133,8 @@ button,
   color:#F3E8DF;
 }
 
-#arrowButton {
+#arrowButton,
+#resetButton {
   padding: 0px;
   border: 0px;
   width: 50px;
@@ -144,12 +144,24 @@ button,
   margin: 10px 0 0 10px;
 }
 
+#resetButton {
+  background-color: black;
+  color:#F3E8DF;
+  border-radius: 4px;
+  left: 0;
+  padding: 20px;
+  font-size: 16px;
+  width: auto;
+  font-weight: 700;
+}
+
 .arrowImg {
   width: 50px;
   height: auto;
 }
 
 #resultHeader {
+  margin-top: 80px;
   text-decoration: underline;
 }
 
@@ -182,6 +194,7 @@ button,
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .interactiveButton {
@@ -199,8 +212,7 @@ button,
 @media (max-width: 750px) {
 
   .statementParagraph {
-    overflow: hidden;
-    font-size: clamp(10px, 1.8vw, 14px);
+    font-size: clamp(12px, 1.8vw, 16px);
   }
 
   #resultHeader {
@@ -217,6 +229,9 @@ button,
   }
 
   .colorButtonContainer {
+    flex-direction: column;
+    max-width: 250px;
     gap: 15px;
   }
+ 
 }
