@@ -69,7 +69,7 @@ export const App = () => {
       setIndex(index - 1);
     }
   };
-// DEn här ska göras om
+
   const resetTest = () => {
     setColorCounts( (prev) => {
       const next = prev.map(color => {
@@ -106,6 +106,8 @@ export const App = () => {
     )
   });
 
+  const showBackButton = index > 0;
+
   colorCounts.forEach(color => console.log(`${color.key}: ${color.count}`));
 
   return (
@@ -118,7 +120,10 @@ export const App = () => {
         className={`questionsContainer ${!visibility ? 'isHidden' : ''} `}
       >
         <div className="arrowAndHeaderContainer">
-          <Arrow onClick={() => handlePreviousClick(questionObject.questionIndex)} />
+          <Arrow 
+            onClick={() => handlePreviousClick(questionObject.questionIndex)} 
+            showBackButton = {showBackButton}
+          />
           <QuestionHeader header={questionObject.header} />
         </div>
 
