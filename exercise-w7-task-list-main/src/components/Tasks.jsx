@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import TaskForm from "./TaskForm"
 import TaskList from "./TaskList"
 
@@ -17,32 +17,50 @@ export const Tasks = () => {
         throw new Error(`Http error! ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
       setTaskList(data);
     } catch (error) {
       console.log("Error fetching data: ", error);
     }
   }
-
-  fetchTasks(url);
+//Fetchdata only once.
+  useEffect(() => {
+    fetchTasks(url);
+  },[]) 
   
   const handleNewTodoChange = (event) => {
     const text = event.target.value
     setNewTodo(text);
   }
 
-  const onFormSubmit = async () => {
+  const onFormSubmit = async (event) => {
+    event.preventDefault();
     const postDescription = 
       {
         description: newTodo
       };
-
-      fetch(url, {
+      setLoading(true);
+      try {
+        const makeAPost  = await fetch(url, {
+        //Method tells the server what kind of request
         method: "POST",
-        body: postDescription
-      })
-    // define your POST request for new ToDo
-    // don't forget to set the loading state
+        //Headers gives the server information about the request
+        headers: {
+          "Content-Type": "application/json"},
+        //The Body is the "payload", what you want to post
+        body: JSON.stringify(postDescription)
+        });
+
+        if (!makeAPost.ok) {
+          throw new Error(`HTTP error when posting: ${makeAPost.status}`);
+        }
+        const postData = await makeAPost.json();
+        fetchTasks(url);
+        console.log("Data from post: ", postData);
+      } catch (error) {
+        console.log("Posting Error: ", error)
+      }
+      setNewTodo("");
+      setLoading(false);
   }
 
   return (
