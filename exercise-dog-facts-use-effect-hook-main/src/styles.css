@@ -10,10 +10,32 @@ html * {
   box-sizing: border-box;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.factButton {
+  margin: 10px;
+  background-color: #af7223;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: scale 0.5s, background-color 0.5s, color 0.25s;
+  max-width: 250px;
+}
+
+.factButton:hover {
+  scale: 1.1;
+  background-color: #8f5d1c;
+  color: white;
+}
+
 body {
   width: 100%;
   height: 100%;
-  background-color: #ee9e35;
+  background-color: #c035ee;
   display: flex;
   align-items: center;
   justify-content: center;

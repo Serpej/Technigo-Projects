@@ -10,19 +10,14 @@ https://reactjs.org/docs/lists-and-keys.html
 /*Extra!
 Feel free to create more components, such as header/footer,
 or why not include some more data from the array? */
+import { Category } from './components/Category';
+import { Id } from './components/Id';
 import { Pokemon } from './components/Pokemon';
 import { Type } from './components/Type';
 import data from './data.json'
 
 export const App = () => {
   const  pokemons = data.pokemons;
-
-/*   const pokemonList = pokemons.map((pokemon) =>
-    <li key={pokemon.name}>
-      <Pokemon name= {pokemon.name} />
-      <Type types = {pokemon.types} />
-    </li>
-  ); */
 
   return (
     <div className='App'>
@@ -31,6 +26,8 @@ export const App = () => {
         <li key={pokemon.name}>
           <Pokemon name= {pokemon.name} />
           <Type types = {pokemon.types} />
+          <Category category= {pokemon.category}/>
+          <Id id = {pokemon.id}/>
         </li>
       )}
       </ul>

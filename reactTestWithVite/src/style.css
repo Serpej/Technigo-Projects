@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+html {
+  height: 100vh;
+  width: auto;
+
+}
+body {
+  background: #FFFFFF;
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+   overflow-x: hidden;
+}
+
+#today-container {
+  flex-direction: column;
+  padding: 100px 10px 40px 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stars {
+  position: absolute;
+  z-index: 1;
+}
+
+#today-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -25%;
+  width: 150%; 
+  height: 100%;
+  border-bottom-left-radius: 50% 90px;
+  border-bottom-right-radius: 50% 90px;
+  z-index: -1;
+}
+
+#today-container.day::before {
+  background: linear-gradient(135deg, #8589FF, #E8E9FF);
+}
+
+#today-container.night::before {
+  background: linear-gradient( 
+    to right,
+   #6264A2 0%,
+   #6264A2 50%,
+   #222350 50%,
+   #222350 100%
+  );
+  
+}
+
+#today-container * {
+  color: #FFFFFF;
+}
+
+#todays-weather-icon-container {
+  position: absolute;
+  top: 10%;
+  right: 20%;
+}
+
+#todays-Weather-Icon {
+  width: 155%;
+  height: auto;
+}
+
+#temperature {
+  font-size: clamp(6rem, 15vw, 8rem);
+}
+
+#temp-unit {
+  vertical-align: super;
+  position: relative;
+  top: -2rem;
+}
+
+#temp-unit, 
+#city {
+  font-size: clamp(1.5rem, 4vw, 4rem);
+}
+
+#sunrise-sunset-container {
+  display: flex;
+  font-size: clamp(0.7rem, 4vw, 3rem);
+  margin: 16px 8px 16px 0px;
+  word-spacing: 0.8rem;
+}
+#sun-Filler {
+  flex:0.8;
+}
+
+#temp-city-description {
+  padding: 0 10px 16px 20px;
+}
+
+#sunrise,
+#sunset,
+#description {
+  opacity: 0.95;
+  font-size: clamp(0.7rem, 4vw, 2.2rem);
+}
+
+#futureDayList {
+  list-style-type: none;
+  margin:20px 5px 0 5px;
+  padding: 0;
+}
+
+.listOfDays {
+  display: flex;
+  border-radius: 76px;
+  padding: 16px 8px 16px 20px;
+  font-size: clamp(0.9rem, 4vw, 2.2rem);
+  align-items: center;
+  margin-bottom: 1px;
+}
+.listOfDays:hover {
+  background-color: #00000005;
+}
+
+#img-and-temp-container {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  align-items: center;
+}
+
+#future-temp-container {
+  font-size: clamp(0.9rem, 4vw, 2.2rem);
+}
+
+#future-filler {
+  flex: 0.8;
+}
+
+#future-day-img{
+  width: clamp(25%,30%,30%);
+  height: auto;
+}
+
+@media (min-width: 860px) {
+  body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #today-container {
+    display: flex;
+    padding-top: 50px;
+    height: 100%;
+    width: 60%;
+  }
+
+  #today-container.night::before {
+    background: linear-gradient(135deg, #6264A2, #222350); 
+  }
+
+  #today-container::before {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  #today-inner-wrapper {
+    display: flex;
+    height: 100%;
+  }
+
+  #temp-city-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-left: 12%;
+  } 
+
+  #sunrise-sunset-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #todays-weather-icon-container {
+    top: 3%;
+    right: 25%;
+  }
+
+  #todays-Weather-Icon {
+    width: clamp(155%, 150% + 4vw, 250%);
+  }
+
+  #future-forecast-container {
+    display: flex;
+    width: 40%;
+  }
+
+  #futureDayList {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    height: 100%;
+    width: 100%;
+    gap: 10px;
+  }
+
+}

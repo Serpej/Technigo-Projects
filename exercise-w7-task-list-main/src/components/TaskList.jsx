@@ -1,31 +1,49 @@
-const TaskList = ({ loading, taskList }) => {
+//import { useEffect } from "react";
+
+import { getDay, getMonth, getYear} from "date-fns";
+
+const TaskList = ({ loading, taskList, setTaskList, url }) => {
+  
   if (loading) {
     return <h1>Loading in progress...</h1>
   }
 
-  const onTaskCheckChange = (task) => {
-    // Make a POST request here with the updated task isChecked value
+  const onTaskCheckChange= async (task) => {
 
-    /* 
-    update a state object
-    
-    updatedTask is a new object that is the same as the task object except for the isChecked property, 
-    which is toggled from true to false or from false to true. 
-    This code is often used to update a property of an object while preserving the rest of its properties. */
+    try {
+      const descriptionOfUpdatedCheckList = {
+        description: updatedTask
+      }
+      const updateCheckList = await fetch(url, {
+      method: "POST",
+      headers: {
+          updatedTask, 
+          "Content-Type": "application/json"},
+      body: JSON.stringify(descriptionOfUpdatedCheckList)
+      });
 
-    /*     pass the updatedTask to the headers of your POST request
-
-    headers: { updatedTask, "Content-Type": "application/json" }
-    */
+      if (!updateCheckList.ok) {
+        throw new Error(`HTTP error when posting: ${updateCheckList.status}`);
+      }
+    } catch (error) {
+      console.log("Error: ", error)
+    }
 
     const updatedTask = { ...task, isChecked: !task.isChecked }
 
-    /*    Update the task list in the state
-    Use .map to update the specific task if found, otherwise return it unchanged
-
-    setTaskList() 
-    */
+    const updatedTaskList = taskList.map((t) => {
+      return t._id === task._id 
+      ? {...t, isChecked: !t.isChecked} 
+      : t;  
+    });
+    setTaskList(updatedTaskList);
   }
+
+  const showDate = ((task) => {
+    const dateString = `${getDay(task.date)} / ${getMonth(task.date) + 1} - ${getYear(task.date)}`
+    return dateString
+  })
+  
 
   return (
     <section className="tasks">
@@ -33,20 +51,15 @@ const TaskList = ({ loading, taskList }) => {
         .map((task) => (
           <div key={task._id} className="task">
             <input
-              onChange={()=> {}}
+              onChange={()=> {onTaskCheckChange(task)}}
               type="checkbox"
               checked={task.isChecked}
             />
             <h4>{task.description}</h4>
 
-          {/* format the date */}
-            <p>{task.date}</p>
+            <p>{showDate(task)}</p>
           </div>
-        ))
-        /* reverse the list to show the newest tasks at the top
-        
-        show only the latest 10 tasks
-        */
+        )).slice(0, 10)
         }
     </section>
   )

@@ -125,14 +125,6 @@ button,
   transition: scale 0.2s, background-color 0.2s, border 0.2s, color;
 }
 
-.statementParagraph:hover, 
-.interactiveButton:hover {
-  scale: 1.02;
-  background-color: #57595B;
-  border: 1px solid #452829;
-  color:#F3E8DF;
-}
-
 #arrowButton,
 #resetButton {
   padding: 0px;
@@ -234,4 +226,27 @@ button,
     gap: 15px;
   }
  
+}
+
+@media (hover: hover) {
+
+  .statementParagraph:hover, 
+  .interactiveButton:hover {
+    scale: 1.02;
+    background-color: #57595B;
+    border: 1px solid #452829;
+    color:#F3E8DF;
+  }
+}
+
+
+@media (hover: none) {
+
+  .statementParagraph:active, 
+  .interactiveButton:active {
+    scale: 1.02;
+    background-color: #57595B;
+    border: 1px solid #452829;
+    color:#F3E8DF;
+  }
 }

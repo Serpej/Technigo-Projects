@@ -1,0 +1,102 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f5f6fa;
+  --text-color: #34495e;
+  --delete-color: #e74c3c;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+#root {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.App {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+h1 {
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.input-container {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  /* transition: background-color 0.3s ease; */
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin: 8px 0;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+li:hover {
+  background-color: #e9ecef;
+}
+
+li span {
+  cursor: pointer;
+  flex-grow: 1;
+  text-align: left;
+}
+
+li button {
+  background-color: var(--delete-color);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+
+li button:hover {
+  background-color: #c0392b;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #7f8c8d;
+}

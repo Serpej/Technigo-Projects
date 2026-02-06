@@ -38,29 +38,29 @@ export const Tasks = () => {
       {
         description: newTodo
       };
-      setLoading(true);
-      try {
-        const makeAPost  = await fetch(url, {
-        //Method tells the server what kind of request
-        method: "POST",
-        //Headers gives the server information about the request
-        headers: {
-          "Content-Type": "application/json"},
-        //The Body is the "payload", what you want to post
-        body: JSON.stringify(postDescription)
-        });
+    setLoading(true);
+    try {
+      const makeAPost  = await fetch(url, {
+      //Method tells the server what kind of request
+      method: "POST",
+      //Headers gives the server information about the request
+      headers: {
+        "Content-Type": "application/json"},
+      //The Body is the "payload", what you want to post
+      body: JSON.stringify(postDescription)
+      });
 
-        if (!makeAPost.ok) {
-          throw new Error(`HTTP error when posting: ${makeAPost.status}`);
-        }
-        const postData = await makeAPost.json();
-        fetchTasks(url);
-        console.log("Data from post: ", postData);
-      } catch (error) {
-        console.log("Posting Error: ", error)
+      if (!makeAPost.ok) {
+        throw new Error(`HTTP error when posting: ${makeAPost.status}`);
       }
-      setNewTodo("");
-      setLoading(false);
+      const postData = await makeAPost.json();
+      fetchTasks(url);
+      console.log("Data from post: ", postData);
+    } catch (error) {
+      console.log("Posting Error: ", error)
+    }
+    setNewTodo("");
+    setLoading(false);
   }
 
   return (
@@ -74,6 +74,7 @@ export const Tasks = () => {
         loading={loading}
         taskList={taskList}
         setTaskList={setTaskList}
+        url={url}
       />
     </div>
   )

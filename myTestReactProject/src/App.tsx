@@ -1,11 +1,13 @@
 import './App.css'
-import { WaterState } from './components/ComponentOfWater'
+import { CountButton } from './components/countingHook'
+import { Theform } from './components/theFormComponent'
 
 function App() {
 
   return (
   <div>
-    <WaterState />
+    <CountButton />
+    <Theform />
   </div>
   )
 }

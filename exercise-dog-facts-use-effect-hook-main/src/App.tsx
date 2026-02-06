@@ -13,6 +13,7 @@ type DogObject = {
 export const App = () => {
   // Hint: Initialize state for storing the dog fact
   const [dogFact, setDogFact] = useState<DogObject>();
+  const [refetch, setRefetch] = useState(0);
 
   // Hint: Define the API endpoint
   const url = "https://dogapi.dog/api/v2/facts";
@@ -26,12 +27,8 @@ export const App = () => {
         throw new Error(`HTTP failure! Status ${response.status}`)
       }
       const result = await response.json();
-
       const dogObject = result.data[0];
-
       setDogFact(dogObject);
-      console.log(dogObject);
-
     } catch (error) {
       console.log(`Error fething data`, error);
     }
@@ -39,12 +36,14 @@ export const App = () => {
 
   // Hint: Use the useEffect hook to fetch the dog fact when the component mounts
 
-  useEffect(() => {
+    useEffect(() => {
     fetchData(url);
-  }, []);
+  }, [refetch]);
+
   return (
     <div className="App">
       {dogFact && <DogFact dogObject= {dogFact} />}
+      {dogFact && <button className="factButton" onClick={() => setRefetch(prev => prev + 1)}>New Fact!</button>}
     </div>
   );
 };
