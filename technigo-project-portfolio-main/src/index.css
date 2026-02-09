@@ -120,6 +120,8 @@ body {
 .project {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  max-width: 100%;
   padding: 20px 30px;
   margin: 10px;
   border-radius: 4px;
@@ -176,6 +178,8 @@ body {
 
 .projectImage {
   max-height: 400px;
+  max-width: 400px;
+  min-width: 0px;
   height: auto;
   border-radius:  4.75% / 3.5%;
   box-shadow: 1px 1px 4px 1px #332C25;
