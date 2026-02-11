@@ -20,3 +20,4 @@ npm i && code . && npm run dev
 
 ## View it live
 
+https://happythoughtsforconciouspeople.netlify.app/
