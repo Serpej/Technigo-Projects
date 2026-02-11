@@ -1,24 +1,22 @@
 # Happy Thoughts
 
-Replace this readme with your own information about the project. You can include things like:
+In this assignment I was tasked with making a UI for an already set up backend. Basically making it able for the user to post new thoughts, like them and see what posts has already been made and when. There was a picture with the end result design which we were supposed to follow aswell. 
 
-- Brief description of the assignment
-- How you approached the task, what tools and techniques you used, and how you planned it
-- If you had more time, what would be next?
-- How to run the project locally
+1. I sketched on paper how I wanted to structure my code and realized I needed a parent component under APP to store the different useStates I needed. 
+2. I made the components and and started with HappyThoughtList component, that way I could get a fecth of the API to get me on the right track.
+3. Then I made the ThoughtInput logic and wrote the logic for the Postrequest. 
+4. All while making everything in #2 and #3 I alternated going up a level to HappyThoughtParent and added things I needed for the children.
+5. When the logic was done, and I got the like button to work and update, I started styling the project according to the prefered design.
+6. Last but not least i added responsiveness to the design for it to work on phones aswell as laptops.
 
-## View it live
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+If I had even more time I would try and reach some of the stretch goals, such as making a character counter for the ThoughtInput component that turns red when the user uses too few or to many letters in a post.    
 
 
-## Getting Started with the Project
-
-### Dependency Installation & Startup Development Server
-
-Once cloned, navigate to the project's root directory and this project uses npm (Node Package Manager) to manage its dependencies.
-
-The command below is a combination of installing dependencies, opening up the project on VS Code and it will run a development server on your terminal.
+You can run the project locally by installing the dependencies and then running it in dev mode.
 
 ```bash
 npm i && code . && npm run dev
 ```
+
+## View it live
+
