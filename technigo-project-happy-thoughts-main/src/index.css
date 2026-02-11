@@ -1,6 +1,8 @@
+/* FFFFFF, FFADAD, 000000, F2F0F0, 4B4B4B */
+
 :root {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -11,3 +13,130 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+html {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html * {
+  font-size: 10px;
+}
+
+.happyThoughtParentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submitFormContainer, 
+.thoughtPostContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px
+}
+
+.submitFormContainer {
+  margin: 40px 0px;
+}
+
+.thoughtPost, .submitForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: clamp(0px, 25vw, 600px);
+  padding: 10px 15px;
+  border-radius: 1px;
+  box-shadow: 6px 8px 0px #000000;
+  border: 1px solid #4B4B4B;
+  gap: 10px;
+  height: 150px;
+}
+
+.submitForm {
+  height: 200px;
+}
+
+.loadingStatement {
+  font-size: 1.2rem;
+}
+
+.thoughtPost {
+ background-color: #FFFFFF;
+}
+
+.postMessage {
+ font-size: 0.7rem;
+}
+
+.postInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0 1 125px;
+  min-width: 0px;
+  max-height: 50px;
+}
+
+.postInfoContainer > p {
+  opacity: 50%;
+}
+
+.buttonContainer{
+  display: flex;
+}
+
+.likeButton {
+  appearance: none;
+  border-radius: 50%;
+  width:25px;
+  height: 25px;
+  border: none;
+}
+
+.greyText {
+ color: #4B4B4B;
+ padding: 0px 5px;
+ margin: 6px 0px;
+}
+
+.submitForm {
+  background-color: #F2F0F0;
+}
+
+.textInput {
+  resize: none;
+  border: 1px solid #4B4B4B;
+  height: 50px;
+}
+
+.submitThoughtButton {
+  appearance: none;
+  border-radius: 20px;
+  padding: 10px;
+  background-color: #FFADAD;
+  border: none;
+}
+
+@media(min-width:600px ) {
+  .thoughtPost, .submitForm {
+    height: auto;
+    justify-content: center;
+  }
+
+  .submitThoughtButton {
+    max-width: 50%;
+  }
+
+  .textInput {
+    height: auto;
+  }
+
+  .postInfoContainer {
+    flex-direction: row;
+  }
+}
+

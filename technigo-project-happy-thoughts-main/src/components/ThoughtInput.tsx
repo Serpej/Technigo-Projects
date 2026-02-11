@@ -3,15 +3,17 @@ export const ThoughtInput = ({newThought, handleNewThought, onFormSubmit}: {newT
   onFormSubmit: React.FormEventHandler<HTMLFormElement>}) =>{
 
   return (
-    <div>
-      <form onSubmit={onFormSubmit}>
-        <h1>What Do You Want To Share?</h1>
-          <textarea
+    <div className="submitFormContainer">
+      <form className="submitForm" onSubmit={onFormSubmit}>
+        <p>What's making you happy right now?</p>
+          <textarea className="textInput"
             value= {newThought}
             onChange = {handleNewThought}
-            placeholder="Type a happy thought"
+            maxLength={140}
+            minLength={5}
+            required
           />
-          <button type="submit" >Submit Thought!</button>
+          <button className="submitThoughtButton" type="submit">❤️ Send Happy Thought! ❤️</button>
       </form>
     </div>
   )

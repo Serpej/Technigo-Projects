@@ -15,7 +15,7 @@ export const HappyThoughtList = ({loading, thoughts, handleLike}: {
 }) => {
 
   if (loading) {
-    return <h1>Loading in progress...</h1>
+    return <h1 className="loadingStatement">Loading in progress...</h1>
   }
 
 
@@ -41,23 +41,31 @@ export const HappyThoughtList = ({loading, thoughts, handleLike}: {
     }
   }
 
-
   const thoughtArray = thoughts.map((thought:HappyThought) => {
+
     return (
-    <div key={thought._id}>
-      <p >{thought.message}</p>
-      <p>{getRelativeDate(thought)}</p>
-      <button 
-        onClick={() => {handleLike(thought._id)}}
-        type="button">
-        <img src="" alt="likeheart" />{thought.hearts}
-      </button>
+    <div key={thought._id} className="thoughtPost">
+      <p className="postMessage">{thought.message}</p>
+      
+      <div className="postInfoContainer">
+        <div className="buttonContainer">
+          <button
+            className="likeButton"
+            onClick={() => {handleLike(thought._id)}}
+            type="button"
+            style= {(thought.hearts ?? 0) > 0 ? {backgroundColor: "#FFADAD"} : {}}>
+            <div className="likeButtonHeart">❤️</div>
+          </button>
+          <p className="greyText"> x {thought.hearts}</p>
+        </div>
+        <p className="greyText">{getRelativeDate(thought)}</p>
+      </div>
     </div>
     )
   })
 
   return (
-    <div>
+    <div className="thoughtPostContainer">
       {thoughtArray}
     </div>
   )

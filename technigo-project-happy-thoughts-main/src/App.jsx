@@ -4,8 +4,6 @@ import { HappyThoughtParent } from "./components/HappyThoughtParent";
 export const App = () => {
 
   return (  
-    <div> 
       <HappyThoughtParent />
-    </div>
   )
 }

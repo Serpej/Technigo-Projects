@@ -98,9 +98,8 @@ export const HappyThoughtParent = () => {
     fetchThoughtList();
   },[]);
 
-
   return (
-    <div>
+    <div className="happyThoughtParentContainer">
       <ThoughtInput
         newThought= {newThought}
         handleNewThought= {handleNewThought}
