@@ -32,7 +32,6 @@ export const App = () => {
       <Header />
       <h1>Featured Projects</h1>
       <div className="mainContainer">
-      {/* Här behöver jag antingen skapa en useState eller någon form av boolen (null coalesce operator + ternary operator?) buttonActive ? projectList.slice(0,3): projectList*/}
         {handleShowMore()}
         <button 
           className="showMoreButton"
