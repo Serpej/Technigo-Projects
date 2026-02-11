@@ -13,11 +13,6 @@ code {
     monospace;
 }
 
-html {
-  height: 100vh;
-  width: 100vw;
-}
-
 html * {
   margin:0px;
   box-sizing: border-box;
@@ -129,11 +124,6 @@ body {
   gap: clamp(30px, 6vw, 100px);;
 }
 
-.project:hover {
-  scale: 1.02;
-  box-shadow: 1px 1px 8px 1px #332C25;
-}
-
 .projectInfo {
   display: flex;
   flex-direction: column;
@@ -216,6 +206,16 @@ body {
   top: 20px;
   right: 15px;
   z-index: 2;
+}
+
+.showMoreButton {
+  background-color: #3C3835;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  border: 1px solid #000000;
+  transition: background-color 0.3s;
 }
 
 .linkContainer {
@@ -304,6 +304,17 @@ body {
     max-width: 400px;
   }
 
+}
+
+@media (hover: hover) {
+  .project:hover {
+  scale: 1.02;
+  box-shadow: 1px 1px 8px 1px #332C25;
+  }
+
+  .showMoreButton:hover {
+    background-color: #917154;
+  }
 }
 
 

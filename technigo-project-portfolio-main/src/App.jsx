@@ -1,9 +1,11 @@
 import { Header } from "./components/Header"
 import data from "./data.json"
 import { Project } from "./components/Project";
+import { useState } from "react";
 
 
 export const App = () => {
+  const [showMore, setShowMore] = useState(false);
   const { projects } = data;
   const projectList = projects.map((project) => {
     return <Project key={project.name}
@@ -16,12 +18,27 @@ export const App = () => {
                     githubIcon={project.githubIcon}
                     githubLink={project.githubLink} />
   });
+  const handleShowMore = () => {
+    if (showMore) {
+      return projectList;
+    } else {
+      const editedProjectList = projectList.slice(0, 3);
+      return editedProjectList;
+    }
+  }
+
   return (
     <div className="bodyContainer">
       <Header />
       <h1>Featured Projects</h1>
       <div className="mainContainer">
-        {projectList}
+      {/* Här behöver jag antingen skapa en useState eller någon form av boolen (null coalesce operator + ternary operator?) buttonActive ? projectList.slice(0,3): projectList*/}
+        {handleShowMore()}
+        <button 
+          className="showMoreButton"
+          onClick= {() => {setShowMore(!showMore)}}>
+          {showMore ? "Show Less" : "Show More"}
+        </button>
       </div>
       <div className="techContainer">
         <h1>Tech</h1>
@@ -30,7 +47,7 @@ export const App = () => {
       <div className="contactContainer">
         <h1>Say Hi!</h1>
         <div className="contactInfoContainer">
-          <img className="profileImg" src="https://media.licdn.com/dms/image/v2/D4D03AQGlIeRF3ReILw/profile-displayphoto-crop_800_800/B4DZoMKXRHH4AM-/0/1761140635967?e=1769644800&v=beta&t=Mi_VqTqpg6yJ6CkFG14utGFLblX9aenwydcqx3iUU3k" alt="A picture of Jesper" />
+          <img className="profileImg" src="../dist/assets/jesperIKvadrat.jpeg" alt="A picture of Jesper" />
           <h3>Jesper Hagerman Borgström</h3>
           <h3>+46(0)76 26 25 922</h3>
           <h3>Jehag@live.se</h3>

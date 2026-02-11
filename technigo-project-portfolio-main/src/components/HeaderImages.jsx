@@ -4,7 +4,6 @@ export const HeaderImages = () => {
   const { projects } = data;
   const featuredProjectImages = projects.map((project, i) => {
     if (i < 3) {
-      console.log(project.image)
       return <img id={`image${i}`}
         key={i}
         src={project.image}
