@@ -1,16 +1,18 @@
+import { TextArea, Button, Form } from "./StyledComponents"
+
 const TaskForm = ({ newTodo, onNewTodoChange, onFormSubmit }) => {
   return (
-    <form onSubmit={onFormSubmit}>
+    <Form onSubmit={onFormSubmit}>
       <h1>📝 ToDo App</h1>
       <h2>Type you tasks here below 👇</h2>
 
-      <textarea
+      <TextArea
         value={newTodo}
         onChange={onNewTodoChange}
         placeholder="Type a task.."
       />
-      <button type="submit">Submit form!</button>
-    </form>
+      <Button type="submit">Submit form!</Button>
+    </Form>
   )
 }
 

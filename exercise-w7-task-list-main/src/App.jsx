@@ -1,10 +1,11 @@
 import { Tasks } from "./components/Tasks";
 import "./App.css"
+import { Root } from "./components/StyledComponents";
 
 export const App = () => {
   return (
-    <div>
+    <Root>
       <Tasks />
-    </div>
+    </Root>
   );
 };
