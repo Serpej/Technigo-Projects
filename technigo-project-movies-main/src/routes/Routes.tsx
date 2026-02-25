@@ -5,6 +5,6 @@ import { MovieInfo } from "../pages/MovieInfo";
 export const routes = (
     <>
       <Route path="/" element={<Home />} />
-      <Route path="/movies/:movieInfoId" element={<MovieInfo />} />
+      <Route path="/movies/:id" element={<MovieInfo />} />
     </>
   )
