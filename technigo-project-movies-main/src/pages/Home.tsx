@@ -16,9 +16,9 @@ export const Home = () => {
 
   const listOfMovies = movies.map((movie) => {
     return (
-      <li key={movie.title}>
-        <Link to={`/movies/${movie.id}`}>
-          {movie.title}
+      <li className="flex" key={movie.title}>
+        <Link className="flex" to={`/movies/${movie.id}`}>
+          <img className="flex-initial" src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt="image of the chosen movie" />
         </Link>
       </li>
     )
@@ -26,8 +26,8 @@ export const Home = () => {
 
   return(
     <>
-      <div>
-        <ul>{listOfMovies}</ul>
+      <div className="min-h-screen ">
+        <ul className="flex list-none container mx-auto flex-row flex-wrap justify-center gap-5 my-10">{listOfMovies}</ul>
       </div>
     </>
   )
