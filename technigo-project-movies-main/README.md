@@ -2,8 +2,15 @@
 
 Replace this readme with your own information about the project. You can include things like:
 
-- Brief description of the assignment
-- How you approached the task, what tools and techniques you used, and how you planned it
+- In this assignment we are practicing making React Router work, fetching API:s and styling with taildwind. 
+
+  1. Sketched on pen and paper, the structure of my components.
+  2. Created the project and make the base Router logic for components and the API calls.
+  3. Added Posters to projects.
+  4. Installed TailWind and started styling.
+
+
+  
 - If you had more time, what would be next?
 - How to run the project locally
 
