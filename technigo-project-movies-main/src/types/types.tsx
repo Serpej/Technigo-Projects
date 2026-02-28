@@ -15,6 +15,8 @@ export type Movie = {
   vote_count: number
 }
 
+
+/* Probably not needed */
 export type MovieDetail = {
   id: number;
   title: string;
