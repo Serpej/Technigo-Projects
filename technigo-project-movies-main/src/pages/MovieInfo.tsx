@@ -23,7 +23,7 @@ export const MovieInfo= () => {
   return  (
     <div 
       className="min-h-screen bg-cover"
-      style={{backgroundImage: `${backgroundImagePath}`}}
+      style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%), ${backgroundImagePath}`}}
     >
       <Link to="/"><button type="button">Back</button></Link>
       <div >
