@@ -1,7 +1,8 @@
 import { useParams, Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { fetchMovies } from "../api/api";
-import { Movie} from "../types/types";
+import { Movie } from "../types/types";
+import  starIcon  from  "../assets/star.svg";
 
 
 export const MovieInfo= () => {
@@ -15,6 +16,10 @@ export const MovieInfo= () => {
     }
     getMovies();
   }, [id]);
+
+  const roundToOneDecimal = (n:number):number => {
+    return Math.round(n * 10) / 10
+  }
 
   const chosenMovie = movie;
   const posterPath = `https://image.tmdb.org/t/p/w342${chosenMovie?.poster_path}`;
@@ -47,7 +52,13 @@ export const MovieInfo= () => {
           alt="image of the chosen movie" 
           className="border-[5px] border-white"/>
         <div className="flex flex-col ml-5 justify-end">
-          <h1 className="text-3xl text-white font-bold">{chosenMovie?.title}</h1>
+          <h1 className=" flex gap-[20px] text-3xl text-white font-bold">
+            {chosenMovie?.title} 
+            <div className="flex bg-white text-black px-1">
+              <img className="w-5 mx-1" src={starIcon} alt="star rating" />
+              {roundToOneDecimal(chosenMovie?.vote_average ?? 0)}
+            </div>
+          </h1>
           <p className="text-white my-[16px] max-w-[400px] leading-0">{chosenMovie?.overview}</p>
         </div>        
       </div>
