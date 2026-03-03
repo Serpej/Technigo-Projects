@@ -13,14 +13,14 @@ export const Home = () => {
     }
     getMovies();
   }, []);
-
+/* Fixa responsiveness */
   const listOfMovies = movies.map((movie) => {
     return (
       <li 
         className="flex"
         key={movie.title}>
         <Link className="flex flex-col relative group" to={`/movies/${movie.id}`}>
-          <img className="flex-initial group-hover:opacity-50" src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt="image of the chosen movie" />
+          <img className="flex-[0_1_300] min-w-[185px] group-hover:opacity-50" src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`} alt="image of the chosen movie" />
           
           <div className="flex flex-col gap-3 absolute bottom-0 invisible group-hover:visible m-3">  
             <h1 className="text-white text-xl font-bold">Movie Title{movie.title}</h1>
