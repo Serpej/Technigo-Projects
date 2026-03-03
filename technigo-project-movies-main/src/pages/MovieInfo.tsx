@@ -27,7 +27,7 @@ export const MovieInfo= () => {
 
   return  (
     <div 
-      className="flex flex-col justify-end min-h-screen bg-cover relative"
+      className="flex flex-col justify-end min-h-screen bg-cover bg-center relative"
       style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%), ${backgroundImagePath}`}}
     >
       <Link 
@@ -46,15 +46,15 @@ export const MovieInfo= () => {
           Movies
         </p>
       </Link>
-      <div className="flex p-[50px]">
+      <div className="flex flex-col p-[50px] md:flex-row">
         <img 
           src={posterPath} 
           alt="image of the chosen movie" 
-          className="border-[5px] border-white"/>
+          className="flex-[1_1_185px] min-w-[185px] md:flex-[0-0-342px] md:min-w-[342px] max-w-[342px] mb-[20px] border-[5px] border-white"/>
         <div className="flex flex-col ml-5 justify-end">
-          <h1 className=" flex gap-[20px] text-3xl text-white font-bold">
+          <h1 className=" flex flex-wrap gap-[20px] text-3xl text-white font-bold">
             {chosenMovie?.title} 
-            <div className="flex bg-white text-black px-1">
+            <div className=" flex bg-white text-black px-1"> {/* Fixa rtesponsiveness här */}
               <img className="w-5 mx-1" src={starIcon} alt="star rating" />
               {roundToOneDecimal(chosenMovie?.vote_average ?? 0)}
             </div>

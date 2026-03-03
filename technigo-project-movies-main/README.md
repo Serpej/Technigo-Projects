@@ -8,6 +8,8 @@ Replace this readme with your own information about the project. You can include
   2. Created the project and make the base Router logic for components and the API calls.
   3. Added Posters to projects.
   4. Installed TailWind and started styling.
+  5. Added svg for Backbutton and backdrop.
+  6. Fixed Responsiveness for all pages 
 
 
   
