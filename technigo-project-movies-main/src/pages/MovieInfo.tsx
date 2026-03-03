@@ -3,19 +3,29 @@ import { useEffect, useState } from "react";
 import { fetchMovies } from "../api/api";
 import { Movie } from "../types/types";
 import  starIcon  from  "../assets/star.svg";
+import { Error404 } from "./Error404";
 
 
 export const MovieInfo= () => {
   const [movie, setMovie] = useState<Movie>();
+  const [error, setError] = useState(false);
   const { id } = useParams();
  
   useEffect(() => {
     const getMovies = async () => {
       const data  = await fetchMovies(Number(id));
-      setMovie(data);
+      if (!data) {
+        setError(true);
+      } else {
+        setMovie(data);
+      } 
     }
     getMovies();
   }, [id]);
+
+  if (error) {
+    return <Error404 />
+  }
 
   const roundToOneDecimal = (n:number):number => {
     return Math.round(n * 10) / 10
@@ -54,7 +64,7 @@ export const MovieInfo= () => {
         <div className="flex flex-col ml-5 justify-end">
           <h1 className=" flex flex-wrap gap-[20px] text-3xl text-white font-bold">
             {chosenMovie?.title} 
-            <div className=" flex bg-white text-black px-1"> {/* Fixa rtesponsiveness här */}
+            <div className=" flex bg-white text-black px-1">
               <img className="w-5 mx-1" src={starIcon} alt="star rating" />
               {roundToOneDecimal(chosenMovie?.vote_average ?? 0)}
             </div>

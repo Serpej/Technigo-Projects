@@ -5,7 +5,8 @@ Replace this readme with your own information about the project. You can include
 - In this assignment we are practicing making React Router work, fetching API:s and styling with taildwind. 
 
   1. Sketched on pen and paper, the structure of my components.
-  2. Created the project and make the base Router logic for components and the API calls.
+  2. Created the project and make the base Router logic for components and the API calls. Adjusted
+    the API to take an optional parameter, and thus be able to use the same function call for specific movies aswell as the whole movie list.
   3. Added Posters to projects.
   4. Installed TailWind and started styling.
   5. Added svg for Backbutton and backdrop.
