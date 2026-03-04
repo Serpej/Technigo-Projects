@@ -18,7 +18,8 @@ Replace this readme with your own information about the project. You can include
 If I had more time I would probably make more routes to additional information about movies, and make a search engine for them aswell.
 
 ## View it live
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+
+https://popularmoviesfromtmdb.netlify.app/
 
 
 ## Getting Started with the Project
