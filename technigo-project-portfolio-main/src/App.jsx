@@ -2,7 +2,7 @@ import { Header } from "./components/Header"
 import data from "./data.json"
 import { Project } from "./components/Project";
 import { useState } from "react";
-import profileImg from "./assets/jesperIKvadrat";
+import profileImg from "./assets/jesperIKvadrat.jpeg";
 
 
 export const App = () => {
