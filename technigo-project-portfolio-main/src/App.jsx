@@ -2,6 +2,7 @@ import { Header } from "./components/Header"
 import data from "./data.json"
 import { Project } from "./components/Project";
 import { useState } from "react";
+import profileImg from "./assets/jesperIKvadrat";
 
 
 export const App = () => {
@@ -46,7 +47,7 @@ export const App = () => {
       <div className="contactContainer">
         <h1>Say Hi!</h1>
         <div className="contactInfoContainer">
-          <img className="profileImg" src="../dist/assets/jesperIKvadrat.jpeg" alt="A picture of Jesper" />
+          <img className="profileImg" src={profileImg} alt="A picture of Jesper" />
           <h3>Jesper Hagerman Borgström</h3>
           <h3>+46(0)76 26 25 922</h3>
           <h3>Jehag@live.se</h3>
