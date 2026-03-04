@@ -2,21 +2,25 @@ import { useParams, Link } from "react-router-dom"
 import { useEffect, useState } from "react";
 import { fetchMovies } from "../api/api";
 import { Movie } from "../types/types";
-import  starIcon  from  "../assets/star.svg";
+import starIcon from  "../assets/star.svg";
 import { Error404 } from "./Error404";
 
 
 export const MovieInfo= () => {
   const [movie, setMovie] = useState<Movie>();
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
  
   useEffect(() => {
+    setLoading(true);
     const getMovies = async () => {
       const data  = await fetchMovies(Number(id));
       if (!data) {
+        setLoading(false);
         setError(true);
       } else {
+        setLoading(false);
         setMovie(data);
       } 
     }
@@ -26,7 +30,6 @@ export const MovieInfo= () => {
   if (error) {
     return <Error404 />
   }
-
   const roundToOneDecimal = (n:number):number => {
     return Math.round(n * 10) / 10
   }
@@ -37,7 +40,7 @@ export const MovieInfo= () => {
 
   return  (
     <div 
-      className="flex flex-col justify-end min-h-screen bg-cover bg-center relative"
+      className={`flex flex-col ${loading ? "justify-center" : "justify-end"} min-h-screen bg-cover bg-center relative`}
       style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0) 70%, rgb(0, 0, 0) 100%), ${backgroundImagePath}`}}
     >
       <Link 
@@ -56,11 +59,16 @@ export const MovieInfo= () => {
           Movies
         </p>
       </Link>
-      <div className="flex flex-col p-[50px] md:flex-row">
+      <div className={`flex items-center justify-center ${loading ? "visible" : "invisible"}`}>
+        <h1
+          className={`text-3xl text-white font-bold`}>...Loading In Progress
+        </h1>
+      </div>
+      <div className={`flex flex-col p-[50px] md:flex-row ${loading ? "invisible" : "visible"}`}>
         <img 
           src={posterPath} 
           alt="image of the chosen movie" 
-          className="flex-[1_1_185px] min-w-[185px] md:flex-[0-0-342px] md:min-w-[342px] max-w-[342px] mb-[20px] border-[5px] border-white"/>
+          className={`flex-[1_1_185px] min-w-[185px] md:flex-[0-0-342px] md:min-w-[342px] max-w-[342px] mb-[20px] border-[5px] border-white`}/>
         <div className="flex flex-col ml-5 justify-end">
           <h1 className=" flex flex-wrap gap-[20px] text-3xl text-white font-bold">
             {chosenMovie?.title} 

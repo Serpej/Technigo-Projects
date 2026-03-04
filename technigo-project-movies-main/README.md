@@ -11,6 +11,7 @@ Replace this readme with your own information about the project. You can include
   4. Installed TailWind and started styling.
   5. Added svg for Backbutton and backdrop.
   6. Fixed Responsiveness for all pages 
+  7. Add an Error Page
 
 
   

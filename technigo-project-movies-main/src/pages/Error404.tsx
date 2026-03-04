@@ -28,8 +28,7 @@ export const Error404  = () => {
         </p>
       </Link>
       <div className="flex flex-col justify-center items-center min-h-screen">
-        <img className="text-white" src="" alt="Picture of a universe" />
-        <h1 className="text-xl text-white font-bold">Page not found.</h1>
+        <h1 className="text-xl md:text-3xl text-white font-bold drop-shadow-[2px_3px_4px_rgb(0_0_0_/_.5)]">404. Page not found.</h1>
       </div>
       <p className="text-white text-sm absolute bottom-1 right-0 mr-[10px]">Photo by Felix Mittermeier</p>
     </div>
