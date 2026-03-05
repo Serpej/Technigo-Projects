@@ -166,7 +166,8 @@ body {
   display: flex;
 }
 
-.projectImage {
+.projectImage, 
+.projectImageAndArtistContainer {
   max-height: 400px;
   max-width: 400px;
   min-width: 0px;
@@ -186,6 +187,19 @@ body {
   border-radius:  4.75% / 3.5%;
   box-shadow: 3px 3px 4px 3px #332C25;
   background-color: #E58C3A;
+}
+
+.projectImageAndArtistContainer {
+  position: relative;
+}
+
+.artistName {
+  position: absolute;
+  bottom: 10px;
+  font-size: 12px;
+  margin: 5px;
+  text-decoration: none;
+  color: #000000;
 }
 
 #image0 {
@@ -257,7 +271,8 @@ body {
     flex-direction: row;
   }
 
-  .projectImage {
+  .projectImage,
+  .projectImageAndArtistContainer {
     max-height: 400px;
     min-width: 320px;
   }
@@ -291,7 +306,8 @@ body {
     flex-direction: row-reverse;
   }
 
-  .projectImage {
+  .projectImage,
+  .projectImageAndArtistContainer {
     max-height: 400px;
     min-width: 400px;
   }
