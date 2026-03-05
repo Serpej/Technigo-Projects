@@ -4,10 +4,14 @@ import { ProjectTags } from "./projectComponents/ProjectTags";
 import { Links } from "./projectComponents/Links";
 import { Description } from "./projectComponents/Description";
 
-export const Project = ({name, image, tags,description, netlifyIcon, netlifyLink, githubIcon, githubLink}) => {
+export const Project = ({name, image, artist, tags, description, netlifyIcon, netlifyLink, githubIcon, githubLink}) => {
   return (
     <div className="project">
-      <ProjectImage image={image} netlifyLink={netlifyLink}/>
+      <ProjectImage 
+        image={image}
+        artist={artist}
+        netlifyLink={netlifyLink}
+      />
 
       <div className="projectInfo">
         <ProjectTags tags={tags} />

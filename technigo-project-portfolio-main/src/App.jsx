@@ -12,6 +12,7 @@ export const App = () => {
     return <Project key={project.name}
                     name={project.name}
                     image={project.image}
+                    artist={project.imageArtist}
                     tags={project.tags}
                     description={project.description}
                     netlifyIcon={project.netlifyIcon}

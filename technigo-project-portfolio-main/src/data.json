@@ -1,8 +1,29 @@
 {
   "projects": [
     {
+      "name": "TMDB's most popular movies ",
+      "image": "/images/wahyu-setyanto--satelite.svg",
+      "imageArtist": "Wahyu Setyanto on Unsplash",
+      "tags": [
+        "HTML5",
+        "Tailwind",
+        "TypeScript",
+        "React",
+        "React Router",
+        "Vite",
+        "Node",
+        "Netlify"
+      ],
+      "description": "A Technigo project. Using TMDB's API, Ive made a small website where you can view the most popular movies, check it out!",
+      "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
+      "netlifyLink":"https://popularmoviesfromtmdb.netlify.app/",
+      "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
+      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/technigo-project-movies-main"
+    },
+    {
       "name": "Magic The Gathering Personality Buzz Quizz",
-      "image": "https://images.unsplash.com/vector-1760284636051-952e5a504aa9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "image": "/images/wahyu-setyanto-BookHead.svg",
+      "imageArtist": "Wahyu Setyanto on Unsplash",
       "tags": [
         "HTML5",
         "CSS3",
@@ -20,7 +41,8 @@
     },
     {
       "name": "Magic The Gathering Search",
-      "image": "https://images.unsplash.com/vector-1760196134551-5539acb32d52?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "image": "/images/wahyu-setyanto-Telescope.svg",
+      "imageArtist": "Wahyu Setyanto on Unsplash",
       "tags": [
         "HTML5",
         "CSS3",
@@ -34,7 +56,8 @@
     },
     {
       "name": "Weather app",
-      "image": "https://images.unsplash.com/vector-1760196134399-5e3cdad48920?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "image": "/images/wahyu-setyanto-Planet.svg",
+      "imageArtist": "Wahyu Setyanto on Unsplash",
       "tags": [
         "HTML5",
         "CSS3",
@@ -48,7 +71,8 @@
     },
     {
       "name": "Task manager",
-      "image": "https://images.unsplash.com/vector-1764700666463-15720d759ac6?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "image": "/images/da-vector-Yoga.svg",
+      "imageArtist": "DA VECTOR on Unsplash",
       "tags": [
         "HTML5",
         "CSS3",
@@ -62,7 +86,8 @@
     },
     {
       "name": "Business site",
-      "image": "https://images.unsplash.com/vector-1764141446636-8e37df00eea9?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "image": "/images/space-stock-Briefcase.svg",
+      "imageArtist": "Space Stock on Unsplash",
       "tags": [
         "HTML5",
         "CSS3", 
