@@ -7,7 +7,8 @@ export const ProjectImage = ({image, artist, netlifyLink})  => {
         className="projectImageAndArtistContainer"
         >
           <img src={image} alt={`art by ${artist}`} className="projectImage" />
-          <p className="artistName">Art by {artist}</p>
+            <p className="artistName">Art by {artist}</p>
+
       </a>   
   )
 };
