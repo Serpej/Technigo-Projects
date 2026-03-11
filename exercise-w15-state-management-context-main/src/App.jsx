@@ -1,13 +1,12 @@
-import { Context } from "./components/CreateContext.js"
+import { Context } from "./components/CreateContext"
 import { useState } from "react";
-import { LoginPage } from "./components/loginPage.js";
+import { LoginPage } from "./components/loginPage";
 
 export const App = () => {
   const [theme, setTheme] = useState("light");
-
-  <Context.Provider value={theme}>
+  return (  
+  <Context.Provider value={{theme, setTheme}}>
     <LoginPage />
   </Context.Provider>
-
-  return <div className="App">Hello Coders!</div>;
+  )
 };

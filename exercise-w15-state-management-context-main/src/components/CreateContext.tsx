@@ -1,3 +1,8 @@
 import { createContext } from "react";
 
-export const Context = createContext("Default Vaule");
+type ThemeContext = {
+  theme: string;
+  setTheme: (theme: string) => void;
+}
+
+export const Context = createContext<ThemeContext>({theme: "light", setTheme: () => {} });
