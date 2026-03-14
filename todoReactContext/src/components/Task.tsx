@@ -1,21 +1,30 @@
-export const Task = ({description, done}:{description: string, done: boolean}) => {
+export const Task = ({
+  description, 
+  taskObjectDone,
+  toggleTask 
+}:{
+  description: string,
+  taskObjectDone: boolean,
+  toggleTask(): void
+ }) => {
 
-  const solidBackGroundColor = `backgroundColor:{{oklch(64.6% 0.222 41.116)}}`;
-
-
+  
   return (
   <div
-    className="m-10 text-2xl flex border rounded-md bg-gray-500 p-5 w-[400px]"
+    className="m-10 text-2xl text-background flex border-black border shadow-xs shadow-dark rounded-md bg-mediumDark p-5 w-100"
   >
     <button
-      className=" rounded-full w-10 h-10 border border-orange-600 cursor-pointer"
+      className=" rounded-full w-10 h-10 border-2 border-accent cursor-pointer"
       type="button"
       onClick={() => {
+      toggleTask()
       }}
+      style={{backgroundColor:`${taskObjectDone ? "#FE7F2D" : "transparent"}`}}
     >
     </button>
-        <h1
+    <h1
       className="ml-5"
+      style={{textDecorationLine:`${taskObjectDone ? "line-through" : ""}`}}
     >
       {description}
     </h1>
