@@ -1,24 +1,19 @@
-import { useState } from "react";
-import type { Tasktype } from "../types/Types";
+import { useContext } from "react";
 import { NewTaskForm } from "./NewtaskForm";
 import { Task } from "./Task";
 import { TaskCount } from "./TaskCount";
+import { TaskArrayContext } from "./ContextAPITaskArray";
 
 export const TaskContainer = () => {
-  const [tasks, setTasks] =useState<Tasktype[]>([
-    {
-      description: "Drink Water",
-      done: false,
-    },
-    {
-      description: "Clean Room",
-      done: false,
-    },
-    {
-      description: "Play Magic",
-      done: false,
-    }
-  ]);
+
+  const {tasks, setTasks} = useContext(TaskArrayContext);
+
+ /*  const addTask = () => {
+    
+      1. make a new object where the value === description
+      2. use spread operator to create a new array of objects and add task.
+     
+  } */
 
 
   const toggleTask = (index:number) => {

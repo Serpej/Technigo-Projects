@@ -1,13 +1,26 @@
 import { TaskContainer } from "./components/TaskContainer"
-import { taskDoneValue } from "./components/ContextAPIDone";
+import { TaskArrayContext } from "./components/ContextAPITaskArray";
 import { useState } from "react";
 
 export const App = () => {
-  const [taskDone, setTaskDone] = useState(false);
+const [tasks, setTasks] = useState([
+    {
+      description: "Drink Water",
+      done: false,
+    },
+    {
+      description: "Clean Room",
+      done: false,
+    },
+    {
+      description: "Play Magic",
+      done: false,
+    }
+  ])
   return(
-    <taskDoneValue.Provider value={{taskDone, setTaskDone}}>
+    <TaskArrayContext.Provider value={{tasks, setTasks}}>
       <TaskContainer />
-    </taskDoneValue.Provider>
+    </TaskArrayContext.Provider>
   )
 }
 
