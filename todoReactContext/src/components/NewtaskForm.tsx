@@ -1,5 +1,5 @@
 import { TaskArrayContext } from "./ContextAPITaskArray";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import type { ContextType } from "../types/Types";
 
 
@@ -13,20 +13,22 @@ const {tasks, setTasks} = useContext<ContextType>(TaskArrayContext);
     setInputValue(e.target.value);
   }
 
-  const handleOnSubmit = (e: React.SubmitEvent<HTMLButtonElement>) => {
+  const addTask = () => {
+    setTasks([...tasks, {description: inputValue, done: false}]);
+  }
+
+  const handleOnSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setTasks([...tasks, {description: inputValue, done: false}])
+    addTask();
     setInputValue("");
   }
 
-/*   useEffect(() => {
-
-  },[tasks]) */
 
   return (
   <form
     action=""
     className="border border-dark m-5 rounded-md pr-6 pl-6 flex flex-row items-center"
+    onSubmit={(e) => {handleOnSubmit(e)}}
     >
     <label>
       <input
@@ -36,11 +38,12 @@ const {tasks, setTasks} = useContext<ContextType>(TaskArrayContext);
         autoFocus
         value= {inputValue}
         onChange={(e) => {handleOnChange(e)}}
+        required
         />
     </label>
     <button 
       className=" ring-1 ring-dark rounded-full h-12 w-12 m-5 cursor-pointer flex items-center justify-center text-2xl font-medium bg-accent leading-none"
-      onSubmit={(e) => {handleOnSubmit(e)}}
+      type="submit"
     >
     +
     </button>
