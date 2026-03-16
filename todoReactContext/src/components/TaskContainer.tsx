@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NewTaskForm } from "./NewtaskForm";
 import { Task } from "./Task";
 import { TaskCount } from "./TaskCount";
 import { TaskArrayContext } from "./ContextAPITaskArray";
+import type { ContextType } from "../types/Types";
 
 export const TaskContainer = () => {
 
-  const {tasks, setTasks} = useContext(TaskArrayContext);
+  const [inputValue, setInputValue] = useState("");
+  const {tasks, setTasks} = useContext<ContextType>(TaskArrayContext);
 
  /*  const addTask = () => {
     
@@ -37,7 +39,10 @@ export const TaskContainer = () => {
   return (
     <div className="bg-background min-h-screen flex flex-col justify-center items-center">
       <TaskCount />
-      <NewTaskForm />
+      <NewTaskForm
+        inputValue ={inputValue}
+        setInputValue= {setInputValue}
+       />
       <ul>
         {taskList}
       </ul>

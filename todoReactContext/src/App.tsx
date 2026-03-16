@@ -1,9 +1,10 @@
 import { TaskContainer } from "./components/TaskContainer"
 import { TaskArrayContext } from "./components/ContextAPITaskArray";
 import { useState } from "react";
+import type { Tasktype } from "./types/Types";
 
 export const App = () => {
-const [tasks, setTasks] = useState([
+const [tasks, setTasks] = useState<Tasktype[]>([
     {
       description: "Drink Water",
       done: false,
