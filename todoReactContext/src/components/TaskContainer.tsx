@@ -10,17 +10,21 @@ export const TaskContainer = () => {
   const [inputValue, setInputValue] = useState("");
   const {tasks, setTasks} = useContext<ContextType>(TaskArrayContext);
 
- /*  const addTask = () => {
-    
-      1. make a new object where the value === description
-      2. use spread operator to create a new array of objects and add task.
-     
-  } */
-
-
   const toggleTask = (index:number) => {
     setTasks(tasks.map((task, i) => 
       i === index ? { ...task, done: !task.done} : task
+    ));
+  };
+
+ const newValue = "Edited!"
+  const deleteTask = (index:number) => {
+    setTasks(tasks.filter((_, i) => 
+      i !== index))
+  };
+
+  const editTask = (index:number) => {
+    setTasks(tasks.map((task, i) => 
+      i === index ? { ...task, description: newValue} : task
     ));
   };
 
@@ -31,6 +35,8 @@ export const TaskContainer = () => {
           description= {task.description}
           taskObjectDone= {task.done}
           toggleTask= {() => {toggleTask(index)}}
+          deleteTask= {() => {deleteTask(index)}}
+          editTask= {() => {editTask(index)}}
          />
       </li>
     )

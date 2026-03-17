@@ -3,11 +3,15 @@ import { FiTrash2, FiEdit } from "react-icons/fi";
 export const Task = ({
   description, 
   taskObjectDone,
-  toggleTask 
+  toggleTask,
+  deleteTask,
+  editTask
 }:{
   description: string,
   taskObjectDone: boolean,
   toggleTask(): void
+  deleteTask():void
+  editTask():void
  }) => {
 
   
@@ -39,6 +43,9 @@ export const Task = ({
     >
       <button
         className="cursor-pointer duration-300 ease-out  hover:scale-110"
+        onClick={() => {
+          editTask()
+        }}
       >
         <FiEdit 
           className="w-7 h-7"
@@ -46,6 +53,9 @@ export const Task = ({
       </button>
       <button
         className="cursor-pointer duration-300 ease-out  hover:scale-120"
+        onClick={() => {
+          deleteTask()
+        }}
       >
         <FiTrash2
             className="w-7 h-7"
