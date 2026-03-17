@@ -5,7 +5,12 @@ export type Tasktype = {
   done: boolean;
 }
 
-export type ContextType = {
-  tasks: Tasktype[] ;
+export type ContextTaskType = {
+  tasks: Tasktype[];
   setTasks: React.Dispatch<React.SetStateAction<Tasktype[]>>
+}
+
+export type ContextInputValue = {
+  inputValue: string;
+  setInputValue: React.Dispatch<React.SetStateAction<string>>;
 }

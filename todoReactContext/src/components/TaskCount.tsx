@@ -1,10 +1,10 @@
-import type { ContextType, Tasktype } from "../types/Types"
+import type { ContextTaskType, Tasktype } from "../types/Types"
 import { TaskArrayContext } from "./ContextAPITaskArray"
 import { useContext } from "react"
 
 
 export const TaskCount = () => {
-  const { tasks } = useContext<ContextType>(TaskArrayContext);
+  const { tasks } = useContext<ContextTaskType>(TaskArrayContext);
 
   const doneTasks = tasks.filter((task: Tasktype) => task.done)
 
