@@ -42,7 +42,7 @@ const {tasks, setTasks} = useContext<ContextType>(TaskArrayContext);
         />
     </label>
     <button 
-      className=" ring-1 ring-dark rounded-full h-12 w-12 m-5 cursor-pointer flex items-center justify-center text-2xl font-medium bg-accent leading-none"
+      className=" ring-1 ring-dark rounded-full h-12 w-12 m-5 cursor-pointer flex items-center justify-center text-2xl font-medium bg-accent leading-none duration-300 ease-out  hover:scale-110"
       type="submit"
     >
     +

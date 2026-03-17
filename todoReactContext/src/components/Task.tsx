@@ -19,7 +19,7 @@ export const Task = ({
       className="flex flex-row"
     >
       <button
-        className=" rounded-full w-10 h-10 border-2 border-accent cursor-pointer"
+        className=" rounded-full w-10 h-10 border-2 border-accent cursor-pointer duration-300 ease-out  hover:scale-110"
         type="button"
         onClick={() => {
         toggleTask()
@@ -38,12 +38,15 @@ export const Task = ({
       className="flex justify-center items-center gap-5"
     >
       <button
+        className="cursor-pointer duration-300 ease-out  hover:scale-110"
       >
         <FiEdit 
           className="w-7 h-7"
         />
       </button>
-      <button>
+      <button
+        className="cursor-pointer duration-300 ease-out  hover:scale-120"
+      >
         <FiTrash2
             className="w-7 h-7"
          />
