@@ -1,18 +1,23 @@
 import { useContext, useState } from "react";
-import { NewTaskForm } from "./NewtaskForm";
+import { NewTaskForm } from "./NewTaskForm";
 import { Task } from "./Task";
 import { TaskCount } from "./TaskCount";
-import { InputValue, TaskArrayContext } from "./ContextAPITaskArray";
-import type { ContextInputValue, ContextTaskType } from "../types/Types";
+import { TaskArrayContext } from "./ContextAPITaskArray";
+import type { ContextTaskType, Tasktype } from "../types/Types";
+
 
 export const TaskContainer = () => {
+  const [ inputValue, setInputValue ] = useState("");
+  const [ newDescription, setNewDescription ]= useState("");
+  const [editBoolean, setEditBoolean] = useState(false);
+  const [counter, setCounter] = useState(0);
 
-  const [editDescription, setEditDescription] = useState(false);
   const { tasks, setTasks } = useContext<ContextTaskType>(TaskArrayContext);
-  const { inputValue, setInputValue } = useContext<ContextInputValue>(InputValue);
 
   const addTask = () => {
-    setTasks([...tasks, {description: inputValue, done: false}]);
+    const counterId = counter;
+    setCounter(counter + 1);
+    setTasks([...tasks, {id: counterId, description: inputValue, done: false, edit: false}]);
   };
 
   const toggleTask = (index:number) => {
@@ -21,30 +26,34 @@ export const TaskContainer = () => {
     ));
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  }
-
   const handleOnSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addTask();
-    setInputValue("");
-  }
+  };
 
   const deleteTask = (index:number) => {
     setTasks(tasks.filter((_, i) => 
       i !== index))
   };
 
-  const handleEdit = (index:number, inputValue:string) => {
+  const handleEdit = (index:number, newDescription:string) => {
+    const newTask = newDescription
     setTasks(tasks.map((task, i) => 
-      i === index ? { ...task, description: inputValue} : task
+      i === index ? { ...task, description: newTask} : task
     ));
+    setNewDescription("");
+  };
+
+  const objectEdit = (index:number, boolean:boolean = true):void => {
+      setTasks((prevTasks) => {
+        const updatedTasks = prevTasks.map((task:Tasktype, i:number) => 
+          i === index ? {...task, edit: boolean, done: false} : task
+        );
+        return updatedTasks;
+      });
   };
 
   const editTask = (index:number) => {
-    setEditDescription(true);
-    handleEdit(index, inputValue);
+    handleEdit(index, newDescription);
   };
 
  
@@ -55,13 +64,16 @@ export const TaskContainer = () => {
         <Task
           description= {task.description}
           taskObjectDone= {task.done}
-          handleOnChange= {(e:React.ChangeEvent<HTMLInputElement>) => {handleOnChange(e)}}
           toggleTask= {() => {toggleTask(index)}}
           deleteTask= {() => {deleteTask(index)}}
           editTask= {() => {editTask(index)}}
           handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
-          editDescription= {editDescription}
-          setEditDescription={setEditDescription}
+          newDescription= {newDescription}
+          setNewDescription= {setNewDescription}
+          editBoolean= {editBoolean}
+          setEditBoolean= {setEditBoolean}
+          objectEditBoolean= {task.edit}
+          objectEdit= {(boolean:boolean) => {objectEdit(index, boolean)}}
          />
       </li>
     )
@@ -71,10 +83,11 @@ export const TaskContainer = () => {
     <div className="bg-background min-h-screen flex flex-col justify-center items-center">
       <TaskCount />
       <NewTaskForm
-        handleOnChange= {(e:React.ChangeEvent<HTMLInputElement>) => handleOnChange(e)}
         handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
+        inputValue= {inputValue}
+        setInputValue= {setInputValue}
         addTask= {() => {addTask()}}
-        editDescription= {editDescription}
+        editBoolean= {editBoolean}
        />
       <ul>
         {taskList}

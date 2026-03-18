@@ -1,32 +1,38 @@
-import { InputValue} from "./ContextAPITaskArray";
-import { useContext } from "react";
-import type { ContextInputValue } from "../types/Types";
-
-
 export const NewTaskForm = ({
-  handleOnChange,
   handleOnSubmit,
-  editDescription
+  inputValue,
+  setInputValue,
+  addTask,
+  editBoolean
 }
 : {
-  handleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleOnSubmit: (e: React.SubmitEvent<HTMLFormElement>) => void
+  inputValue: string
+  setInputValue: React.Dispatch<React.SetStateAction<string>>
   addTask: () => void
-  editDescription: boolean
+  editBoolean: boolean
   }) => {
 
-/* https://dribbble.com/shots/22604632-Todo-Website-Todo-App */
 
-  const { inputValue } = useContext<ContextInputValue>(InputValue);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  /* https://dribbble.com/shots/22604632-Todo-Website-Todo-App */
 
   return (
   <form
     className="border border-dark m-5 rounded-md pr-6 pl-6 flex flex-row items-center"
-    onSubmit={(e) => {handleOnSubmit(e)}}
+    onSubmit={(e) => {
+      handleOnSubmit(e)
+      addTask()
+      setInputValue("")
+    }}
     >
     <fieldset
-      className={`flex flex-row items-center ${editDescription ? "opacity-50" : ""}`}
-      disabled={editDescription}
+      className={`flex flex-row items-center ${editBoolean ? "opacity-50" : ""}`}
+      disabled={editBoolean}
     >
       <label>
         <input
@@ -35,7 +41,7 @@ export const NewTaskForm = ({
           className="p-3 text-xl bg-mediumDark rounded-md border-dark text-background"
           autoFocus
           value= {inputValue}
-          onChange={(e) => {handleOnChange(e)}}
+          onChange={(e) => {handleInputChange(e)}}
           required
           />
       </label>
