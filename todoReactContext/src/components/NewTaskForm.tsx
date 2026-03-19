@@ -1,3 +1,5 @@
+import { FiPlus } from "react-icons/fi";
+
 export const NewTaskForm = ({
   handleOnSubmit,
   inputValue,
@@ -23,7 +25,7 @@ export const NewTaskForm = ({
 
   return (
   <form
-    className="border border-dark m-5 rounded-md pr-6 pl-6 flex flex-row items-center"
+    className="border border-mediumDark  shadow-sm shadow-dark m-5 rounded-md pr-6 pl-6 flex flex-row items-center "
     onSubmit={(e) => {
       handleOnSubmit(e)
       addTask()
@@ -46,10 +48,12 @@ export const NewTaskForm = ({
           />
       </label>
       <button
-        className=" ring-1 ring-dark rounded-full h-12 w-12 m-5 cursor-pointer flex items-center justify-center text-2xl font-medium bg-accent leading-none duration-300 ease-out  hover:scale-110"
+        className=" ring-1 ring-dark rounded-full h-12 w-12 m-5 cursor-pointer flex items-center justify-center bg-accent duration-300 ease-out  hover:scale-110"
         type="submit"
       >
-      +
+      <FiPlus 
+        className="w-7 h-7"
+      />
       </button>
     </fieldset>
   </form>

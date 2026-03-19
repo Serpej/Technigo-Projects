@@ -87,7 +87,9 @@ export const TaskContainer = () => {
         addTask= {() => {addTask()}}
         editBoolean= {editBoolean}
        />
-      <ul>
+      <ul
+        className="border rounded-md border-inset border-mediumDark  inset-shadow-sm inset-shadow-dark"
+      >
         {taskList}
       </ul>
     </div>
