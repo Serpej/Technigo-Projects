@@ -48,7 +48,7 @@ export const NewTaskForm = ({
           />
       </label>
       <button
-        className=" ring-1 ring-dark rounded-full h-12 w-12 m-5 cursor-pointer flex items-center justify-center bg-accent duration-300 ease-out  hover:scale-110"
+        className=" ring-1 ring-mediumDark shadow-sm shadow-dark rounded-full h-12 w-12 m-5 cursor-pointer flex items-center justify-center bg-accent duration-300 ease-out  hover:scale-110"
         type="submit"
       >
       <FiPlus 

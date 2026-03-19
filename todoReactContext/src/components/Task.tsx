@@ -50,12 +50,12 @@ export const Task = ({
       className={`flex flex-row ${objectEditBoolean ? "hidden" : "block"}`}
     >
       <button
-        className="rounded-full w-8 h-8 border-2 border-accent cursor-pointer duration-300 ease-out  hover:scale-110 "
+        className={`rounded-full w-8 h-8 border ${taskObjectDone ? "border-black" : "border-accent border-2"} cursor-pointer duration-300 ease-out  hover:scale-110`}
         type="button"
         onClick={() => {
         toggleTask()
         }}
-        style={{backgroundColor:`${taskObjectDone ? "#FE7F2D" : "transparent"}`}}
+        style={{backgroundColor:`${taskObjectDone ? "#49D57C" : "transparent"}`}}
       >
       </button>
       <h1

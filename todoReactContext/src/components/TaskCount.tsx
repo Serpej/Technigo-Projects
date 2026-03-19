@@ -8,7 +8,7 @@ export const TaskCount = () => {
 
   const doneTasks = tasks.filter((task: Tasktype) => task.done);
 
-  const allDone = doneTasks.length === tasks.length;
+  const allDone = doneTasks.length === tasks.length && doneTasks.length !== 0;
 
   return (
     <div className="border rounded-md border-mediumDark  shadow-sm shadow-dark p-15 flex flex-col gap-2  text-dark">
