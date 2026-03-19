@@ -1,4 +1,5 @@
 import { FiTrash2, FiEdit, FiCheckSquare } from "react-icons/fi";
+import { useEffect, useRef } from "react";
 
 export const Task = ({
   description, 
@@ -29,9 +30,16 @@ export const Task = ({
  }) => {
 
 
-   const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewDescription(e.target.value);
   };
+
+  const inputRefrence = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (objectEditBoolean && inputRefrence.current) {
+      inputRefrence.current.focus();
+    }
+  }, [objectEditBoolean])
 
   return (
 
@@ -92,7 +100,6 @@ export const Task = ({
           handleOnSubmit(e)
           editTask()
           objectEdit(false)
-          /* Här ska objectEdit sättas till false igen */
           setEditBoolean(!editBoolean)
         }}
       >
@@ -102,6 +109,7 @@ export const Task = ({
           className=""
           value= {newDescription}
           onChange={(e) => {handleDescriptionChange(e)}}
+          ref={inputRefrence}
         />
         <button
           className="cursor-pointer duration-300 ease-out hover:scale-120 mr-2 ml-2"

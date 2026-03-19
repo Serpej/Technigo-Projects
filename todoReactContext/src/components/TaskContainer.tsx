@@ -56,8 +56,6 @@ export const TaskContainer = () => {
     handleEdit(index, newDescription);
   };
 
- 
-
   const taskList = tasks.map((task, index) => {
     return (
       <li key={index}>
