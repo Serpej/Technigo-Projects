@@ -21,11 +21,9 @@ export const NewTaskForm = ({
     setInputValue(e.target.value);
   };
 
-  /* https://dribbble.com/shots/22604632-Todo-Website-Todo-App */
-
   return (
   <form
-    className="border border-mediumDark  shadow-sm shadow-dark m-5 rounded-md pr-6 pl-6 flex flex-row items-center "
+    className="border border-mediumDark shadow-sm shadow-dark xl:m-0 xl:mb-5 m-5 rounded-md pr-6 pl-6 flex flex-row items-center "
     onSubmit={(e) => {
       handleOnSubmit(e)
       addTask()

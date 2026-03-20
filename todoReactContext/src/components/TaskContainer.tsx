@@ -78,20 +78,29 @@ export const TaskContainer = () => {
   })
 
   return (
-    <div className="bg-background min-h-screen flex flex-col justify-center items-center">
-      <TaskCount />
-      <NewTaskForm
-        handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
-        inputValue= {inputValue}
-        setInputValue= {setInputValue}
-        addTask= {() => {addTask()}}
-        editBoolean= {editBoolean}
-       />
-      <ul
-        className="border rounded-md border-inset border-mediumDark  inset-shadow-sm inset-shadow-dark"
+    <div className="bg-background min-h-screen flex flex-col justify-center items-center xl:grid xl:grid-cols-3">
+
+      <div
+        className="flex flex-col items-center xl:flex-col-reverse"
       >
-        {taskList}
-      </ul>
+        <TaskCount />
+      </div>
+      <div 
+        className="flex flex-col items-center justify-center mb-5"
+      >
+        <NewTaskForm
+          handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
+          inputValue= {inputValue}
+          setInputValue= {setInputValue}
+          addTask= {() => {addTask()}}
+          editBoolean= {editBoolean}
+        />
+        <ul
+          className={`${tasks.length > 0 ? "visiible" : "hidden"} xl:w-[480px] border rounded-md border-inset border-mediumDark  inset-shadow-sm inset-shadow-dark`}
+        >
+          {taskList}
+        </ul>
+      </div>
     </div>
   )
 }
