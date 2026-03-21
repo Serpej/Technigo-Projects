@@ -78,15 +78,15 @@ export const TaskContainer = () => {
   })
 
   return (
-    <div className="bg-background min-h-screen flex flex-col justify-center items-center xl:grid xl:grid-cols-3">
+    <div className="bg-background min-h-screen relative flex flex-col justify-center items-center xl:grid xl:grid-cols-3">
 
       <div
-        className="flex flex-col items-center xl:flex-col-reverse"
+        className="flex 2xl:max-w-[500px] 2xl:max-h-[280px] xl:absolute top-0 left-20 xl:min-h-screen flex-col items-center justify-start"
       >
         <TaskCount />
       </div>
       <div 
-        className="flex flex-col items-center justify-center mb-5"
+        className="flex min-h-screen flex-col items-center justify-start mb-5 xl:mb- xl:col-start-2"
       >
         <NewTaskForm
           handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}

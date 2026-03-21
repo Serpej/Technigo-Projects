@@ -47,7 +47,7 @@ export const Task = ({
     className="m-10 text-2xl text-background flex justify-between border-black border shadow-xs shadow-dark rounded-md bg-mediumDark p-5 w-100"
   >
     <div
-      className={`flex flex-row ${objectEditBoolean ? "hidden" : "block"}`}
+      className={`flex items-center flex-row ${objectEditBoolean ? "hidden" : "block"}`}
     >
       <button
         className={`rounded-full w-8 h-8 border ${taskObjectDone ? "border-black" : "border-accent border-2"} cursor-pointer duration-300 ease-out  hover:scale-110`}
@@ -59,13 +59,12 @@ export const Task = ({
       >
       </button>
       <h1
-        className="ml-5"
+        className="w-50 wrap-break-word ml-5"
         style={{textDecorationLine:`${taskObjectDone ? "line-through" : ""}`}}
       >
         {description}
       </h1>
     </div>
-
     <div
       className={`flex justify-center items-center gap-5 ${objectEditBoolean ? "hidden" : "block"}`}
     >
