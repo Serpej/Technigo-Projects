@@ -21,3 +21,5 @@ This is an assigment from technigo to make a Todo app using React with Global St
 
 ### Viewing it online
 
+
+https://contextapitodoapp.netlify.app/
