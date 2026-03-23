@@ -48,7 +48,7 @@ export const Task = ({
     className="m-10 text-2xl text-backgroundLight dark:text-darkGreen flex min-w-0 basis-100 justify-between border-black dark:border-creamGreen border shadow-xs shadow-darkGreen rounded-md bg-mediumDarkGreen dark:bg-creamGreen p-5"
   >
     <div
-      className={`flex min-w-0 items-center flex-row ${objectEditBoolean ? "hidden" : "block"}`}
+      className={`flex min-w-0 basis-100 items-center flex-row ${objectEditBoolean ? "hidden" : "block"}`}
     >
       <button
         className={`rounded-full w-8 h-8 border ${taskObjectDone ? "border-black" : "border-accent dark:border-darkGreen border-2"} cursor-pointer duration-300 ease-out  hover:scale-110`}
