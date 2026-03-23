@@ -1,6 +1,25 @@
 {
   "projects": [
     {
+      "name": "React Todo app",
+      "image": "/images/da-vector-Yoga.svg",
+      "imageArtist": "DA VECTOR on Unsplash",
+      "tags": [
+        "HTML5",
+        "Tailwind",
+        "TypeScript",
+        "React",
+        "Vite",
+        "Node",
+        "Netlify"
+      ],
+      "description": "A Technigo project. Using Reacts Context API to levrage Global State Management in this Todo app.",
+      "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
+      "netlifyLink":"https://contextapitodoapp.netlify.app/",
+      "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
+      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/todoReactContext"
+    },
+    {
       "name": "TMDB's most popular movies ",
       "image": "/images/wahyu-setyanto--satelite.svg",
       "imageArtist": "Wahyu Setyanto on Unsplash",
@@ -68,21 +87,6 @@
       "netlifyLink":"https://javascriptweatherappproject.netlify.app/",
       "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
       "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/technigo-project-weather-app-main"
-    },
-    {
-      "name": "Task manager",
-      "image": "/images/da-vector-Yoga.svg",
-      "imageArtist": "DA VECTOR on Unsplash",
-      "tags": [
-        "HTML5",
-        "CSS3",
-        "TypeScript"
-      ],
-      "description": "A task manager using Enums and Typescript.",
-      "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
-      "netlifyLink":"https://taskmanagerwithtypescript.netlify.app/",
-      "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
-      "githubLink":"https://github.com/Serpej/Technigo-Projects/tree/main/typeScriptTaskManager"
     },
     {
       "name": "Business site",
