@@ -51,7 +51,7 @@ export const Task = ({
       className={`flex min-w-0 basis-100 items-center flex-row ${objectEditBoolean ? "hidden" : "block"}`}
     >
       <button
-        className={`rounded-full w-8 h-8 border ${taskObjectDone ? "border-black" : "border-accent dark:border-darkGreen border-2"} cursor-pointer duration-300 ease-out  hover:scale-110`}
+        className={`rounded-full w-full basis-8 aspect-square border ${taskObjectDone ? "border-black" : "border-accent dark:border-darkGreen border-2"} cursor-pointer duration-300 ease-out  hover:scale-110`}
         type="button"
         onClick={() => {
         toggleTask()
@@ -92,10 +92,10 @@ export const Task = ({
       </button>
     </div>
     <div
-      className={`flex flex-row ${objectEditBoolean ? "block" : "hidden"}`} 
+      className={`flex min-w-0 flex-row ${objectEditBoolean ? "block" : "hidden"}`} 
     >
       <form
-        className="flex justify-center items-center"
+        className="flex min-w-0 justify-center items-center"
         onSubmit={(e) => {
           handleOnSubmit(e)
           editTask()
@@ -106,7 +106,7 @@ export const Task = ({
         <input 
           type="text" 
           placeholder={description}
-          className=""
+          className="w-full  w-min-0"
           value= {newDescription}
           onChange={(e) => {handleDescriptionChange(e)}}
           ref={inputRefrence}

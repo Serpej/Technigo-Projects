@@ -24,7 +24,7 @@ export const NewTaskForm = ({
 
   return (
   <form
-    className="flex flex-row items-stretch min-w-0 border border-mediumDarkGreen dark:border-creamGreen shadow-sm shadow-darkGreen xl:mt-20 m-5 rounded-md pr-6 pl-6"
+    className={`flex flex-row items-stretch min-w-0 border border-mediumDarkGreen dark:border-creamGreen shadow-sm shadow-darkGreen xl:mt-20 m-5 rounded-md pr-6 pl-6`}
     onSubmit={(e) => {
       handleOnSubmit(e)
       addTask()
@@ -33,14 +33,16 @@ export const NewTaskForm = ({
     }}
     >
     <fieldset
-      className={`flex flex-row items-center ${editBoolean ? "opacity-50" : ""}`}
+      className={`flex flex-row items-center min-w-0 ${editBoolean ? "opacity-50 pointer-events-none" : ""}`}
       disabled={editBoolean}
     >
-      <label>
+      <label
+        className="flex-1 min-w-0"
+      >
         <input
           type="text"
           placeholder="Add new Task"
-          className="p-3 text-xl bg-mediumDarkGreen dark:bg-creamGreen rounded-md border-darkGreen dark:border-creamGreen text-backgroundLight dark:text-darkGreen"
+          className="w-full min-w-0 text-xl p-3 bg-mediumDarkGreen dark:bg-creamGreen rounded-md border-darkGreen dark:border-creamGreen text-backgroundLight dark:text-darkGreen"
           autoFocus
           value= {inputValue}
           onChange={(e) => {handleInputChange(e)}}
@@ -49,7 +51,7 @@ export const NewTaskForm = ({
           />
       </label>
       <button
-        className=" ring-1 ring-mediumDarkGreen dark:ring-creamGreen shadow-sm shadow-darkGreen rounded-full h-12 w-12 m-5 cursor-pointer flex items-center justify-center bg-accent dark:text-darkGreen duration-300 ease-out  hover:scale-110"
+        className="flex items-center justify-center w-full basis-12 aspect-square ring-1 ring-mediumDarkGreen dark:ring-creamGreen shadow-sm shadow-darkGreen rounded-full  m-5 cursor-pointer  bg-accent dark:text-darkGreen duration-300 ease-out  hover:scale-110"
         type="submit"
       >
       <FiPlus 
