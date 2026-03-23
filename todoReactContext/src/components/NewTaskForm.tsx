@@ -1,4 +1,5 @@
 import { FiPlus } from "react-icons/fi";
+import { useEffect, useRef } from "react";
 
 export const NewTaskForm = ({
   handleOnSubmit,
@@ -15,7 +16,7 @@ export const NewTaskForm = ({
   editBoolean: boolean
   }) => {
 
-
+  const NewTaskinputRefrence = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -28,6 +29,7 @@ export const NewTaskForm = ({
       handleOnSubmit(e)
       addTask()
       setInputValue("")
+      NewTaskinputRefrence.current?.focus();
     }}
     >
     <fieldset
@@ -43,6 +45,7 @@ export const NewTaskForm = ({
           value= {inputValue}
           onChange={(e) => {handleInputChange(e)}}
           required
+          ref={NewTaskinputRefrence}
           />
       </label>
       <button

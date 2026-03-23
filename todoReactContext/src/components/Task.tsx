@@ -35,6 +35,7 @@ export const Task = ({
   };
 
   const inputRefrence = useRef<HTMLInputElement>(null);
+  
   useEffect(() => {
     if (objectEditBoolean && inputRefrence.current) {
       inputRefrence.current.focus();
