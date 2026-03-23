@@ -83,7 +83,7 @@ export const TaskContainer = () => {
   })
 
   return (
-    <div className="bg-backgroundLight dark:bg-darkGreen duration-300 ease-in-out min-h-screen relative flex flex-col justify-center items-center xl:grid xl:grid-cols-3">
+    <div className="bg-backgroundLight dark:bg-darkGreen duration-300 ease-in-out min-h-screen pl-3 pr-3 relative flex flex-col justify-center items-center xl:grid xl:grid-cols-3">
       <button
         className="col-start-3 md:absolute top-15 right-15 mt-10 md:mt-0 border-black dark:border-creamGreen rounded-md text-backgroundLight dark:text-darkGreen xl:text-xl bg-darkGreen dark:bg-backgroundLight min-w-15 min-h-10 cursor-pointer p-3 xl:p-5 duration-300 ease-in-out hover:shadow-lg shadow-mediumDarkGreen dark:shadow-creamGreen hover:scale-110"
         onClick={() => {setToggleDarkMode(!toggleDarkMode)}}

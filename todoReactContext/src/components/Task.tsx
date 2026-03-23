@@ -45,7 +45,7 @@ export const Task = ({
   return (
 
   <div
-    className="m-10 text-2xl text-backgroundLight dark:text-darkGreen flex min-w-0 basis-100 justify-between border-black dark:border-creamGreen border shadow-xs shadow-darkGreen rounded-md bg-mediumDarkGreen dark:bg-creamGreen p-5"
+    className="m-10 text-xl sm:text-2xl text-backgroundLight dark:text-darkGreen flex min-w-0 basis-100 justify-between border-black dark:border-creamGreen border shadow-xs shadow-darkGreen rounded-md bg-mediumDarkGreen dark:bg-creamGreen p-5"
   >
     <div
       className={`flex min-w-0 basis-100 items-center flex-row ${objectEditBoolean ? "hidden" : "block"}`}
@@ -60,14 +60,14 @@ export const Task = ({
       >
       </button>
       <h1
-        className="min-w-0 basis-50 grow wrap-break-word ml-5"
+        className="min-w-0 basis-40 sm:basis-50 grow wrap-break-word ml-5"
         style={{textDecorationLine:`${taskObjectDone ? "line-through" : ""}`}}
       >
         {description}
       </h1>
     </div>
     <div
-      className={`flex min-w-0 justify-center items-center gap-5 ${objectEditBoolean ? "hidden" : "block"}`}
+      className={`flex w-full min-w-0 basis-10 justify-center items-center mr-2 gap-2 sm:gap-5 ${objectEditBoolean ? "hidden" : "block"}`}
     >
       <button
         className="cursor-pointer duration-300 ease-out  hover:scale-120"
@@ -76,9 +76,7 @@ export const Task = ({
           objectEdit(true)
         }}
       >
-        <FiEdit 
-          className="w-7 h-7"
-        />
+        <FiEdit/>
       </button>
       <button
         className="cursor-pointer duration-300 ease-out  hover:scale-120"
@@ -86,9 +84,7 @@ export const Task = ({
           deleteTask()
         }}
       >
-        <FiTrash2
-          className="w-7 h-7"
-         />
+        <FiTrash2/>
       </button>
     </div>
     <div
