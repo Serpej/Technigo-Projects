@@ -79,7 +79,7 @@ export const Task = ({
         <FiEdit/>
       </button>
       <button
-        className="cursor-pointer duration-300 ease-out  hover:scale-120"
+        className="cursor-pointer duration-300 ease-out hover:scale-120"
         onClick={() => {
           deleteTask()
         }}
