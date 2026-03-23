@@ -7,3 +7,5 @@
   --color-dark: #215E61;
   --color-accent: #FE7F2D;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

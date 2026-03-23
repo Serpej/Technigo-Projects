@@ -3,7 +3,8 @@ import { NewTaskForm } from "./NewTaskForm";
 import { Task } from "./Task";
 import { TaskCount } from "./TaskCount";
 import { TaskArrayContext } from "./ContextAPITaskArray";
-import type { ContextTaskType, Tasktype } from "../types/Types";
+import { DarkModeContext } from "./darkmodeContext";
+import type { ContextTaskType, Tasktype, ContextDarkMode } from "../types/Types";
 
 
 export const TaskContainer = () => {
@@ -12,6 +13,7 @@ export const TaskContainer = () => {
   const [editBoolean, setEditBoolean] = useState(false);
   const [counter, setCounter] = useState(0);
 
+  const { toggleDarkMode, setToggleDarkMode } = useContext<ContextDarkMode>(DarkModeContext)
   const { tasks, setTasks } = useContext<ContextTaskType>(TaskArrayContext);
 
   const addTask = () => {

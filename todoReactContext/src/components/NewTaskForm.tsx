@@ -1,5 +1,5 @@
 import { FiPlus } from "react-icons/fi";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export const NewTaskForm = ({
   handleOnSubmit,
