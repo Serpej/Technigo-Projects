@@ -80,12 +80,12 @@ export const TaskContainer = () => {
   })
 
   return (
-    <div className="bg-background dark:bg-dark min-h-screen relative flex flex-col justify-center items-center xl:grid xl:grid-cols-3">
+    <div className="bg-backgroundLight dark:bg-darkGreen duration-300 ease-in-out min-h-screen relative flex flex-col justify-center items-center xl:grid xl:grid-cols-3">
       <button
-        className="col-start-3 border-black dark:border-background rounded-md text-background dark:text-dark bg-dark dark:bg-background w-15 cursor-pointer m-5 p-2"
+        className="col-start-3 md:absolute top-15 right-15 mt-10 md:mt-0 border-black dark:border-creamGreen rounded-md text-backgroundLight dark:text-darkGreen bg-darkGreen dark:bg-backgroundLight min-w-15 min-h-10 cursor-pointer p-3 duration-300 ease-in-out hover:shadow-lg shadow-mediumDarkGreen dark:shadow-creamGreen hover:scale-110"
         onClick={() => {setToggleDarkMode(!toggleDarkMode)}}
       >
-        Dark Mode
+        {toggleDarkMode ? "Light" : "Dark"} Mode
       </button>
       <div
         className="flex 2xl:max-w-[500px] 2xl:max-h-[280px] xl:absolute top-0 left-20 xl:min-h-screen flex-col items-center justify-start"
@@ -103,7 +103,7 @@ export const TaskContainer = () => {
           editBoolean= {editBoolean}
         />
         <ul
-          className={`${tasks.length > 0 ? "visiible" : "hidden"} xl:w-[480px] border rounded-md border-inset border-mediumDark  inset-shadow-sm inset-shadow-dark`}
+          className={`${tasks.length > 0 ? "visiible" : "hidden"} xl:w-[480px] border rounded-md border-inset border-mediumDarkGreen  dark:border-creamGreen inset-shadow-sm inset-shadow-darGreen`}
         >
           {taskList}
         </ul>

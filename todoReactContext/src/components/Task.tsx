@@ -35,7 +35,7 @@ export const Task = ({
   };
 
   const inputRefrence = useRef<HTMLInputElement>(null);
-  
+
   useEffect(() => {
     if (objectEditBoolean && inputRefrence.current) {
       inputRefrence.current.focus();
@@ -45,13 +45,13 @@ export const Task = ({
   return (
 
   <div
-    className="m-10 text-2xl text-background flex justify-between border-black border shadow-xs shadow-dark rounded-md bg-mediumDark p-5 w-100"
+    className="m-10 text-2xl text-backgroundLight dark:text-darkGreen flex justify-between border-black dark:border-creamGreen border shadow-xs shadow-darkGreen rounded-md bg-mediumDarkGreen dark:bg-creamGreen p-5 w-100"
   >
     <div
       className={`flex items-center flex-row ${objectEditBoolean ? "hidden" : "block"}`}
     >
       <button
-        className={`rounded-full w-8 h-8 border ${taskObjectDone ? "border-black" : "border-accent border-2"} cursor-pointer duration-300 ease-out  hover:scale-110`}
+        className={`rounded-full w-8 h-8 border ${taskObjectDone ? "border-black" : "border-accent dark:border-darkGreen border-2"} cursor-pointer duration-300 ease-out  hover:scale-110`}
         type="button"
         onClick={() => {
         toggleTask()
