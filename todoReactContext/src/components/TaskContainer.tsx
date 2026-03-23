@@ -60,7 +60,10 @@ export const TaskContainer = () => {
 
   const taskList = tasks.map((task, index) => {
     return (
-      <li key={index}>
+      <li 
+        className="min-w-0"
+        key={index}
+      >
         <Task
           description= {task.description}
           taskObjectDone= {task.done}
@@ -93,7 +96,7 @@ export const TaskContainer = () => {
         <TaskCount />
       </div>
       <div 
-        className="flex min-h-screen flex-col items-center justify-start mb-5 xl:mb- xl:col-start-2"
+        className="flex min-h-screen min-w-0 max-w-120.5 flex-col items-stretch justify-start mb-5 xl:mb- xl:col-start-2"
       >
         <NewTaskForm
           handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
@@ -103,7 +106,7 @@ export const TaskContainer = () => {
           editBoolean= {editBoolean}
         />
         <ul
-          className={`${tasks.length > 0 ? "visiible" : "hidden"} xl:w-[480px] border rounded-md border-inset border-mediumDarkGreen  dark:border-creamGreen inset-shadow-sm inset-shadow-darGreen`}
+          className={`${tasks.length > 0 ? "visiible" : "hidden"}  flex flex-col basis-120.5 grow min-w-0 border rounded-md border-inset border-mediumDarkGreen  dark:border-creamGreen inset-shadow-sm inset-shadow-darGreen`}
         >
           {taskList}
         </ul>

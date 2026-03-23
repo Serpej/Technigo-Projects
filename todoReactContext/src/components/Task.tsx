@@ -45,10 +45,10 @@ export const Task = ({
   return (
 
   <div
-    className="m-10 text-2xl text-backgroundLight dark:text-darkGreen flex justify-between border-black dark:border-creamGreen border shadow-xs shadow-darkGreen rounded-md bg-mediumDarkGreen dark:bg-creamGreen p-5 w-100"
+    className="m-10 text-2xl text-backgroundLight dark:text-darkGreen flex min-w-0 basis-100 justify-between border-black dark:border-creamGreen border shadow-xs shadow-darkGreen rounded-md bg-mediumDarkGreen dark:bg-creamGreen p-5"
   >
     <div
-      className={`flex items-center flex-row ${objectEditBoolean ? "hidden" : "block"}`}
+      className={`flex min-w-0 items-center flex-row ${objectEditBoolean ? "hidden" : "block"}`}
     >
       <button
         className={`rounded-full w-8 h-8 border ${taskObjectDone ? "border-black" : "border-accent dark:border-darkGreen border-2"} cursor-pointer duration-300 ease-out  hover:scale-110`}
@@ -60,14 +60,14 @@ export const Task = ({
       >
       </button>
       <h1
-        className="w-50 wrap-break-word ml-5"
+        className="min-w-0 basis-50 grow wrap-break-word ml-5"
         style={{textDecorationLine:`${taskObjectDone ? "line-through" : ""}`}}
       >
         {description}
       </h1>
     </div>
     <div
-      className={`flex justify-center items-center gap-5 ${objectEditBoolean ? "hidden" : "block"}`}
+      className={`flex min-w-0 justify-center items-center gap-5 ${objectEditBoolean ? "hidden" : "block"}`}
     >
       <button
         className="cursor-pointer duration-300 ease-out  hover:scale-120"

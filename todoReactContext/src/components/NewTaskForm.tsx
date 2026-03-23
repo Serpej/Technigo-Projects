@@ -24,7 +24,7 @@ export const NewTaskForm = ({
 
   return (
   <form
-    className="xl:mt-20 border border-mediumDarkGreen dark:border-creamGreen shadow-sm shadow-darkGreen xl:m-0 xl:mb-5 m-5 rounded-md pr-6 pl-6 flex flex-row items-center "
+    className=" border border-mediumDarkGreen dark:border-creamGreen shadow-sm shadow-darkGreen xl:mt-20 m-5 rounded-md pr-6 pl-6 flex flex-row items-center "
     onSubmit={(e) => {
       handleOnSubmit(e)
       addTask()
