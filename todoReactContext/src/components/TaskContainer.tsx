@@ -4,8 +4,8 @@ import { Task } from "./Task";
 import { TaskCount } from "./TaskCount";
 import { TaskArrayContext } from "./ContextAPITaskArray";
 import { DarkModeContext } from "./darkmodeContext";
+import { DateTime } from "luxon";
 import type { ContextTaskType, Tasktype, ContextDarkMode } from "../types/Types";
-
 
 export const TaskContainer = () => {
   const [ inputValue, setInputValue ] = useState("");
@@ -15,11 +15,13 @@ export const TaskContainer = () => {
 
   const { toggleDarkMode, setToggleDarkMode } = useContext<ContextDarkMode>(DarkModeContext)
   const { tasks, setTasks } = useContext<ContextTaskType>(TaskArrayContext);
+  const now = DateTime.now()
 
+  console.log(now.toLocaleString(DateTime.DATETIME_MED));
   const addTask = () => {
     const counterId = counter;
     setCounter(counter + 1);
-    setTasks([...tasks, {id: counterId, description: inputValue, done: false, edit: false}]);
+    setTasks([...tasks, {id: counterId, description: inputValue, done: false, edit: false, dateId: now}]);
   };
 
   const toggleTask = (index:number) => {
@@ -57,7 +59,7 @@ export const TaskContainer = () => {
   const editTask = (index:number) => {
     handleEdit(index, newDescription);
   };
-
+ 
   const taskList = tasks.map((task, index) => {
     return (
       <li 
@@ -77,6 +79,7 @@ export const TaskContainer = () => {
           setEditBoolean= {setEditBoolean}
           objectEditBoolean= {task.edit}
           objectEdit= {(boolean:boolean) => {objectEdit(index, boolean)}}
+          dateTag= {now}
          />
       </li>
     )

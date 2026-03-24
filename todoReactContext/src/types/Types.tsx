@@ -1,10 +1,12 @@
 import React from "react";
+import { DateTime } from "luxon";
 
 export type Tasktype = {
   id: number;
   description: string;
   done: boolean;
   edit: boolean;
+  dateId: DateTime;
 }
 
 export type ContextTaskType = {
