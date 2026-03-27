@@ -17,33 +17,35 @@ export const TaskContainer = () => {
   const { toggleDarkMode, setToggleDarkMode } = useContext<ContextDarkMode>(DarkModeContext)
 
 
-  const { tasks, setTasks, addTask } = UseTaskArrayStore();
+  const { tasks, setTasks, addTask, deleteTask, toggleTask, objectEdit } = UseTaskArrayStore();
 
-  const now = DateTime.now()
+  const dateId = DateTime.now()
 
  /*  const addTask = () => {
     const counterId = counter;
     setCounter(counter + 1);
-    setTasks([...tasks, {id: counterId, description: inputValue, done: false, edit: false, dateId: now}]);
+    setTasks([...tasks, {id: counterId, description: inputValue, done: false, edit: false, dateId: dateId}]);
   };
  */
 
-  addTask(inputValue, now);
+  addTask(inputValue, dateId); /* Ta bort denna sen */
+  
 
-  const toggleTask = (index:number) => {
+ /*  const toggleTask = (index:number) => {
     setTasks(tasks.map((task, i) => 
       i === index ? { ...task, done: !task.done} : task
     ));
-  };
+  }; */
 
   const handleOnSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
-  const deleteTask = (index:number) => {
+/*   const deleteTask = (index:number) => {
     setTasks(tasks.filter((_, i) => 
       i !== index))
-  };
+  }; */
+
 
   const handleEdit = (index:number, newDescription:string) => {
     const newTask = newDescription
@@ -52,7 +54,8 @@ export const TaskContainer = () => {
     ));
     setNewDescription("");
   };
-
+  
+/* 
   const objectEdit = (index:number, boolean:boolean = true):void => {
       setTasks((prevTasks) => {
         const updatedTasks = prevTasks.map((task:Tasktype, i:number) => 
@@ -60,7 +63,7 @@ export const TaskContainer = () => {
         );
         return updatedTasks;
       });
-  };
+  }; */
 
   const editTask = (index:number) => {
     handleEdit(index, newDescription);
@@ -85,7 +88,7 @@ export const TaskContainer = () => {
           setEditBoolean= {setEditBoolean}
           objectEditBoolean= {task.edit}
           objectEdit= {(boolean:boolean) => {objectEdit(index, boolean)}}
-          dateTag= {now}
+          dateTag= {dateId}
          />
       </li>
     )

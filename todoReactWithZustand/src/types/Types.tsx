@@ -17,7 +17,9 @@ export type StoreTaskArrayType = {
   tasks: Tasktype[];
   setTasks: (tasks: Tasktype[]) => void;
   addTask: (description:string, dateId:DateTime<true>) => void;
-  deleteTask: (index:number) => void;
+  deleteTask: (dateId:DateTime<true>) => void;
+  toggleTask: (dateId:DateTime<true>) => void;
+  objectEdit: (dateId:DateTime<true>, boolean:boolean) => void;
 }
 
 

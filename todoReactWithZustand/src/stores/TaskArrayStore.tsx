@@ -14,10 +14,18 @@ export const UseTaskArrayStore = create<StoreTaskArrayType>( (set) => ({
          dateId
       }]
    })),
-   deleteTask: (index:number) => set((state) => ({
-      tasks: state.tasks.filter((_,i:number) =>
-         index === i)
+   deleteTask: (dateId:DateTime<true>) => set((state) => ({
+      tasks: state.tasks.filter((task) =>
+         dateId !== task.dateId )
    })),
-   
-
+   toggleTask: (dateId:DateTime<true>) => set((state) => ({
+      tasks: state.tasks.map((task) => 
+         dateId === task.dateId ? { ...task, done: !task.done} : task
+      )
+   })),
+   objectEdit: (dateId:DateTime<true>, boolean:boolean = true) => set((state) => ({
+      tasks: state.tasks.map((task) => 
+         dateId === task.dateId ? {...task, edit:boolean} : task
+      )
+   }))
 }))
