@@ -1,0 +1,125 @@
+import { useContext, useState } from "react";
+import { NewTaskForm } from "./NewTaskForm";
+import { Task } from "./Task";
+import { TaskCount } from "./TaskCount";
+
+import { UseTaskArrayStore } from "../stores/TaskArrayStore";
+
+import { DarkModeContext } from "./darkmodeContext";
+import { DateTime } from "luxon";
+import type { Tasktype, ContextDarkMode, StoreTaskArrayType } from "../types/Types";
+
+export const TaskContainer = () => {
+  const [ inputValue, setInputValue ] = useState("");
+  const [ newDescription, setNewDescription ]= useState("");
+  const [editBoolean, setEditBoolean] = useState(false);
+
+  const { toggleDarkMode, setToggleDarkMode } = useContext<ContextDarkMode>(DarkModeContext)
+
+
+  const { tasks, setTasks, addTask } = UseTaskArrayStore();
+
+  const now = DateTime.now()
+
+ /*  const addTask = () => {
+    const counterId = counter;
+    setCounter(counter + 1);
+    setTasks([...tasks, {id: counterId, description: inputValue, done: false, edit: false, dateId: now}]);
+  };
+ */
+
+  addTask(inputValue, now);
+
+  const toggleTask = (index:number) => {
+    setTasks(tasks.map((task, i) => 
+      i === index ? { ...task, done: !task.done} : task
+    ));
+  };
+
+  const handleOnSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
+  const deleteTask = (index:number) => {
+    setTasks(tasks.filter((_, i) => 
+      i !== index))
+  };
+
+  const handleEdit = (index:number, newDescription:string) => {
+    const newTask = newDescription
+    setTasks(tasks.map((task, i) => 
+      i === index ? { ...task, description: newTask} : task
+    ));
+    setNewDescription("");
+  };
+
+  const objectEdit = (index:number, boolean:boolean = true):void => {
+      setTasks((prevTasks) => {
+        const updatedTasks = prevTasks.map((task:Tasktype, i:number) => 
+          i === index ? {...task, edit: boolean, done: false} : task
+        );
+        return updatedTasks;
+      });
+  };
+
+  const editTask = (index:number) => {
+    handleEdit(index, newDescription);
+  };
+ 
+  const taskList = tasks.map((task, index) => {
+    return (
+      <li 
+        className="min-w-0"
+        key={index}
+      >
+        <Task
+          description= {task.description}
+          taskObjectDone= {task.done}
+          toggleTask= {() => {toggleTask(index)}}
+          deleteTask= {() => {deleteTask(index)}}
+          editTask= {() => {editTask(index)}}
+          handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
+          newDescription= {newDescription}
+          setNewDescription= {setNewDescription}
+          editBoolean= {editBoolean}
+          setEditBoolean= {setEditBoolean}
+          objectEditBoolean= {task.edit}
+          objectEdit= {(boolean:boolean) => {objectEdit(index, boolean)}}
+          dateTag= {now}
+         />
+      </li>
+    )
+  })
+
+  return (
+    <div className="bg-backgroundLight dark:bg-darkGreen duration-300 ease-in-out min-h-screen pl-3 pr-3 relative flex flex-col justify-center items-center xl:grid xl:grid-cols-3">
+      <button
+        className="col-start-3 md:absolute top-15 right-15 mt-10 md:mt-0 border-black dark:border-creamGreen rounded-md text-backgroundLight dark:text-darkGreen xl:text-xl bg-darkGreen dark:bg-backgroundLight min-w-15 min-h-10 cursor-pointer p-3 xl:p-5 duration-300 ease-in-out hover:shadow-lg shadow-mediumDarkGreen dark:shadow-creamGreen hover:scale-110"
+        onClick={() => {setToggleDarkMode(!toggleDarkMode)}}
+      >
+        {toggleDarkMode ? "Light" : "Dark"} Mode
+      </button>
+      <div
+        className="flex 2xl:max-w-[500px] 2xl:max-h-[280px] xl:absolute top-0 left-20 xl:min-h-screen flex-col items-center justify-start"
+      >
+        <TaskCount />
+      </div>
+      <div 
+        className="flex min-h-screen min-w-0 max-w-120.5 w-full flex-col items-stretch justify-start mb-5 xl:mb- xl:col-start-2"
+      >
+        <NewTaskForm
+          handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
+          inputValue= {inputValue}
+          setInputValue= {setInputValue}
+          addTask= {() => {addTask()}}
+          editBoolean= {editBoolean}
+        />
+        <ul
+          className={`${tasks.length > 0 ? "visiible" : "hidden"}  flex flex-col basis-120.5 grow min-w-0 border rounded-md border-inset border-mediumDarkGreen  dark:border-creamGreen inset-shadow-sm inset-shadow-darGreen`}
+        >
+          {taskList}
+        </ul>
+      </div>
+    </div>
+  )
+}

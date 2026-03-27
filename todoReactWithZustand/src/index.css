@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-backgroundLight: #F5FBE6;
+  --color-creamGreen: #ECFAE6;
+  --color-lightGreen: #49D57C;
+  --color-mediumDarkGreen: #215E61;
+  --color-darkGreen: #215E61;
+  --color-accent: #FE7F2D;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
