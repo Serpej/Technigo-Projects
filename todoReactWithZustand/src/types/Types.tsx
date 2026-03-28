@@ -8,18 +8,23 @@ export type Tasktype = {
   dateId: DateTime;
 }
 
-export type ContextTaskType = {
-  tasks: Tasktype[];
-  setTasks: React.Dispatch<React.SetStateAction<Tasktype[]>>
+export type UseDescription = {
+  newDescription: string,
+  setNewDescription: (newDescription: string) => void,
+}
+
+export type UseInput = {
+  inputValue: string,
+  setInputValue: (inputValue: string) => void,
 }
 
 export type StoreTaskArrayType = {
   tasks: Tasktype[];
-  setTasks: (tasks: Tasktype[]) => void;
   addTask: (description:string, dateId:DateTime<true>) => void;
   deleteTask: (dateId:DateTime<true>) => void;
   toggleTask: (dateId:DateTime<true>) => void;
-  objectEdit: (dateId:DateTime<true>, boolean:boolean) => void;
+  editTaskBoolean: (dateId:DateTime<true>, boolean:boolean) => void;
+  editTaskDescription: (dateId:DateTime<true>, newDescription:string) => void;
 }
 
 

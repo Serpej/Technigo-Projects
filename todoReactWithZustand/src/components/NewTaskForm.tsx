@@ -1,20 +1,22 @@
 import { FiPlus } from "react-icons/fi";
 import { useRef } from "react";
+import { useInputValueStore } from "../stores/useInputValueStore";
+import { UseTaskArrayStore } from "../stores/useTaskArrayStore";
+import { DateTime } from "luxon";
 
 export const NewTaskForm = ({
   handleOnSubmit,
-  inputValue,
-  setInputValue,
-  addTask,
-  editBoolean
-}
-: {
+  editBoolean,
+  dateId,
+}:{
   handleOnSubmit: (e: React.SubmitEvent<HTMLFormElement>) => void
-  inputValue: string
-  setInputValue: React.Dispatch<React.SetStateAction<string>>
-  addTask: () => void
   editBoolean: boolean
-  }) => {
+  dateId: DateTime<true>
+}) => {
+
+  const { inputValue, setInputValue } = useInputValueStore();
+  const { addTask } = UseTaskArrayStore();
+
 
   const NewTaskinputRefrence = useRef<HTMLInputElement>(null);
 
@@ -26,9 +28,9 @@ export const NewTaskForm = ({
   <form
     className={`flex flex-row items-stretch min-w-0 border border-mediumDarkGreen dark:border-creamGreen shadow-sm shadow-darkGreen xl:mt-20 m-5 rounded-md pr-6 pl-6`}
     onSubmit={(e) => {
-      handleOnSubmit(e)
-      addTask()
-      setInputValue("")
+      handleOnSubmit(e);
+      addTask(inputValue, dateId);
+      setInputValue("");
       NewTaskinputRefrence.current?.focus();
     }}
     >

@@ -1,11 +1,10 @@
 import { create } from "zustand"
-import type {  StoreTaskArrayType, Tasktype } from "../types/Types"
+import type {  StoreTaskArrayType } from "../types/Types"
 import { DateTime } from "luxon"
 
 
 export const UseTaskArrayStore = create<StoreTaskArrayType>( (set) => ({
-   tasks:[], 
-   setTasks: (tasks:Tasktype[] ) => set({ tasks }),
+   tasks:[],
    addTask: (description:string, dateId:DateTime<true>) => set((state) =>({
       tasks: [...state.tasks, {
          description,
@@ -23,9 +22,14 @@ export const UseTaskArrayStore = create<StoreTaskArrayType>( (set) => ({
          dateId === task.dateId ? { ...task, done: !task.done} : task
       )
    })),
-   objectEdit: (dateId:DateTime<true>, boolean:boolean = true) => set((state) => ({
+   editTaskBoolean: (dateId:DateTime<true>, boolean:boolean = true) => set((state) => ({
       tasks: state.tasks.map((task) => 
          dateId === task.dateId ? {...task, edit:boolean} : task
+      )
+   })),
+   editTaskDescription: (dateId:DateTime<true>, newDescription: string) => set((state) => ({
+      tasks: state.tasks.map((task) => 
+         dateId === task.dateId ? {...task, description: newDescription} : task
       )
    }))
 }))
