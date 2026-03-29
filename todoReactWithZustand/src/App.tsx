@@ -1,18 +1,17 @@
 import { TaskContainer } from "./components/TaskContainer"
-import { DarkModeContext } from "./components/darkmodeContext";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
+import { UseToggleDarkModeStore } from "./stores/useToggleDarkModeStore";
 
 export const App = () => {
-const [toggleDarkMode, setToggleDarkMode] = useState(false);
+const { toggleDarkMode } = UseToggleDarkModeStore();
 
 useEffect(() => {
   document.documentElement.classList.toggle("dark", toggleDarkMode)
+  console.log(toggleDarkMode);
 },[toggleDarkMode]);
 
-  return(
-    <DarkModeContext.Provider value={{toggleDarkMode, setToggleDarkMode}}>
+  return (
       <TaskContainer />
-    </DarkModeContext.Provider>
   )
 }
 

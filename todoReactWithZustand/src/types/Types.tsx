@@ -1,4 +1,3 @@
-import React from "react";
 import { DateTime } from "luxon";
 
 export type Tasktype = {
@@ -27,8 +26,7 @@ export type StoreTaskArrayType = {
   editTaskDescription: (dateId:DateTime<true>, newDescription:string) => void;
 }
 
-
-export type ContextDarkMode = {
+export type DarkModeStoreType = {
   toggleDarkMode: boolean;
-  setToggleDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  setToggleDarkMode: (toggleDarkMode: boolean) => void;
 }

@@ -22,7 +22,6 @@ export const Task = ({
   dateId: DateTime
  }) => {
 
-  /* Nya zustand grejer */
   const { newDescription, setNewDescription } = useDescriptionStateStore();
   const { deleteTask, toggleTask, editTaskBoolean, editTaskDescription } = UseTaskArrayStore();
 

@@ -1,19 +1,14 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { NewTaskForm } from "./NewTaskForm";
 import { Task } from "./Task";
 import { TaskCount } from "./TaskCount";
-
 import { UseTaskArrayStore } from "../stores/useTaskArrayStore";
-
-import { DarkModeContext } from "./darkmodeContext";
+import { UseToggleDarkModeStore } from "../stores/useToggleDarkModeStore";
 import { DateTime } from "luxon";
-import type { ContextDarkMode } from "../types/Types";
 
 export const TaskContainer = () => {
   const [editBoolean, setEditBoolean] = useState(false);
-
-
-  const { toggleDarkMode, setToggleDarkMode } = useContext<ContextDarkMode>(DarkModeContext)
+  const { toggleDarkMode, setToggleDarkMode } = UseToggleDarkModeStore();
   const { tasks } = UseTaskArrayStore();
 
   const dateId = DateTime.now()
