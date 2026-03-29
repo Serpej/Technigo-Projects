@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NewTaskForm } from "./NewTaskForm";
 import { Task } from "./Task";
 import { TaskCount } from "./TaskCount";
@@ -6,8 +5,8 @@ import { UseTaskArrayStore } from "../stores/useTaskArrayStore";
 import { UseToggleDarkModeStore } from "../stores/useToggleDarkModeStore";
 import { DateTime } from "luxon";
 
+
 export const TaskContainer = () => {
-  const [editBoolean, setEditBoolean] = useState(false);
   const { toggleDarkMode, setToggleDarkMode } = UseToggleDarkModeStore();
   const { tasks } = UseTaskArrayStore();
 
@@ -28,8 +27,6 @@ export const TaskContainer = () => {
           description= {task.description}
           taskObjectDone= {task.done}
           handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
-          editBoolean= {editBoolean}
-          setEditBoolean= {setEditBoolean}
           taskBoolean= {task.edit}
           dateId= {task.dateId}
          />
@@ -55,7 +52,6 @@ export const TaskContainer = () => {
       >
         <NewTaskForm
           handleOnSubmit= {(e: React.SubmitEvent<HTMLFormElement>) => {handleOnSubmit(e)}}
-          editBoolean= {editBoolean}
           dateId= {dateId}
         />
         <ul

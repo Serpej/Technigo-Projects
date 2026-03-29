@@ -1,5 +1,6 @@
 import { FiTrash2, FiEdit, FiCheckSquare } from "react-icons/fi";
 import { useDescriptionStateStore } from "../stores/useDescriptionStateStore";
+import { UseEditBooleanStore } from "../stores/useEditBooleanStore";
 import { UseTaskArrayStore } from "../stores/useTaskArrayStore";
 import { useEffect, useRef } from "react";
 import { DateTime } from "luxon";
@@ -8,22 +9,20 @@ export const Task = ({
   description,
   taskObjectDone,
   handleOnSubmit,
-  editBoolean,
-  setEditBoolean,
+ 
   taskBoolean,
   dateId,
 }:{
   description: string,
   taskObjectDone: boolean,
   handleOnSubmit(e: React.SubmitEvent<HTMLFormElement>):void
-  editBoolean: boolean;
-  setEditBoolean: React.Dispatch<React.SetStateAction<boolean>>
   taskBoolean: boolean
   dateId: DateTime
  }) => {
 
   const { newDescription, setNewDescription } = useDescriptionStateStore();
   const { deleteTask, toggleTask, editTaskBoolean, editTaskDescription } = UseTaskArrayStore();
+  const { editBoolean,setEditBoolean }= UseEditBooleanStore();
 
   const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewDescription(e.target.value);

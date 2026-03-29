@@ -12,11 +12,6 @@ export type UseDescription = {
   setNewDescription: (newDescription: string) => void,
 }
 
-export type UseInput = {
-  inputValue: string,
-  setInputValue: (inputValue: string) => void,
-}
-
 export type StoreTaskArrayType = {
   tasks: Tasktype[];
   addTask: (description:string, dateId:DateTime<true>) => void;
@@ -29,4 +24,9 @@ export type StoreTaskArrayType = {
 export type DarkModeStoreType = {
   toggleDarkMode: boolean;
   setToggleDarkMode: (toggleDarkMode: boolean) => void;
+}
+
+export type editBooleanStoreType = {
+  editBoolean: boolean;
+  setEditBoolean: (editBoolean: boolean) => void;
 }
