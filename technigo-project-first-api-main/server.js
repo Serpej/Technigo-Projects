@@ -74,49 +74,35 @@ app.get("/", (req, res) => {
   res.send(expressListEndpoints(app));
 });
 
-app.get("/books/:id", async (req, res) => {
+app.get("/books/:object_id", async (req, res) => {
   try {
-    const bookById = await Book.findById( req.params.id );
+    const bookById = await Book.findById( req.params.object_id );
     if (bookById) {
       res.json(bookById);
     } else {
-        res.status(404).json({
-          error: "Book not found",
-          image: "https://http.dog/404.jpg"
-        });
+      error404message(res, "Book");
     };
   } catch (error) {
     error400message(res, "BookId");
   };
 });
 
-app.get("/books/:averageRating", async (req, res) => {
-  try {
-    const booksByRating = await Book.find({average_rating: Number(req.query.averageRating)});
-    if (booksByRating) {
-
-      res.json(booksByRating);
-    } else {
-      error404message(res, "Books");
-    }
-  } catch (error) {
-    error400message(res, "Book Rating");
-  };
-});
-
 app.get("/books", async (req, res) => {
   try {
     const filter = {};
-    if (req.query.averageRating) {
-      filter.average_rating = Number(req.query.averageRating);
-    }
+    if (req.query.average_rating) {
+      filter.average_rating = Number(req.query.average_rating);
+    };
+    if (req.query.gte_average_rating) {
+      filter.average_rating = { ...filter.average_rating, $gte: Number(req.query.gte_average_rating) };
+    };
+    if (req.query.lte_average_rating) {
+      filter.average_rating = { ...filter.average_rating, $lte: Number(req.query.lte_average_rating) };
+    };
     const books = await Book.find(filter);
     res.json(books);
   } catch (error) {
-    res.status(404).json({
-      error: "Books not found",
-      image: "https://http.dog/404.jpg"
-    });
+    error404message(res, "Books");
   };
 });
 
