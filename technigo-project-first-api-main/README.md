@@ -2,10 +2,13 @@
 
 Replace this readme with your own information about the project. You can include things like:
 
-- Brief description of the assignment
-- How you approached the task, what tools and techniques you used, and how you planned it
-- If you had more time, what would be next?
-- How to run the project locally
+- In this assignment I have created an API with some endpoints in the provided data.
+
+- I set up mongoose and used Cors, expressListEndPoints and Body Parser as my middlewares.
+- I used a general setup where most endpoints can be reached through /books/ except for the object_id which has it's own endpoint.
+
+GET /books/:object_id          — specific resource by Object_id
+GET /books?title=harry&authors=rowling  — flexible search
 
 ## View it live
 Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
