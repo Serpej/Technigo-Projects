@@ -1,6 +1,7 @@
 import cors from "cors"
 import express, { urlencoded } from "express"
 import mongoose from "mongoose"
+import expressListEndpoints from "express-list-endpoints"
 import booksData from "./data/books.json" with { type: "json" }
 
 
@@ -70,7 +71,7 @@ app.use((req, res, next) => {
 
 // Start defining your routes here
 app.get("/", (req, res) => {
-  res.send("My first API!");
+  res.send(expressListEndpoints(app));
 });
 
 app.get("/books/:id", async (req, res) => {
