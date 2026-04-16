@@ -90,14 +90,31 @@ app.get("/books/:object_id", async (req, res) => {
 app.get("/books", async (req, res) => {
   try {
     const filter = {};
+    if (req.query.title) {
+      const titleQuery = req.query.title.replace(/_/g, " ");
+      filter.title = { $regex: titleQuery, $options: "i"};
+    }
+    if(req.query.authors) {
+      const authorsQuery = req.query.authors.replace(/_/g, " ");
+      filter.authors = { $regex: authorsQuery, $options: "i" };
+    }
     if (req.query.average_rating) {
       filter.average_rating = Number(req.query.average_rating);
+    };
+    if (req.query.lte_average_rating) {
+      filter.average_rating = { ...filter.average_rating, $lte: Number(req.query.lte_average_rating) };
     };
     if (req.query.gte_average_rating) {
       filter.average_rating = { ...filter.average_rating, $gte: Number(req.query.gte_average_rating) };
     };
-    if (req.query.lte_average_rating) {
-      filter.average_rating = { ...filter.average_rating, $lte: Number(req.query.lte_average_rating) };
+    if (req.query.ratings_count) {
+      filter.ratings_count = Number(req.query.gte_ratings_count);
+    };
+        if (req.query.gte_ratings_count) {
+      filter.ratings_count = {...filter.ratings_count, $gte: Number(req.query.gte_ratings_count) };
+    };
+        if (req.query.lte_ratings_count) {
+      filter.ratings_count = {...filter.ratings_count, $lte: Number(req.query.lte_ratings_count) };
     };
     const books = await Book.find(filter);
     res.json(books);
