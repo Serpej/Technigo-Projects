@@ -1,0 +1,16 @@
+{
+  "name": "@technigo/unit-tests",
+  "version": "1.0.0",
+  "description": "Challenge yourself to make all these unit tests pass!",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest ---verbose"
+  },
+  "dependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.6.3",
+    "babel-jest": "^29.7.0",
+    "jest": "^27.5.1"
+  }
+}
