@@ -11,8 +11,8 @@ GET /books/:object_id          — specific resource by Object_id
 GET /books?title=harry&authors=rowling  — flexible search
 
 ## View it live
+Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
 
-https://technigo-projects-technigo-project-first.onrender.com
 
 ## Getting Started with the Project
 
