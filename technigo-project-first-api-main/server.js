@@ -37,7 +37,6 @@ if (process.env.RESET_DATABASE) {
   const seedDataBase = async () => {
     await Book.deleteMany();
 
-
     booksData.forEach((bookData) => {
       new Book(bookData).save();
     });
@@ -87,20 +86,6 @@ app.get("/books/:object_id", async (req, res) => {
     error400message(res, "BookId");
   };
 });
-
-app.get("/authors", async (req, res) => {
-  try {
-    const filter = {}
-    if (req.query.name) {
-     const nameQuery = req.query.name.replace(/_/g, " ");
-     filter.authors =  { $regex: nameQuery, $options: "i"};
-    }
-    const authors = await Book.distinct("authors", filter);
-    res.json(authors);
-  } catch (error) {
-    error404message(res, "Authors");
-  }
-})
 
 app.get("/books", async (req, res) => {
   try {

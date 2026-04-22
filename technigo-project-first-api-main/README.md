@@ -8,8 +8,6 @@ Replace this readme with your own information about the project. You can include
 - I used a general setup where most endpoints can be reached through /books/ except for the object_id which has it's own endpoint.
 
 GET /books/:object_id          — specific resource by Object_id
-GET /authors                            — get all authors
-GET /authors?name=Rowling               — get specific authors
 GET /books?title=harry&authors=rowling  — flexible search
 
 ## View it live
