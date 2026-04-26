@@ -18,6 +18,11 @@ export const HappyThoughtList = ({loading, thoughts, handleLike}: {
     return <h1 className="loadingStatement">Loading in progress...</h1>
   }
 
+    // Ensure that the thoughts variable is an array
+  const thoughtsArray = Array.isArray(thoughts) ? thoughts : [];
+
+  console.log(typeof(thoughtsArray));
+
 
   const getRelativeDate = (thought:HappyThought) => {
     if (typeof thought.createdAt === "string") {
@@ -41,7 +46,7 @@ export const HappyThoughtList = ({loading, thoughts, handleLike}: {
     }
   }
 
-  const thoughtArray = thoughts.map((thought:HappyThought) => {
+  const thoughtArray = thoughtsArray.map((thought:HappyThought) => {
 
     return (
     <div key={thought._id} className="thoughtPost">
