@@ -31,18 +31,32 @@ const Thought = mongoose.model("Thought",  {
   createdAt: String,
 });
 
+if (process.env.RESET_DATABASE) {
+  console.log("Database Reseeded");
+  const seedDataBase = async () => {
+    await Thought.deleteMany();
+
+    await new Thought({
+      message: "New Test Task",
+      hearts: 0,
+      createdAt: "this is a string",
+    }).save();
+  }
+  seedDataBase();
+};
+
 app.get("/", (req, res) => {
   res.send("Welcome to HappyThoughtAPI");
 });
 
 app.get("/happyThoughts", async (req, res) => {
   try {
-    if(happyThoughts) {
+    if(Thought) {
       const happyThoughts = await Thought.find();
       res.json(happyThoughts);
     } else {
       res.status(404).json({
-      error: `Empty list :(`,
+      error: `Empty thought list :(`,
       image: "https://http.dog/404.jpg"
     });
     }
