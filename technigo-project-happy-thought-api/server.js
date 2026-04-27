@@ -26,9 +26,18 @@ app.use((req, res, next) => {
 });
 
 const Thought = mongoose.model("Thought",  {
-  message: String,
-  hearts: Number,
-  createdAt: String,
+  message: {
+    type: String,
+    required: true,
+  },
+  hearts: {
+    type: Number,
+    default: 0,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 if (process.env.RESET_DATABASE) {
@@ -64,6 +73,19 @@ app.get("/happyThoughts", async (req, res) => {
       res.status(404).json({
       error: "Couldn't find Thoughts :(",
       image: "https://http.dog/404.jpg"
+    })
+  }
+});
+
+app.post("/happyThoughts", async (req, res) => {
+  try {
+    const thought = new Thought(req.body);
+    const savedThought = await thought.save();
+    res.status(201).json(savedThought)
+  } catch (error) {
+    res.status(500).json({
+    message: "Bad Request",
+    image: "https://http.dog/400.jpg",
     })
   }
 });
