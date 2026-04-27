@@ -4,8 +4,8 @@ type HappyThought = {
   _id: string,
   message?: string,
   hearts?: number,
-  createdAt?: string,
-  __v?: number
+  createdAt?: number,
+  _v?: number
 }
 
 export const HappyThoughtList = ({loading, thoughts, handleLike}: {
@@ -20,7 +20,7 @@ export const HappyThoughtList = ({loading, thoughts, handleLike}: {
 
 
   const getRelativeDate = (thought:HappyThought) => {
-    if (typeof thought.createdAt === "string") {
+    if (typeof thought.createdAt === "number") {
       const createdAt = new Date(thought.createdAt);
       const now = new Date();
       const differenceInMilliseconds = now.getTime() - createdAt.getTime();
