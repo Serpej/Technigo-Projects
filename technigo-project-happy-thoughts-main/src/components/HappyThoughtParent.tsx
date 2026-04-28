@@ -6,7 +6,7 @@ type HappyThought = {
   _id: string,
   message?: string,
   hearts?: number,
-  createdAt?: string,
+  createdAt?: number,
   __v?: number
 }
 
