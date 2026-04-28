@@ -29,13 +29,15 @@ const Thought = mongoose.model("Thought",  {
   message: {
     type: String,
     required: true,
+    minLength: [5, "Too few characters"],
+    maxLength: [200, "Too many characters"],
   },
   hearts: {
     type: Number,
     default: 0,
   },
   createdAt: {
-    type: Date,
+    type: Number,
     default: Date.now,
   },
 });
