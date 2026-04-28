@@ -37,7 +37,7 @@ export const HappyThoughtList = ({loading, thoughts, handleLike}: {
       return `${differenceInDays} day(s) ago`;
     
     } else {
-      throw new Error(`"Thought" property is not number`);
+      throw new Error(`"thought.createdAt" property is not number`);
     }
   }
 

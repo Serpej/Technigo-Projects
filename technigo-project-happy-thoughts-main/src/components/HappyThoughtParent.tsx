@@ -15,7 +15,7 @@ export const HappyThoughtParent = () => {
   const [thoughts, setThoughts] = useState<HappyThought[]>([]);
   const [newThought, setNewThought] = useState("");
 
-  const url = "https://happy-thoughts-api-4ful.onrender.com/thoughts";
+  const url = "https://technigo-projects.onrender.com/happyThoughts";
 
 // Fetches the array of posts
   const fetchThoughtList = async () => {
