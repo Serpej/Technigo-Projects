@@ -9,7 +9,7 @@ export const ThoughtInput = ({newThought, handleNewThought, onFormSubmit}: {newT
           <textarea className="textInput"
             value= {newThought}
             onChange = {handleNewThought}
-            maxLength={140}
+            maxLength={200}
             minLength={5}
             required
           />
