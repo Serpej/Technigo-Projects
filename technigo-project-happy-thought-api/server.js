@@ -82,9 +82,24 @@ app.post("/", async (req, res) => {
   } catch (error) {
     res.status(500).json({
     message: "Bad Request",
-    image: "https://http.dog/400.jpg",
+    image: "https://http.dog/500.jpg",
     })
   }
+});
+
+app.post("/:thoughtId/like", async (req, res) => {
+try {
+  const updatedThought = await Thought.findByIdAndUpdate(req.params.thoughtId, 
+    { $inc: {hearts: 1} },
+    { returnDocument: "after" }
+  )
+  res.status(200).json(updatedThought);
+} catch (error) {
+  res.status(500).json({
+    message: `Bad Request, couldn't update hearts: ${error.message}`,
+    image: "https://http.dog/500.jpg",
+  });
+}
 });
 
 // Start the server
