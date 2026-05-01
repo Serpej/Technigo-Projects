@@ -50,17 +50,12 @@ if (process.env.RESET_DATABASE) {
     await new Thought({
       message: "New Test Task",
       hearts: 0,
-      createdAt: "this is a string",
     }).save();
   }
   seedDataBase();
 };
 
-app.get("/", (req, res) => {
-  res.send("Welcome to HappyThoughtAPI");
-});
-
-app.get("/happyThoughts", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     if(Thought) {
       const happyThoughts = await Thought.find();
@@ -79,7 +74,7 @@ app.get("/happyThoughts", async (req, res) => {
   }
 });
 
-app.post("/happyThoughts", async (req, res) => {
+app.post("/", async (req, res) => {
   try {
     const thought = new Thought(req.body);
     const savedThought = await thought.save();
