@@ -6,7 +6,6 @@ import mongoose from "mongoose";
 dotenv.config();
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/happyThoughts";
-console.log(`Connecting to database: ${mongoUrl}`);
 mongoose.connect(mongoUrl);
 mongoose.Promise = Promise;
 
