@@ -1,8 +1,12 @@
 import express from "express";
+import dotenv from "dotenv"
 import cors from "cors";
 import mongoose from "mongoose";
 
+dotenv.config();
+
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/happyThoughts";
+console.log(`Connecting to database: ${mongoUrl}`);
 mongoose.connect(mongoUrl);
 mongoose.Promise = Promise;
 
@@ -58,8 +62,9 @@ if (process.env.RESET_DATABASE) {
 app.get("/", async (req, res) => {
   try {
     if(Thought) {
-      const happyThoughts = await Thought.find();
-      res.json(happyThoughts);
+      const happyThoughts = await Thought.find().exec();
+      const limitedHappyThoughts = happyThoughts.slice(0, 5).sort((a, b) => a - b);
+      res.json(limitedHappyThoughts);
     } else {
       res.status(404).json({
       error: `Empty thought list :(`,
@@ -80,9 +85,9 @@ app.post("/", async (req, res) => {
     const savedThought = await thought.save();
     res.status(201).json(savedThought)
   } catch (error) {
-    res.status(500).json({
+    res.status(400).json({
     message: "Bad Request",
-    image: "https://http.dog/500.jpg",
+    image: "https://http.dog/400.jpg",
     })
   }
 });
@@ -95,9 +100,9 @@ try {
   )
   res.status(200).json(updatedThought);
 } catch (error) {
-  res.status(500).json({
+  res.status(400).json({
     message: `Bad Request, couldn't update hearts: ${error.message}`,
-    image: "https://http.dog/500.jpg",
+    image: "https://http.dog/400.jpg",
   });
 }
 });

@@ -15,3 +15,5 @@ You can run the project locally by installing the dependencies and then running 
 
 ####
 View the projects endpoints
+
+https://technigo-projects.onrender.com/happyThoughts
