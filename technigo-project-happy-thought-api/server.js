@@ -107,6 +107,18 @@ try {
 }
 });
 
+//Skapa en delete endpoint och en delete knapp!
+app.delete("/:thoughtId/delete", async (req, res) => {
+  try {
+    const deletedThought = await Thought.findByIdAndDelete(req.params.thoughtId);
+  } catch (error) {
+    res.status(400).json({
+    message: `Bad Request, couldn't delete thought: ${error.message}`,
+    image: "https://http.dog/400.jpg",
+  });
+  }
+})
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`)
