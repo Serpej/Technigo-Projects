@@ -80,7 +80,8 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   try {
-    const thought = new Thought(req.body);
+    const { message } = req.body; 
+    const thought = new Thought({ message });
     const savedThought = await thought.save();
     res.status(201).json(savedThought)
   } catch (error) {
