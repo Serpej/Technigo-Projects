@@ -1,8 +1,9 @@
 import "dotenv/config";
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/userRoutes";
+import { User } from "./models/User";
 
 const app = express();
 const PORT = process.env.PORT || 8080;

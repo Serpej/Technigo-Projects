@@ -1,7 +1,7 @@
 import {Schema, model} from "mongoose"
 import crypto from "crypto";
 
-type IUser = {
+export type IUser = {
   "name": string,
   "email": string,
   "password": string,
