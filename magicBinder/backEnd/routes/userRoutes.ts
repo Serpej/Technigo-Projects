@@ -26,4 +26,38 @@ userRouter
       });
     }
   })
+  .get("/", authenticateUser)
+  .get("/", async (req, res) => {
+    const user = req.user;
+    if(user) {
+      res.status(200).json({
+        user
+      })
+    } else {
+      res.status(404).json({
+        message: "User not found."
+      })
+    }
+  })
+  .patch("/:id", authenticateUser)
+  .patch("/:id", async (req, res) => {
+    const user = req.user;
+    if (user) {
+      const oldPassword = req.body.oldPassword;
+      const newPassword = req.body.newPassword;
+      if(await bcrypt.compare(oldPassword, user.password)) {
+        const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, {password: hashedNewPassword}, {new: true});
+        res.status(200).json({
+          message: "Password updated successfully"
+        })
+      } else {
+      res.status(401).json({
+        message: "Update failed."
+      })
+    }
+    }
+    
+  })
+
 

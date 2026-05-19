@@ -7,6 +7,7 @@ export const authenticateUser = async (req: Request, res: Response, next: NextFu
   });
   if (user) {
     req.user = user;
+    next();
   } else {
     res.status(401).json({
       loggedOut: true 
