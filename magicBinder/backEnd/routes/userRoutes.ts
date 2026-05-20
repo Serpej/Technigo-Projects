@@ -41,13 +41,12 @@ userRouter
   })
   .patch("/:id", authenticateUser)
   .patch("/:id", async (req, res) => {
-    const user = req.user;
-    if (user) {
+    if (req.user) {
       const oldPassword = req.body.oldPassword;
       const newPassword = req.body.newPassword;
-      if(await bcrypt.compare(oldPassword, user.password)) {
+      if(await bcrypt.compare(oldPassword, req.user.password)) {
         const hashedNewPassword = await bcrypt.hash(newPassword, 10);
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, {password: hashedNewPassword}, {new: true});
+        await User.findByIdAndUpdate(req.params.id, {password: hashedNewPassword}, {new: true});
         res.status(200).json({
           message: "Password updated successfully"
         })
