@@ -4,6 +4,7 @@ export type ICard = {
   "scryfallId": string,
   "name": string,
   "imageUri": object,
+  "userId": string
 };
 
 const cardSchema = new Schema<ICard> ({
@@ -17,6 +18,10 @@ const cardSchema = new Schema<ICard> ({
   },
   imageUri: {
     type: Object,
+    required: true
+  },
+  userId: {
+    type: String,
     required: true
   }
 });

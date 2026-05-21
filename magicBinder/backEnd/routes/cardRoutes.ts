@@ -49,7 +49,8 @@ cardRouter
 
     try {  
       await Card.findOneAndDelete({
-        userId: req.user._id, scryfallId: req.params.scryfallId
+        scryfallId: req.params.scryfallId, 
+        userId: req.user._id.toString()
       })
       res.status(200).json({
         success: true,
