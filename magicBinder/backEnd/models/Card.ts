@@ -3,12 +3,11 @@ import {Schema, model} from "mongoose";
 export type ICard = {
   "scryfallId": string,
   "name": string,
-  "imageUri": string,
-  "userId": string
+  "imageUri": object,
 };
 
 const cardSchema = new Schema<ICard> ({
-  scryfallId: {
+ scryfallId: {
     type: String,
     required: true
   },
@@ -17,11 +16,7 @@ const cardSchema = new Schema<ICard> ({
     required: true
   },
   imageUri: {
-    type: String,
-    required: true
-  },
-  userId: {
-    type: String,
+    type: Object,
     required: true
   }
 });

@@ -1,9 +1,9 @@
 import "dotenv/config";
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/userRoutes";
-import { User } from "./models/User";
+import { cardRouter } from "./routes/cardRoutes";
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 app.use("/users", userRouter);
+app.use("/cards", cardRouter);
 
 const mongo_url = process.env.MONGO_URL as string || "mongodb://localhost/magic-binder";
 
