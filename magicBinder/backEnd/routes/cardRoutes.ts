@@ -10,6 +10,7 @@ cardRouter
     
     if (!req.user || !req.user._id) {
         res.status(400).json({
+        success: false,
         message: "Bad Request"
       });
       return;
@@ -25,12 +26,42 @@ cardRouter
         message: "Card created",
         name: name,
         scryfallId: scryfallId,
-        user: req.user._id,
+        userId: req.user._id,
       });
     } catch (error) {
       res.status(400).json({
+        success: false,
         message: "bad request",
         error: error
       })
     }
-  });
+  })
+  .delete("/:scryfallId", authenticateUser)
+  .delete("/:scryfallId", async (req, res) => {
+
+    if (!req.user || !req.user._id) {
+        res.status(400).json({
+        success: false,
+        message: "Bad Request"
+      });
+      return;
+    }
+
+    try {  
+      await Card.findOneAndDelete({
+        userId: req.user._id, scryfallId: req.params.scryfallId
+      })
+      res.status(200).json({
+        success: true,
+        message: "Card deleted",
+        scryfallId: req.params.scryfallId,
+        userId: req.user._id,
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Card not found",
+        error: error
+      })
+    }
+  })
