@@ -4,7 +4,7 @@ import mongoose, {Schema, model } from "mongoose";
 export type  IBinder = {
   "name": string,
   "cards": mongoose.Types.ObjectId[],
-  "userId": string
+  "userId": mongoose.Types.ObjectId
 };
 
 const binderSchema = new Schema<IBinder>({
@@ -17,7 +17,7 @@ const binderSchema = new Schema<IBinder>({
     ref: "card"
   }],
   userId: {
-    type: String,
+    type: mongoose.Types.ObjectId,
     required: true
   } 
 });

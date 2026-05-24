@@ -4,6 +4,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/userRoutes";
 import { cardRouter } from "./routes/cardRoutes";
+import { binderRouter } from "./routes/binderRoutes";
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -12,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/users", userRouter);
 app.use("/cards", cardRouter);
+app.use("binder", binderRouter)
 
 const mongo_url = process.env.MONGO_URL as string || "mongodb://localhost/magic-binder";
 
