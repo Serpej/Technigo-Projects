@@ -7,7 +7,7 @@ export type ICard = {
   "userId": string
 };
 
-const cardSchema = new Schema<ICard> ({
+export const cardSchema = new Schema<ICard> ({
  scryfallId: {
     type: String,
     required: true
@@ -20,10 +20,10 @@ const cardSchema = new Schema<ICard> ({
     type: Object,
     required: true
   },
-  userId: {
+  userId: { 
     type: String,
     required: true
   }
 });
 
-export const Card = model<ICard>("Card", cardSchema);
+export const Card = model<ICard>("card", cardSchema);
