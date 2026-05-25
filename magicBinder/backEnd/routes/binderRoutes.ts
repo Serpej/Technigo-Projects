@@ -1,5 +1,5 @@
 import express from "express";
-import { cardBinder } from "../models/Binder"
+import { CardBinder } from "../models/Binder"
 import { authenticateUser } from "../middleware/authenticateUser";
 
 export const binderRouter = express.Router();
@@ -17,14 +17,13 @@ binderRouter
     }
     try {
       const binderName = req.body.binderName;
-      const binder = new cardBinder({name: binderName, userId: req.user._id})
+      const binder = new CardBinder({name: binderName, userId: req.user._id})
       await binder.save();
 
       res.status(201).json({
         success: true,
         message: "Binder created.",
         binderName: binderName,
-        userid: req.user._id
       })
     } catch (error) {
         res.status(400).json({
@@ -47,7 +46,7 @@ binderRouter
     }
 
     try {
-      const binder = await cardBinder.findOne({
+      const binder = await CardBinder.findOne({
       name: req.params.binderName,
       userId: req.user._id
       }).populate("cards");
@@ -71,5 +70,44 @@ binderRouter
         error: error
       });
     }
+  })
+  .patch("/:binderName", authenticateUser)
+  .patch("/:binderName", async (req, res) => {
+
+    if(!req.params.binderName || !req.user || !req.user._id) {
+      res.status(400).json({
+        success: false,
+        message: "Bad Request"
+      });
+      return;
+    }
+
+    const { name } = req.body
+
+    try {
+      const updatedBinderName = await CardBinder.findOneAndUpdate({name: req.params.binderName, userId: req.user._id}, { $set: { name }}, {new: true });
+
+    if(!updatedBinderName) {
+      res.status(404).json({
+          success: false,
+          message: "Binder not found."
+      })
+        return;
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Binder name updated.",
+      binderName: name,
+    })
+
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        error: error
+      });
+    }
+
 
   })

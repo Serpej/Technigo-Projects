@@ -26,7 +26,6 @@ cardRouter
         message: "Card created",
         name: name,
         scryfallId: scryfallId,
-        userId: req.user._id,
       });
     } catch (error) {
       res.status(400).json({
@@ -65,7 +64,6 @@ cardRouter
         success: true,
         message: "Card deleted",
         scryfallId: req.params.scryfallId,
-        userId: req.user._id,
       });
     } catch (error) {
       res.status(500).json({

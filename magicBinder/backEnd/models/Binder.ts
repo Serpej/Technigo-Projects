@@ -23,4 +23,4 @@ const binderSchema = new Schema<IBinder>({
   } 
 });
 
-export const cardBinder = model<IBinder>("cardBinder", binderSchema)
+export const CardBinder = model<IBinder>("cardBinder", binderSchema)
