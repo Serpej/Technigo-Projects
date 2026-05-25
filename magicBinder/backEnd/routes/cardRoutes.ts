@@ -1,6 +1,7 @@
 import express from "express";
 import { Card } from "../models/Card";
 import { authenticateUser } from "../middleware/authenticateUser";
+import { guardResponse, requestNotFound, serverError } from "../utils/responses";
 
 export const cardRouter = express.Router();
 
@@ -9,11 +10,8 @@ cardRouter
   .post("/", async (req, res) => {
     
     if (!req.user || !req.user._id) {
-        res.status(400).json({
-        success: false,
-        message: "Bad Request"
-      });
-      return;
+      guardResponse(res, "Bad Request.");
+      return
     }
 
     const { id: scryfallId, name, image_uris: imageUri } = req.body;
@@ -28,21 +26,14 @@ cardRouter
         scryfallId: scryfallId,
       });
     } catch (error) {
-      res.status(400).json({
-        success: false,
-        message: "Bad request",
-        error: error
-      })
+      serverError(res, "Server error.", error);
     }
   })
   .delete("/:scryfallId", authenticateUser)
   .delete("/:scryfallId", async (req, res) => {
 
     if (!req.user || !req.user._id) {
-        res.status(400).json({
-        success: false,
-        message: "Bad Request"
-      });
+      guardResponse(res, "Bad Request.");
       return;
     }
 
@@ -53,10 +44,7 @@ cardRouter
       });
 
       if(!deletedCard) {
-        res.status(404).json({
-          success: false,
-          message: "Card not found."
-        })
+        requestNotFound(res, "Card not found.");
         return;
       }
 
@@ -66,10 +54,6 @@ cardRouter
         scryfallId: req.params.scryfallId,
       });
     } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: "Server error",
-        error: error
-      })
+      serverError(res, "Server error.", error);
     }
   })

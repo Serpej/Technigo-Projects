@@ -1,6 +1,7 @@
 import express from "express";
 import { CardBinder } from "../models/Binder"
 import { authenticateUser } from "../middleware/authenticateUser";
+import { guardResponse, serverError } from "../utils/responses";
 
 export const binderRouter = express.Router();
 
@@ -9,11 +10,8 @@ binderRouter
   .post("/", async (req, res) => {
 
     if(!req.body.binderName || !req.user || !req.user._id) {
-      res.status(400).json({
-        success: false,
-        message: "Bad Request"
-      });
-      return;
+      guardResponse(res, "Bad request.");
+      return
     }
     try {
       const binderName = req.body.binderName;
@@ -26,11 +24,7 @@ binderRouter
         binderName: binderName,
       })
     } catch (error) {
-        res.status(400).json({
-        success: false,
-        message: "Bad request",
-        error: error
-      })
+      serverError(res, "Server error.", error);
     }
 
   })
@@ -38,11 +32,8 @@ binderRouter
   .get("/:binderName", async (req, res) => {
 
     if (!req.user || !req.user._id) {
-      res.status(400).json({
-        success: false,
-        message: "Bad Request"
-      });
-      return;
+      guardResponse(res, "Bad request.");
+      return
     }
 
     try {
@@ -52,10 +43,7 @@ binderRouter
       }).populate("cards");
 
       if(!binder) {
-        res.status(404).json({
-          success: false,
-          message: "Binder not found."
-        })
+        guardResponse(res, "Binder not found.");
         return;
       }
 
@@ -64,21 +52,14 @@ binderRouter
         binder
       });
     } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: "Server error",
-        error: error
-      });
+      serverError(res, "Server error.", error);
     }
   })
   .patch("/:binderName", authenticateUser)
   .patch("/:binderName", async (req, res) => {
 
     if(!req.params.binderName || !req.user || !req.user._id) {
-      res.status(400).json({
-        success: false,
-        message: "Bad Request"
-      });
+        guardResponse(res, "Bad request.");
       return;
     }
 
@@ -88,11 +69,8 @@ binderRouter
       const updatedBinderName = await CardBinder.findOneAndUpdate({name: req.params.binderName, userId: req.user._id}, { $set: { name }}, {new: true });
 
     if(!updatedBinderName) {
-      res.status(404).json({
-          success: false,
-          message: "Binder not found."
-      })
-        return;
+      guardResponse(res, "Binder not found.");
+      return;
     }
 
     res.status(200).json({
@@ -102,12 +80,6 @@ binderRouter
     })
 
     } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: "Server error",
-        error: error
-      });
+      serverError(res, "Server error.", error);
     }
-
-
   })
