@@ -14,7 +14,8 @@ const binderSchema = new Schema<IBinder>({
   },
   cards: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: "card"
+    ref: "card",
+    default: []
   }],
   userId: {
     type: mongoose.Types.ObjectId,

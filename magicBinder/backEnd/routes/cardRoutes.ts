@@ -31,7 +31,7 @@ cardRouter
     } catch (error) {
       res.status(400).json({
         success: false,
-        message: "bad request",
+        message: "Bad request",
         error: error
       })
     }
@@ -48,10 +48,19 @@ cardRouter
     }
 
     try {  
-      await Card.findOneAndDelete({
+      const deletedCard = await Card.findOneAndDelete({
         scryfallId: req.params.scryfallId, 
         userId: req.user._id.toString()
-      })
+      });
+
+      if(!deletedCard) {
+        res.status(404).json({
+          success: false,
+          message: "Card not found."
+        })
+        return;
+      }
+
       res.status(200).json({
         success: true,
         message: "Card deleted",
@@ -61,7 +70,7 @@ cardRouter
     } catch (error) {
       res.status(500).json({
         success: false,
-        message: "Card not found",
+        message: "Server error",
         error: error
       })
     }
