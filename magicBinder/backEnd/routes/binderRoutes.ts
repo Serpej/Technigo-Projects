@@ -1,7 +1,7 @@
 import express from "express";
 import { CardBinder } from "../models/Binder"
 import { authenticateUser } from "../middleware/authenticateUser";
-import { guardResponse, serverError } from "../utils/responses";
+import { guardResponse, serverError, requestNotFound } from "../utils/responses";
 
 export const binderRouter = express.Router();
 
@@ -9,7 +9,7 @@ binderRouter
   .post("/", authenticateUser)
   .post("/", async (req, res) => {
 
-    if(!req.body.binderName || !req.user || !req.user._id) {
+    if(!req.body.binderName|| !req.user || !req.user._id) {
       guardResponse(res, "Bad request.");
       return
     }
@@ -63,10 +63,10 @@ binderRouter
       return;
     }
 
-    const { name } = req.body
+    const { binderName: name } = req.body;
 
     try {
-      const updatedBinderName = await CardBinder.findOneAndUpdate({name: req.params.binderName, userId: req.user._id}, { $set: { name }}, {new: true });
+      const updatedBinderName = await CardBinder.findOneAndUpdate({name: req.params.binderName, userId: req.user._id}, { $set: { name }}, { returnDocument: 'after' });
 
     if(!updatedBinderName) {
       guardResponse(res, "Binder not found.");
@@ -82,4 +82,35 @@ binderRouter
     } catch (error) {
       serverError(res, "Server error.", error);
     }
+  })
+  .delete("/:binderName", authenticateUser)
+  .delete("/:binderName", async (req, res) => {
+
+    if (!req.user || !req.user._id) {
+      guardResponse(res, "Bad request.");
+      return
+    }
+    
+    try {
+      const binderName = req.params.binderName;
+      const deletedBinder = await CardBinder.findOneAndDelete({
+        name: binderName,
+        userId: req.user._id
+      })
+
+      if(!deletedBinder) {
+        requestNotFound(res, "Binder not found.");
+        return
+      }
+
+      res.status(200).json({
+        success: true,
+        message: "Binder deleted.",
+        binderName: binderName
+      });
+
+    } catch (error) {
+      serverError(res, "Server error.", error);
+    }
+
   })

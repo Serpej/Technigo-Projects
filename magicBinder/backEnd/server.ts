@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/users", userRouter);
 app.use("/cards", cardRouter);
-app.use("binder", binderRouter)
+app.use("/binders", binderRouter)
 
 const mongo_url = process.env.MONGO_URL as string || "mongodb://localhost/magic-binder";
 

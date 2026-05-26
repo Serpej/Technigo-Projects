@@ -1,18 +1,20 @@
 import { Response } from "express"
 
 export const badRequest = (res:Response, message:string, error:unknown) => {
+  const errorMessage = error instanceof Error ? error.message : String(error);
   return res.status(400).json({
     success: false,
     message: message,
-    error: error
+    error: errorMessage
   });
 }
 
 export const serverError = (res:Response, message:string, error:unknown) => {
+  const errorMessage = error instanceof Error ? error.message : String(error);
   return res.status(500).json({
     success: false,
     message: message,
-    error: error
+    error: errorMessage
   });
 }
 
