@@ -29,31 +29,3 @@ cardRouter
       serverError(res, "Server error.", error);
     }
   })
-  .delete("/:scryfallId", authenticateUser)
-  .delete("/:scryfallId", async (req, res) => {
-
-    if (!req.user || !req.user._id) {
-      guardResponse(res, "Bad Request.");
-      return;
-    }
-
-    try {  
-      const deletedCard = await Card.findOneAndDelete({
-        scryfallId: req.params.scryfallId, 
-        userId: req.user._id.toString()
-      });
-
-      if(!deletedCard) {
-        requestNotFound(res, "Card not found.");
-        return;
-      }
-
-      res.status(200).json({
-        success: true,
-        message: "Card deleted",
-        scryfallId: req.params.scryfallId,
-      });
-    } catch (error) {
-      serverError(res, "Server error.", error);
-    }
-  })

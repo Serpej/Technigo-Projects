@@ -1,12 +1,13 @@
 import { Response } from "express"
 
-export const badRequest = (res:Response, message:string, error:unknown) => {
+export const badRequest = (res:Response, message:string, error?:unknown) => {
   const errorMessage = error instanceof Error ? error.message : String(error);
-  return res.status(400).json({
+  const response = {
     success: false,
     message: message,
-    error: errorMessage
-  });
+    ...(error ? { error: errorMessage } : {})
+  }
+  return res.status(400).json(response);
 }
 
 export const serverError = (res:Response, message:string, error:unknown) => {
