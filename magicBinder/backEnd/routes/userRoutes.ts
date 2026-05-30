@@ -31,15 +31,35 @@ userRouter
   .get("/", authenticateUser)
   .get("/", async (req, res) => {
     const user = req.user;
-
     if(!user) {
       requestNotFound(res, "User not found.");
       return
     }
-
     res.status(200).json({
     user
     });
+  })
+  .post("/login", async (req, res) => {
+    const { email, password } = req.body
+
+    try {
+      const user = await User.findOne({ email });
+      if(!user) {
+        requestNotFound(res, "Invalid credentials.")
+        return
+      }
+      const passwordMatch = await bcrypt.compare(password, user.password)
+      if(!passwordMatch) {
+        requestUnauthorized(res, "Invalid credentials.")
+        return
+      }
+      res.status(200).json({
+        success: true,
+        accessToken: user.accessToken 
+      })
+    } catch (error) {
+      serverError(res, "Server error.", error)
+    }
   })
   .patch("/:id", authenticateUser)
   .patch("/:id", async (req, res) => {
