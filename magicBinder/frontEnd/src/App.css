@@ -1,3 +1,17 @@
+
+/*
+  Magic color palette:
+    https://coolors.co/palette/18130d-6e3722-925931-70929a-4c6492
+
+    {
+      "Pitch Black":"18130D",
+      "Dark Walnut":"6E3722",
+      "Toffee Brown":"925931",
+      "Air Force Blue":"70929A",
+      "Baltic Blue":"4C6492"
+    }
+*/
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
