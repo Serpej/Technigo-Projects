@@ -31,7 +31,7 @@ export const Home = () => {
           />
           
           <div className="flex flex-col gap-3 absolute bottom-0 invisible group-hover:visible m-3">  
-            <h1 className="text-white text-xl font-bold">Movie Title{movie.title}</h1>
+            <h1 className="text-white text-xl font-bold">{movie.title}</h1>
             <p className="text-white text-base">Released: {movie.release_date}</p>
           </div>
           
