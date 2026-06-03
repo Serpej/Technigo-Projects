@@ -8,6 +8,21 @@
       "Dark Walnut":"6E3722",
       "Toffee Brown":"925931",
       "Air Force Blue":"70929A",
-      "Baltic Blue":"4C6492"
+      "Baltic Blue":"4C6492",
+      "Found white": #e3e3e3
+
     }
+
+    Magic font "Satans Minions" by Mickey Rossi
+    https://fontmeme.com/magic-the-gathering-font/
+
 */
+
+@theme {
+  --color-pitch-black: #18130D;
+  --color-dark-walnut: #6E3722;
+  --color-toffee-brown: #925931;
+  --color-air-force-blue: #70929A;
+  --color-baltic-blue: #4C6492;
+  --color-pearl-white: #e3e3e3;
+}
