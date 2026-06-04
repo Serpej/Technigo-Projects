@@ -12,12 +12,14 @@ export const NavBar = () => {
           to="/"
           className="flex"
         >
-          <MagicBinderLogo 
-            className="w-24 flex-[1_1_auto] text-baltic-blue"
-            aria-label="A logo of a binder inside a circle"
-            role="image"
-            fill="currentColor"
-          />
+          <NavLink to="/home">
+            {<MagicBinderLogo 
+              className="w-12 flex-[1_1_auto] text-baltic-blue"
+              aria-label="A logo of a binder inside a circle"
+              role="image"
+              fill="currentColor"
+            />}
+          </NavLink>
         </Link>
         <ul
           className="flex flex-1 justify-evenly flex-row"
