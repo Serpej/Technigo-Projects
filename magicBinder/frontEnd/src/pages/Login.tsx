@@ -1,8 +1,8 @@
 export const Login = () => {
   return(
     <div>
+      <h3>Login</h3>
       <section>
-        <h1>Welcome to the Magic Binder</h1>
         <form action="">
           <label htmlFor="">
             Email:
