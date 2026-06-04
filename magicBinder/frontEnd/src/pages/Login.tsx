@@ -1,15 +1,11 @@
-import { useState } from "react"
+import { useState } from "react";
+import { handleValue } from "../helperFunctions/handleValue";
+import { fetchLoginResponse } from "../services/Loginservice";
 
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const handleValue = (
-    event: React.ChangeEvent<HTMLInputElement>, 
-    setUseState: React.Dispatch<React.SetStateAction<string>>):void => {
-    const text = event.currentTarget.value;
-    setUseState(text);
-  }
   return(
     <div>
       <h3>Login</h3>
@@ -22,6 +18,7 @@ export const Login = () => {
               name="Email"
               id="email"
               onChange = {(e) => handleValue(e, setEmail)} 
+              defaultValue={email}
               required
             />
           </label>
@@ -31,7 +28,8 @@ export const Login = () => {
               type="password" 
               name="Password"
               id="password"
-              onChange = {(e) => handleValue(e, setPassword)} 
+              onChange = {(e) => handleValue(e, setPassword)}
+              defaultValue={password}
               required
             />
           </label>
