@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { handleValue } from "../helperFunctions/handleValue";
-import { fetchLoginResponse } from "../services/Loginservice";
+import { onLoginSubmit } from "../helperFunctions/onLoginSubmit";
+
 
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -10,7 +11,9 @@ export const Login = () => {
     <div>
       <h3>Login</h3>
       <section>
-        <form action="">
+        <form action=""
+          onSubmit={(e) => onLoginSubmit(e, email, password)}
+        >
           <label htmlFor="email">
             Email:
             <input 
