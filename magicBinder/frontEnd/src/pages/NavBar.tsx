@@ -1,5 +1,5 @@
 /// <reference types="vite-plugin-svgr/client" />
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import MagicBinderLogo from "../assets/MagicBinderLogo.svg?react";
 
 export const NavBar = () => {
@@ -8,19 +8,17 @@ export const NavBar = () => {
       <div
         className="flex max-h-24"  
       >
-        <Link 
+        <NavLink 
           to="/"
-          className="flex"
+          className="flex"  
         >
-          <NavLink to="/home">
-            {<MagicBinderLogo 
-              className="w-12 flex-[1_1_auto] text-baltic-blue"
-              aria-label="A logo of a binder inside a circle"
-              role="image"
-              fill="currentColor"
-            />}
-          </NavLink>
-        </Link>
+          {<MagicBinderLogo 
+            className="w-12 flex-[1_1_auto] text-baltic-blue"
+            aria-label="A logo of a binder inside a circle"
+            role="image"
+            fill="currentColor"
+          />}
+        </NavLink>
         <ul
           className="flex flex-1 justify-evenly flex-row"
         >

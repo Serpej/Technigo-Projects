@@ -11,7 +11,7 @@ export const Login = () => {
     <div>
       <h3>Login</h3>
       <section>
-        <form action=""
+        <form
           onSubmit={(e) => onLoginSubmit(e, email, password)}
         >
           <label htmlFor="email">
@@ -21,7 +21,7 @@ export const Login = () => {
               name="Email"
               id="email"
               onChange = {(e) => handleValue(e, setEmail)} 
-              defaultValue={email}
+              value={email}
               required
             />
           </label>
@@ -32,10 +32,16 @@ export const Login = () => {
               name="Password"
               id="password"
               onChange = {(e) => handleValue(e, setPassword)}
-              defaultValue={password}
+              value={password}
               required
             />
           </label>
+          <button
+            className="bg-dark-walnut"
+            type="submit"  
+          >
+            Login
+          </button>
         </form>
       </section>
     </div>

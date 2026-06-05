@@ -1,6 +1,6 @@
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
-export const fetchLoginResponse = async (email:string, password: string) => {
 
+export const fetchLoginResponse = async (email:string, password: string) => {
 const options = {
   method: "POST",
   headers: {
