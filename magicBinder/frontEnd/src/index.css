@@ -9,6 +9,9 @@
       "Toffee Brown":"925931",
       "Air Force Blue":"70929A",
       "Baltic Blue":"4C6492",
+      "papyrus-beige": #FEDAA5,
+      "papyrus-white": #fff6e8
+      "sky-soap": #ecf4ff
       "Found white": #e3e3e3
 
     }
@@ -16,7 +19,15 @@
     Magic font "Satans Minions" by Mickey Rossi
     https://fontmeme.com/magic-the-gathering-font/
 
+    cardmarketAPI?
+    https://help.cardmarket.com/en/cardmarket-api
+
 */
+
+@font-face {
+  font-family: "satans-minions";
+  src: url(./assets/satans-minions-font/satam___-webfont.woff2);
+}
 
 @theme {
   --color-pitch-black: #18130D;
@@ -24,5 +35,13 @@
   --color-toffee-brown: #925931;
   --color-air-force-blue: #70929A;
   --color-baltic-blue: #4C6492;
-  --color-pearl-white: #e3e3e3;
+  --color-gray-pearl-white: #e3e3e3;
+  --color-papyrus-beige: #FEDAA5;
+
+/*Contemporary colors*/
+  --color-papyrus-white: #fff7ec;
+  --color-sky-soap: #ecf4ff;
+
+
+  --font-satans-minions: "satans-minions", "sans-serif";
 }

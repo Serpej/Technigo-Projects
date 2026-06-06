@@ -19,6 +19,11 @@ export const NavBar = () => {
             fill="currentColor"
           />}
         </NavLink>
+        <h1
+          className="font-satans-minions text-6xl text-air-force-blue text-shadow-md text-shadow-pitch-black"
+        >
+          Magic Binder
+        </h1>
         <ul
           className="flex flex-1 justify-evenly flex-row"
         >

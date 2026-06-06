@@ -8,15 +8,19 @@ export const Login = () => {
   const [password, setPassword] = useState<string>("");
 
   return(
-    <div>
-      <h3>Login</h3>
+    <div
+      className=" bg-baltic-blue border-t border-dark-walnut"
+    >
       <section>
         <form
           onSubmit={(e) => onLoginSubmit(e, email, password)}
         >
-          <label htmlFor="email">
+          <label htmlFor="email"
+            className="text-papyrus-white"
+          >
             Email:
             <input 
+              className="bg-papyrus-white rounded-sm m-2 border border-dark-walnut"
               type="email" 
               name="Email"
               id="email"
@@ -25,9 +29,12 @@ export const Login = () => {
               required
             />
           </label>
-          <label htmlFor="password">
+          <label htmlFor="password"
+            className="text-papyrus-white"
+          >
             Password:
             <input 
+              className="bg-papyrus-white rounded-sm m-2 border border-dark-walnut"
               type="password" 
               name="Password"
               id="password"
@@ -37,7 +44,7 @@ export const Login = () => {
             />
           </label>
           <button
-            className="bg-dark-walnut"
+            className="bg-papyrus-beige border border-dark-walnut px-1 py-0.5 m-1 rounded-sm cursor-pointer"
             type="submit"  
           >
             Login

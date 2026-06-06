@@ -5,7 +5,9 @@ import { NavBar } from "./pages/NavBar";
 function App() {
   return(
     <BrowserRouter>
-      <main>
+      <main
+        className=" min-h-screen bg-papyrus-white"
+      >
         <NavBar />
         <Routes>{ routes }</Routes>
       </main>
