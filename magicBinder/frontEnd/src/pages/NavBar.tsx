@@ -1,6 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { NavLink } from "react-router-dom";
 import MagicBinderLogo from "../assets/MagicBinderLogo.svg?react";
+import { SearchBar } from "./SearchBar";
 
 export const NavBar = () => {
   return(
@@ -24,6 +25,8 @@ export const NavBar = () => {
         >
           Magic Binder
         </h1>
+
+        <SearchBar />
         <ul
           className="flex flex-1 justify-evenly flex-row"
         >
