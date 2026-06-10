@@ -1,8 +1,15 @@
 export const About = () => {
  return(
-  <div>
-    <h3>Contact</h3>
-    <p>Here is some information about this site, how it came to be and who made it.</p>
+  <div
+    className="bg-sky-soap"
+  >
+    <div
+    className=" col-start-1 row-start-1 place-self-center"
+    >
+      <h1 className=" font-bold text-4xl "> ADD</h1>
+      <h1 className=" font-bold text-4xl">SEARCH</h1>
+      <h1 className=" font-bold text-4xl"> TRADE</h1>
+    </div>
   </div>
  )
 }

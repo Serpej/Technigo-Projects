@@ -10,14 +10,18 @@ export const DropDownMenu = ({ className }: DropDownMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
   return(
     <div
-      className={className} 
+      className={className}
     >
-      {<DropDownMenuIcon
-        className=""
-       />}
-      {isOpen && <ul
-          className="flex flex-1 justify-evenly flex-row"
-        >
+      <div
+        className="max-w-8 max-h-8 border rounded-sm p-1"
+      >
+        {<DropDownMenuIcon
+          className=""
+         />}
+      </div>
+        {isOpen && <ul
+            className="flex flex-1 justify-evenly flex-row"
+          >
           <li>
             <NavLink to="/about">
               About

@@ -13,21 +13,21 @@ export const SearchBar = ({ className }: SearchBarProps) => {
       className="flex w-full border-baltic-blue"
     >
       <form
-        className="flex w-full items-center justify-between"
+        className="flex w-full items-center justify-center"
       >
         <label 
           htmlFor="searchBar"
-          className="flex flex-1 min-w-19"  
+          className="flex flex-1 max-w-[50%] min-w-19"  
         >
           <input
             type="text"
             required
             id="searchBar"
-            className=" flex flex-1 w-full m-1 border border-dark-walnut rounded-sm"
+            className=" flex flex-1 m-1 bg-gray-pearl-white border border-pitch-black rounded-sm"
           />
         </label>
           <button
-            className=" flex justify-end px-2 py-1 border rounded-sm cursor-pointer transition delay-100 hover:scale-105"
+            className=" flex px-2 py-1 bg-gray-pearl-white border-pitch-black rounded-sm cursor-pointer transition delay-100 hover:scale-105 "
           >
             {<Search />}
           </button>
