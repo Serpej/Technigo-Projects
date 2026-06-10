@@ -13,7 +13,7 @@ export const DropDownMenu = ({ className }: DropDownMenuProps) => {
       className={className} 
     >
       {<DropDownMenuIcon
-        className="justify-end"
+        className=""
        />}
       {isOpen && <ul
           className="flex flex-1 justify-evenly flex-row"

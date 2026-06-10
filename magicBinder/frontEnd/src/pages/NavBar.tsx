@@ -10,33 +10,33 @@ export const NavBar = () => {
   return(
     <div>
       <div
-        className="flex w-screen max-h-24"  
+        className="flex w-screen max-h-12"  
       >
         <div
-          className="flex flex-1 px-4 gap-4"
+          className="flex flex-1 align-top gap-4"
         >
           <NavLink
             to="/"
             className="flex"
           >
             {<MagicBinderLogo
-              className=" w-12 text-baltic-blue"
+              className=" w-12 m-1 ml-3 text-baltic-blue"
               aria-label="A logo of a binder inside a circle"
               role="image"
               fill="currentColor"
             />}
           </NavLink>
           <h1
-            className="font-satans-minions whitespace-nowrap text-[clamp(1.5rem,4vw,5rem)] text-air-force-blue text-shadow-md text-shadow-pitch-black"
+            className="font-satans-minions whitespace-nowrap m-0 self-center text-[clamp(1.5rem,4vw,3.3rem)] text-air-force-blue text-shadow-md text-shadow-pitch-black"
           >
             Magic Binder
           </h1>
         </div>
           <SearchBar
-            className="flex-2 px-4"
+            className="flex flex-2 items-center px-4"
           />
           <DropDownMenu 
-            className="flex-1 px-4"
+            className="flex flex-1 justify-end items-center px-4"
           />
       </div>
     </div>

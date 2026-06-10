@@ -3,13 +3,14 @@ import { handleValue } from "../helperFunctions/handleValue";
 import { onLoginSubmit } from "../helperFunctions/onLoginSubmit";
 
 
+
 export const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   return(
     <div
-      className=" bg-baltic-blue border-t border-dark-walnut"
+      className=" bg-baltic-blue  pl-4 py-1 border-t border-dark-walnut"
     >
       <section>
         <form
@@ -44,7 +45,7 @@ export const Login = () => {
             />
           </label>
           <button
-            className="bg-papyrus-beige border border-dark-walnut px-1 py-0.5 m-1 rounded-sm cursor-pointer"
+            className="bg-papyrus-beige border border-dark-walnut px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-100 hover:scale-105"
             type="submit"  
           >
             Login
