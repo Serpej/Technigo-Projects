@@ -6,9 +6,7 @@ import { SearchBar } from "./SearchBar";
 export const Home = () => {
   return (
     <div>
-      <SearchBar
-        className="flex flex-1 items-center px-4 bg-baltic-blue border-t border-dark-walnut py-1"
-       />
+      <SearchBar />
       <Hero />
       <Login />
       <About />

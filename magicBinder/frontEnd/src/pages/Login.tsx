@@ -10,9 +10,12 @@ export const Login = () => {
 
   return(
     <div
-      className=" bg-baltic-blue  pl-4 py-1 border-t border-dark-walnut"
+      className="grid grid-cols-[1fr_2fr_1fr] bg-baltic-blue  pl-4 py-1 border-t border-dark-walnut"
     >
-      <section>
+      <div></div>
+      <section
+        className="col-start-2 flex justify-center"
+      >
         <form
           onSubmit={(e) => onLoginSubmit(e, email, password)}
         >
@@ -52,6 +55,7 @@ export const Login = () => {
           </button>
         </form>
       </section>
+      <div></div>
     </div>
   )
 }

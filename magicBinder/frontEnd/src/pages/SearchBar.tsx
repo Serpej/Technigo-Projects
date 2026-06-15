@@ -1,23 +1,22 @@
 import Search from "../assets/Search.svg?react";
 
-interface SearchBarProps {
-  className?: string
-}
 
-export const SearchBar = ({ className }: SearchBarProps) => {
+
+export const SearchBar = () => {
   return(
   <div
-    className={className}
+    className="grid grid-cols-[1fr_2fr_1fr] px-4 bg-baltic-blue border-t border-dark-walnut py-1"
   >
+    <div></div>
     <section
-      className="flex w-full border-baltic-blue"
+      className="col-start-2 flex w-full border-baltic-blue"
     >
       <form
         className="flex w-full items-center justify-center"
       >
         <label 
           htmlFor="searchBar"
-          className="flex flex-1 max-w-[50%] min-w-19"  
+          className="flex flex-1 max-w-[75%] min-w-19"  
         >
           <input
             type="text"
@@ -27,12 +26,13 @@ export const SearchBar = ({ className }: SearchBarProps) => {
           />
         </label>
           <button
-            className=" flex px-2 py-1 bg-gray-pearl-white border-pitch-black rounded-sm cursor-pointer transition delay-100 hover:scale-105 "
+            className=" flex px-1 py-0.5 bg-gray-pearl-white border-pitch-black rounded-sm cursor-pointer transition delay-100 hover:scale-105 "
           >
             {<Search />}
           </button>
       </form>
     </section>
+    <div></div>
   </div>
   )
 
