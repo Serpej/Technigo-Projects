@@ -11,9 +11,7 @@ function App() {
         className="bg-papyrus-white"
       >
         <NavBar />
-        <DropDownMenu 
-          className="flex justify-end items-center bg-papyrus-white"
-        />
+        <DropDownMenu />
         <Routes>{ routes }</Routes>
       </main>
     </BrowserRouter>

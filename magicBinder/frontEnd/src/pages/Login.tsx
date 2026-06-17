@@ -2,29 +2,37 @@ import { useState } from "react";
 import { handleValue } from "../helperFunctions/handleValue";
 import { onLoginSubmit } from "../helperFunctions/onLoginSubmit";
 
+interface LoginProps {
+  className: string
+}
 
-
-export const Login = () => {
+export const Login = ( {className}:LoginProps ) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
+
   return(
     <div
-      className="grid grid-cols-[1fr_2fr_1fr] bg-baltic-blue  pl-4 py-1 border-t border-dark-walnut"
+      className={`${className} grid grid-cols-[1fr_2fr_1fr]`}
     >
       <div></div>
       <section
-        className="col-start-2 flex justify-center"
+        className="col-start-2 flex justify-center items-center"
       >
         <form
           onSubmit={(e) => onLoginSubmit(e, email, password)}
+          className="flex max-w-md w-full flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-1 border-2 rounded-sm border-toffee-brown"
         >
           <label htmlFor="email"
-            className="text-papyrus-white"
+            className="flex flex-col text-papyrus-white"
           >
-            Email:
+            <p 
+              className="m-1 mb-0"
+            >
+              Email:
+            </p>
             <input 
-              className="bg-papyrus-white rounded-sm m-2 border border-dark-walnut"
+              className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-dark-walnut"
               type="email" 
               name="Email"
               id="email"
@@ -34,11 +42,15 @@ export const Login = () => {
             />
           </label>
           <label htmlFor="password"
-            className="text-papyrus-white"
+            className="flex flex-col text-papyrus-white"
           >
-            Password:
+          <p 
+              className="m-1 mb-0"
+            >
+              Password:
+            </p>
             <input 
-              className="bg-papyrus-white rounded-sm m-2 border border-dark-walnut"
+              className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-dark-walnut"
               type="password" 
               name="Password"
               id="password"
