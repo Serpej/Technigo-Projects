@@ -2,14 +2,18 @@ import { User } from "../models/User";
 import express from "express";
 import bcrypt from "bcrypt";
 import { authenticateUser } from "../middleware/authenticateUser";
-import { requestNotFound, requestUnauthorized, serverError} from "../utils/responses";
+import { requestNotFound, requestUnauthorized, serverError, badRequest} from "../utils/responses";
 
 export const userRouter = express.Router();
 
 userRouter
   .post("/", async (req, res) => {
     try {
-      const { name, email, password } = req.body;
+      const { name, email, password, confirmPassword } = req.body;
+      if(password != confirmPassword) {
+        badRequest(res, "Passwords do not match.")
+        return
+      }
       const salt = await bcrypt.genSalt();
       const user = new User({
         name, 
