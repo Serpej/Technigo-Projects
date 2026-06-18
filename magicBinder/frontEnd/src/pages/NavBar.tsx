@@ -2,13 +2,11 @@
 import { NavLink } from "react-router-dom";
 import MagicBinderLogo from "../assets/MagicBinderLogo.svg?react";
 
-//flex-[1_1_auto]
-
 export const NavBar = () => {
   return(
     <div>
       <div
-        className="grid grid-cols-3 w-screen bg-papyrus-white"  
+        className=" max-w-full grid grid-cols-3 w-screen bg-papyrus-white/20" 
       >
         <div
           className="flex flex-1 items-center"

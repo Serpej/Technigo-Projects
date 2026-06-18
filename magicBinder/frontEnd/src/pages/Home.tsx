@@ -1,13 +1,11 @@
-import { Hero } from "../pages/Hero";
-import { About } from "./About";
-import { SearchBar } from "./SearchBar";
+import { PageBackground } from "./PageBackground"
 
 export const Home = () => {
   return (
-    <div>
-      <SearchBar />
-      <Hero />
-      <About />
+    <div className="h-full">
+      <PageBackground 
+        className="grid col-start-1 row-start-1"
+      />
     </div>
   )
 } 

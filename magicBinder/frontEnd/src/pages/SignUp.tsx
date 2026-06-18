@@ -5,9 +5,10 @@ import { PageBackground } from "./PageBackground";
 
 
 
-export const Login = () => {
+export const SignUp = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
 
 
   return(
@@ -28,6 +29,24 @@ export const Login = () => {
             onSubmit={(e) => onLoginSubmit(e, email, password)}
             className="flex max-w-md w-full flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-toffee-brown"
           >
+            <label htmlFor="name"
+              className="flex flex-col text-papyrus-white"
+            >
+              <p
+                className="m-1 mb-0"
+              >
+                Name:
+              </p>
+              <input
+                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-dark-walnut"
+                type="text"
+                name="Name"
+                id="name"
+                onChange = {(e) => handleValue(e, setEmail)}
+                value={email}
+                required
+              />
+            </label>
             <label htmlFor="email"
               className="flex flex-col text-papyrus-white"
             >
@@ -64,11 +83,29 @@ export const Login = () => {
                 required
               />
             </label>
+            <label htmlFor="password"
+              className="flex flex-col text-papyrus-white"
+            >
+            <p
+                className="m-1 mb-0"
+              >
+               Confirm Password:
+              </p>
+              <input
+                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-dark-walnut"
+                type="password"
+                name="Password"
+                id="password"
+                onChange = {(e) => handleValue(e, setConfirmPassword)}
+                value={confirmPassword}
+                required
+              />
+            </label>
             <button
               className="bg-papyrus-beige border border-dark-walnut px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-100 hover:scale-105"
               type="submit"
             >
-              Login
+              Sign Up
             </button>
           </form>
         </section>

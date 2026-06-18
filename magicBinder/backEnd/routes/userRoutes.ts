@@ -25,6 +25,7 @@ userRouter
       res.status(201).json({
         success: true,
         message: "User created",
+        name: name, 
         id: user._id,
         accessToken: user.accessToken,
       });
