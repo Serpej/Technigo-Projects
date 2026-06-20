@@ -9,11 +9,25 @@ export const userRouter = express.Router();
 userRouter
   .post("/", async (req, res) => {
     try {
-      const { name, email, password, confirmPassword } = req.body;
-      if(password != confirmPassword) {
-        badRequest(res, "Passwords do not match.")
-        return
+      const { name, email, password } = req.body;
+
+      if(name.length < 5) {
+      badRequest(res,"Name is too short. Minimum 5 characters")
       }
+
+      if(await User.findOne({ name })) {
+        badRequest(res, "An account with that information already exists.")
+      }
+
+      const emailRegex = /^[a-z0-9+.-]+@[a-z0-9.]+\.[a-z]+$/i;
+      if(!emailRegex.test(email)){
+        badRequest(res, "An account with that information already exists.")
+      }
+
+      if(password.length < 5) {
+      badRequest(res,"Password is too short. Minimum 5 characters")
+      }
+
       const salt = await bcrypt.genSalt();
       const user = new User({
         name, 

@@ -36,7 +36,7 @@
   --color-air-force-blue: #70929A;
   --color-baltic-blue: #4C6492;
   --color-gray-pearl-white: #e3e3e3;
-  --color-papyrus-beige: #FEDAA5;
+  --color-papyrus-beige: #E4C19B;
 
 /*Contemporary colors*/
   --color-papyrus-white: #fff7ec;
@@ -44,6 +44,9 @@
 
 /* From HeroBanner */
   --color-deep-hero-blue: #181831;
+  --color-royal-purple: #A368AA;
+  --color-deep-purple: #9067AE;
+  --color-bright-purple: #CCAADF;
 
 
   --font-satans-minions: "satans-minions", "sans-serif";

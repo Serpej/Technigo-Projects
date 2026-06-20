@@ -2,7 +2,7 @@ import { BrowserRouter, Routes } from "react-router-dom";
 import { routes } from "./routes/Routes";
 import { NavBar } from "./pages/NavBar";
 import { DropDownMenu } from "./pages/DropDownMenu";
-import { SearchBar } from "./pages/SearchBar";
+
 
 function App() {
   return(
@@ -12,7 +12,6 @@ function App() {
       >
         <NavBar />
         <DropDownMenu />
-        <SearchBar />
         <div 
           className="grow min-h-0"
         >

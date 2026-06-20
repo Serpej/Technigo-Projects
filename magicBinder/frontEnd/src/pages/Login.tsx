@@ -19,14 +19,14 @@ export const Login = () => {
       />
 
       <div
-        className= "grid col-start-1 row-start-1"
+        className= "grid col-start-1 row-start-1 mx-5"
       >
         <section
           className="flex justify-center items-center"
         >
           <form
             onSubmit={(e) => onLoginSubmit(e, email, password)}
-            className="flex max-w-md w-full flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-toffee-brown"
+            className="flex max-w-md w-full flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue"
           >
             <label htmlFor="email"
               className="flex flex-col text-papyrus-white"
@@ -65,7 +65,7 @@ export const Login = () => {
               />
             </label>
             <button
-              className="bg-papyrus-beige border border-dark-walnut px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-100 hover:scale-105"
+              className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-102"
               type="submit"
             >
               Login

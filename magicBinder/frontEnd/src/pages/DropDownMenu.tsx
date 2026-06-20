@@ -1,10 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import DropDownMenuIcon from "../assets/DropDownMenuIcon.svg?react"
+import { toggleButton } from "../helperFunctions/toggleButton";
+import DropDownMenuIcon from "../assets/DropDownMenuIcon.svg?react";
 
-const toggleButton = (useState:boolean, setUseState: React.Dispatch<React.SetStateAction<boolean>>):void => {
-  setUseState(!useState);
-}
 export const DropDownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -28,7 +26,7 @@ export const DropDownMenu = () => {
       className="flex justify-end items-center bg-papyrus-white border fixed top-4 right-2 rounded-sm"
     >
       <div
-        className="flex justify-center max-w-8 max-h-8 p-1 cursor-pointer"
+        className={`${isOpen ? "hidden aria-hidden" : "flex"} justify-center w-8 h-8 p-1 cursor-pointer transition delay-100 hover:scale-105`}
       >
         <button
           className="cursor-pointer"

@@ -1,11 +1,13 @@
 import Search from "../assets/Search.svg?react";
 
+interface SearchProps {
+  className: string;
+}
 
-
-export const SearchBar = () => {
+export const SearchBar = ({ className }: SearchProps) => {
   return(
   <div
-    className="grid grid-cols-[1fr_2fr_1fr] px-4 bg-baltic-blue border-t border-dark-walnut py-1"
+    className={`${className} grid grid-cols-[1fr_2fr_1fr] px-4 bg-baltic-blue border-t border-dark-walnut py-1`}
   >
     <div></div>
     <section
