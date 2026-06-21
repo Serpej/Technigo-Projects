@@ -23,7 +23,7 @@ export const DropDownMenu = () => {
   return(
     <div
       ref={ref}
-      className="flex justify-end items-center bg-papyrus-white border fixed top-4 right-2 rounded-sm"
+      className="flex justify-end items-center bg-papyrus-white border fixed top-4 right-4 rounded-sm"
     >
       <div
         className={`${isOpen ? "hidden aria-hidden" : "flex"} justify-center w-8 h-8 p-1 cursor-pointer transition delay-100 hover:scale-105`}

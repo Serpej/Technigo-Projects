@@ -22,13 +22,13 @@ export const Home = () => {
         >
           <Link
             to="/login"
-            className="flex-1 max-w-[30%] bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-4 py-2 m-1 rounded-sm text-2xl text-center cursor-pointer transition delay-80 hover:scale-102"
+            className="flex-1 max-w-[30%] bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-4 py-2 m-1 rounded-sm text-2xl text-center cursor-pointer transition delay-80 hover:scale-105"
           >
             Login
           </Link>
           <Link
             to="/signup"
-            className="flex-1 max-w-[30%] bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-4 py-2 m-1 rounded-sm text-2xl text-center cursor-pointer transition delay-80 hover:scale-102"
+            className="flex-1 max-w-[30%] bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-4 py-2 m-1 rounded-sm text-2xl text-center cursor-pointer transition delay-80 hover:scale-105"
           >
             Sign Up
           </Link>
