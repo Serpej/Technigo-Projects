@@ -6,6 +6,8 @@ export const onLoginSubmit = async (event:React.ChangeEvent<HTMLFormElement>, em
   try {
     const response = await fetchLoginResponse(email, password);
     useAuthStore.getState().setAccessToken(response.accessToken);
+    useAuthStore.getState().setUserName(response.userName);
+    useAuthStore.getState().setUserEmail(response.userEmail);
     console.log("fetched user token: " + response.success)
   } catch (error) {
     console.error("Login Failed: ", error)

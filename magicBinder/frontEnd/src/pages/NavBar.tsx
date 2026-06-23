@@ -16,7 +16,7 @@ export const NavBar = () => {
             className="hidden sm:flex items-center w-18 sm:w-full"
           >
             {<MagicBinderLogo
-              className=" max-h-14 max-w-14 text-baltic-blue"
+              className=" max-h-14 max-w-14 text-royal-purple"
               aria-label="A logo of a binder inside a circle"
               role="image"
               fill="currentColor"

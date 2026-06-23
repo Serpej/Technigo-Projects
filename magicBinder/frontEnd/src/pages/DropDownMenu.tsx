@@ -18,6 +18,10 @@ export const DropDownMenu = () => {
     };
 
     document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside)
+    };
   },[isOpen]);
 
   return(

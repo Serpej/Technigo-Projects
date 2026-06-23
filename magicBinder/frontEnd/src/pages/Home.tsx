@@ -4,13 +4,15 @@ import { SearchBar } from "./SearchBar";
 
 export const Home = () => {
   return (
-    <div className="grid h-full ">
-      <SearchBar 
-        className="grid col-start-1 row-start-1"
-      />
-      <PageBackground 
-        className="grid col-start-1 row-start-1"
-      />
+    <div className="grid grid-rows-[1fr] h-full">
+      <div className="grid col-start-1 row-start-1 grid-rows-[auto_1fr] min-h-0 overflow-hidden">
+        <SearchBar
+          className="grid col-start-1 row-start-1"
+        />
+        <PageBackground
+          className="grid col-start-1 row-start-1"
+        />
+      </div>
       <div
         className="grid col-start-1 row-start-1 place-self-center bg-deep-hero-blue/50 border border-baltic-blue rounded-sm shadow-2xl p-8"
       >

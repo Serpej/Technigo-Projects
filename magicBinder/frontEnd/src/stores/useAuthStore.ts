@@ -1,7 +1,11 @@
 import { create } from "zustand";
-import type { userToken } from "../types/types";
+import type { UserAuth } from "../types/types";
 
-export const useAuthStore = create<userToken>((set) => ({
-  accessToken:"",
-  setAccessToken: (newToken: string) => set({accessToken: newToken})
+export const useAuthStore = create<UserAuth>((set) => ({
+  accessToken: "",
+  setAccessToken: (newToken: string) => set({accessToken: newToken}),
+  userName: "",
+  setUserName: (newName: string) => set({userName: newName}),
+  userEmail: "",
+  setUserEmail: (newEmail: string) => set({userEmail: newEmail})
 }))

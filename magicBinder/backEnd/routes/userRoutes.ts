@@ -74,7 +74,9 @@ userRouter
       }
       res.status(200).json({
         success: true,
-        accessToken: user.accessToken 
+        accessToken: user.accessToken,
+        userName: user.name,
+        userEmail: user.email
       })
     } catch (error) {
       serverError(res, "Server error.", error)
