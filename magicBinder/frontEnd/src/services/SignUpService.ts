@@ -1,6 +1,6 @@
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
-export const fetchSignUpResponse = async (email:string, password: string) => {
+export const fetchSignUpResponse = async (name: string, email:string, password: string) => {
 const options = {
   method: "POST",
   headers: {
@@ -8,12 +8,13 @@ const options = {
     "Content-Type": "application/json"
   },
   body: JSON.stringify({
+    name: name,
     email: email,
     password: password
   })
 }
  try {
-  const response = await fetch(`${BASE_URL}/users/login`, options);
+  const response = await fetch(`${BASE_URL}/users/`, options);
   if(!response.ok) {
     throw new Error(`http error: ${response.status}`);
   }
