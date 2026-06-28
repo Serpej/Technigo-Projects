@@ -10,6 +10,7 @@ export const SignUp = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
 
   return(
@@ -27,7 +28,7 @@ export const SignUp = () => {
           className="flex justify-center items-center"
         >
           <form
-            onSubmit={(e) => onSignUpSubmit(e, email, password)}
+            onSubmit={(e) => onSignUpSubmit(e, name, email, password, setErrorMessage)}
             className="flex max-w-md w-full flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue"
           >
             <label htmlFor="name"
@@ -108,6 +109,13 @@ export const SignUp = () => {
             >
               Sign Up
             </button>
+            {errorMessage && (
+              <p
+                className="text-red-400 text-sm m-1"
+              >
+              {errorMessage}
+              </p>
+            )}
           </form>
         </section>
       </div>

@@ -15,7 +15,8 @@ const options = {
  try {
   const response = await fetch(`${BASE_URL}/users/login`, options);
   if(!response.ok) {
-    throw new Error(`http error: ${response.status}`);
+    const errorData = await response.json();
+    throw new Error(errorData.message || `http error: ${response.status}`);
   }
   const jsonData = await response.json();
   return jsonData;

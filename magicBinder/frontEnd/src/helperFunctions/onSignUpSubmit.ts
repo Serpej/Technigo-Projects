@@ -1,7 +1,7 @@
 import { fetchSignUpResponse } from "../services/SignUpService";
 import { useAuthStore } from "../stores/useAuthStore";
 
-export const onSignUpSubmit = async (event:React.ChangeEvent<HTMLFormElement>, name: string, email: string, password: string) => {
+export const onSignUpSubmit = async (event:React.ChangeEvent<HTMLFormElement>, name: string, email: string, password: string, setErrorMessage: React.Dispatch<React.SetStateAction<string>>) => {
   event.preventDefault();
   try {
     const response = await fetchSignUpResponse(name, email, password);
@@ -11,6 +11,8 @@ export const onSignUpSubmit = async (event:React.ChangeEvent<HTMLFormElement>, n
     console.log("fetched user token: " + response.success);
   } catch (error) {
     console.error("Login Failed: ", error)
-    throw error;
+    if(error instanceof Error){
+      setErrorMessage(error.message);
+    }
   }
 }
