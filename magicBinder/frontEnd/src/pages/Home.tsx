@@ -10,7 +10,7 @@ export const Home = () => {
           className="grid col-start-1 row-start-1"
         />
         <PageBackground
-          className="grid col-start-1 row-start-1"
+          className="grid col-start-1 row-start-2"
         />
       </div>
       <div

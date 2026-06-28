@@ -7,9 +7,7 @@ export const PrivateRoutes = () => {
   const auth = useAuthStore((state) => state.accessToken);
 
   return (
-    <div>
-      {`${auth} ? ${<Outlet/>} : ${<Navigate to="/login" />}`}
-    </div>
+      auth ? <Outlet/> : <Navigate to="/login" />
   )
 }
 

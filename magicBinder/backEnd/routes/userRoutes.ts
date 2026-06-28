@@ -12,20 +12,29 @@ userRouter
       const { name, email, password } = req.body;
 
       if(name.length < 5) {
-      badRequest(res,"Name is too short. Minimum 5 characters")
+        badRequest(res,"Name is too short. Minimum 5 characters");
+        return;
       }
 
       if(await User.findOne({ name })) {
-        badRequest(res, "An account with that information already exists.")
+        badRequest(res, "An account with that information already exists.");
+        return;
+      }
+
+      if(await User.findOne({ email })) {
+        badRequest(res, "An account with that information already exists.");
+        return;
       }
 
       const emailRegex = /^[a-z0-9+.-]+@[a-z0-9.]+\.[a-z]+$/i;
       if(!emailRegex.test(email)){
-        badRequest(res, "An account with that information already exists.")
+        badRequest(res, "An account with that information already exists.");
+        return;
       }
 
       if(password.length < 5) {
-      badRequest(res,"Password is too short. Minimum 5 characters")
+        badRequest(res,"Password is too short. Minimum 5 characters");
+        return;
       }
 
       const salt = await bcrypt.genSalt();

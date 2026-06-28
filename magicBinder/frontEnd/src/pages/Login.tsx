@@ -2,6 +2,8 @@ import { useState } from "react";
 import { handleValue } from "../helperFunctions/handleValue";
 import { onLoginSubmit } from "../helperFunctions/onLoginSubmit";
 import { PageBackground } from "./PageBackground";
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -11,6 +13,7 @@ export const Login = () => {
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
+  const navigate = useNavigate();
 
   return(
     <div
@@ -27,7 +30,7 @@ export const Login = () => {
           className="flex justify-center items-center"
         >
           <form
-            onSubmit={(e) => onLoginSubmit(e, email, password, setErrorMessage)}
+            onSubmit={(e) => onLoginSubmit(e, email, password, navigate, setErrorMessage)}
             className="flex max-w-md w-full flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue"
           >
             <label htmlFor="email"

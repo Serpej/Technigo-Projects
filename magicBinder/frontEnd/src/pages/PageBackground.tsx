@@ -9,7 +9,7 @@ interface PageBackgroundProps {
 export const PageBackground = ({ className, src, alt }: PageBackgroundProps) => {
   return (
     <div
-      className={`${className}h-full w-full overflow-hidden grid grid-rows-[100%] border-t border-dark-walnut bg-deep-hero-blue`}
+      className={`${className} h-full w-full overflow-hidden grid grid-rows-[100%] border-t border-deep-hero-blue bg-deep-hero-blue`}
     >
       <img 
         src={src || heroBannerBigQuadrant} 

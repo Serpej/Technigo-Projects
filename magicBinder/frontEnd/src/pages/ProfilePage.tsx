@@ -27,7 +27,7 @@ export const ProfilePage = () => {
       className="grid col-start-1 row-start-1 place-self-center"
     >
 
-        <h2>`Welcome ${user} with email: ${email}`</h2>
+        <h2>Welcome {user} with email: {email}</h2>
         <div
           className="bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue"
         >
