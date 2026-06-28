@@ -4,6 +4,7 @@ import { Login } from "../pages/Login";
 import { About } from "../pages/About";
 import { SignUp } from "../pages/SignUp";
 import { ProfilePage } from "../pages/ProfilePage";
+import { PrivateRoutes } from "./privateRoutes";
 
 export const routes = (
     <>
@@ -11,6 +12,8 @@ export const routes = (
       <Route path="/login" element={<Login />}  />
       <Route path="/signup" element={< SignUp />} />
       <Route path="/about" element={<About />} />
-      <Route path="/profilepage" element={<ProfilePage />} />
+      <Route element={<PrivateRoutes />}> 
+        <Route path="/profilepage" element={<ProfilePage />} />
+      </Route>
     </>
   )
