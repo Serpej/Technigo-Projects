@@ -4,6 +4,7 @@ export type UserAuth = {
   userName: string,
   setUserName: (name: string) => void,
   userEmail: string,
-  setUserEmail: (email: string) => void
+  setUserEmail: (email: string) => void,
+  logOutUser: () => void,
 }
 

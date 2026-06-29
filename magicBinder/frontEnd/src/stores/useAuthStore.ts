@@ -7,5 +7,6 @@ export const useAuthStore = create<UserAuth>((set) => ({
   userName: "",
   setUserName: (newName: string) => set({userName: newName}),
   userEmail: "",
-  setUserEmail: (newEmail: string) => set({userEmail: newEmail})
+  setUserEmail: (newEmail: string) => set({userEmail: newEmail}),
+  logOutUser: () => set({accessToken: "", userName: "", userEmail: ""})
 }))

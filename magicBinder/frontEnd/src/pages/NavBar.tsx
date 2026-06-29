@@ -1,8 +1,11 @@
 /// <reference types="vite-plugin-svgr/client" />
 import { NavLink } from "react-router-dom";
 import MagicBinderLogo from "../assets/MagicBinderLogo.svg?react";
+import { useAuthStore } from "../stores/useAuthStore";
+import { LogOutButton } from "./LogOutButton";
 
 export const NavBar = () => {
+  const { accessToken } = useAuthStore();
   return(
     <div>
       <div
@@ -32,7 +35,9 @@ export const NavBar = () => {
             Magic Binder
           </h1>
         </div>
-        <div></div>
+        <div>
+          {accessToken && <LogOutButton />}
+        </div>
       </div>
     </div>
   )
