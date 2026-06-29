@@ -15,11 +15,11 @@ export const NavBar = () => {
           className="flex"
         >
           <NavLink
-            to="/"
+            to={`${accessToken ? "/profilepage" : "/"}`}
             className="hidden sm:flex items-center w-18 sm:w-full"
           >
             {<MagicBinderLogo
-              className=" max-h-15 max-w-15 text-papyrus-white transition delay-80 hover:scale-105 hover:animate-spin-slow "
+              className="max-h-15 max-w-15 transition delay-80 hover:text-baltic-blue hover:scale-105 hover:animate-spin-slow"
               aria-label="A logo of a binder inside a circle"
               role="image"
               fill="currentColor"

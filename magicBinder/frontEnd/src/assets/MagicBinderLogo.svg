@@ -1,6 +1,6 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="100%" viewBox="290 290 484 484" enable-background="new 0 0 1024 1024" xml:space="preserve">
-<path fill="#000000" opacity="1.000000" stroke="none" 
+<path fill="#currentColor" opacity="1.000000" stroke="none" 
 	d="
 M629.640503,744.734497 
 	C548.031494,779.285889 470.480469,772.116821 398.592621,721.099548 
@@ -20,7 +20,7 @@ M689.496582,667.011475
 	C381.808014,694.239624 462.551758,748.214661 555.847229,738.020142 
 	C609.571838,732.149475 653.556946,707.902771 689.496582,667.011475 
 z"/>
-<path fill="#currentColor" opacity="1.000000" stroke="none" 
+<path fill="#fff7ec" opacity="1.000000" stroke="none" 
 	d="
 M578.204590,354.678528 
 	C651.517822,372.829132 707.335693,432.574463 717.868835,506.466461 
