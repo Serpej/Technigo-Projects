@@ -42,7 +42,7 @@ export const SignUp = () => {
                 Name:
               </p>
               <input
-                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-dark-walnut"
+                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-baltic-blue"
                 type="text"
                 name="Name"
                 id="name"
@@ -60,7 +60,7 @@ export const SignUp = () => {
                 Email:
               </p>
               <input
-                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-dark-walnut"
+                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-baltic-blue"
                 type="email"
                 name="Email"
                 id="email"
@@ -78,7 +78,7 @@ export const SignUp = () => {
                 Password:
               </p>
               <input
-                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-dark-walnut"
+                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-baltic-blue"
                 type="password"
                 name="Password"
                 id="password"
@@ -96,10 +96,16 @@ export const SignUp = () => {
                Confirm Password:
               </p>
               <input
-                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-dark-walnut"
+                className={`${
+                  !confirmPassword
+                    ? "bg-sky-soap"
+                    : password === confirmPassword 
+                    ? "bg-green-400" 
+                    : "bg-red-400"
+                } flex-1 text-pitch-black  m-1 rounded-sm border border-baltic-blue`}
                 type="password"
                 name="Password"
-                id="password"
+                id="confirmPassword"
                 onChange = {(e) => handleValue(e, setConfirmPassword)}
                 value={confirmPassword}
                 required
