@@ -48,6 +48,7 @@
   --color-deep-purple: #9067AE;
   --color-bright-purple: #CCAADF;
 
-
+/* spinning class */
+  --animate-spin-slow: spin 3s linear infinite;
   --font-satans-minions: "satans-minions", "sans-serif";
 }
