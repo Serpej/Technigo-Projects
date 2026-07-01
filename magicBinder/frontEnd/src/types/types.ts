@@ -8,3 +8,9 @@ export type UserAuth = {
   logOutUser: () => void,
 }
 
+export type ScryfallCard = {
+  "scryfallId": string,
+  "name": string,
+  "imageUri": object,
+  "userId": string
+};

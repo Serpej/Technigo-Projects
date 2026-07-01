@@ -1,7 +1,6 @@
-import { fetchScryfallResponse } from "../services/ScryfallService";
 import type { NavigateFunction } from "react-router-dom";
 
-export const handleCardSearch = async (
+export const handleCardSearch = (
   event:React.ChangeEvent<HTMLFormElement>,
   query: string,
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
@@ -15,7 +14,6 @@ export const handleCardSearch = async (
       return;
     }
     navigate(`/search?q=${query}`);
-    const response = await fetchScryfallResponse();
   } catch (error) {
     console.error("Search failed: ", error)
     if(error instanceof Error){
