@@ -21,12 +21,12 @@ export const CardSearchResults = () => {
     }, [query]);
 
   return (
-    <div>
-      <ul>
+    <div
+      className="grid grid-cols-3"
+    >
         {cards.map((card:ScryfallCard) => {
-          return (<li>{card?.name}</li>)
+          return (<img src={card.image_uris.art_crop} alt={card.name} />)
         })}
-      </ul>
     </div>
   )
 }

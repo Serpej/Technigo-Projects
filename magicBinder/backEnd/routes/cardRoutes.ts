@@ -14,10 +14,10 @@ cardRouter
       return
     }
 
-    const { id: scryfallId, name, image_uris: imageUri } = req.body;
+    const { id: scryfallId, name, image_uris: image_uris } = req.body;
 
     try {
-      const card = new Card({ scryfallId, name, imageUri, userId: req.user._id});
+      const card = new Card({ scryfallId, name, image_uris, userId: req.user._id});
       await card.save();
       res.status(201).json({
         success: true,

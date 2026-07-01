@@ -3,7 +3,13 @@ import {Schema, model} from "mongoose";
 export type ICard = {
   "scryfallId": string,
   "name": string,
-  "imageUri": object,
+  "image_uris": {
+    "small": string,
+    "normal": string,
+    "large": string,
+    "art_crop": string,
+    "border_crop": string,
+  },
   "userId": string
 };
 
@@ -16,7 +22,7 @@ export const cardSchema = new Schema<ICard> ({
     type: String,
     required: true
   },
-  imageUri: {
+  image_uris: {
     type: Object,
     required: true
   },

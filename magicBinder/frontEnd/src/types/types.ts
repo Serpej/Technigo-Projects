@@ -11,6 +11,12 @@ export type UserAuth = {
 export type ScryfallCard = {
   "scryfallId": string,
   "name": string,
-  "imageUri": object,
+  "image_uris": {
+    "small": string,
+    "normal": string,
+    "large": string,
+    "art_crop": string,
+    "border_crop": string,
+  },
   "userId": string
 };
