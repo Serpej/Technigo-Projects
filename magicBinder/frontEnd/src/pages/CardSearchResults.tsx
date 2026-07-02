@@ -20,12 +20,29 @@ export const CardSearchResults = () => {
       fetchData();
     }, [query]);
 
+
   return (
     <div
-      className="grid grid-cols-3"
+      className="grid grid-cols-5 gap-4 m-10 mx-40 content-center justify-center"
     >
         {cards.map((card:ScryfallCard) => {
-          return (<img src={card.image_uris.art_crop} alt={card.name} />)
+          return (
+            <div
+              className="flex justify-center"
+              key={card.scryfallId}
+            >
+              <span
+                className="hidden"
+                aria-hidden="true"
+              >
+                {card.name}
+              </span>
+              <img
+                src={card.image_uris.small}
+                alt={card.name}
+              />
+            </div>
+          )
         })}
     </div>
   )
