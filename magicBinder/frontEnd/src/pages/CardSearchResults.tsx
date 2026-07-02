@@ -38,6 +38,7 @@ export const CardSearchResults = () => {
                 {card.name}
               </span>
               <img
+                className="rounded-[4.75%_/_3.5%]"
                 src={card.image_uris.small}
                 alt={card.name}
               />
