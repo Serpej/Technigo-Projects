@@ -16,6 +16,11 @@ export const CardSearchResults = () => {
       }
       const fetchData = async () => {
         const cardData = await fetchScryfallResponse(query);
+
+        if(!cardData) {
+          return;
+        }
+        
         const { data } = cardData;
         setCards(data);
       }

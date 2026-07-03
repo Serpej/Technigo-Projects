@@ -20,3 +20,9 @@ export type ScryfallCard = {
   },
   "userId": string
 };
+
+export type ScryFallSearchResponse = {
+  "has_more": boolean,
+  "next_page"?: string,
+  "data": ScryfallCard[],
+}
