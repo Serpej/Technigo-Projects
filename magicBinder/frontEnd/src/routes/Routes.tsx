@@ -6,6 +6,7 @@ import { SignUp } from "../components/SignUp";
 import { ProfilePage } from "../components/ProfilePage";
 import { PrivateRoutes } from "./privateRoutes";
 import { CardSearchResults } from "../components/CardSearchResults";
+import { CardDetails } from "../components/CardDetails";
 
 export const routes = (
     <>
@@ -14,6 +15,7 @@ export const routes = (
       <Route path="/signup" element={< SignUp />} />
       <Route path="/about" element={<About />} />
       <Route path="/search" element={<CardSearchResults />} />
+      <Route path="/card" element={<CardDetails />} />
       <Route element={<PrivateRoutes />}> 
         <Route path="/profilepage" element={<ProfilePage />} />
       </Route>
