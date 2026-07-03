@@ -1,11 +1,11 @@
 import { Route } from "react-router-dom";
-import { Home } from "../pages/Home";
-import { Login } from "../pages/Login";
-import { About } from "../pages/About";
-import { SignUp } from "../pages/SignUp";
-import { ProfilePage } from "../pages/ProfilePage";
+import { Home } from "../components/Home";
+import { Login } from "../components/Login";
+import { About } from "../components/About";
+import { SignUp } from "../components/SignUp";
+import { ProfilePage } from "../components/ProfilePage";
 import { PrivateRoutes } from "./privateRoutes";
-import { CardSearchResults } from "../pages/CardSearchResults";
+import { CardSearchResults } from "../components/CardSearchResults";
 
 export const routes = (
     <>
