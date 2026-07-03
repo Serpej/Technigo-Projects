@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchScryfallResponse } from "../services/ScryfallService";
 import { useSearchParams } from "react-router-dom";
+import oceanFloor from "../assets/oceanFloor.jpg";
+import { PageBackground  } from "./PageBackground";
 import type { ScryfallCard } from "../types/types";
 
 export const CardSearchResults = () => {
@@ -23,30 +25,40 @@ export const CardSearchResults = () => {
 
   return (
     <div
-      className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 m-10 gap-6 mx-auto content-center justify-center  max-w-[60%]"
+      className="grid grid-rows-[1fr] h-full"
     >
-        {cards.map((card:ScryfallCard) => {
-          return (
-            <div
-              className="flex justify-center"
-              key={card.scryfallId}
-            >
-              <span
-                className="hidden"
-                aria-hidden="true"
+
+      <PageBackground 
+        className="grid col-start-1 row-start-1  min-h-0 overflow-hidden"
+        src={oceanFloor}
+        alt="Ocean floor with wavey a sand pattern"
+      />
+      <div
+        className="grid col-start-1 row-start-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
+      >
+          {cards.map((card:ScryfallCard) => {
+            return (
+              <div
+                className="flex justify-center"
+                key={card.scryfallId}
               >
-                {card.name}
-              </span>
-              <img
-                className="rounded-[4.75%/3.5%]"
-                src={card.image_uris.normal}
-                srcSet={`${card.image_uris.small} 146w, ${card.image_uris.normal} 488w, ${card.image_uris.large} 672w`}
-                sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
-                alt={card.name}
-              />
-            </div>
-          )
-        })}
+                <span
+                  className="hidden"
+                  aria-hidden="true"
+                >
+                  {card.name}
+                </span>
+                <img
+                  className="rounded-[4.75%/3.5%]"
+                  src={card.image_uris.normal}
+                  srcSet={`${card.image_uris.small} 146w, ${card.image_uris.normal} 488w, ${card.image_uris.large} 672w`}
+                  sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
+                  alt={card.name}
+                />
+              </div>
+            )
+          })}
+      </div>
     </div>
   )
 }

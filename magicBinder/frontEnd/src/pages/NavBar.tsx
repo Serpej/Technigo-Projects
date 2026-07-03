@@ -2,6 +2,7 @@
 import { NavLink } from "react-router-dom";
 import MagicBinderLogo from "../assets/MagicBinderLogo.svg?react";
 import { useAuthStore } from "../stores/useAuthStore";
+import { DropDownMenu } from "./DropDownMenu";
 
 
 export const NavBar = () => {
@@ -29,13 +30,20 @@ export const NavBar = () => {
         <div
           className="col-start-1 sm:col-start-2"
         >
-          <h1
-            className="font-satans-minions whitespace-nowrap leading-none m-0 self-center text-[clamp(2.5rem,6vw,5rem)] text-center text-air-force-blue text-shadow-md text-shadow-pitch-black"
+          <NavLink
+            to={`${accessToken ? "/profilepage" : "/"}`}
           >
-            Magic Binder
-          </h1>
+            <h1
+              className="font-satans-minions whitespace-nowrap leading-none m-0 self-center text-[clamp(2.5rem,6vw,5rem)] text-center text-air-force-blue text-shadow-md text-shadow-pitch-black"
+            >
+              Magic Binder
+            </h1>
+          </NavLink>
         </div>
-        <div>
+        <div
+          className="flex items-center justify-end"
+        >
+          <DropDownMenu />
         </div>
       </div>
     </div>

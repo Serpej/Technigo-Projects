@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes } from "react-router-dom";
 import { routes } from "./routes/Routes";
 import { NavBar } from "./pages/NavBar";
-import { DropDownMenu } from "./pages/DropDownMenu";
 
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
         className="flex flex-col h-screen bg-papyrus-white"
       >
         <NavBar />
-        <DropDownMenu />
         <div 
           className="grow min-h-0"
         >
