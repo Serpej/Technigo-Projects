@@ -2,7 +2,7 @@
 import { NavLink } from "react-router-dom";
 import MagicBinderLogo from "../assets/MagicBinderLogo.svg?react";
 import { useAuthStore } from "../stores/useAuthStore";
-import { LogOutButton } from "./LogOutButton";
+
 
 export const NavBar = () => {
   const { accessToken } = useAuthStore();
@@ -36,7 +36,6 @@ export const NavBar = () => {
           </h1>
         </div>
         <div>
-          {accessToken && <LogOutButton />}
         </div>
       </div>
     </div>

@@ -7,7 +7,7 @@ export const LogOutButton = () => {
   const navigate = useNavigate();
   return (
     <button
-      className=""
+      className="cursor-pointer"
       onClick={() => {logOutUser(); navigate("/")}}
     >
       Log Out

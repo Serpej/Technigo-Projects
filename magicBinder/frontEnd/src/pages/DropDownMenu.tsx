@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { toggleButton } from "../helperFunctions/toggleButton";
 import DropDownMenuIcon from "../assets/DropDownMenuIcon.svg?react";
+import { LogOutButton } from "./LogOutButton";
+import { useAuthStore } from "../stores/useAuthStore";
 
 export const DropDownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +25,8 @@ export const DropDownMenu = () => {
       document.removeEventListener("click", handleClickOutside)
     };
   },[isOpen]);
+
+  const { accessToken } =  useAuthStore()
 
   return(
     <div
@@ -51,6 +55,9 @@ export const DropDownMenu = () => {
             <NavLink to="/contact">
               Contact
             </NavLink>
+          </li>
+          <li>
+            {accessToken && <LogOutButton />}
           </li>
         </ul>
 
