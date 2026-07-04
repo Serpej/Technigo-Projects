@@ -8,6 +8,8 @@ import { PrivateRoutes } from "./privateRoutes";
 import { CardSearchResults } from "../components/CardSearchResults";
 import { CardDetails } from "../components/CardDetails";
 
+
+
 export const routes = (
     <>
       <Route path="/" element={<Home />} />

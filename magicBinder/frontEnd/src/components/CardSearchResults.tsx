@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchScryfallResponse } from "../services/ScryfallService";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, NavLink, useLocation } from "react-router-dom";
 import oceanFloor from "../assets/oceanFloor.jpg";
 import { PageBackground  } from "./PageBackground";
 import type { ScryfallCard } from "../types/types";
@@ -8,7 +8,8 @@ import type { ScryfallCard } from "../types/types";
 export const CardSearchResults = () => {
   const [searchParams] = useSearchParams();
   const [cards, setCards] = useState<ScryfallCard[]>([]);
-  const query = searchParams.get("q")
+  const query = searchParams.get("q");
+  const location = useLocation();
 
     useEffect(() => {
       if(!query) {
@@ -53,13 +54,17 @@ export const CardSearchResults = () => {
                 >
                   {card.name}
                 </span>
-                <img
-                  className="rounded-[4.75%/3.5%]"
-                  src={card.image_uris.normal}
-                  srcSet={`${card.image_uris.small} 146w, ${card.image_uris.normal} 488w, ${card.image_uris.large} 672w`}
-                  sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
-                  alt={card.name}
-                />
+                <NavLink
+                  to="/card" state={{ background: location }}
+                >
+                  <img
+                    className="rounded-[4.75%/3.5%]"
+                    src={card.image_uris.normal}
+                    srcSet={`${card.image_uris.small} 146w, ${card.image_uris.normal} 488w, ${card.image_uris.large} 672w`}
+                    sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
+                    alt={card.name}
+                  />
+                </NavLink>
               </div>
             )
           })}

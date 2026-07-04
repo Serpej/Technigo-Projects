@@ -1,7 +1,6 @@
-import { BrowserRouter, Routes } from "react-router-dom";
-import { routes } from "./routes/Routes";
+import { BrowserRouter } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
-
+import { AppContent } from "./AppContent";
 
 function App() {
   return(
@@ -10,11 +9,9 @@ function App() {
         className="flex flex-col h-screen bg-papyrus-white"
       >
         <NavBar />
-        <div 
-          className="grow min-h-0"
-        >
-          <Routes>{ routes }</Routes>
-        </div>
+          <AppContent 
+            className="grow min-h-0"
+          />
       </main>
     </BrowserRouter>
   )

@@ -1,23 +1,26 @@
-import { PageBackground } from "./PageBackground";
-import oceanFloor from "../assets/oceanFloor.jpg"
+import { useNavigate } from "react-router-dom";
 
 export const CardDetails = () => {
 
+  const navigate = useNavigate();
+
   return(
     <div
-      className="h-full grid grid-rows-[100%]"
+      className="h-full flex items-center justify-center fixed inset-0 bg-black/40"
+      onClick={() => {navigate(-1)}}
     >
-      <PageBackground 
-        className="grid col-start-1 row-start-1"
-        src={oceanFloor}
-        alt="Ocean floor with wavey a sand pattern"
-      />
       <div
-        className="grid grid-cols-2 col-start-1 row-start-1 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue m-20"
+        className="grid grid-cols-2 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-10  border-2 rounded-sm border-deep-hero-blue w-full max-w-3xl max-h-[80vh] overflow-auto"
+        onClick={(e) => {e.stopPropagation()}}
       >
         <div
           className="flex flex-col"
         >
+          <button
+            onClick={() => navigate(-1)}
+          >
+            Close
+          </button>
           <button>
           foil
           </button>
