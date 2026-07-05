@@ -1,3 +1,5 @@
+import type { Location } from "react-router-dom";
+
 export type UserAuth = {
   accessToken: string,
   setAccessToken: (token: string) =>  void,
@@ -18,6 +20,8 @@ export type ScryfallCard = {
     "art_crop": string,
     "border_crop": string,
   },
+  "type_line": string,
+  "oracle_text": string,
   "userId": string
 };
 
@@ -25,4 +29,8 @@ export type ScryFallSearchResponse = {
   "has_more": boolean,
   "next_page"?: string,
   "data": ScryfallCard[],
+}
+export type CardDetailsState = {
+  background : Location,
+  card: ScryfallCard,
 }

@@ -3,7 +3,7 @@ import { fetchScryfallResponse } from "../services/ScryfallService";
 import { useSearchParams, NavLink, useLocation } from "react-router-dom";
 import oceanFloor from "../assets/oceanFloor.jpg";
 import { PageBackground  } from "./PageBackground";
-import type { ScryfallCard } from "../types/types";
+import type { ScryfallCard, CardDetailsState } from "../types/types";
 
 export const CardSearchResults = () => {
   const [searchParams] = useSearchParams();
@@ -42,7 +42,12 @@ export const CardSearchResults = () => {
       <div
         className="grid col-start-1 row-start-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
       >
-          {cards.map((card:ScryfallCard) => {
+          {cards.map((card: ScryfallCard) => {
+            const navigationState: CardDetailsState = {
+              background: location,
+              card: card,
+            }
+
             return (
               <div
                 className="flex justify-center"
@@ -55,7 +60,7 @@ export const CardSearchResults = () => {
                   {card.name}
                 </span>
                 <NavLink
-                  to="/card" state={{ background: location }}
+                  to="/card" state={navigationState}
                 >
                   <img
                     className="rounded-[4.75%/3.5%]"

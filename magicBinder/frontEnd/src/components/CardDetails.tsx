@@ -1,12 +1,20 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import type { CardDetailsState } from "../types/types";
 
 export const CardDetails = () => {
 
   const navigate = useNavigate();
+  const location= useLocation();
+
+  if (!location.state.card) {
+    return
+  }
+  const locationState: CardDetailsState = location.state;
+  const card = locationState.card;
 
   return(
     <div
-      className="h-full flex items-center justify-center fixed inset-0 bg-black/40"
+      className="h-full flex items-center justify-center fixed inset-0 bg-black/60"
       onClick={() => {navigate(-1)}}
     >
       <div
@@ -25,19 +33,20 @@ export const CardDetails = () => {
           foil
           </button>
           <div>
-            <img src="" alt="magic card" />
+            <img src={card.image_uris.normal} alt={card.name} />
             <button>Add to binder</button>
           </div>
         </div>
         <div
           className="flex flex-col"
         >
-          <h4>Card Name</h4>
+          <h4>{card.name}</h4>
+          <p>{card.type_line}</p>
           <div
             className="border"
           >
             <p>
-              Reading the card explains the card. Reading the card explains the card. Reading the card explains the card. Reading the card explains the card. Reading the card explains the card. Reading the card explains the card. Reading the card explains the card.
+              {card.oracle_text}
             </p>
           </div>
           <form action=""
