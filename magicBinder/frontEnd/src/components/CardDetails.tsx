@@ -33,7 +33,13 @@ export const CardDetails = () => {
           foil
           </button>
           <div>
-            <img src={card.image_uris.normal} alt={card.name} />
+            <img
+              className="rounded-[4.75%/3.5%]"
+              src={card.image_uris.normal}
+              srcSet={`${card.image_uris.small} 146w, ${card.image_uris.normal} 488w, ${card.image_uris.large} 672w`}
+              sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
+              alt={card.name}
+            />
             <button>Add to binder</button>
           </div>
         </div>

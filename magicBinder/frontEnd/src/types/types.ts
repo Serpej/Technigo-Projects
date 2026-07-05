@@ -13,6 +13,14 @@ export type UserAuth = {
 export type ScryfallCard = {
   "scryfallId": string,
   "name": string,
+  "mana_cost": string,
+  "type_line": string,
+  "oracle_text": string,
+  "eur": string,
+  "eur_foil": string,
+  "game_changer": boolean,
+  "foil": boolean,
+  "nonfoil": boolean,
   "image_uris": {
     "small": string,
     "normal": string,
@@ -20,8 +28,14 @@ export type ScryfallCard = {
     "art_crop": string,
     "border_crop": string,
   },
-  "type_line": string,
-  "oracle_text": string,
+  "legalities": {
+    "standard": string,
+    "pioneer": string,
+    "modern": string,
+    "legacy": string,
+    "pauper": string,
+    "commander": string,
+  },
   "userId": string
 };
 
