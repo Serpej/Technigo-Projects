@@ -21,6 +21,7 @@ export type ScryfallCard = {
   "game_changer": boolean,
   "foil": boolean,
   "nonfoil": boolean,
+  "prints_search_uri": string,
   "image_uris": {
     "small": string,
     "normal": string,
@@ -47,4 +48,9 @@ export type ScryFallSearchResponse = {
 export type CardDetailsState = {
   background : Location,
   card: ScryfallCard,
+}
+
+export type CardPrints = {
+  "set": string,
+  "set_name": string,
 }
