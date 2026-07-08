@@ -40,13 +40,14 @@ export const CardDetails = () => {
       onClick={() => {navigate(-1)}}
     >
       <div
-        className="grid grid-cols-2 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-10  border-2 rounded-sm border-deep-hero-blue w-full max-w-3xl max-h-[80vh] overflow-auto"
+        className="grid grid-cols-2 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-10  border-2 rounded-sm border-deep-hero-blue w-full max-w-3xl max-h-[80vh] overflow-auto relative"
         onClick={(e) => {e.stopPropagation()}}
       >
         <div
           className="flex flex-col"
         >
           <button
+            className="absolute top-5 right-5 cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-1 py-0.5 rounded-sm transition delay-80 hover:scale-105"
             onClick={() => navigate(-1)}
           >
             Close
@@ -54,7 +55,9 @@ export const CardDetails = () => {
           <button>
           foil
           </button>
-          <div>
+          <div
+            className=""
+          >
             <img
               className="rounded-[4.75%/3.5%] p-4"
               src={card.image_uris.normal}
@@ -62,7 +65,11 @@ export const CardDetails = () => {
               sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
               alt={card.name}
             />
-            <button>Add to binder</button>
+            <button
+              className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105"
+            >
+              Add to binder
+            </button>
           </div>
         </div>
         <div
@@ -83,9 +90,9 @@ export const CardDetails = () => {
             <label htmlFor="print">
               Print:
               <select name="print" id="print">
-                {prints.map((printOfCard) => {
+                {prints.map((printOfCard, index) => {
                   return(
-                    <option key={printOfCard.set} value={printOfCard.set}>{`${printOfCard.set_name} (${printOfCard.set})`}</option>
+                    <option key={index} value={printOfCard.set}>{`${printOfCard.set_name} (${printOfCard.set})`}</option>
                   )
                 })}
               </select>
