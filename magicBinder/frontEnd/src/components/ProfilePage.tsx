@@ -7,6 +7,9 @@ import { useAuthStore } from "../stores/useAuthStore";
 export const ProfilePage = () => {
   const user = useAuthStore((state) => state.userName);
   const email = useAuthStore((state) => state.userEmail);
+  console.log(user);
+  console.log(email);
+
   return(
     <div
       className="grid grid-rows-[1fr] h-full"

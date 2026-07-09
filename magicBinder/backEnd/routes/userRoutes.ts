@@ -1,5 +1,6 @@
 import { User } from "../models/User";
-import express from "express";
+import type { SignUpResponse, LoginResponse, GetUserResponse } from "../types/responses";
+import express, { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { authenticateUser } from "../middleware/authenticateUser";
 import { requestNotFound, requestUnauthorized, serverError, badRequest} from "../utils/responses";
@@ -7,7 +8,7 @@ import { requestNotFound, requestUnauthorized, serverError, badRequest} from "..
 export const userRouter = express.Router();
 
 userRouter
-  .post("/", async (req, res) => {
+  .post("/", async (req: Request, res: Response<SignUpResponse>) => {
     try {
       const { name, email, password } = req.body;
 
@@ -58,42 +59,54 @@ userRouter
     }
   })
   .get("/", authenticateUser)
-  .get("/", async (req, res) => {
+  .get("/", async (req:Request, res: Response<GetUserResponse>) => {
     const user = req.user;
+
     if(!user) {
       requestNotFound(res, "User not found.");
       return
     }
+
     res.status(200).json({
-    user
+      success: true,
+      name: user.name,
+      email: user.email,
+      id: user._id,
+      accessToken: user.accessToken
     });
   })
-  .post("/login", async (req, res) => {
+  .post("/login", async (req: Request, res: Response<LoginResponse>) => {
     const { email, password } = req.body
 
     try {
       const user = await User.findOne({ email });
+
       if(!user) {
         requestNotFound(res, "Invalid credentials.")
         return
       }
+
       const passwordMatch = await bcrypt.compare(password, user.password)
       if(!passwordMatch) {
         requestUnauthorized(res, "Invalid credentials.")
         return
       }
+
       res.status(200).json({
         success: true,
-        accessToken: user.accessToken,
-        userName: user.name,
-        userEmail: user.email
+        message: "User logged in",
+        name: user.name,
+        email: user.email,
+        id: user._id,
+        accessToken: user.accessToken
       })
+
     } catch (error) {
       serverError(res, "Server error.", error)
     }
   })
   .patch("/:id", authenticateUser)
-  .patch("/:id", async (req, res) => {
+  .patch("/:id", async (req:Request, res:Response) => {
 
     if (!req.user) {
       requestUnauthorized(res, "Update failed.");
@@ -118,7 +131,7 @@ userRouter
       );
       
       res.status(200).json({
-      message: "Password updated successfully"
+        message: "Password updated successfully"
       })
 
     } catch (error) {

@@ -24,7 +24,6 @@ mongoose
   .catch((error) => console.error(`MongoDB connection error`, error));
 
 app.get("/", (req, res) => {
-  console.log("Hello Terminal")
   res.status(200).json({"message": "Root Path"});
 });
 
