@@ -28,7 +28,6 @@ export const CardSearchResults = () => {
       fetchData();
     }, [query]);
 
-
   return (
     <div
       className="grid grid-rows-[1fr] h-full"
@@ -43,6 +42,11 @@ export const CardSearchResults = () => {
         className="grid col-start-1 row-start-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
       >
           {cards.map((card: ScryfallCard, index) => {
+
+            const imageUris = "image_uris" in card
+              ? card.image_uris
+              : card.card_faces[0].image_uris;
+              
             const navigationState: CardDetailsState = {
               background: location,
               card: card,
@@ -64,8 +68,8 @@ export const CardSearchResults = () => {
                 >
                   <img
                     className="rounded-[4.75%/3.5%]"
-                    src={card.image_uris.normal}
-                    srcSet={`${card.image_uris.small} 146w, ${card.image_uris.normal} 488w, ${card.image_uris.large} 672w`}
+                    src={imageUris.normal}
+                    srcSet={`${imageUris.small} 146w, ${imageUris.normal} 488w, ${imageUris.large} 672w`}
                     sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
                     alt={card.name}
                   />
