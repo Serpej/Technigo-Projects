@@ -8,16 +8,19 @@ export const CardDetails = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
+
   const locationState: CardDetailsState = location.state;
 
+  const card = locationState.card;
 
   useEffect(() => {
-    if (!location.state.card) {
+    if (!card) {
       return
     }
-    const card = locationState.card
 
     const fetchData = async () => {
+
+
       const cardPrints = await fetchCardPrint(card.prints_search_uri);
 
       if(!cardPrints) {
@@ -28,9 +31,16 @@ export const CardDetails = () => {
       setPrints(data);
     }
     fetchData();
-  },[prints, location.state, locationState.card])
+  },[card])
 
-  const card = locationState.card;
+
+  const imageUris = "image_uris" in card
+    ? card.image_uris
+    : card.card_faces[0].image_uris;
+
+  const oracleText = "card_faces" in card
+    ? `${card.card_faces[0].oracle_text} \n\n//\n\n ${card.card_faces[1].oracle_text}`
+    : card.oracle_text;
 
 
 
@@ -57,8 +67,8 @@ export const CardDetails = () => {
           >
             <img
               className="rounded-[4.75%/3.5%] mx-5 sm:mx-0 max-w-[40vh]"
-              src={card.image_uris.normal}
-              srcSet={`${card.image_uris.small} 146w, ${card.image_uris.normal} 488w, ${card.image_uris.large} 672w`}
+              src={imageUris.normal}
+              srcSet={`${imageUris.small} 146w, ${imageUris.normal} 488w, ${imageUris.large} 672w`}
               sizes="40vh"
               alt={card.name}
             />
@@ -91,9 +101,9 @@ export const CardDetails = () => {
               className=""
             >
               <p
-                className="p-2 bg-air-force-blue border rounded-sm"
+                className="p-2 bg-air-force-blue border rounded-sm whitespace-pre-line"
               >
-                {card.oracle_text}
+                {oracleText}
               </p>
             </div>
             <form action=""

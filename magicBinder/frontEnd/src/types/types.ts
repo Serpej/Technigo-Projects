@@ -10,35 +10,59 @@ export type UserAuth = {
   logOutUser: () => void,
 }
 
-export type ScryfallCard = {
+
+export type ImageUris = {
+  "small": string,
+  "normal": string,
+  "large": string,
+  "art_crop": string,
+  "border_crop": string,
+}
+
+export type Legalities = {
+  "standard": string,
+  "pioneer": string,
+  "modern": string,
+  "legacy": string,
+  "pauper": string,
+  "commander": string,
+}
+
+type ScryfallCardBase = {
   "scryfallId": string,
   "name": string,
-  "mana_cost": string,
   "type_line": string,
-  "oracle_text": string,
   "eur": string,
   "eur_foil": string,
   "game_changer": boolean,
   "foil": boolean,
   "nonfoil": boolean,
   "prints_search_uri": string,
-  "image_uris": {
-    "small": string,
-    "normal": string,
-    "large": string,
-    "art_crop": string,
-    "border_crop": string,
-  },
-  "legalities": {
-    "standard": string,
-    "pioneer": string,
-    "modern": string,
-    "legacy": string,
-    "pauper": string,
-    "commander": string,
-  },
+  "legalities": Legalities,
   "userId": string
-};
+}
+
+export type ScryfallCardFace = {
+  "name": string,
+  "mana_cost": string,
+  "type_line": string,
+  "oracle_text": string,
+  "image_uris": ImageUris,
+  "power"?: string,
+  "toughness"?: string,
+}
+
+export type ScryfallSingleFacedCard = ScryfallCardBase & {
+  "mana_cost": string,
+  "oracle_text": string,
+  "image_uris": ImageUris,
+}
+
+export type ScryfallDoubleFacedCard = ScryfallCardBase & {
+  "card_faces": ScryfallCardFace[],
+}
+
+export type ScryfallCard = ScryfallSingleFacedCard | ScryfallDoubleFacedCard;
 
 export type ScryFallSearchResponse = {
   "has_more": boolean,
