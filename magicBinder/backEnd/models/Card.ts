@@ -1,7 +1,7 @@
 import {Schema, model} from "mongoose";
 
 export type ICard = {
-  "scryfallId": string,
+  "id": string,
   "name": string,
   "image_uris": {
     "small": string,
@@ -14,7 +14,7 @@ export type ICard = {
 };
 
 export const cardSchema = new Schema<ICard> ({
- scryfallId: {
+ id: {
     type: String,
     required: true
   },

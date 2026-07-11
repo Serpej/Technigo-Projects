@@ -29,11 +29,15 @@ export type Legalities = {
 }
 
 type ScryfallCardBase = {
-  "scryfallId": string,
+  "id": string,
   "name": string,
   "type_line": string,
-  "eur": string,
-  "eur_foil": string,
+  "set_name": string,
+  "set": string,
+  "prices": {
+    "eur": string,
+    "eur_foil": string,
+  },
   "game_changer": boolean,
   "foil": boolean,
   "nonfoil": boolean,

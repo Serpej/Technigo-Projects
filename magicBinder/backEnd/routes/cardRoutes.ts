@@ -14,16 +14,16 @@ cardRouter
       return
     }
 
-    const { id: scryfallId, name, image_uris: image_uris } = req.body;
+    const { id: id, name, image_uris: image_uris } = req.body;
 
     try {
-      const card = new Card({ scryfallId, name, image_uris, userId: req.user._id});
+      const card = new Card({ id, name, image_uris, userId: req.user._id});
       await card.save();
       res.status(201).json({
         success: true,
         message: "Card created",
         name: name,
-        scryfallId: scryfallId,
+        id: id,
       });
     } catch (error) {
       serverError(res, "Server error.", error);

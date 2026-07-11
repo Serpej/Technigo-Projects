@@ -1,17 +1,16 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import type { CardDetailsState, CardPrints} from "../types/types";
+import type { CardDetailsState, ScryfallCard} from "../types/types";
 import { fetchCardPrint } from "../services/fetchCardPrint";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export const CardDetails = () => {
-  const [prints, setPrints] = useState<CardPrints[]>([]);
-
   const navigate = useNavigate();
   const location = useLocation();
-
   const locationState: CardDetailsState = location.state;
-
   const card = locationState.card;
+
+  const [prints, setPrints] = useState<ScryfallCard[]>([card]);
+  const [chosenCardId, setChosenCardId] = useState<string>(card.id);  
 
   useEffect(() => {
     if (!card) {
@@ -33,16 +32,32 @@ export const CardDetails = () => {
     fetchData();
   },[card])
 
-
-  const imageUris = "image_uris" in card
-    ? card.image_uris
-    : card.card_faces[0].image_uris;
-
-  const oracleText = "card_faces" in card
-    ? `${card.card_faces[0].oracle_text} \n\n//\n\n ${card.card_faces[1].oracle_text}`
-    : card.oracle_text;
+ 
+  const chosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
+  if(!chosenCard) {
+    return;
+  }
 
 
+  const imageUris = "image_uris" in chosenCard
+    ? chosenCard.image_uris
+    : chosenCard.card_faces[0].image_uris;
+
+  const oracleText = "card_faces" in chosenCard
+    ? `${chosenCard.card_faces[0].oracle_text} \n\n//\n\n ${chosenCard.card_faces[1].oracle_text}`
+    : chosenCard.oracle_text;
+
+  const handleOnChangeSelect = (
+    e: React.ChangeEvent<HTMLSelectElement>, 
+    ) => {
+    const setName:string = e.target.value;
+    const chosenCardObject = prints.find((cardObject) => cardObject.set_name === setName);
+
+    if(!chosenCardObject) {
+      return null
+    }
+    setChosenCardId(chosenCardObject.id);
+  }
 
   return(
     <div
@@ -116,12 +131,13 @@ export const CardDetails = () => {
                 <select 
                   className="font-normal w-full border rounded-sm p-1 bg-air-force-blue"
                   name="print" id="print"
+                  onChange={(e) => handleOnChangeSelect(e)}
                 >
                   {prints.map((printOfCard, index) => {
                     return(
                       <option 
                         key={index} 
-                        value={printOfCard.set}
+                        value={printOfCard.set_name}
                         className=""
                       >
                         {`${printOfCard.set_name} (${printOfCard.set})`}</option>

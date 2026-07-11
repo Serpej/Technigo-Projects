@@ -20,7 +20,7 @@
 
   6. 
 
-
+  Due to a deadline I have cut some importany parts of this app. If I had more time I would create a messaging feature, where two users could communicate interest for another's cards. Right now this is meant for a smaller community where you already have other ways of contacting eachother.
 
 ## View it live (cold server)
 [NETLIFY LINK]()
