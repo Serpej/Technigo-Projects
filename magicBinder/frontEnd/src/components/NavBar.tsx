@@ -41,7 +41,7 @@ export const NavBar = () => {
           </NavLink>
         </div>
         <div
-          className="flex items-center justify-end"
+          className="flex items-center justify-end relative"
         >
           <DropDownMenu />
         </div>
