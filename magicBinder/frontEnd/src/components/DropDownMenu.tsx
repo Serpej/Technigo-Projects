@@ -47,6 +47,12 @@ export const DropDownMenu = () => {
             className={`${isOpen && "max-w-80 px-2 max-h-full"} max-w-0 max-h-8 overflow-hidden aria-hidden flex flex-1 justify-evenly flex-col duration-150 ease-in-out`}
           >
           <li>
+            {accessToken ? <LogOutButton /> : <NavLink to="/login"> Log in </NavLink>}
+          </li>
+          <li>
+            {accessToken ? "" : <NavLink to="/signup"> Sign up </NavLink>}
+          </li>
+          <li>
             <NavLink to="/about">
               About
             </NavLink>
@@ -55,9 +61,6 @@ export const DropDownMenu = () => {
             <NavLink to="/contact">
               Contact
             </NavLink>
-          </li>
-          <li>
-            {accessToken && <LogOutButton />}
           </li>
         </ul>
 

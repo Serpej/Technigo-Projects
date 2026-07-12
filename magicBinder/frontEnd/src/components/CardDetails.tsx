@@ -129,7 +129,7 @@ export const CardDetails = () => {
                 htmlFor="print">
                 Print:
                 <select 
-                  className="font-normal w-full border rounded-sm p-1 bg-air-force-blue"
+                  className="font-normal pl-2 w-full border rounded-sm p-1 bg-air-force-blue"
                   name="print" id="print"
                   onChange={(e) => handleOnChangeSelect(e)}
                 >
@@ -152,7 +152,7 @@ export const CardDetails = () => {
                 <select 
                   name="condition" 
                   id="condition"
-                  className="font-normal flex flex-col border rounded-sm w-full p-1 bg-air-force-blue"  
+                  className="font-normal flex flex-col pl-2 border rounded-sm w-full p-1 bg-air-force-blue"  
                 >
                   <option 
                     value="near mint"
@@ -191,7 +191,7 @@ export const CardDetails = () => {
                 htmlFor="amount">
                 Amount:
                 <input
-                  className="font-normal border rounded-sm bg-air-force-blue p-1" 
+                  className="pl-2 font-normal border rounded-sm bg-air-force-blue p-1" 
                   type="number" 
                   min="0" 
                   name="amount" 

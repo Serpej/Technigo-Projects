@@ -42,7 +42,7 @@ export const Login = () => {
                 Email:
               </p>
               <input
-                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-baltic-blue"
+                className="flex-1 text-pitch-black bg-sky-soap pl-2 m-1 rounded-sm border border-baltic-blue"
                 type="email"
                 name="Email"
                 id="email"
@@ -60,7 +60,7 @@ export const Login = () => {
                 Password:
               </p>
               <input
-                className="flex-1 text-pitch-black bg-sky-soap m-1 rounded-sm border border-baltic-blue"
+                className="flex-1 text-pitch-black bg-sky-soap m-1 pl-2 rounded-sm border border-baltic-blue"
                 type="password"
                 name="Password"
                 id="password"

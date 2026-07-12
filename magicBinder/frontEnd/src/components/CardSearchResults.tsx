@@ -3,6 +3,7 @@ import { fetchScryfallResponse } from "../services/ScryfallService";
 import { useSearchParams, NavLink, useLocation } from "react-router-dom";
 import oceanFloor from "../assets/oceanFloor.jpg";
 import { PageBackground  } from "./PageBackground";
+import { SearchBar } from "./SearchBar";
 import type { ScryfallCard, CardDetailsState } from "../types/types";
 
 export const CardSearchResults = () => {
@@ -32,15 +33,20 @@ export const CardSearchResults = () => {
     <div
       className="grid grid-rows-[1fr] h-full"
     >
-
       <PageBackground 
-        className="grid col-start-1 row-start-1  min-h-0 overflow-hidden"
+        className="grid col-start-1 row-start-1"
         src={oceanFloor}
         alt="Ocean floor with wavey a sand pattern"
       />
       <div
-        className="grid col-start-1 row-start-1 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
+        className="grid col-start-1 row-start-1 grid-rows-[auto_1fr] min-h-0 overflow-hidden"
       >
+        <SearchBar
+          className="grid col-start-1 row-start-1"
+        />
+        <div
+          className="grid col-start-1 row-start-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
+        >
           {cards.map((card: ScryfallCard, index) => {
 
             const imageUris = "image_uris" in card
@@ -77,6 +83,7 @@ export const CardSearchResults = () => {
               </div>
             )
           })}
+      </div>
       </div>
     </div>
   )

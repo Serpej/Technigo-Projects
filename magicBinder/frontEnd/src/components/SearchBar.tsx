@@ -32,7 +32,8 @@ export const SearchBar = ({ className }: SearchProps) => {
             type="text"
             required
             id="searchBar"
-            className=" flex flex-1 m-1 bg-gray-pearl-white border border-pitch-black rounded-sm"
+            placeholder="Lightning bolt"
+            className=" flex flex-1 m-1 pl-2 bg-gray-pearl-white border border-pitch-black rounded-sm"
             onChange = {(e) => handleValue(e, setQuery)}
             value={query}
           />
