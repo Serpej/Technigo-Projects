@@ -29,6 +29,30 @@ binderRouter
     }
 
   })
+  .get("/", authenticateUser)
+  .get("/", async (req, res) => {
+
+    if (!req.user || !req.user._id) {
+      guardResponse(res, "Bad request.");
+      return
+    }
+
+    try {
+      const binders = await CardBinder.find({userId: req.user._id});
+
+      const binderObjects = binders.map((binder) => {
+        return { name: binder.name , _id: binder._id }
+      })
+
+      res.status(200).json({
+        success: true,
+        binderObjects
+      })
+
+    } catch (error) {
+      serverError(res, "Server error.", error);
+    }
+  })
   .get("/:binderName", authenticateUser)
   .get("/:binderName", async (req, res) => {
 
