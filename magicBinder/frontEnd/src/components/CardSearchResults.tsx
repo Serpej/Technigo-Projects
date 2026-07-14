@@ -3,12 +3,13 @@ import { fetchScryfallResponse } from "../services/ScryfallService";
 import { useSearchParams, NavLink, useLocation } from "react-router-dom";
 import oceanFloor from "../assets/oceanFloor.jpg";
 import { PageBackground  } from "./PageBackground";
+import  fblthlpTheLost  from "../assets/fblthlpTheLost.jpg"
 import { SearchBar } from "./SearchBar";
-import type { ScryfallCard, CardDetailsState } from "../types/types";
+import type { ScryfallCard, CardDetailsState, ScryfallSearchResult } from "../types/types";
 
 export const CardSearchResults = () => {
   const [searchParams] = useSearchParams();
-  const [cards, setCards] = useState<ScryfallCard[]>([]);
+  const [searchResult, setSearchResult] = useState<ScryfallSearchResult>();
   const query = searchParams.get("q");
   const location = useLocation();
 
@@ -23,8 +24,7 @@ export const CardSearchResults = () => {
           return;
         }
         
-        const { data } = cardData;
-        setCards(data);
+        setSearchResult(cardData);
       }
       fetchData();
     }, [query]);
@@ -47,7 +47,29 @@ export const CardSearchResults = () => {
         <div
           className="grid col-start-1 row-start-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
         >
-          {cards.map((card: ScryfallCard, index) => {
+
+          {searchResult && !searchResult.found && (
+            <div
+              className="col-span-full place-content-center text-center"  
+            >
+              <div
+                className="min-h-0 flex justify-center items-center flex-col gap-3"
+              >
+                <p
+                  className="font-bold text-xl sm:text-3xl"
+                >
+                  {searchResult.message}
+                </p>
+                <img
+                  className="min-w-0 grow w-full max-w-80 rounded-[4.75%/3.5%] border mx-20"
+                  src={`${fblthlpTheLost}`}
+                  alt="A picture of a lost homonculus called Fblthlp"
+                />
+              </div>
+            </div>
+          )}
+
+          {searchResult?.found && searchResult.data.map((card: ScryfallCard, index) => {
 
             const imageUris = "image_uris" in card
               ? card.image_uris

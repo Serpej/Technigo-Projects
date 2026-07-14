@@ -26,7 +26,7 @@ export const SearchBar = ({ className }: SearchProps) => {
       >
         <label 
           htmlFor="searchBar"
-          className="flex flex-1 max-w-[75%] min-w-19"  
+          className="flex flex-1 max-w-140 min-w-19"  
         >
           <input
             type="text"

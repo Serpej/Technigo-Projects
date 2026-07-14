@@ -73,6 +73,18 @@ export type ScryFallSearchResponse = {
   "next_page"?: string,
   "data": ScryfallCard[],
 }
+
+export type ScryfallSearchSuccess = ScryFallSearchResponse & {
+  found: true;
+}
+
+export type ScryfallSearchEmpty = {
+  found: false;
+  message: string;
+}
+
+export type ScryfallSearchResult = ScryfallSearchSuccess | ScryfallSearchEmpty;
+
 export type CardDetailsState = {
   background : Location,
   card: ScryfallCard,
