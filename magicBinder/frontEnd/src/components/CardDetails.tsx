@@ -199,6 +199,16 @@ export const CardDetails = () => {
                 />
               </label>
             </form>
+            <div>
+              <a 
+                href={card.purchase_uris.cardmarket}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="underline font-medium"
+              >
+                {`Price trend: ${card.prices.eur}€`}
+              </a>
+            </div>
         </div>
       </div>
     </div>

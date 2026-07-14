@@ -43,6 +43,9 @@ type ScryfallCardBase = {
   "nonfoil": boolean,
   "prints_search_uri": string,
   "legalities": Legalities,
+  "purchase_uris": {
+    "cardmarket": string
+  }
   "userId": string
 }
 
