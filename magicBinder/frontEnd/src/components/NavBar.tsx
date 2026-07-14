@@ -22,7 +22,7 @@ export const NavBar = () => {
             {<MagicBinderLogo
               className="max-h-15 max-w-15 transition delay-80 hover:text-baltic-blue hover:scale-105 hover:animate-spin-slow"
               aria-label="A logo of a binder inside a circle"
-              role="image"
+              role="button"
               fill="currentColor"
             />}
           </NavLink>

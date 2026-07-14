@@ -39,6 +39,7 @@ export const DropDownMenu = () => {
       >
         <button
           className="cursor-pointer"
+          aria-label="Drop Down Menu"
           onClick={() => toggleButton(isOpen, setIsOpen)} 
         >
           {<DropDownMenuIcon />}

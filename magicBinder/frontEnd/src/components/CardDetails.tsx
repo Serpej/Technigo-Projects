@@ -106,9 +106,9 @@ export const CardDetails = () => {
           <div
             className="flex flex-col gap-2 p-4 mx-5 sm:m-0 sm:ml-10 bg-baltic-blue/90 border border-deep-hero-blue rounded-sm"
           >
-            <h4
+            <p
               className="font-bold text-lg"
-            >{card.name}</h4>
+            >{card.name}</p>
             <p
               className="font-bold"
             >{card.type_line}</p>
@@ -116,7 +116,7 @@ export const CardDetails = () => {
               className=""
             >
               <p
-                className="p-2 bg-air-force-blue border rounded-sm whitespace-pre-line"
+                className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
               >
                 {oracleText}
               </p>
@@ -129,7 +129,7 @@ export const CardDetails = () => {
                 htmlFor="print">
                 Print:
                 <select 
-                  className="font-normal pl-2 w-full border rounded-sm p-1 bg-air-force-blue"
+                  className="font-normal pl-2 w-full border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"
                   name="print" id="print"
                   onChange={(e) => handleOnChangeSelect(e)}
                 >
@@ -152,7 +152,7 @@ export const CardDetails = () => {
                 <select 
                   name="condition" 
                   id="condition"
-                  className="font-normal flex flex-col pl-2 border rounded-sm w-full p-1 bg-air-force-blue"  
+                  className="font-normal flex flex-col pl-2 border rounded-sm w-full p-1 bg-gray-pearl-white border-pitch-black"  
                 >
                   <option 
                     value="near mint"
@@ -191,7 +191,7 @@ export const CardDetails = () => {
                 htmlFor="amount">
                 Amount:
                 <input
-                  className="pl-2 font-normal border rounded-sm bg-air-force-blue p-1" 
+                  className="pl-2 font-normal border rounded-sm bg-gray-pearl-white border-pitch-black p-1" 
                   type="number" 
                   min="0" 
                   name="amount" 

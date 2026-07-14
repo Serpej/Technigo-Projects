@@ -40,6 +40,7 @@ export const SearchBar = ({ className }: SearchProps) => {
         </label>
           <button
             className=" flex px-1 py-0.5 bg-gray-pearl-white border-pitch-black rounded-sm cursor-pointer transition delay-100 hover:scale-105"
+            aria-label="Search Button"
           >
             {<Search />}
           </button>
