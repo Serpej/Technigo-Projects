@@ -70,7 +70,7 @@ export const Login = () => {
               />
             </label>
             <button
-              className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105"
+              className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105"
               type="submit"
             >
               Login

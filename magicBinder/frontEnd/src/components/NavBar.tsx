@@ -10,7 +10,7 @@ export const NavBar = () => {
   return(
     <div>
       <div
-        className="px-4 max-w-full grid grid-cols-[1fr_2fr_1fr] w-screen bg-papyrus-white/20" 
+        className="px-4 max-w-full min-h-15 grid grid-cols-[1fr_2fr_1fr] w-screen bg-papyrus-white/20" 
       >
         <div
           className="flex"

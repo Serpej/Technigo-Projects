@@ -72,7 +72,7 @@ export const CardDetails = () => {
           className="flex flex-col items-center min-w-0"
         >
           <button
-            className="absolute top-5 right-5 cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
+            className="absolute top-5 right-5 cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
             onClick={() => navigate(-1)}
           >
             Close
@@ -91,12 +91,12 @@ export const CardDetails = () => {
               className="flex justify-center gap-2 mt-4"
             >
               <button
-                className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
+                className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
               >
                 Foil
               </button>
               <button
-                className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-baltic-blue hover:border-deep-hero-blue/70 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105"
+                className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105"
               >
                 Add to binder
               </button>
