@@ -35,7 +35,7 @@ export const CardDetails = () => {
  
   const chosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
   if(!chosenCard) {
-    return;
+    return null
   }
 
 
@@ -85,7 +85,7 @@ export const CardDetails = () => {
               src={imageUris.normal}
               srcSet={`${imageUris.small} 146w, ${imageUris.normal} 488w, ${imageUris.large} 672w`}
               sizes="40vh"
-              alt={card.name}
+              alt={chosenCard.name}
             />
             <div
               className="flex justify-center gap-2 mt-4"
@@ -108,10 +108,10 @@ export const CardDetails = () => {
           >
             <p
               className="font-bold text-lg"
-            >{card.name}</p>
+            >{chosenCard.name}</p>
             <p
               className="font-bold"
-            >{card.type_line}</p>
+            >{chosenCard.type_line}</p>
             <div
               className=""
             >
@@ -201,12 +201,12 @@ export const CardDetails = () => {
             </form>
             <div>
               <a 
-                href={card.purchase_uris.cardmarket}
+                href={chosenCard.purchase_uris.cardmarket}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="underline font-medium"
               >
-                {`Price trend: ${card.prices.eur}€`}
+                {`Price trend: ${chosenCard.prices.eur}€`}
               </a>
             </div>
         </div>
