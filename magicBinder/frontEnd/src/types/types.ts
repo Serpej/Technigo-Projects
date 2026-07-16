@@ -78,22 +78,40 @@ export type ScryFallSearchResponse = {
 }
 
 export type ScryfallSearchSuccess = ScryFallSearchResponse & {
-  found: true;
+  "found": true;
 }
 
 export type ScryfallSearchEmpty = {
-  found: false;
-  message: string;
+  "found": false;
+  "message": string;
 }
 
 export type ScryfallSearchResult = ScryfallSearchSuccess | ScryfallSearchEmpty;
 
 export type CardDetailsState = {
-  background : Location,
-  card: ScryfallCard,
+  "background" : Location,
+  "card": ScryfallCard,
 }
 
-export type CardPrints = {
-  "set": string,
-  "set_name": string,
+export type cardBinderSummary = {
+  "name": string,
+  "_id": string
+}
+
+export type cardBinderSearchSuccessfull = {
+  "success": true,
+  "binderObjects": cardBinderSummary[] 
+}
+
+export type cardBinderSearchEmpty = {
+  "success": false,
+  "message": string,
+  "error"?: string
+}
+
+export type cardBinderResult = cardBinderSearchSuccessfull | cardBinderSearchEmpty;
+
+export type cardBinder = cardBinderSummary & { 
+  "cards": ScryfallCard[], 
+  "userId": string 
 }

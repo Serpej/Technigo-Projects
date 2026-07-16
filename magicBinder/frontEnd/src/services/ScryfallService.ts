@@ -1,7 +1,8 @@
 import type { 
   ScryfallSearchResult, 
   ScryFallSearchResponse, 
-  ScryfallSearchSuccess 
+  ScryfallSearchSuccess,
+  ScryfallSearchEmpty
 } from "../types/types";
 
 export const fetchScryfallResponse = async (query: string):Promise<ScryfallSearchResult | undefined>  => {
@@ -14,11 +15,15 @@ export const fetchScryfallResponse = async (query: string):Promise<ScryfallSearc
     }
 
     if(!response.ok) {
-      throw new Error(`Response Status: ${response.status}`);
+      const errorData: ScryfallSearchEmpty = await response.json();
+      throw new Error(errorData.message || `Response Status: ${response.status}`);
     }
+
     const result: ScryFallSearchResponse = await response.json();
     const successfullResult: ScryfallSearchSuccess = {...result, found: true} 
+
     return successfullResult
+
   } catch (error) {
     if(!(error instanceof Error)) {
       return;

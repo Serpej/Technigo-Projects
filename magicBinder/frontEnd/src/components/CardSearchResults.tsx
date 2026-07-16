@@ -21,7 +21,7 @@ export const CardSearchResults = () => {
         const cardData = await fetchScryfallResponse(query);
 
         if(!cardData) {
-          return;
+          return
         }
         
         setSearchResult(cardData);

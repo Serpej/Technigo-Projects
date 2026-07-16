@@ -2,13 +2,36 @@ import { PageBackground } from "./PageBackground";
 import deltaBackground from "../assets/deltaBackground.png"
 import { SearchBar } from "./SearchBar";
 import { useAuthStore } from "../stores/useAuthStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchBindersResponse } from "../services/fetchBinders"
+import type { cardBinderSummary } from "../types/types";
 
 
 export const ProfilePage = () => {
   const user = useAuthStore((state) => state.userName);
-  const email = useAuthStore((state) => state.userEmail);
-  const [binders, setBinders] = useState(null);
+  const accessToken = useAuthStore((state) => state.accessToken);
+  const [binders, setBinders] = useState<cardBinderSummary[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+    
+      const result = await fetchBindersResponse(accessToken);
+
+      setIsLoading(true);
+
+      if(!result || !result.success ) {
+        setIsLoading(false);
+        return
+      }
+
+      setBinders(result.binderObjects);
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, [accessToken]);
 
   return(
     <div
@@ -44,7 +67,7 @@ export const ProfilePage = () => {
           <div
             className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {binders && <div>
+            {binders.length === 0  && <div>
               BinderArray goes Here
             </div>}
             <div>
