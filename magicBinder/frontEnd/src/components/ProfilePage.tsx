@@ -58,43 +58,43 @@ export const ProfilePage = () => {
       <div
         className="grid col-start-1 row-start-1 grid-rows-[auto_1fr] min-h-0 overflow-hidden"
       >
-          <SearchBar
-            className="col-start-1 row-start-1"
-          />
-          <PageBackground
-            className="col-start-1 row-start-2"
-            src={deltaBackground}
-            alt="A beautiul view of a delta landscape in dusk."
-          />
-          <div
-        className="grid col-start-1 row-start-2 grid-cols-[70vw] grid-rows-[70vh] place-content-center"
-      >
+        <SearchBar
+          className="col-start-1 row-start-1"
+        />
+        <PageBackground
+          className="col-start-1 row-start-2"
+          src={deltaBackground}
+          alt="A beautiul view of a delta landscape in dusk."
+        />
         <div
-          className="grid grid-rows-[auto_1fr] min-h-0 gap-5  bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-10 border-2 rounded-sm border-deep-hero-blue "
+        className="grid col-start-1 row-start-2 grid-cols-[70vw] grid-rows-[70vh] place-content-center"
         >
           <div
-            className=" col-start-1 row-start-1 flex justify-center"
+            className="grid grid-rows-[auto_1fr] min-h-0 gap-5  bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-10 border-2 rounded-sm border-deep-hero-blue "
           >
-            <h2
-              className="text-4xl font-bold"
+            <div
+              className=" col-start-1 row-start-1 flex justify-center"
             >
-              Welcome {user}
-            </h2>
-          </div>
-          <div
-            className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {renderBinder()}
-            <div>
-              <button
-                className="cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl py-20 px-15 rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"
+              <h2
+                className="text-4xl font-bold"
               >
-                Add Binder
-              </button>
+                Welcome {user}
+              </h2>
+            </div>
+            <div
+              className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {renderBinder()}
+              <div>
+                <button
+                  className="cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl py-20 px-15 rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"
+                >
+                  Add Binder
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     
     </div>

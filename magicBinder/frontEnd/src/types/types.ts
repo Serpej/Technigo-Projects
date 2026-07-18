@@ -33,7 +33,6 @@ type ScryfallCardBase = {
   "name": string,
   "type_line": string,
   "set_name": string,
-  "set": string,
   "prices": {
     "eur": string,
     "eur_foil": string,
