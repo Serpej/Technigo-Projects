@@ -2,6 +2,7 @@ import {Schema, model} from "mongoose";
 
 export type ICard = {
   "id": string,
+  "layout": string,
   "name": string,
   "type_line": string,
   "set_name": string,
@@ -15,9 +16,13 @@ export type ICard = {
 };
 
 export const cardBaseSchema = new Schema<ICard> ({
- id: {
+  id: {
     type: String,
     required: true
+  },
+  layout: {
+    type: String,
+    required:true
   },
   name: {
     type: String,
@@ -52,6 +57,108 @@ export const cardBaseSchema = new Schema<ICard> ({
     required: true
   },
 });
+
+export type ISplitCardFace = {
+  "name": string,
+  "mana_cost": string,
+  "type_line": string,
+  "oracle_text": string,
+  "power"?: string,
+  "toughness"?: string,
+}
+
+const SplitCardFace = new Schema<ISplitCardFace>({
+  name: { type: String, required: true },
+  mana_cost: { type: String, required: true },
+  type_line: { type: String, required: true },
+  oracle_text: { type: String, required: true },
+  power: { type: String, required: false },
+  toughness: { type: String, required: false },
+})
+
+export type ISplitFacedExtra = {
+  "mana_cost": string,
+  "image_uris": {
+    "small": string,
+    "normal": string,
+    "large": string,
+    "art_crop": string,
+    "border_crop": string,
+  },
+  "card_faces": ISplitCardFace[],
+}
+
+const splitFacedExtra = new Schema<ISplitFacedExtra>({
+  mana_cost: { type: String, required: true },
+  image_uris: { type: Object, required: true },
+  card_faces: {
+    type: [SplitCardFace],
+    required: true
+  }
+})
+
+export type IReversibleCardFace = {
+  "name": string,
+  "layout": string,
+  "type_line": string,
+  "mana_cost": string,
+  "oracle_text": string,
+  "image_uris": {
+    "small": string,
+    "normal": string,
+    "large": string,
+    "art_crop": string,
+    "border_crop": string,
+  },
+  "power"?: string,
+  "toughness"?: string,
+}
+
+const ReversibleCardFace = new Schema<IReversibleCardFace>({
+  name: { 
+    type: String, 
+    required: true 
+  },
+  layout: { 
+    type: String, 
+    required: true 
+  },
+  type_line: { 
+    type: String, 
+    required: true 
+  },
+  mana_cost: { 
+    type: String, 
+    required: true 
+  },
+  oracle_text: { 
+    type: String, 
+    required: true 
+  },
+  image_uris: { 
+    type: Object, 
+    required: true 
+  },
+  power: { 
+    type: String, 
+    required: false 
+  },
+  toughness: { 
+    type: String, 
+    required: false 
+  },
+})
+
+export type IReversibleCardExtra = {
+  "card_faces": IReversibleCardFace[],
+}
+
+const reversibleCardExtra = new Schema<IReversibleCardExtra>({
+  card_faces: {
+    type: [ReversibleCardFace],
+    required: true
+  }
+})
 
 export type ISingleFacedExtra = {
   "mana_cost": string,
@@ -139,6 +246,10 @@ const doubleFacedExtra = new Schema<IDoubleFacedExtra>({
 })
 
 export const Card = model<ICard>("card", cardBaseSchema);
+
+export const SplitFacedCard = Card.discriminator("SplitFacedCard", splitFacedExtra);
+
+export const ReversibleCard = Card.discriminator("ReversibleCard", reversibleCardExtra);
 
 export const SingleFacedCard = Card.discriminator("SingleFacedCard", singleFacedExtra);
 

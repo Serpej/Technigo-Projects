@@ -17,7 +17,7 @@ export const Home = () => {
         className="grid col-start-1 row-start-1 place-self-center bg-deep-hero-blue/50 border border-baltic-blue rounded-sm shadow-2xl p-8"
       >
         <h1
-          className="text-3xl text-center text-papyrus-white p-8  leading-0"
+          className="text-3xl text-center text-papyrus-white p-8  leading-0 font-medium"
         >Your Local Trade Binder Community</h1>
         <div
           className="flex justify-center gap-8 pt-4"

@@ -65,7 +65,7 @@ binderRouter
       const binder = await CardBinder.findOne({
       name: req.params.binderName,
       userId: req.user._id
-      }).populate("cards");
+      }).populate("cards.cardId");
 
       if(!binder) {
         guardResponse(res, "Binder not found.");
@@ -147,9 +147,9 @@ binderRouter
     }
 
     const binderName = req.params.binderName;
-    const { _id: cardId } = req.body;
+    const { _id: cardId, condition, amount } = req.body;
 
-    if(!cardId) {
+    if(!cardId || !condition) {
       badRequest(res, "Bad Request");
       return
     }
@@ -158,7 +158,7 @@ binderRouter
       const updatedBinder = await CardBinder.findOneAndUpdate(
         { name: binderName,
           userId: req.user._id },
-        { $push: {cards: cardId} },
+        { $push: {cards: {cardId, condition, amount } } },
         { returnDocument: "after" }
       );
 
@@ -184,8 +184,8 @@ binderRouter
       guardResponse(res, "Bad Request.");
       return;
     }
-    const binderName = req.params.binderName;
-    const cardId = req.params.cardId;
+  
+    const{ binderName, cardId } = req.params;
 
     try {  
       const cardRemovedFromBinder = await CardBinder.findOneAndUpdate(
@@ -193,7 +193,7 @@ binderRouter
           name: binderName, 
           userId: req.user._id
         },
-        { $pull: { cards: cardId }}
+        { $pull: { cards:{ cardId } } }
       );
 
       if(!cardRemovedFromBinder) {
