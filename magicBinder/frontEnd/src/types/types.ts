@@ -31,8 +31,9 @@ export type Legalities = {
 type ScryfallCardBase = {
   "id": string,
   "name": string,
-  "type_line": string,
   "set_name": string,
+  "set_id": string,
+  "layout": string
   "prices": {
     "eur": string,
     "eur_foil": string,
@@ -48,6 +49,10 @@ type ScryfallCardBase = {
   "userId": string
 }
 
+type ScryfallCardWithTypeLine = ScryfallCardBase & {
+  "type_line": string,
+}
+
 export type ScryfallCardFace = {
   "name": string,
   "mana_cost": string,
@@ -58,17 +63,51 @@ export type ScryfallCardFace = {
   "toughness"?: string,
 }
 
-export type ScryfallSingleFacedCard = ScryfallCardBase & {
+export type ScryfallSplitCardFace = {
+  "name": string,
+  "mana_cost": string,
+  "type_line": string,
+  "oracle_text": string,
+  "power"?: string,
+  "toughness"?: string,
+}
+
+export type ScryfallReversibleCardFace = {
+  "name": string,
+  "layout": string,
+  "type_line": string,
+  "mana_cost": string,
+  "oracle_text": string,
+  "image_uris": ImageUris,
+  "power"?: string,
+  "toughness"?: string,
+}
+
+export type ScryfallSingleFacedCard = ScryfallCardWithTypeLine & {
   "mana_cost": string,
   "oracle_text": string,
   "image_uris": ImageUris,
 }
 
-export type ScryfallDoubleFacedCard = ScryfallCardBase & {
+export type ScryfallDoubleFacedCard = ScryfallCardWithTypeLine & {
   "card_faces": ScryfallCardFace[],
 }
 
-export type ScryfallCard = ScryfallSingleFacedCard | ScryfallDoubleFacedCard;
+export type ScryfallSplitFacedCard = ScryfallCardWithTypeLine & {
+  "mana_cost": string,
+  "image_uris": ImageUris,
+  "card_faces": ScryfallSplitCardFace[],
+}
+
+export type ScryfallReversibleCard = ScryfallCardBase & {
+  "card_faces": ScryfallReversibleCardFace[],
+}
+
+export type ScryfallCard = 
+  | ScryfallSingleFacedCard 
+  | ScryfallDoubleFacedCard
+  | ScryfallSplitFacedCard
+  | ScryfallReversibleCard;
 
 export type ScryFallSearchResponse = {
   "has_more": boolean,

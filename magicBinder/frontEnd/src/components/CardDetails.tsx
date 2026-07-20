@@ -10,7 +10,8 @@ export const CardDetails = () => {
   const card = locationState.card;
 
   const [prints, setPrints] = useState<ScryfallCard[]>([card]);
-  const [chosenCardId, setChosenCardId] = useState<string>(card.id);  
+  const [chosenCardId, setChosenCardId] = useState<string>(card.id);
+  const [activeFace, setActiveFace] = useState<boolean>(false);
 
   useEffect(() => {
     if (!card) {
@@ -38,10 +39,16 @@ export const CardDetails = () => {
     return null
   }
 
-
   const imageUris = "image_uris" in chosenCard
     ? chosenCard.image_uris
-    : chosenCard.card_faces[0].image_uris;
+    : chosenCard.card_faces[activeFace ? 1 : 0].image_uris;
+
+  const type_line = "type_line" in chosenCard
+    ?  chosenCard.type_line
+    : chosenCard.card_faces[activeFace ? 1 : 0].type_line;
+
+  const flipableLayouts = ["transform", "modal_dfc", "reversible_card"];
+  const canFlip = flipableLayouts.includes(chosenCard.layout);
 
   const oracleText = "card_faces" in chosenCard
     ? `${chosenCard.card_faces[0].oracle_text} \n\n//\n\n ${chosenCard.card_faces[1].oracle_text}`
@@ -50,8 +57,8 @@ export const CardDetails = () => {
   const handleOnChangeSelect = (
     e: React.ChangeEvent<HTMLSelectElement>, 
     ) => {
-    const setName:string = e.target.value;
-    const chosenCardObject = prints.find((cardObject) => cardObject.set_name === setName);
+    const cardId:string = e.target.value;
+    const chosenCardObject = prints.find((cardObject) => cardObject.id === cardId);
 
     if(!chosenCardObject) {
       return null
@@ -90,11 +97,12 @@ export const CardDetails = () => {
             <div
               className="flex justify-center gap-2 mt-4"
             >
-              <button
+              {canFlip && <button
                 className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
+                onClick={() => setActiveFace(!activeFace)}
               >
-                Foil
-              </button>
+                Flip
+              </button>}
               <button
                 className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105"
               >
@@ -111,10 +119,8 @@ export const CardDetails = () => {
             >{chosenCard.name}</p>
             <p
               className="font-bold"
-            >{chosenCard.type_line}</p>
-            <div
-              className=""
-            >
+            >{type_line}</p>
+            <div>
               <p
                 className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
               >
@@ -137,10 +143,9 @@ export const CardDetails = () => {
                     return(
                       <option 
                         key={index} 
-                        value={printOfCard.set_name}
-                        className=""
+                        value={printOfCard.id}
                       >
-                        {`${printOfCard.set_name} (${printOfCard.set})`}</option>
+                        {`${printOfCard.set_name}`}</option>
                     )
                   })}
                 </select>
@@ -206,7 +211,9 @@ export const CardDetails = () => {
                 target="_blank"
                 className="underline font-medium"
               >
-                {`Price trend: ${chosenCard.prices.eur}€`}
+                {chosenCard.nonfoil 
+                ? `Price trend: ${chosenCard.prices.eur}€` 
+                : `Price trend: ${chosenCard.prices.eur_foil}€`}
               </a>
             </div>
         </div>
