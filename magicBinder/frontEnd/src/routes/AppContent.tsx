@@ -1,12 +1,13 @@
 import { useLocation, Routes, Route} from "react-router-dom";
-import { Home } from "./components/Home";
-import { Login } from "./components/Login";
-import { About } from "./components/About";
-import { SignUp } from "./components/SignUp";
-import { ProfilePage } from "./components/ProfilePage";
-import { PrivateRoutes } from "./routes/privateRoutes";
-import { CardSearchResults } from "./components/CardSearchResults";
-import { CardDetails } from "./components/CardDetails";
+import { Home } from "../components/Home";
+import { Login } from "../components/Login";
+import { About } from "../components/About";
+import { SignUp } from "../components/SignUp";
+import { NewBinder } from "../components/NewBinder";
+import { ProfilePage } from "../components/ProfilePage";
+import { PrivateRoutes } from "./privateRoutes";
+import { CardSearchResults } from "../components/CardSearchResults";
+import { CardDetails } from "../components/CardDetails";
 
 interface AppContentProps {
   className: string;
@@ -35,6 +36,9 @@ export const AppContent = ({ className }: AppContentProps) => {
       {background && (
       <Routes>
         <Route path="/card" element={<CardDetails />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/newbinder" element={<NewBinder />}/>
+        </Route>
       </Routes>
       )}
     </div>

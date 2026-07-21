@@ -3,7 +3,8 @@ import deltaBackground from "../assets/deltaBackground.png"
 import { SearchBar } from "./SearchBar";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useEffect, useState } from "react";
-import { fetchBindersResponse } from "../services/fetchBinders"
+import { fetchBindersResponse } from "../services/fetchBinders";
+import { NavLink, useLocation } from "react-router-dom";
 import type { cardBinderSummary } from "../types/types";
 
 
@@ -12,6 +13,11 @@ export const ProfilePage = () => {
   const accessToken = useAuthStore((state) => state.accessToken);
   const [binders, setBinders] = useState<cardBinderSummary[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const location = useLocation();
+
+  const navigationState = {
+    background: location
+  }
 
   useEffect(() => {
 
@@ -76,7 +82,7 @@ export const ProfilePage = () => {
               className=" col-start-1 row-start-1 flex justify-center"
             >
               <h2
-                className="text-4xl font-bold"
+                className="text-2xl sm:text-4xl font-bold"
               >
                 Welcome {user}
               </h2>
@@ -86,11 +92,16 @@ export const ProfilePage = () => {
             >
               {renderBinder()}
               <div>
-                <button
-                  className="cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl py-20 px-15 rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"
+                <NavLink
+                  to="/newbinder"
+                  state={navigationState}
                 >
-                  Add Binder
-                </button>
+                  <button
+                    className="cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl py-10 sm:py-20 px-5 sm:px-15 rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"
+                  >
+                    Add Binder
+                  </button>
+                </NavLink>
               </div>
             </div>
           </div>
