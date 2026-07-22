@@ -1,16 +1,5 @@
 import type { Location } from "react-router-dom";
 
-export type UserAuth = {
-  accessToken: string,
-  setAccessToken: (token: string) =>  void,
-  userName: string,
-  setUserName: (name: string) => void,
-  userEmail: string,
-  setUserEmail: (email: string) => void,
-  logOutUser: () => void,
-}
-
-
 export type ImageUris = {
   "small": string,
   "normal": string,
@@ -131,25 +120,3 @@ export type CardDetailsState = {
   "card": ScryfallCard,
 }
 
-export type cardBinderSummary = {
-  "name": string,
-  "_id": string
-}
-
-export type cardBinderSearchSuccessfull = {
-  "success": true,
-  "binderObjects": cardBinderSummary[] 
-}
-
-export type cardBinderSearchEmpty = {
-  "success": false,
-  "message": string,
-  "error"?: string
-}
-
-export type cardBinderResult = cardBinderSearchSuccessfull | cardBinderSearchEmpty;
-
-export type cardBinder = cardBinderSummary & { 
-  "cards": ScryfallCard[], 
-  "userId": string 
-}

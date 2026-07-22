@@ -1,4 +1,4 @@
-import type {cardBinderResult, cardBinderSearchSuccessfull, cardBinderSearchEmpty } from "../types/types";
+import type {cardBinderResult, cardBinderSearchSuccessfull, cardBinderSearchEmpty } from "../types/binderTypes";
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 export const fetchBindersResponse = async (accessToken: string):Promise<cardBinderResult | undefined> => {

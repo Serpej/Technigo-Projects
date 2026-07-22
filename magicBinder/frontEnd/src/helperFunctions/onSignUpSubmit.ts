@@ -24,6 +24,7 @@ export const onSignUpSubmit = async (
     const response = await fetchSignUpResponse(name, email, password);
     useAuthStore.getState().setAccessToken(response.accessToken);
     useAuthStore.getState().setUserName(response.name);
+    useAuthStore.getState().setUserId(response._id);
     useAuthStore.getState().setUserEmail(response.email);
     navigate("/profilepage");
     console.log("fetched user token: " + response.success);

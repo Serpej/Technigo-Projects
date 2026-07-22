@@ -5,7 +5,7 @@ import { useAuthStore } from "../stores/useAuthStore";
 import { useEffect, useState } from "react";
 import { fetchBindersResponse } from "../services/fetchBinders";
 import { NavLink, useLocation } from "react-router-dom";
-import type { cardBinderSummary } from "../types/types";
+import type { cardBinderSummary } from "../types/binderTypes";
 
 
 export const ProfilePage = () => {

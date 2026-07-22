@@ -7,6 +7,7 @@ import { NewBinder } from "../components/NewBinder";
 import { ProfilePage } from "../components/ProfilePage";
 import { PrivateRoutes } from "./privateRoutes";
 import { CardSearchResults } from "../components/CardSearchResults";
+import { Binder } from "../components/Binder";
 import { CardDetails } from "../components/CardDetails";
 
 interface AppContentProps {
@@ -38,6 +39,7 @@ export const AppContent = ({ className }: AppContentProps) => {
         <Route path="/card" element={<CardDetails />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/newbinder" element={<NewBinder />}/>
+          <Route path="/binder" element={<Binder />}/>
         </Route>
       </Routes>
       )}
