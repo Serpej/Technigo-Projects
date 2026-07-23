@@ -24,7 +24,6 @@ export type cardBinder = cardBinderSummary & {
 }
 
 export type BinderNameState = {
-  "binderState": {
-    "binderName": string
-  }
+    "binderName": string,
+    "binderId": string,
 }

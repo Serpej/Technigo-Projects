@@ -3,7 +3,7 @@ import type {
   ScryFallSearchResponse, 
   ScryfallSearchSuccess,
   ScryfallSearchEmpty
-} from "../types/types";
+} from "../types/cardTypes";
 
 export const fetchScryfallResponse = async (query: string):Promise<ScryfallSearchResult | undefined>  => {
   const baseUrl = "https://api.scryfall.com";

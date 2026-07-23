@@ -3,7 +3,6 @@ import { useState  } from "react";
 import { handleValue } from "../helperFunctions/handleValue";
 import { handleCreateBinder } from "../helperFunctions/handleCreateBinder";
 import { useAuthStore } from "../stores/useAuthStore";
-import type { BinderNameState } from "../types/binderTypes";
 
 
 export const NewBinder = () => {
@@ -11,11 +10,6 @@ export const NewBinder = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const userId = useAuthStore((state) => state.userId);
-
-  const binderState = {
-    binderName: binderName
-  }
-  const locationState: BinderNameState = {...location.state, ...binderState};
 
   return(
     <div
@@ -33,7 +27,7 @@ export const NewBinder = () => {
               binderName, 
               userId, 
               navigate,
-              locationState
+              location
             )}
             className="flex flex-1 max-w-sm sm:max-w-md w-full min-w-0 flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-5 sm:p-18 mx-10 border-2 rounded-sm border-deep-hero-blue"
           >

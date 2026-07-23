@@ -23,6 +23,7 @@ binderRouter
         success: true,
         message: "Binder created.",
         binderName: binderName,
+        binderId: binder._id
       })
     } catch (error) {
       serverError(res, "Server error.", error);

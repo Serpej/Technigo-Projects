@@ -5,7 +5,7 @@ import oceanFloor from "../assets/oceanFloor.jpg";
 import { PageBackground  } from "./PageBackground";
 import  fblthlpTheLost  from "../assets/fblthlpTheLost.jpg"
 import { SearchBar } from "./SearchBar";
-import type { ScryfallCard, CardDetailsState, ScryfallSearchResult } from "../types/types";
+import type { ScryfallCard, CardDetailsState, ScryfallSearchResult } from "../types/cardTypes";
 
 export const CardSearchResults = () => {
   const [searchParams] = useSearchParams();

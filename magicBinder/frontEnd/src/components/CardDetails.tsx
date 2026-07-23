@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import type { CardDetailsState, ScryfallCard} from "../types/types";
+import type { CardDetailsState, ScryfallCard} from "../types/cardTypes";
 import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
 
