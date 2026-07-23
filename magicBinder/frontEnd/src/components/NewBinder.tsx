@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useState  } from "react";
 import { handleValue } from "../helperFunctions/handleValue";
 import { handleCreateBinder } from "../helperFunctions/handleCreateBinder";
@@ -8,8 +8,8 @@ import { useAuthStore } from "../stores/useAuthStore";
 export const NewBinder = () => {
   const [binderName, setBinderName] = useState("")
   const navigate = useNavigate();
-  const location = useLocation();
   const userId = useAuthStore((state) => state.userId);
+  const accessToken = useAuthStore((state) => state.accessToken);
 
   return(
     <div
@@ -25,9 +25,9 @@ export const NewBinder = () => {
             onSubmit={(e) => handleCreateBinder(
               e, 
               binderName, 
-              userId, 
+              userId,
+              accessToken, 
               navigate,
-              location
             )}
             className="flex flex-1 max-w-sm sm:max-w-md w-full min-w-0 flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-5 sm:p-18 mx-10 border-2 rounded-sm border-deep-hero-blue"
           >

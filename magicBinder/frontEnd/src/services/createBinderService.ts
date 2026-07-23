@@ -2,14 +2,18 @@ const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 export const createBinderService = async (
   binderName: string,
-  userId: string
+  userId: string,
+  accessToken: string
 ) => {
+
+  
 
   const options = {
     method: "POST",
     headers: {
       "Accept": "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${accessToken}`
     },
     body: JSON.stringify({
       binderName: binderName,

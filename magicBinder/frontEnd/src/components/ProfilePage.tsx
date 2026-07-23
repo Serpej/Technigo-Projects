@@ -49,8 +49,10 @@ export const ProfilePage = () => {
     }else if(binders.length === 0 && !isLoading) {
       return null
     } else {
-      return binders.map((binder) => 
-        <div>
+      return binders.map((binder, index) => 
+        <div
+          key={index}
+        >
           {binder.name}
         </div>
       )
