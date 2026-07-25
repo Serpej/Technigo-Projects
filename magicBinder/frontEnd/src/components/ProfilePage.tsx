@@ -50,11 +50,19 @@ export const ProfilePage = () => {
       return null
     } else {
       return binders.map((binder, index) => 
-        <div
+
+        <NavLink
+          to="/binder"
+          state={{ "binderName": binder.name, "binderId": binder._id }}
           key={index}
+          className="flex grow justify-center min-w-0 max-w-52"
         >
-          {binder.name}
-        </div>
+          <button
+            className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 hover:font-medium whitespace-nowrap"
+          >
+            {binder.name}
+          </button>
+        </NavLink>      
       )
     }
   }
@@ -75,10 +83,10 @@ export const ProfilePage = () => {
           alt="A beautiul view of a delta landscape in dusk."
         />
         <div
-        className="grid col-start-1 row-start-2 grid-cols-[70vw] grid-rows-[70vh] place-content-center"
+        className="grid col-start-1 row-start-2 grid-cols-[80vw] grid-rows-[80vh] place-content-center h-full"
         >
           <div
-            className="grid grid-rows-[auto_1fr] min-h-0 gap-5  bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-10 border-2 rounded-sm border-deep-hero-blue "
+            className="grid grid-rows-[auto_1fr] min-h-0 gap-5  bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-10 border-2 rounded-sm border-deep-hero-blue h-full"
           >
             <div
               className=" col-start-1 row-start-1 flex justify-center"
@@ -90,21 +98,20 @@ export const ProfilePage = () => {
               </h2>
             </div>
             <div
-              className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 overflow-auto p-2"
             >
               {renderBinder()}
-              <div>
-                <NavLink
-                  to="/newbinder"
-                  state={navigationState}
+              <NavLink
+                to="/newbinder"
+                state={navigationState}
+                className="flex grow justify-center min-w-0 max-w-52"
+              >
+                <button
+                  className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"
                 >
-                  <button
-                    className="cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl py-10 sm:py-20 px-5 sm:px-15 rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"
-                  >
-                    Add Binder
-                  </button>
-                </NavLink>
-              </div>
+                  Add Binder
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>

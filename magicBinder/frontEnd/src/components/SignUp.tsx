@@ -112,7 +112,7 @@ export const SignUp = () => {
               />
             </label>
             <button
-              className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105"
+              className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-1 py-0.5 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
               type="submit"
             >
               Sign Up
