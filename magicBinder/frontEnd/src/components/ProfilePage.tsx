@@ -1,6 +1,7 @@
 import { PageBackground } from "./PageBackground";
 import deltaBackground from "../assets/deltaBackground.png"
 import { SearchBar } from "./SearchBar";
+import { capitalize } from "../helperFunctions/handleCapitalize";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useEffect, useState } from "react";
 import { fetchBindersResponse } from "../services/fetchBinders";
@@ -42,6 +43,11 @@ export const ProfilePage = () => {
     fetchData();
   }, [accessToken]);
 
+  if(typeof user !== "string") {
+    return
+  }
+  const capitalizedName = capitalize(user);
+
   const renderBinder = ():React.ReactNode => {
     if(isLoading) {
       return <div>...Loading</div>
@@ -51,18 +57,20 @@ export const ProfilePage = () => {
     } else {
       return binders.map((binder, index) => 
 
-        <NavLink
-          to="/binder"
-          state={{ "binderName": binder.name, "binderId": binder._id }}
-          key={index}
-          className="flex grow justify-center min-w-0 max-w-52"
-        >
-          <button
-            className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 hover:font-medium whitespace-nowrap"
+        <div className="flex justify-center">
+          <NavLink
+            to="/binder"
+            state={{ "binderName": binder.name, "binderId": binder._id }}
+            key={index}
+            className="flex grow justify-center min-w-0 max-w-52"
           >
-            {binder.name}
-          </button>
-        </NavLink>      
+            <button
+              className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 hover:font-medium whitespace-nowrap"
+            >
+              {binder.name}
+            </button>
+          </NavLink>
+        </div>      
       )
     }
   }
@@ -94,24 +102,28 @@ export const ProfilePage = () => {
               <h2
                 className="text-2xl sm:text-4xl font-bold"
               >
-                Welcome {user}
+                Welcome {capitalizedName}
               </h2>
             </div>
             <div
               className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 overflow-auto p-2"
             >
               {renderBinder()}
-              <NavLink
-                to="/newbinder"
-                state={navigationState}
-                className="flex grow justify-center min-w-0 max-w-52"
+              <div
+                className="flex justify-center"
               >
-                <button
-                  className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"
+                <NavLink
+                  to="/newbinder"
+                  state={navigationState}
+                  className="flex grow justify-center min-w-0 max-w-52"
                 >
-                  Add Binder
-                </button>
-              </NavLink>
+                  <button
+                    className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"
+                  >
+                    Add Binder
+                  </button>
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>

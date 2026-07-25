@@ -3,6 +3,7 @@ import deltaBackground from "../assets/deltaBackground.png"
 import { SearchBar } from "./SearchBar";import 
 { useLocation, useNavigate } from "react-router-dom";
 import type { BinderNameState } from "../types/binderTypes";
+import { capitalize } from "../helperFunctions/handleCapitalize";
 export const Binder = () => {
   const location = useLocation();
   const binderObject = location.state as BinderNameState | null;
@@ -13,7 +14,11 @@ export const Binder = () => {
   }
 
   const { binderName } = location.state;
-  
+  if(typeof binderName !== "string") {
+    return
+  }
+  const capitalizedName = capitalize(binderName);
+
   return(
   <div
       className="grid grid-rows-[1fr] h-full"
@@ -54,7 +59,7 @@ export const Binder = () => {
                 <h2
                   className="text-2xl sm:text-4xl font-bold text-center"
                 >
-                  {binderName}
+                  {capitalizedName}
                 </h2>
                 <div></div>
               </div>
