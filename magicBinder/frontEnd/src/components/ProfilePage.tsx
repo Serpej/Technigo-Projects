@@ -57,11 +57,13 @@ export const ProfilePage = () => {
     } else {
       return binders.map((binder, index) => 
 
-        <div className="flex justify-center">
+        <div 
+          className="flex justify-center"
+          key={index}
+        >
           <NavLink
             to="/binder"
             state={{ "binderName": binder.name, "binderId": binder._id }}
-            key={index}
             className="flex grow justify-center min-w-0 max-w-52"
           >
             <button

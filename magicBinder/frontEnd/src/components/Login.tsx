@@ -19,7 +19,7 @@ export const Login = () => {
     <div
       className="h-full grid grid-rows-[100%]"
     >
-      <PageBackground 
+      <PageBackground
         className="grid col-start-1 row-start-1"
       />
 
