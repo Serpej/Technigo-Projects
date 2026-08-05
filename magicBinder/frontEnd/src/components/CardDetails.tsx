@@ -2,6 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import type { CardDetailsState, ScryfallCard} from "../types/cardTypes";
 import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
+import { handleAddToBinder } from "../helperFunctions/handleAddToBinder";
+import { useAuthStore } from "../stores/useAuthStore";
 
 export const CardDetails = () => {
   const navigate = useNavigate();
@@ -12,6 +14,8 @@ export const CardDetails = () => {
   const [prints, setPrints] = useState<ScryfallCard[]>([card]);
   const [chosenCardId, setChosenCardId] = useState<string>(card.id);
   const [activeFace, setActiveFace] = useState<boolean>(false);
+  const [amount, setAmount] = useState<number>(1);
+  const [condition, setCondition] = useState<string>("Near Mint");
 
   useEffect(() => {
     if (!card) {
@@ -33,7 +37,7 @@ export const CardDetails = () => {
     fetchData();
   },[card])
 
- 
+  const accessToken = useAuthStore((state) => state.accessToken);
   const chosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
   if(!chosenCard) {
     return null
@@ -54,7 +58,7 @@ export const CardDetails = () => {
     ? `${chosenCard.card_faces[0].oracle_text} \n\n//\n\n ${chosenCard.card_faces[1].oracle_text}`
     : chosenCard.oracle_text;
 
-  const handleOnChangeSelect = (
+  const handleOnChangePrint = (
     e: React.ChangeEvent<HTMLSelectElement>, 
     ) => {
     const cardId:string = e.target.value;
@@ -64,6 +68,21 @@ export const CardDetails = () => {
       return null
     }
     setChosenCardId(chosenCardObject.id);
+  }
+
+  const handleOnChangeCondition = (
+    e: React.ChangeEvent<HTMLSelectElement>, 
+    ) => {
+    const condition:string = e.target.value;
+    setCondition(condition);
+  }
+
+  const handleOnChangeAmount = (
+    e: React.ChangeEvent<HTMLInputElement>, 
+    ) => {
+    const amount = e.target.valueAsNumber;
+
+    setAmount(amount);
   }
 
   return(
@@ -105,6 +124,7 @@ export const CardDetails = () => {
               </button>}
               <button
                 className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
+                onClick={(e) => handleAddToBinder(e, binderName, chosenCard.id, condition, amount, accessToken)}
               >
                 Add to binder
               </button>
@@ -137,7 +157,7 @@ export const CardDetails = () => {
                 <select 
                   className="font-normal pl-2 w-full border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"
                   name="print" id="print"
-                  onChange={(e) => handleOnChangeSelect(e)}
+                  onChange={(e) => handleOnChangePrint(e)}
                 >
                   {prints.map((printOfCard, index) => {
                     return(
@@ -157,7 +177,8 @@ export const CardDetails = () => {
                 <select 
                   name="condition" 
                   id="condition"
-                  className="font-normal flex flex-col pl-2 border rounded-sm w-full p-1 bg-gray-pearl-white border-pitch-black"  
+                  className="font-normal flex flex-col pl-2 border rounded-sm w-full p-1 bg-gray-pearl-white border-pitch-black"
+                  onChange={(e) => handleOnChangeCondition(e)}
                 >
                   <option 
                     value="near mint"
@@ -200,7 +221,9 @@ export const CardDetails = () => {
                   type="number" 
                   min="0" 
                   name="amount" 
-                  id="amount" 
+                  id="amount"
+                  onChange={(e) => handleOnChangeAmount(e)}
+                  defaultValue={amount}
                 />
               </label>
             </form>

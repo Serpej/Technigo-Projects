@@ -171,7 +171,8 @@ binderRouter
       res.status(200).json({
         success: true,
         message: "Card added to binder.",
-        _id: cardId
+        binderName: binderName,
+        card_id: cardId
       });
 
     } catch (error) {

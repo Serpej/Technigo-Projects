@@ -58,13 +58,13 @@ export const ProfilePage = () => {
       return binders.map((binder, index) => 
 
         <div 
-          className="flex justify-center"
+          className="flex justify-center lg:px-4"
           key={index}
         >
           <NavLink
             to="/binder"
             state={{ "binderName": binder.name, "binderId": binder._id }}
-            className="flex grow justify-center min-w-0 max-w-52"
+            className="flex grow justify-center min-w-0 max-w-52 min-h-0 max-h-52"
           >
             <button
               className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 hover:font-medium whitespace-nowrap"
@@ -108,16 +108,16 @@ export const ProfilePage = () => {
               </h2>
             </div>
             <div
-              className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 overflow-auto p-2"
+              className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-6 overflow-auto p-2"
             >
               {renderBinder()}
               <div
-                className="flex justify-center"
+                className="flex justify-center lg:px-4"
               >
                 <NavLink
                   to="/newbinder"
                   state={navigationState}
-                  className="flex grow justify-center min-w-0 max-w-52"
+                  className="flex grow justify-center min-w-0 max-w-52 min-h-0 max-h-52"
                 >
                   <button
                     className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap"

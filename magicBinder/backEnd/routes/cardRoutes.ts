@@ -63,6 +63,7 @@ cardRouter
           message: "Card created",
           name: cardData.name,
           id: cardData.id,
+          _id: card._id
         });
 
       } else {
@@ -71,6 +72,7 @@ cardRouter
           message: "Card already exists",
           name: cardData.name,
           id: cardData.id,
+          _id: existingCard._id
         })
       }
     } catch (error) {
