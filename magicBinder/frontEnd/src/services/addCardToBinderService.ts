@@ -1,6 +1,6 @@
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
-export const fetchAddCardToBinderResponse = async (
+export const fetchCardToBinderResponse = async (
   binderName: string,
   cardId: string,
   condition: string,

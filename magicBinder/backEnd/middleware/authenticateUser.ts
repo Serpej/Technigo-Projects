@@ -1,7 +1,11 @@
 import express, { NextFunction, Request, Response } from "express";
 import { User } from "../models/User";
 
-export const authenticateUser = async (req: Request, res: Response, next: NextFunction) => {
+export const authenticateUser = async (
+  req: Request, 
+  res: Response, 
+  next: NextFunction
+) => {
   const token = req.get("Authorization")?.replace("Bearer ", "");
 
   if (!token) {

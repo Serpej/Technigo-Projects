@@ -23,7 +23,7 @@ export const fetchBindersResponse = async (accessToken: string):Promise<cardBind
 
     const result:cardBinderSearchSuccessfull = await response.json();
 
-    return result;
+    return result
 
   } catch (error) {
     if(!(error instanceof Error)) {

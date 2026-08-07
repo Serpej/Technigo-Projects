@@ -1,5 +1,10 @@
 import type { ScryfallCard } from "./cardTypes";
 
+export type binderStoreType = {
+  binders: cardBinderSummary[],
+  fetchBinders: (accessToken: string) =>  void,
+}
+
 export type cardBinderSummary = {
   "name": string,
   "_id": string

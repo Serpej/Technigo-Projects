@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { UserAuth } from "../types/authTypes";
+import type { UserAuth } from "../types/userAuthTypes";
 
 export const useAuthStore = create<UserAuth>((set) => ({
   accessToken: "",

@@ -4,6 +4,7 @@ import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
 import { handleAddToBinder } from "../helperFunctions/handleAddToBinder";
 import { useAuthStore } from "../stores/useAuthStore";
+import { useBinderStore } from "../stores/useBinderStore";
 
 export const CardDetails = () => {
   const navigate = useNavigate();
@@ -16,14 +17,19 @@ export const CardDetails = () => {
   const [activeFace, setActiveFace] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(1);
   const [condition, setCondition] = useState<string>("Near Mint");
+  const [binderName, setBinderName] = useState<string>("")
+
+  const accessToken = useAuthStore((state) => state.accessToken);
+  const binders = useBinderStore(state => state.binders);
+  const fetchBinders = useBinderStore(state => state.fetchBinders);
 
   useEffect(() => {
+
     if (!card) {
       return
     }
 
-    const fetchData = async () => {
-
+    const fetchCardData = async () => {
 
       const cardPrints = await fetchCardPrint(card.prints_search_uri);
 
@@ -34,10 +40,22 @@ export const CardDetails = () => {
       const { data } = cardPrints
       setPrints(data);
     }
-    fetchData();
-  },[card])
 
-  const accessToken = useAuthStore((state) => state.accessToken);
+    fetchCardData();
+
+    if(!accessToken) {
+      return
+    }
+
+    fetchBinders(accessToken);
+
+    const setDefaultBinderName = () => {
+      setBinderName(binders[0].name);
+    }
+    setDefaultBinderName();
+
+  },[card, accessToken, fetchBinders, binders, setBinderName])
+
   const chosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
   if(!chosenCard) {
     return null
@@ -122,12 +140,32 @@ export const CardDetails = () => {
               >
                 Flip
               </button>}
-              <button
-                className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
-                onClick={(e) => handleAddToBinder(e, binderName, chosenCard.id, condition, amount, accessToken)}
-              >
-                Add to binder
-              </button>
+              <form action="">
+                <label htmlFor="binder">
+                  <button
+                    className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
+                    onClick={(e) => handleAddToBinder(e, binderName, chosenCard.id, condition, amount, accessToken)}
+                  >
+                    Add to binder
+                  </button>
+                  <select
+                    className="font-normal pl-2 min-w-0 border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"
+                    name="binders" 
+                    id="binders"
+                  >
+                    {binders.map((binder, index) => {
+                      return(
+                        <option 
+                          key={index} 
+                          value={binder.name}
+                        >
+                          {`${binder.name}`}
+                        </option>
+                      )
+                    })}
+                  </select>
+                </label>
+              </form>
             </div>
           </div>
         </div>
@@ -156,7 +194,8 @@ export const CardDetails = () => {
                 Print:
                 <select 
                   className="font-normal pl-2 w-full border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"
-                  name="print" id="print"
+                  name="print" 
+                  id="print"
                   onChange={(e) => handleOnChangePrint(e)}
                 >
                   {prints.map((printOfCard, index) => {
@@ -165,7 +204,8 @@ export const CardDetails = () => {
                         key={index} 
                         value={printOfCard.id}
                       >
-                        {`${printOfCard.set_name}`}</option>
+                        {`${printOfCard.set_name}`}
+                      </option>
                     )
                   })}
                 </select>
