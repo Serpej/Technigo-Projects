@@ -236,62 +236,66 @@ export const CardDetails = () => {
                   })}
                 </select>
               </label>
-              <label 
-                className="font-bold"
-                htmlFor="condition">
-                Condition:
-                <select 
-                  name="condition" 
-                  id="condition"
-                  className="font-normal flex flex-col pl-2 border rounded-sm w-full p-1 bg-gray-pearl-white border-pitch-black"
-                  onChange={(e) => handleOnChangeCondition(e)}
-                >
-                  <option 
-                    value="near mint"
+              { binderName &&
+                <div>
+                  <label
+                    className="font-bold"
+                    htmlFor="condition">
+                    Condition:
+                    <select
+                      name="condition"
+                      id="condition"
+                      className="font-normal flex flex-col pl-2 border rounded-sm w-full p-1 bg-gray-pearl-white border-pitch-black"
+                      onChange={(e) => handleOnChangeCondition(e)}
                     >
-                    Near Mint
-                  </option>
-                  <option 
-                    value="excellent"                  
-                    >
-                    Excellent
-                  </option>
-                  <option 
-                    value="good"
-                    >
-                    Good
-                  </option>
-                  <option 
-                    value="light played"
-                    >
-                    Light Played
-                  </option>
-                  <option 
-                    value="played"
-                    >
-                    Played
-                  </option>
-                  <option 
-                    value="poor"
-                    >
-                    Poor
-                  </option>
-                </select>
-              </label>
-              <label 
-                className="font-bold flex flex-col"
-                htmlFor="amount">
-                Amount:
-                <input
-                  className="pl-2 font-normal border rounded-sm bg-gray-pearl-white border-pitch-black p-1" 
-                  type="number" 
-                  min="0" 
-                  name="amount" 
-                  id="amount"
-                  onChange={(e) => handleOnChangeAmount(e)}
-                  value={amount}
-                />
-              </label>
+                      <option
+                        value="near mint"
+                        >
+                        Near Mint
+                      </option>
+                      <option
+                        value="excellent"
+                        >
+                        Excellent
+                      </option>
+                      <option
+                        value="good"
+                        >
+                        Good
+                      </option>
+                      <option
+                        value="light played"
+                        >
+                        Light Played
+                      </option>
+                      <option
+                        value="played"
+                        >
+                        Played
+                      </option>
+                      <option
+                        value="poor"
+                        >
+                        Poor
+                      </option>
+                    </select>
+                  </label>
+                  <label
+                    className="font-bold flex flex-col"
+                    htmlFor="amount">
+                    Amount:
+                    <input
+                      className="pl-2 font-normal border rounded-sm bg-gray-pearl-white border-pitch-black p-1"
+                      type="number"
+                      min="0"
+                      name="amount"
+                      id="amount"
+                      onChange={(e) => handleOnChangeAmount(e)}
+                      value={amount}
+                    />
+                  </label>
+                </div>
+              }
             </form>
             <div>
               <a 

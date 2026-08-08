@@ -5,3 +5,10 @@ export type PostCardResponse = {
   id: string,
   _id: string
 }
+
+export type AddCardToBinder = {
+  success: boolean,
+  message: string,
+  binderName: string,
+  card_id: string
+}

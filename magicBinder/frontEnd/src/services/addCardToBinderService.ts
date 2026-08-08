@@ -1,3 +1,5 @@
+import type { AddCardToBinder } from "../types/responses";
+
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 export const fetchCardToBinderResponse = async (
@@ -29,7 +31,7 @@ export const fetchCardToBinderResponse = async (
       const errorData = await response.json();
       throw new Error(errorData.message || `http error: ${response.status}`)
     }
-    const result = await response.json();
+    const result: AddCardToBinder = await response.json();
     return result
 
   } catch (error) {

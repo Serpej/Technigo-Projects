@@ -22,6 +22,12 @@ export const handleAddToBinder = async  (
     const postCardResponse: PostCardResponse = await addCardToDataBaseService(cardResponse, accessToken);
     const response = await fetchCardToBinderResponse(binderName ,postCardResponse._id, condition, amount, accessToken);
 
+    if(!response) {
+      return
+    }
+
+    console.log(response);
+
   } catch(error) {
     console.error("Failed To Add Card: ", error)
   }
