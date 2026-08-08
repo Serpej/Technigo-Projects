@@ -23,7 +23,7 @@ export const fetchCardToBinderResponse = async (
   }
 
   try {
-    const response = await fetch(`${BASE_URL}/${binderName}/cards`, options);
+    const response = await fetch(`${BASE_URL}/binders/${binderName}/cards`, options);
 
     if(!response.ok) {
       const errorData = await response.json();
@@ -33,7 +33,7 @@ export const fetchCardToBinderResponse = async (
     return result
 
   } catch (error) {
-      console.log("Error:" + error);
+      console.log("Error: " + error);
       throw error;
   }
 

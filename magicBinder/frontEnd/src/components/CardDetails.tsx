@@ -289,7 +289,7 @@ export const CardDetails = () => {
                   name="amount" 
                   id="amount"
                   onChange={(e) => handleOnChangeAmount(e)}
-                  defaultValue={amount}
+                  value={amount}
                 />
               </label>
             </form>
