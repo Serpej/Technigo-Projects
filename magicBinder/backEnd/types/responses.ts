@@ -23,3 +23,11 @@ export type GetUserResponse = {
   id: Object,
   accessToken: string,
 }
+
+export type PostCardResponse = {
+  success: boolean,
+  message: string,
+  name: string,
+  id: string,
+  _id: string
+}

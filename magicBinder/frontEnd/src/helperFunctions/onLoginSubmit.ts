@@ -21,8 +21,6 @@ export const onLoginSubmit = async (
     useAuthStore.getState().setUserId(response._id);
     useAuthStore.getState().setUserEmail(response.email);
     navigate("/profilepage");
-    console.log("fetched user token: " + response.success);
-    console.log("fetched user name: " + response.name);
 
   } catch (error) {
     console.error("Login Failed: ", error)

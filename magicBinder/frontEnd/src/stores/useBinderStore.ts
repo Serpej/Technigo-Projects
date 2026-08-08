@@ -12,10 +12,12 @@ export const useBinderStore = create<binderStoreType>((set) => ({
 
 
       if(!fetchedBinders || !fetchedBinders.success) {
-        return
+        return false
       }
 
       set({ binders:fetchedBinders.binderObjects });
+
+      return true
 
     } catch (error) {
       if(!(error instanceof Error)) {

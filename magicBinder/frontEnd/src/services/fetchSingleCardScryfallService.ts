@@ -1,3 +1,5 @@
+import type { ScryfallCard } from "../types/cardTypes";
+
 export const fetchCard = async (cardIdQuery: string) => {
   try {
     const baseUrl = "https://api.scryfall.com";
@@ -5,7 +7,7 @@ export const fetchCard = async (cardIdQuery: string) => {
     if(!response.ok) {
       throw new Error(`Response Status: ${response.status}`);
     }
-    const result = response.json();
+    const result: Promise<ScryfallCard> = response.json();
     return result
   } catch (error) {
   

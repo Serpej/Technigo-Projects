@@ -2,7 +2,7 @@ import type { ScryfallCard } from "./cardTypes";
 
 export type binderStoreType = {
   binders: cardBinderSummary[],
-  fetchBinders: (accessToken: string) =>  void,
+  fetchBinders: (accessToken: string) =>  Promise<boolean | undefined>,
 }
 
 export type cardBinderSummary = {

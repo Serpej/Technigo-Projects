@@ -1,7 +1,7 @@
-import { fetchAddCardToBinderResponse } from "../services/addCardToBinderService";
+import { fetchCardToBinderResponse } from "../services/addCardToBinderService";
 import { fetchCard } from "../services/fetchSingleCardScryfallService";
 import { addCardToDataBaseService } from "../services/addCardToDataBaseService";
-import type { ScryfallCard } from "../types/cardTypes";
+import type { PostCardResponse } from "../types/responses"; 
 export const handleAddToBinder = async  (
   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   binderName: string,
@@ -13,9 +13,14 @@ export const handleAddToBinder = async  (
   e.preventDefault();
   
   try {
-    const cardResponse: ScryfallCard = await fetchCard(cardId);
-    const dataBaseCard = await addCardToDataBaseService(cardResponse, accessToken);
-    const response = await fetchAddCardToBinderResponse(binderName ,dataBaseCard._id, condition, amount, accessToken);
+    const cardResponse = await fetchCard(cardId);
+
+    if (!cardResponse) {
+      return null
+    }
+
+    const postCardResponse: PostCardResponse = await addCardToDataBaseService(cardResponse, accessToken);
+    const response = await fetchCardToBinderResponse(binderName ,postCardResponse._id, condition, amount, accessToken);
 
   } catch(error) {
     console.error("Failed To Add Card: ", error)

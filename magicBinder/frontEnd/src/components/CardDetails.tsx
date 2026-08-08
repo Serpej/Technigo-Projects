@@ -18,6 +18,7 @@ export const CardDetails = () => {
   const [amount, setAmount] = useState<number>(1);
   const [condition, setCondition] = useState<string>("Near Mint");
   const [binderName, setBinderName] = useState<string>("")
+  const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
 
   const accessToken = useAuthStore((state) => state.accessToken);
   const binders = useBinderStore(state => state.binders);
@@ -43,18 +44,39 @@ export const CardDetails = () => {
 
     fetchCardData();
 
+  },[card])
+
+  useEffect(() => {
+
     if(!accessToken) {
       return
     }
 
-    fetchBinders(accessToken);
+    const getBindersFromGlobalState = async () => {
+      const fetchedBinders = await fetchBinders(accessToken);
+
+      if(!fetchedBinders){
+        return
+      }
+      setHasFetchedBinders(true);
+    }
+
+    if(!hasFetchedBinders) {
+      getBindersFromGlobalState();
+    }
+
+  },[accessToken, fetchBinders, hasFetchedBinders])
+
+  useEffect(() => {
 
     const setDefaultBinderName = () => {
-      setBinderName(binders[0].name);
+      if(hasFetchedBinders){
+        setBinderName(binders[0].name);
+      }
     }
     setDefaultBinderName();
-
-  },[card, accessToken, fetchBinders, binders, setBinderName])
+       
+  },[binders, setBinderName, hasFetchedBinders])
 
   const chosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
   if(!chosenCard) {
@@ -134,38 +156,42 @@ export const CardDetails = () => {
             <div
               className="flex justify-center gap-2 mt-4"
             >
-              {canFlip && <button
-                className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
-                onClick={() => setActiveFace(!activeFace)}
-              >
-                Flip
-              </button>}
-              <form action="">
-                <label htmlFor="binder">
-                  <button
-                    className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
-                    onClick={(e) => handleAddToBinder(e, binderName, chosenCard.id, condition, amount, accessToken)}
-                  >
-                    Add to binder
-                  </button>
-                  <select
-                    className="font-normal pl-2 min-w-0 border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"
-                    name="binders" 
-                    id="binders"
-                  >
-                    {binders.map((binder, index) => {
-                      return(
-                        <option 
-                          key={index} 
-                          value={binder.name}
-                        >
-                          {`${binder.name}`}
-                        </option>
-                      )
-                    })}
-                  </select>
-                </label>
-              </form>
+              { canFlip &&
+                <button
+                  className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
+                  onClick={() => setActiveFace(!activeFace)}
+                >
+                  Flip
+                </button>
+              }
+              { binderName &&
+                <form action="">
+                  <label htmlFor="binder">
+                    <button
+                      className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
+                      onClick={(e) => handleAddToBinder(e, binderName, chosenCard.id, condition, amount, accessToken)}
+                    >
+                      Add to binder
+                    </button>
+                    <select
+                      className="font-normal pl-2 ml-2 min-w-0 border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"
+                      name="binders" 
+                      id="binders"
+                    >
+                      {binders.map((binder, index) => {
+                        return(
+                          <option 
+                            key={index} 
+                            value={binder.name}
+                          >
+                            {`${binder.name}`}
+                          </option>
+                        )
+                      })}
+                    </select>
+                  </label>
+                </form>
+              }
             </div>
           </div>
         </div>
