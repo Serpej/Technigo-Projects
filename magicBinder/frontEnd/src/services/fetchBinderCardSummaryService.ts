@@ -30,7 +30,7 @@ export const fetchBinderCardSummaryService = async (
       return null
     }
     
-    return binderCardSummaries.binder
+    return binderCardSummaries
 
   } catch (error) {
     console.log("Error: " + error);
