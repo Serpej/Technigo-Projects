@@ -2,7 +2,7 @@
   "projects": [
      {
       "name": "Magic Binder",
-      "image": "/images/da-vector-running-man",
+      "image": "/images/da-vector-running-man.svg",
       "imageArtist": "DA VECTOR on Unsplash",
       "tags": [
         "Tailwind",
