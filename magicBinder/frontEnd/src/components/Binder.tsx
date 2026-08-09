@@ -4,10 +4,26 @@ import { SearchBar } from "./SearchBar";import
 { useLocation, useNavigate } from "react-router-dom";
 import type { BinderNameState } from "../types/binderTypes";
 import { capitalize } from "../helperFunctions/handleCapitalize";
+import { useEffect } from "react";
+import { useAuthStore } from "../stores/useAuthStore";
+
 export const Binder = () => {
   const location = useLocation();
   const binderObject = location.state as BinderNameState | null;
   const navigate = useNavigate();
+  const accesstoken = useAuthStore(state => state.accessToken);
+  useEffect(() => {
+  
+  //här ska binderkorten fetchas
+
+    const fecthBinderCards = async () => {
+      if(!binderObject) {
+        return
+      }
+      const binderCards = await handleFetchBinderCards(binderObject.binderName, accesstoken);
+    }
+    fecthBinderCards();
+  })
 
   if(!binderObject){
    return null

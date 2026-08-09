@@ -5,6 +5,19 @@ export type binderStoreType = {
   fetchBinders: (accessToken: string) =>  Promise<boolean | undefined>,
 }
 
+export type cardBinderResponse = {
+  success: boolean,
+  binder: {
+    "name": string,
+    "cards": {
+      cardId: string,
+      condition: string,
+      amount: number,
+    }[],
+  "userId": string
+  }
+}
+
 export type cardBinderSummary = {
   "name": string,
   "_id": string
