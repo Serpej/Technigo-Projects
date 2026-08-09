@@ -2,8 +2,8 @@
   "projects": [
      {
       "name": "Magic Binder",
-      "image": "/images/da-vector-running-man.svg",
-      "imageArtist": "DA VECTOR on Unsplash",
+      "image": "/images/wahyu-setyanto--satelite.svg",
+      "imageArtist": "Wahyu Setyanto on Unsplash",
       "tags": [
         "Tailwind",
         "TypeScript",
@@ -39,7 +39,7 @@
     },
     {
       "name": "TMDB's most popular movies ",
-      "image": "/images/wahyu-setyanto--satelite.svg",
+      "image": "/images/wahyu-setyanto-coffe-cup.svg",
       "imageArtist": "Wahyu Setyanto on Unsplash",
       "tags": [
         "HTML5",
