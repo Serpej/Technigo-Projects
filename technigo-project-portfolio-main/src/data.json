@@ -1,5 +1,23 @@
 {
   "projects": [
+     {
+      "name": "Magic Binder",
+      "image": "/images/da-vector-running-man",
+      "imageArtist": "DA VECTOR on Unsplash",
+      "tags": [
+        "Tailwind",
+        "TypeScript",
+        "React",
+        "Node",
+        "Netlify",
+        "Render"
+      ],
+      "description": "A fullstack app designed to help Magic The Gathering friends to share cards they'd like to trade.",
+      "netlifyIcon": "https://cdn.iconscout.com/icon/free/png-512/free-netlify-logo-icon-svg-download-png-3030170.png?f=webp&w=256",
+      "netlifyLink":"https://magicbinder.netlify.app/",
+      "githubIcon": "https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_1280.png",
+      "githubLink": "https://github.com/Serpej/Technigo-Projects/tree/main/magicBinder"
+    },
     {
       "name": "React Todo app",
       "image": "/images/da-vector-Yoga.svg",
