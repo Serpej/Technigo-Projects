@@ -1,38 +1,59 @@
 import { PageBackground } from "./PageBackground";
 import deltaBackground from "../assets/deltaBackground.png"
-import { SearchBar } from "./SearchBar";import 
-{ useLocation, useNavigate } from "react-router-dom";
+import { SearchBar } from "./SearchBar";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import type { BinderNameState } from "../types/binderTypes";
+import type { FullUserCard } from "../types/cardTypes";
 import { capitalize } from "../helperFunctions/handleCapitalize";
 import { useEffect } from "react";
 import { useAuthStore } from "../stores/useAuthStore";
+import { handleFetchBinderCards } from "../helperFunctions/handleFetchBinderCards";
 
 export const Binder = () => {
   const location = useLocation();
   const binderObject = location.state as BinderNameState | null;
   const navigate = useNavigate();
   const accesstoken = useAuthStore(state => state.accessToken);
+ // Här är korten du hämtat, dags att presentera dom
+  const [cards, setCards] = useState<FullUserCard[]>([])
+  const [hasFetchedBinder, setHasFetchedBinder] = useState<boolean>(false);
+
   useEffect(() => {
-  
-  //här ska binderkorten fetchas
 
     const fecthBinderCards = async () => {
+      
       if(!binderObject) {
         return
       }
+      
       const binderCards = await handleFetchBinderCards(binderObject.binderName, accesstoken);
+
+      if(!binderCards) {
+        return 
+      }
+
+      setHasFetchedBinder(true);
+
+      setCards(binderCards)
     }
-    fecthBinderCards();
-  })
+
+    if(!hasFetchedBinder){
+      fecthBinderCards();
+    }
+  
+  },[accesstoken, binderObject, hasFetchedBinder])
 
   if(!binderObject){
    return null
   }
 
   const { binderName } = location.state;
+
   if(typeof binderName !== "string") {
     return
   }
+
   const capitalizedName = capitalize(binderName);
 
   return(

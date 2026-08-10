@@ -104,6 +104,14 @@ export type ScryFallSearchResponse = {
   "data": ScryfallCard[],
 }
 
+export type UserChoices = {
+  cardId: string,
+  condition: string,
+  amount: number,
+}
+
+export type FullUserCard = ScryfallCard & UserChoices
+
 export type ScryfallSearchSuccess = ScryFallSearchResponse & {
   "found": true;
 }

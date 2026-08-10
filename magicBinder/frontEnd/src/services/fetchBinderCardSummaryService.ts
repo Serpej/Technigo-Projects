@@ -26,6 +26,7 @@ export const fetchBinderCardSummaryService = async (
     }
 
     const binderCardSummaries: cardBinderResponse = await response.json();
+    
     if(!binderCardSummaries.success) {
       return null
     }
