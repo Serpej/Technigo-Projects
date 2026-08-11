@@ -10,7 +10,7 @@ export type cardBinderResponse = {
   binder: {
     "name": string,
     "cards": {
-      cardId: string,
+      cardId: ScryfallCard,
       condition: string,
       amount: number,
     }[],

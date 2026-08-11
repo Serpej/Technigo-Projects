@@ -1,6 +1,6 @@
 import type { cardBinderResponse } from "../types/binderTypes";
 
-const BASE_URL=`${import.meta.env.local.VITE_API_URL}`;
+const BASE_URL=`${import.meta.env.VITE_API_URL}`;
 
 
 export const fetchBinderCardSummaryService = async (
@@ -13,12 +13,12 @@ export const fetchBinderCardSummaryService = async (
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "Authorization":`Bearer: ${accesstoken}`
+      "Authorization":`Bearer ${accesstoken}`
     },
   }
 
   try {
-    const response = await fetch(`${BASE_URL}/${binderName}`, options);
+    const response = await fetch(`${BASE_URL}/binders/${binderName}`, options);
     
     if(!response.ok) {
       const errorData = await response.json();
@@ -34,7 +34,7 @@ export const fetchBinderCardSummaryService = async (
     return binderCardSummaries
 
   } catch (error) {
-    console.log("Error: " + error);
+    console.log(error);
     throw error
   }
 }

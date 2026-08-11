@@ -20,6 +20,7 @@ export const handleAddToBinder = async  (
     }
 
     const postCardResponse: PostCardResponse = await addCardToDataBaseService(cardResponse, accessToken);
+    
     const response = await fetchCardToBinderResponse(binderName ,postCardResponse._id, condition, amount, accessToken);
 
     if(!response) {
