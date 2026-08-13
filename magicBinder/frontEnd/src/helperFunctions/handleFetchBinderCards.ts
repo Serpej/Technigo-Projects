@@ -1,5 +1,19 @@
 import { fetchBinderCardSummaryService } from "../services/fetchBinderCardSummaryService";
-import type { FullUserCard } from "../types/cardTypes";
+import type { FullUserCard, PopulatedScryfallCard } from "../types/cardTypes";
+
+
+const isKnownCardType = (card: PopulatedScryfallCard): card is PopulatedScryfallCard => {
+  switch (card.__t) {
+    case "SingleFacedCard":
+    case "DoubleFacedCard":
+    case "SplitFacedCard":
+    case "ReversibleCard":
+      return true;        
+    default:
+      return false; 
+  }
+};
+
 
 export const handleFetchBinderCards = async (
   binderName: string,
@@ -9,16 +23,19 @@ export const handleFetchBinderCards = async (
     const cardSummariesFromBinder = await fetchBinderCardSummaryService(binderName, accesstoken);
 
     if(!cardSummariesFromBinder) {
-      return null
+      return null;
     }
 
     const fullCardArray = cardSummariesFromBinder.binder.cards.map( card => {
 
-      const { cardId: cardObject, condition, amount } = card
-    
-      
-      const userCard: FullUserCard = ({...cardObject, condition: condition, amount: amount});
+      const {cardId: populatedCard, condition, amount } = card
 
+
+      if(!isKnownCardType(populatedCard)){
+        return null;
+      }
+      
+      const userCard: FullUserCard = {...populatedCard, condition, amount};
       return userCard
     });
 

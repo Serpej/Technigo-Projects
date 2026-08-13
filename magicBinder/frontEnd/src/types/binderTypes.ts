@@ -1,4 +1,4 @@
-import type { ScryfallCard } from "./cardTypes";
+import type { PopulatedScryfallCard } from "./cardTypes";
 
 export type binderStoreType = {
   binders: cardBinderSummary[],
@@ -10,7 +10,7 @@ export type cardBinderResponse = {
   binder: {
     "name": string,
     "cards": {
-      cardId: ScryfallCard,
+      cardId: PopulatedScryfallCard,
       condition: string,
       amount: number,
     }[],
@@ -37,7 +37,7 @@ export type cardBinderSearchEmpty = {
 export type cardBinderResult = cardBinderSearchSuccessfull | cardBinderSearchEmpty;
 
 export type cardBinder = cardBinderSummary & { 
-  "cards": ScryfallCard[], 
+  "cards": PopulatedScryfallCard[], 
   "userId": string 
 }
 
