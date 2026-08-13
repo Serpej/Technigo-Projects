@@ -29,7 +29,7 @@ export const addCardToDataBaseService = async (
     return jsonData;
 
   } catch (error) {
-    console.log("Error:" + error);
+    console.log("Error: " + error);
     throw error;
   }
 }

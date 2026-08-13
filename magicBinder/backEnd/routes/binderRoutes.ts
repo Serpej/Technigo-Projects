@@ -75,7 +75,7 @@ binderRouter
 
       res.status(200).json({
         success: true,
-        binder
+        binder: binder
       });
     } catch (error) {
       serverError(res, "Server error.", error);

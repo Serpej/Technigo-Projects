@@ -78,8 +78,16 @@ export type ScryfallSingleFacedCard = ScryfallCardWithTypeLine & {
   "image_uris": ImageUris,
 }
 
+export type PopulatedSingleFacedCard = ScryfallSingleFacedCard & {
+  "__t": "SingleFacedCard"
+}
+
 export type ScryfallDoubleFacedCard = ScryfallCardWithTypeLine & {
   "card_faces": ScryfallCardFace[],
+}
+
+export type PopulatedDoubleFacedCard = ScryfallDoubleFacedCard & {
+  "__t": "DoubleFacedCard"
 }
 
 export type ScryfallSplitFacedCard = ScryfallCardWithTypeLine & {
@@ -88,8 +96,17 @@ export type ScryfallSplitFacedCard = ScryfallCardWithTypeLine & {
   "card_faces": ScryfallSplitCardFace[],
 }
 
+export type PopulatedScryfallSplitFacedCard = ScryfallSplitFacedCard & {
+  "__t": "SplitFacedCard"
+}
+
 export type ScryfallReversibleCard = ScryfallCardBase & {
   "card_faces": ScryfallReversibleCardFace[],
+}
+
+
+export type PopulatedReversibleCard = ScryfallReversibleCard & {
+  "__t": "ReversibleCard"
 }
 
 export type ScryfallCard = 
@@ -98,11 +115,27 @@ export type ScryfallCard =
   | ScryfallSplitFacedCard
   | ScryfallReversibleCard;
 
+export type PopulatedScryfallCard = 
+  (
+    | PopulatedSingleFacedCard
+    | PopulatedDoubleFacedCard
+    | PopulatedScryfallSplitFacedCard
+    | PopulatedReversibleCard
+  )
+  & { "_id": string };
+
 export type ScryFallSearchResponse = {
   "has_more": boolean,
   "next_page"?: string,
   "data": ScryfallCard[],
 }
+
+export type UserChoices = {
+  condition: string,
+  amount: number,
+}
+
+export type FullUserCard = PopulatedScryfallCard & UserChoices
 
 export type ScryfallSearchSuccess = ScryFallSearchResponse & {
   "found": true;

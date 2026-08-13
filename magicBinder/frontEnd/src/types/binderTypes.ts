@@ -1,8 +1,21 @@
-import type { ScryfallCard } from "./cardTypes";
+import type { PopulatedScryfallCard } from "./cardTypes";
 
 export type binderStoreType = {
   binders: cardBinderSummary[],
   fetchBinders: (accessToken: string) =>  Promise<boolean | undefined>,
+}
+
+export type cardBinderResponse = {
+  success: boolean,
+  binder: {
+    "name": string,
+    "cards": {
+      cardId: PopulatedScryfallCard,
+      condition: string,
+      amount: number,
+    }[],
+  "userId": string
+  }
 }
 
 export type cardBinderSummary = {
@@ -24,7 +37,7 @@ export type cardBinderSearchEmpty = {
 export type cardBinderResult = cardBinderSearchSuccessfull | cardBinderSearchEmpty;
 
 export type cardBinder = cardBinderSummary & { 
-  "cards": ScryfallCard[], 
+  "cards": PopulatedScryfallCard[], 
   "userId": string 
 }
 

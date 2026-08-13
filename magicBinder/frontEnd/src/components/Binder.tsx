@@ -1,22 +1,60 @@
 import { PageBackground } from "./PageBackground";
 import deltaBackground from "../assets/deltaBackground.png"
-import { SearchBar } from "./SearchBar";import 
-{ useLocation, useNavigate } from "react-router-dom";
+import { SearchBar } from "./SearchBar";
+import { useLocation, useNavigate, NavLink } from "react-router-dom";
+import { useState } from "react";
 import type { BinderNameState } from "../types/binderTypes";
+import type { FullUserCard } from "../types/cardTypes";
+import type { CardDetailsState } from "../types/cardTypes"
 import { capitalize } from "../helperFunctions/handleCapitalize";
+import { useEffect } from "react";
+import { useAuthStore } from "../stores/useAuthStore";
+import { handleFetchBinderCards } from "../helperFunctions/handleFetchBinderCards";
+
 export const Binder = () => {
   const location = useLocation();
   const binderObject = location.state as BinderNameState | null;
   const navigate = useNavigate();
+  const accesstoken = useAuthStore(state => state.accessToken);
+ // Här är korten du hämtat, dags att presentera dom
+  const [cards, setCards] = useState<FullUserCard[]>([])
+  const [hasFetchedBinder, setHasFetchedBinder] = useState<boolean>(false);
+
+  useEffect(() => {
+
+    const fecthBinderCards = async () => {
+      
+      if(!binderObject) {
+        return
+      }
+      
+      const binderCards = await handleFetchBinderCards(binderObject.binderName, accesstoken);
+
+      if(!binderCards) {
+        return 
+      }
+
+      setHasFetchedBinder(true);
+
+      setCards(binderCards)
+    }
+
+    if(!hasFetchedBinder){
+      fecthBinderCards();
+    }
+  
+  },[accesstoken, binderObject, hasFetchedBinder])
 
   if(!binderObject){
    return null
   }
 
   const { binderName } = location.state;
+
   if(typeof binderName !== "string") {
     return
   }
+
   const capitalizedName = capitalize(binderName);
 
   return(
@@ -67,6 +105,43 @@ export const Binder = () => {
             <div
               className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 overflow-auto p-2"
             >
+            {hasFetchedBinder && cards.map((card: FullUserCard, index) => {
+
+              const imageUris = "image_uris" in card
+                ? card.image_uris
+                : card.card_faces[0].image_uris;
+                
+              const navigationState: CardDetailsState = {
+                background: location,
+                card: card,
+              }
+
+              return (
+                <div
+                  className="flex justify-center"
+                  key={index}
+                >
+                  <span
+                    className="hidden"
+                    aria-hidden="true"
+                  >
+                    {card.name}
+                  </span>
+                  <NavLink
+                    to="/card" state={navigationState}
+                  >
+                    <img
+                      className="rounded-[4.75%/3.5%]"
+                      src={imageUris.normal}
+                      srcSet={`${imageUris.small} 146w, ${imageUris.normal} 488w, ${imageUris.large} 672w`}
+                      sizes="(max-width: 767px) 30vw, (max-width: 1023px) 20vw, 12vw"
+                      alt={card.name}
+                    />
+                  </NavLink>
+                </div>
+              )
+            })
+            }
             </div>
           </div>
         </div>
