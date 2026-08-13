@@ -76,20 +76,24 @@ export type ScryfallSingleFacedCard = ScryfallCardWithTypeLine & {
   "mana_cost": string,
   "oracle_text": string,
   "image_uris": ImageUris,
+  "__t": "SingleFacedCard"
 }
 
 export type ScryfallDoubleFacedCard = ScryfallCardWithTypeLine & {
   "card_faces": ScryfallCardFace[],
+  "__t": "DoubleFacedCard"
 }
 
 export type ScryfallSplitFacedCard = ScryfallCardWithTypeLine & {
   "mana_cost": string,
   "image_uris": ImageUris,
   "card_faces": ScryfallSplitCardFace[],
+  "__t": "SplitFacedCard"
 }
 
 export type ScryfallReversibleCard = ScryfallCardBase & {
   "card_faces": ScryfallReversibleCardFace[],
+  "__t": "ReversibleCard"
 }
 
 export type ScryfallCard = 
