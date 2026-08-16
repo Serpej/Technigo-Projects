@@ -20,6 +20,8 @@ export const CardDetails = () => {
   const [condition, setCondition] = useState<string>("Near Mint");
   const [binderName, setBinderName] = useState<string>("")
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
+  const [addBinderMessage, setAddToBinderMessage] = useState<string>("");
+  const [isVisilbe, setIsVisible] = useState<boolean>(false);
 
   const accessToken = useAuthStore((state) => state.accessToken);
   const binders = useBinderStore(state => state.binders);
@@ -77,7 +79,28 @@ export const CardDetails = () => {
     }
     setDefaultBinderName();
        
-  },[binders, setBinderName, hasFetchedBinders])
+  },[binders, setBinderName, hasFetchedBinders]);
+
+  useEffect(() => {
+
+    if(addBinderMessage) {
+      const changeVisibility = () => setIsVisible(true);
+      changeVisibility();
+
+      const startFadeOut = setTimeout(() => {
+        setIsVisible(false);
+      }, 2100);
+
+      const clearMessage = setTimeout(() => {
+        setAddToBinderMessage("");
+      }, 2500);
+
+      return () => {
+      clearTimeout(startFadeOut)
+      clearTimeout(clearMessage)};
+    }
+
+  },[addBinderMessage])
 
   const chosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
   if(!chosenCard) {
@@ -170,7 +193,15 @@ export const CardDetails = () => {
                   <label htmlFor="binder">
                     <button
                       className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
-                      onClick={(e) => handleAddToBinder(e, binderName, chosenCard.id, condition, amount, accessToken)}
+                      onClick={async (e) => {
+        
+                        const message = await handleAddToBinder(e, binderName, chosenCard.id, condition, amount, accessToken)
+                        if(!message){
+                          return
+                        }
+                        setAddToBinderMessage(message)
+                      }
+                    }
                     >
                       Add to binder
                     </button>
@@ -233,6 +264,11 @@ export const CardDetails = () => {
               </a>
             </div>
         </div>
+      </div>
+      <div
+        className={`absolute bottom-30 left-[50%] -translate-x-1/2 bg-pitch-black/80 text-amber-50 border-2 rounded-sm px-3 py-1.5 text-lg border-deep-hero-blue/80 duration-300 ease-in-out transition-opacity ${isVisilbe ? "opacity-100" : "opacity-0"}`}
+      >
+      {addBinderMessage}
       </div>
     </div>
   )

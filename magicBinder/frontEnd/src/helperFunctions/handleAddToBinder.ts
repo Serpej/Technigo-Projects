@@ -9,7 +9,7 @@ export const handleAddToBinder = async  (
   condition: string,
   amount: number,
   accessToken: string,
-) => {
+): Promise<string | null >=> {
   e.preventDefault();
   
   try {
@@ -24,13 +24,21 @@ export const handleAddToBinder = async  (
     const response = await fetchCardToBinderResponse(binderName ,postCardResponse._id, condition, amount, accessToken);
 
     if(!response) {
-      return
+      return null
     }
 
     console.log(response);
-
+    return response.message
+    
   } catch(error) {
-    console.error("Failed To Add Card: ", error)
+
+    console.error("Failed To Add Card: ", error);
+
+    if(error instanceof Error) {
+      return `Failed To Add Card: ${error.message}`
+    }
+
+    return "Failed To Add Card";
   }
 
 }
