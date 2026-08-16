@@ -72,10 +72,10 @@ export const Binder = () => {
           alt="A beautiul view of a delta landscape in dusk."
         />
         <div
-        className="grid col-start-1 row-start-2 grid-cols-[80vw] grid-rows-[80vh] place-content-center h-full"
+        className="grid col-start-1 row-start-2 grid-cols-[90vw] grid-rows-[86vh] place-content-center h-full"
         >
           <div
-            className="grid grid-rows-[auto_1fr] min-h-0 gap-5  bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-10 border-2 rounded-sm border-deep-hero-blue h-full"
+            className="grid grid-rows-[auto_1fr] min-h-0 gap-5  bg-baltic-blue/50 backdrop-blur-sm shadow-2xl px-10 py-3 border-2 rounded-sm border-deep-hero-blue h-full"
           >
             <div
               className=" col-start-1 row-start-1 flex justify-center border-0 border-b-2 border-b-deep-hero-blue"
@@ -102,7 +102,7 @@ export const Binder = () => {
               </div>
             </div>
             <div
-              className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6 overflow-auto p-2"
+              className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-y-6 overflow-auto p-2"
             >
             {hasFetchedBinder && cards.map((card: FullUserCard, index) => {
 
