@@ -16,7 +16,6 @@ export const Binder = () => {
   const binderObject = location.state as BinderNameState | null;
   const navigate = useNavigate();
   const accesstoken = useAuthStore(state => state.accessToken);
- // Här är korten du hämtat, dags att presentera dom
   const [cards, setCards] = useState<FullUserCard[]>([])
   const [hasFetchedBinder, setHasFetchedBinder] = useState<boolean>(false);
 
