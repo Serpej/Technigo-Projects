@@ -29,13 +29,18 @@ export const fetchCardToBinderResponse = async (
 
     if(!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || `http error: ${response.status}`)
+      
+      if(!errorData.error) {
+        throw new Error(`http error: ${response.status}`);
+      }
+
+      throw new Error(`${errorData.message} ${errorData.error}`);
     }
     const result: AddCardToBinder = await response.json();
     return result
 
   } catch (error) {
-      console.log("Error: " + error);
+      console.log(error);
       throw error;
   }
 

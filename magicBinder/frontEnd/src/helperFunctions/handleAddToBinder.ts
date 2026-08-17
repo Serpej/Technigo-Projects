@@ -35,7 +35,7 @@ export const handleAddToBinder = async  (
     console.error("Failed To Add Card: ", error);
 
     if(error instanceof Error) {
-      return `Failed To Add Card: ${error.message}`
+      return `Failed To Add Card: ${error.message}`;
     }
 
     return "Failed To Add Card";

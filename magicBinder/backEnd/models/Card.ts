@@ -68,12 +68,32 @@ export type ISplitCardFace = {
 }
 
 const SplitCardFace = new Schema<ISplitCardFace>({
-  name: { type: String, required: true },
-  mana_cost: { type: String, required: true },
-  type_line: { type: String, required: true },
-  oracle_text: { type: String, required: true },
-  power: { type: String, required: false },
-  toughness: { type: String, required: false },
+  name: {
+    type: String, required: true 
+  },
+  mana_cost: {
+    type: String,
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "mana_cost must be a string"
+    }
+  },
+  type_line: { 
+    type: String, required: true 
+  },
+  oracle_text: {
+    type: String,
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "oracle_text must be a string"
+    }
+  },
+  power: { 
+    type: String, required: false 
+  },
+  toughness: { 
+  type: String, required: false 
+  },
 })
 
 export type ISplitFacedExtra = {
@@ -89,8 +109,16 @@ export type ISplitFacedExtra = {
 }
 
 const splitFacedExtra = new Schema<ISplitFacedExtra>({
-  mana_cost: { type: String, required: true },
-  image_uris: { type: Object, required: true },
+  mana_cost: {
+    type: String,
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "mana_cost must be a string"
+    }
+  },
+  image_uris: { 
+    type: Object, required: true 
+  },
   card_faces: {
     type: [SplitCardFace],
     required: true
@@ -127,13 +155,19 @@ const ReversibleCardFace = new Schema<IReversibleCardFace>({
     type: String, 
     required: true 
   },
-  mana_cost: { 
-    type: String, 
-    required: true 
+  mana_cost: {
+    type: String,
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "mana_cost must be a string"
+    }
   },
-  oracle_text: { 
-    type: String, 
-    required: true 
+  oracle_text: {
+    type: String,
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "oracle_text must be a string"
+    }
   },
   image_uris: { 
     type: Object, 
@@ -175,11 +209,17 @@ export type ISingleFacedExtra = {
 const singleFacedExtra = new Schema<ISingleFacedExtra> ({
   mana_cost: {
     type: String,
-    required: true
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "mana_cost must be a string"
+    }
   },
   oracle_text: {
     type: String,
-    required: true
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "oracle_text must be a string"
+    }
   },
   image_uris: {
     type: Object,
@@ -210,7 +250,10 @@ const ScryfallCardFace = new Schema<IScryfallCardFace> ({
   },
   mana_cost: {
     type: String,
-    required: true
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "mana_cost must be a string"
+    }
   },
   type_line: {
     type: String,
@@ -218,7 +261,10 @@ const ScryfallCardFace = new Schema<IScryfallCardFace> ({
   },
   oracle_text: {
     type: String,
-    required: true
+    validate: {
+      validator: (value: string) => typeof value === "string",
+      message: "oracle_text must be a string"
+    }
   },
   image_uris: {
     type: Object,

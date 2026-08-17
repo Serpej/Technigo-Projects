@@ -22,14 +22,19 @@ export const addCardToDataBaseService = async (
 
     if(!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || `http error: ${response.status}`);
+
+      if(!errorData.error) {
+        throw new Error(`http error: ${response.status}`);
+      }
+
+      throw new Error(`${errorData.message} ${errorData.error}`);
     }
 
     const jsonData = await response.json();
     return jsonData;
 
   } catch (error) {
-    console.log("Error: " + error);
+    console.log(error);
     throw error;
   }
 }
