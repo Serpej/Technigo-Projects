@@ -2,10 +2,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import type { CardDetailsState, ScryfallCard} from "../types/cardTypes";
 import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
-import { handleAddToBinder } from "../helperFunctions/handleAddToBinder";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useBinderStore } from "../stores/useBinderStore";
 import { CardSearchFrom } from "./cardDetailsComponents/CardSearchFrom"
+import { AddToBinderButton } from "./cardDetailsComponents/CardSearchAddToBinderButton";
 
 export const CardDetails = () => {
   const navigate = useNavigate();
@@ -188,41 +188,17 @@ export const CardDetails = () => {
                   Flip
                 </button>
               }
-              { binderName &&
-                <form action="">
-                  <label htmlFor="binder">
-                    <button
-                      className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
-                      onClick={async (e) => {
-        
-                        const message = await handleAddToBinder(e, binderName, chosenCard.id, condition, amount, accessToken)
-                        if(!message){
-                          return
-                        }
-                        setAddToBinderMessage(message)
-                      }
-                    }
-                    >
-                      Add to binder
-                    </button>
-                    <select
-                      className="font-normal pl-2 ml-2 min-w-0 border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"
-                      name="binders" 
-                      id="binders"
-                    >
-                      {binders.map((binder, index) => {
-                        return(
-                          <option 
-                            key={index} 
-                            value={binder.name}
-                          >
-                            {`${binder.name}`}
-                          </option>
-                        )
-                      })}
-                    </select>
-                  </label>
-                </form>
+              { 
+                binderName && 
+                <AddToBinderButton 
+                  binderName= {binderName}
+                  cardId= {chosenCard.id}
+                  condition= {condition}
+                  amount= {amount}
+                  accessToken= {accessToken}
+                  setAddToBinderMessage= {setAddToBinderMessage}
+                  binders= {binders}
+                />
               }
             </div>
           </div>
