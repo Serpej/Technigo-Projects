@@ -1,13 +1,11 @@
 import type { CardSearchAddButtonProps } from "../../types/cardDetailsTypes";
-import { handleAddToBinder } from "../../helperFunctions/handleAddToBinder"
+import { handleDeleteCardFromBinder } from "../../helperFunctions/handleDeleteCardFromBinder"
 
-export const AddToBinderButton = (
+export const DeleteCardButton = (
   {
     binderName,
     cardId,
-    condition,
-    amount,
-    accessToken,
+     accessToken,
     setMessage,
     binders
   }: CardSearchAddButtonProps
@@ -17,9 +15,9 @@ export const AddToBinderButton = (
       <label htmlFor="binder">
         <button
           className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
-          onClick={async (e) => {
+          onClick={async () => {
 
-            const message = await handleAddToBinder(e, binderName, cardId, condition, amount, accessToken)
+            const message = await handleDeleteCardFromBinder(binderName, cardId, accessToken)
             if(!message){
               return
             }
@@ -27,7 +25,7 @@ export const AddToBinderButton = (
           }
         }
         >
-          Add to binder
+          Delete Card(s)
         </button>
         <select
           className="font-normal pl-2 ml-2 min-w-0 border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"

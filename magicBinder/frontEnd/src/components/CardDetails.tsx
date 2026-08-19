@@ -20,7 +20,7 @@ export const CardDetails = () => {
   const [condition, setCondition] = useState<string>("Near Mint");
   const [binderName, setBinderName] = useState<string>("")
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
-  const [addBinderMessage, setAddToBinderMessage] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [isVisilbe, setIsVisible] = useState<boolean>(false);
 
   const accessToken = useAuthStore((state) => state.accessToken);
@@ -83,7 +83,7 @@ export const CardDetails = () => {
 
   useEffect(() => {
 
-    if(addBinderMessage) {
+    if(message) {
       const changeVisibility = () => setIsVisible(true);
       changeVisibility();
 
@@ -92,7 +92,7 @@ export const CardDetails = () => {
       }, 2100);
 
       const clearMessage = setTimeout(() => {
-        setAddToBinderMessage("");
+        setMessage("");
       }, 2500);
 
       return () => {
@@ -100,7 +100,7 @@ export const CardDetails = () => {
       clearTimeout(clearMessage)};
     }
 
-  },[addBinderMessage])
+  },[message])
 
   const chosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
   if(!chosenCard) {
@@ -196,7 +196,7 @@ export const CardDetails = () => {
                   condition= {condition}
                   amount= {amount}
                   accessToken= {accessToken}
-                  setAddToBinderMessage= {setAddToBinderMessage}
+                  setMessage= {setMessage}
                   binders= {binders}
                 />
               }
@@ -244,7 +244,7 @@ export const CardDetails = () => {
       <div
         className={`absolute bottom-30 left-[50%] -translate-x-1/2 bg-pitch-black/80 text-amber-50 border-2 rounded-sm px-3 py-1.5 text-lg border-deep-hero-blue/80 duration-300 ease-in-out transition-opacity ${isVisilbe ? "opacity-100" : "opacity-0"}`}
       >
-      {addBinderMessage}
+      {message}
       </div>
     </div>
   )

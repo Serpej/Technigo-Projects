@@ -28,7 +28,8 @@ export const handleAddToBinder = async  (
     }
 
     console.log(response);
-    return response.message
+
+    return response.message;
     
   } catch(error) {
 

@@ -203,8 +203,6 @@ binderRouter
         return;
       }
 
-      await Card.findOneAndDelete({ _id: cardId });
-
       res.status(200).json({
         success: true,
         message: `Card deleted from ${binderName}`,

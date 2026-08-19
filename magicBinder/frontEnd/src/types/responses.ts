@@ -12,3 +12,9 @@ export type AddCardToBinder = {
   binderName: string,
   card_id: string
 }
+
+export type DeleteCardFromBinder = {
+  success: boolean,
+  message: string,
+  cardId: string,
+}

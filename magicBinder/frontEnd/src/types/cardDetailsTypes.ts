@@ -16,7 +16,7 @@ export type CardSearchAddButtonProps = {
   condition: string,
   amount: number,
   accessToken: string,
-  setAddToBinderMessage: (message:string) => void,
+  setMessage: (message:string) => void,
   binders: cardBinderSummary[]
 }
 

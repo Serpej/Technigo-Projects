@@ -1,31 +1,28 @@
-import type { AddCardToBinder } from "../types/responses";
+import type { DeleteCardFromBinder } from "../types/responses";
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
-export const fetchCardToBinderResponse = async (
+export const deleteCardFromBinderResponse = async (
   binderName: string,
   cardId: string,
-  condition: string,
-  amount: number,
   accessToken: string
 ) => {
 
   const options = {
-    method: "POST",
+    method: "DELETE",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
       "Authorization": `Bearer ${accessToken}`
     },
     body: JSON.stringify({
-      _id: cardId,
-      condition: condition,
-      amount: amount
+      binderName: binderName,
+      cardId: cardId,
     })
   }
 
   try {
-    const response = await fetch(`${BASE_URL}/binders/${binderName}/cards`, options);
+    const response = await fetch(`${BASE_URL}/binders/${binderName}/${cardId}`, options);
 
     if(!response.ok) {
       const errorData = await response.json();
@@ -36,8 +33,8 @@ export const fetchCardToBinderResponse = async (
 
       throw new Error(`${errorData.message} ${errorData.error}`);
     }
+    const result: DeleteCardFromBinder = await response.json();
     
-    const result: AddCardToBinder = await response.json();
     return result
 
   } catch (error) {
