@@ -1,17 +1,21 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import type { CardDetailsState, ScryfallCard} from "../types/cardTypes";
+import type { CardDetailsState, ScryfallCard } from "../types/cardTypes";
 import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useBinderStore } from "../stores/useBinderStore";
 import { CardSearchFrom } from "./cardDetailsComponents/CardSearchFrom"
 import { AddToBinderButton } from "./cardDetailsComponents/CardSearchAddToBinderButton";
+import { DeleteCardButton } from "./cardDetailsComponents/CardSearchDeleteCardButton"
 
 export const CardDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const locationState: CardDetailsState = location.state;
   const card = locationState.card;
+  const source = locationState.source;
+  const binderCard = locationState.source === "binder" 
+    ? locationState.card : "";
 
   const [prints, setPrints] = useState<ScryfallCard[]>([card]);
   const [chosenCardId, setChosenCardId] = useState<string>(card.id);
@@ -20,6 +24,7 @@ export const CardDetails = () => {
   const [condition, setCondition] = useState<string>("Near Mint");
   const [binderName, setBinderName] = useState<string>("")
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
+  const [hasFetchedCard, sethasFetchedCard] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [isVisilbe, setIsVisible] = useState<boolean>(false);
 
@@ -43,6 +48,7 @@ export const CardDetails = () => {
 
       const { data } = cardPrints
       setPrints(data);
+      sethasFetchedCard(true);
     }
 
     fetchCardData();
@@ -102,25 +108,31 @@ export const CardDetails = () => {
 
   },[message])
 
-  const chosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
-  if(!chosenCard) {
+
+  if(!prints) {
     return null
   }
 
-  const imageUris = "image_uris" in chosenCard
-    ? chosenCard.image_uris
-    : chosenCard.card_faces[activeFace ? 1 : 0].image_uris;
+  const fetchedChosenCard = prints.find((cardObject) => cardObject.id === chosenCardId);
 
-  const type_line = "type_line" in chosenCard
-    ?  chosenCard.type_line
-    : chosenCard.card_faces[activeFace ? 1 : 0].type_line;
+  if(!fetchedChosenCard) {
+    return null
+  }
+
+  const imageUris = "image_uris" in fetchedChosenCard
+    ? fetchedChosenCard.image_uris
+    : fetchedChosenCard.card_faces[activeFace ? 1 : 0].image_uris;
+
+  const type_line = "type_line" in fetchedChosenCard
+    ?  fetchedChosenCard.type_line
+    : fetchedChosenCard.card_faces[activeFace ? 1 : 0].type_line;
 
   const flipableLayouts = ["transform", "modal_dfc", "reversible_card"];
-  const canFlip = flipableLayouts.includes(chosenCard.layout);
+  const canFlip = flipableLayouts.includes(fetchedChosenCard.layout);
 
-  const oracleText = "card_faces" in chosenCard
-    ? `${chosenCard.card_faces[0].oracle_text} \n\n//\n\n ${chosenCard.card_faces[1].oracle_text}`
-    : chosenCard.oracle_text;
+  const oracleText = "card_faces" in card
+    ? `${card.card_faces[0].oracle_text} \n\n//\n\n ${card.card_faces[1].oracle_text}`
+    : card.oracle_text;
 
   const handleOnChangePrint = (
     e: React.ChangeEvent<HTMLSelectElement>, 
@@ -175,7 +187,7 @@ export const CardDetails = () => {
               src={imageUris.normal}
               srcSet={`${imageUris.small} 146w, ${imageUris.normal} 488w, ${imageUris.large} 672w`}
               sizes="40vh"
-              alt={chosenCard.name}
+              alt={card.name}
             />
             <div
               className="flex justify-center gap-2 mt-4"
@@ -190,15 +202,29 @@ export const CardDetails = () => {
               }
               { 
                 binderName && 
-                <AddToBinderButton 
-                  binderName= {binderName}
-                  cardId= {chosenCard.id}
-                  condition= {condition}
-                  amount= {amount}
-                  accessToken= {accessToken}
-                  setMessage= {setMessage}
-                  binders= {binders}
-                />
+                  source === "search" && 
+                    <AddToBinderButton 
+                      binderName= {binderName}
+                      cardId= {card.id}
+                      condition= {condition}
+                      amount= {amount}
+                      accessToken= {accessToken}
+                      setMessage= {setMessage}
+                      binders= {binders}
+                    />
+              }
+              {                
+                binderName && 
+                  source === "binder" &&
+                    <DeleteCardButton 
+                      binderName= {binderName}
+                      cardId= {binderCard ? binderCard._id : ""}
+                      condition= {condition}
+                      amount= {amount}
+                      accessToken= {accessToken}
+                      setMessage= {setMessage}
+                      binders= {binders}
+                    />
               }
             </div>
           </div>
@@ -208,7 +234,7 @@ export const CardDetails = () => {
           >
             <p
               className="font-bold text-lg"
-            >{chosenCard.name}</p>
+            >{card.name}</p>
             <p
               className="font-bold"
             >{type_line}</p>
@@ -229,14 +255,16 @@ export const CardDetails = () => {
             /> 
             <div>
               <a 
-                href={chosenCard.purchase_uris.cardmarket}
+                href={card.purchase_uris.cardmarket}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="underline font-medium"
               >
-                {chosenCard.nonfoil 
-                ? `Price trend: ${chosenCard.prices.eur}€` 
-                : `Price trend: ${chosenCard.prices.eur_foil}€`}
+                {hasFetchedCard &&
+                  (fetchedChosenCard.nonfoil 
+                  ? `Price trend: ${fetchedChosenCard.prices.eur}€` 
+                  : `Price trend: ${fetchedChosenCard.prices.eur_foil}€`)
+                }
               </a>
             </div>
         </div>

@@ -78,6 +78,7 @@ export const CardSearchResults = () => {
             const navigationState: CardDetailsState = {
               background: location,
               card: card,
+              source: "search"
             }
 
             return (

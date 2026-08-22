@@ -148,8 +148,17 @@ export type ScryfallSearchEmpty = {
 
 export type ScryfallSearchResult = ScryfallSearchSuccess | ScryfallSearchEmpty;
 
-export type CardDetailsState = {
+export type ScryfallCalledState = {
   "background" : Location,
   "card": ScryfallCard,
+  "source": "search"
 }
+
+export type BackendCalledState = {
+  "background" : Location,
+  "card": FullUserCard,
+  "source": "binder"
+}
+
+export type CardDetailsState = ScryfallCalledState | BackendCalledState;
 

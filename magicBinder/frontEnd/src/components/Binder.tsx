@@ -113,6 +113,7 @@ export const Binder = () => {
               const navigationState: CardDetailsState = {
                 background: location,
                 card: card,
+                source: "binder"
               }
 
               return (

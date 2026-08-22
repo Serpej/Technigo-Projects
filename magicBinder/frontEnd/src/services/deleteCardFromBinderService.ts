@@ -22,7 +22,7 @@ export const deleteCardFromBinderResponse = async (
   }
 
   try {
-    const response = await fetch(`${BASE_URL}/binders/${binderName}/${cardId}`, options);
+    const response = await fetch(`${BASE_URL}/binders/${binderName}/cards/${cardId}`, options);
 
     if(!response.ok) {
       const errorData = await response.json();

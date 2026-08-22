@@ -2,6 +2,7 @@ import type { CardSearchAddButtonProps } from "../../types/cardDetailsTypes";
 import { handleDeleteCardFromBinder } from "../../helperFunctions/handleDeleteCardFromBinder"
 
 export const DeleteCardButton = (
+
   {
     binderName,
     cardId,
@@ -9,15 +10,17 @@ export const DeleteCardButton = (
     setMessage,
     binders
   }: CardSearchAddButtonProps
+
 ) => {
   return(
     <form action="">
       <label htmlFor="binder">
         <button
           className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
-          onClick={async () => {
+          type="button"
+          onClick={async (e) => {
 
-            const message = await handleDeleteCardFromBinder(binderName, cardId, accessToken)
+            const message = await handleDeleteCardFromBinder(e, binderName, cardId, accessToken)
             if(!message){
               return
             }

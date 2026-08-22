@@ -9,11 +9,25 @@ export type ICard = {
   "game_changer": boolean,
   "foil": boolean,
   "nonfoil": boolean,
+  "prices": {
+    "eur": string,
+    "eur_foil": string,
+  },
   "prints_search_uri": string,
   "purchase_uris": {
     "cardmarket": string
   }
+  "legalities": {
+    "standard": string,
+    "pioneer": string,
+    "modern": string,
+    "legacy": string,
+    "pauper": string,
+    "commander": string,
+  },
+
 };
+
 
 export const cardBaseSchema = new Schema<ICard> ({
   id: {
@@ -53,6 +67,10 @@ export const cardBaseSchema = new Schema<ICard> ({
     required: true
   },
   purchase_uris: {
+    type: Object,
+    required: true
+  },
+  legalities: {
     type: Object,
     required: true
   },
