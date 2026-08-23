@@ -1,5 +1,6 @@
 import type { ScryfallCard } from "../types/cardTypes";
 import type { cardBinderSummary } from "../types/binderTypes";
+import type { NavigateFunction } from "react-router-dom";
 
 export type CardSearchFormProps = {
   handleOnChangePrint: (e: React.ChangeEvent<HTMLSelectElement>) => void,
@@ -10,7 +11,7 @@ export type CardSearchFormProps = {
   amount: number 
 }
 
-export type CardSearchAddButtonProps = {
+export type CardDetailsAddButtonProps = {
   binderName: string,
   cardId: string,
   condition: string,
@@ -20,5 +21,12 @@ export type CardSearchAddButtonProps = {
   binders: cardBinderSummary[]
 }
 
-
+export type CardDetailsDeleteButtonProps = {
+  binderName: string,
+  cardId: string,
+  accessToken: string,
+  setMessage: (message:string) => void,
+  binders: cardBinderSummary[],
+  navigate: NavigateFunction
+}
 

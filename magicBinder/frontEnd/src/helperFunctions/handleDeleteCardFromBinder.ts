@@ -4,7 +4,7 @@ export const handleDeleteCardFromBinder = async (
   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   binderName: string,
   cardId: string,
-  accessToken: string
+  accessToken: string,
 ) => {
 
   e.preventDefault();

@@ -1,15 +1,15 @@
-import type { CardSearchAddButtonProps } from "../../types/cardDetailsTypes";
+import type { CardDetailsDeleteButtonProps } from "../../types/cardDetailsTypes";
 import { handleDeleteCardFromBinder } from "../../helperFunctions/handleDeleteCardFromBinder"
 
 export const DeleteCardButton = (
-
   {
     binderName,
     cardId,
-     accessToken,
+    accessToken,
     setMessage,
-    binders
-  }: CardSearchAddButtonProps
+    binders,
+    navigate,
+  }: CardDetailsDeleteButtonProps
 
 ) => {
   return(
@@ -24,7 +24,8 @@ export const DeleteCardButton = (
             if(!message){
               return
             }
-            setMessage(message)
+            setMessage(message);
+            navigate(-1);
           }
         }
         >

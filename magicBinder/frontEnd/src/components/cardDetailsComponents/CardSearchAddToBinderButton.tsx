@@ -1,4 +1,4 @@
-import type { CardSearchAddButtonProps } from "../../types/cardDetailsTypes";
+import type { CardDetailsAddButtonProps } from "../../types/cardDetailsTypes";
 import { handleAddToBinder } from "../../helperFunctions/handleAddToBinder"
 
 export const AddToBinderButton = (
@@ -10,7 +10,7 @@ export const AddToBinderButton = (
     accessToken,
     setMessage,
     binders
-  }: CardSearchAddButtonProps
+  }: CardDetailsAddButtonProps
 ) => {
   return(
     <form action="">

@@ -219,11 +219,10 @@ export const CardDetails = () => {
                     <DeleteCardButton 
                       binderName= {binderName}
                       cardId= {binderCard ? binderCard._id : ""}
-                      condition= {condition}
-                      amount= {amount}
                       accessToken= {accessToken}
                       setMessage= {setMessage}
                       binders= {binders}
+                      navigate= {navigate}
                     />
               }
             </div>
@@ -272,7 +271,7 @@ export const CardDetails = () => {
       <div
         className={`absolute bottom-30 left-[50%] -translate-x-1/2 bg-pitch-black/80 text-amber-50 border-2 rounded-sm px-3 py-1.5 text-lg border-deep-hero-blue/80 duration-300 ease-in-out transition-opacity ${isVisilbe ? "opacity-100" : "opacity-0"}`}
       >
-      {message}
+        {message}
       </div>
     </div>
   )
