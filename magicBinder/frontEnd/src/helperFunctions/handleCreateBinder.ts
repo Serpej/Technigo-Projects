@@ -20,7 +20,7 @@ export const handleCreateBinder = async (
     }
 
     const locationState: BinderNameState =  binderNameState; 
-    navigate("/binder", { state: locationState });
+    navigate("/profilepage", { state: locationState });
     console.log(response);
   } catch (error) {
     console.error("Failed To Add Binder: ", error)

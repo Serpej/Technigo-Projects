@@ -1,22 +1,23 @@
 import { PageBackground } from "./PageBackground";
 import deltaBackground from "../assets/deltaBackground.png"
 import { SearchBar } from "./SearchBar";
+import { Toast } from "./Toast";
 import { useLocation, useNavigate, NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { BinderNameState } from "../types/binderTypes";
 import type { FullUserCard } from "../types/cardTypes";
 import type { CardDetailsState } from "../types/cardTypes"
 import { capitalize } from "../helperFunctions/handleCapitalize";
-import { useEffect } from "react";
 import { useAuthStore } from "../stores/useAuthStore";
-import { handleFetchBinderCards } from "../helperFunctions/handleFetchBinderCards";
+import { useBinderCardsStore } from "../stores/useBinderCardsStore";
 
 export const Binder = () => {
   const location = useLocation();
   const binderObject = location.state as BinderNameState | null;
   const navigate = useNavigate();
   const accesstoken = useAuthStore(state => state.accessToken);
-  const [cards, setCards] = useState<FullUserCard[]>([])
+  const cards = useBinderCardsStore(state => state.cards);
+  const fetchCards = useBinderCardsStore(state => state.fetchCards);
   const [hasFetchedBinder, setHasFetchedBinder] = useState<boolean>(false);
 
   useEffect(() => {
@@ -27,22 +28,20 @@ export const Binder = () => {
         return
       }
       
-      const binderCards = await handleFetchBinderCards(binderObject.binderName, accesstoken);
+      const binderCards = await fetchCards(binderObject.binderName, accesstoken);
 
       if(!binderCards) {
         return 
       }
 
       setHasFetchedBinder(true);
-
-      setCards(binderCards)
     }
 
     if(!hasFetchedBinder){
       fecthBinderCards();
     }
   
-  },[accesstoken, binderObject, hasFetchedBinder])
+  },[accesstoken, binderObject, hasFetchedBinder, fetchCards])
 
   if(!binderObject){
    return null
@@ -146,7 +145,9 @@ export const Binder = () => {
           </div>
         </div>
       </div>
-    
+      <Toast 
+        className = "absolute bottom-30 left-[50%] -translate-x-1/2"
+      />
     </div>
   )
 }

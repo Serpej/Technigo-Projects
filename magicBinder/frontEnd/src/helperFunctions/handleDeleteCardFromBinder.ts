@@ -1,4 +1,5 @@
 import { deleteCardFromBinderResponse } from "../services/deleteCardFromBinderService";
+import { useBinderCardsStore } from "../stores/useBinderCardsStore";
 
 export const handleDeleteCardFromBinder = async (
   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -18,7 +19,7 @@ export const handleDeleteCardFromBinder = async (
     }
 
     console.log(response);
-
+    useBinderCardsStore.getState().removeCard(cardId);
     return response.message;
 
   } catch (error) {

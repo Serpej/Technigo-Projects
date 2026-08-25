@@ -4,9 +4,11 @@ import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useBinderStore } from "../stores/useBinderStore";
+import { useMessageStore } from "../stores/useMessageStore";
 import { CardSearchFrom } from "./cardDetailsComponents/CardSearchFrom"
 import { AddToBinderButton } from "./cardDetailsComponents/CardSearchAddToBinderButton";
 import { DeleteCardButton } from "./cardDetailsComponents/CardSearchDeleteCardButton"
+import { Toast } from "./Toast";
 
 export const CardDetails = () => {
   const navigate = useNavigate();
@@ -16,6 +18,8 @@ export const CardDetails = () => {
   const source = locationState.source;
   const binderCard = locationState.source === "binder" 
     ? locationState.card : "";
+  const setMessage = useMessageStore(state => state.setMessage);
+
 
   const [prints, setPrints] = useState<ScryfallCard[]>([card]);
   const [chosenCardId, setChosenCardId] = useState<string>(card.id);
@@ -25,8 +29,6 @@ export const CardDetails = () => {
   const [binderName, setBinderName] = useState<string>("")
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
   const [hasFetchedCard, sethasFetchedCard] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
-  const [isVisilbe, setIsVisible] = useState<boolean>(false);
 
   const accessToken = useAuthStore((state) => state.accessToken);
   const binders = useBinderStore(state => state.binders);
@@ -83,30 +85,13 @@ export const CardDetails = () => {
         setBinderName(binders[0].name);
       }
     }
-    setDefaultBinderName();
-       
-  },[binders, setBinderName, hasFetchedBinders]);
-
-  useEffect(() => {
-
-    if(message) {
-      const changeVisibility = () => setIsVisible(true);
-      changeVisibility();
-
-      const startFadeOut = setTimeout(() => {
-        setIsVisible(false);
-      }, 2100);
-
-      const clearMessage = setTimeout(() => {
-        setMessage("");
-      }, 2500);
-
-      return () => {
-      clearTimeout(startFadeOut)
-      clearTimeout(clearMessage)};
+    if(binders[0]){
+      setDefaultBinderName();
+    } else {
+      setMessage("You currently don't have any binders.");
     }
-
-  },[message])
+       
+  },[binders, setBinderName, hasFetchedBinders, setMessage]);
 
 
   if(!prints) {
@@ -268,11 +253,9 @@ export const CardDetails = () => {
             </div>
         </div>
       </div>
-      <div
-        className={`absolute bottom-30 left-[50%] -translate-x-1/2 bg-pitch-black/80 text-amber-50 border-2 rounded-sm px-3 py-1.5 text-lg border-deep-hero-blue/80 duration-300 ease-in-out transition-opacity ${isVisilbe ? "opacity-100" : "opacity-0"}`}
-      >
-        {message}
-      </div>
+      <Toast 
+        className = "absolute bottom-30 left-[50%] -translate-x-1/2"
+      />
     </div>
   )
 }
