@@ -4,15 +4,15 @@ import { SearchBar } from "./SearchBar";
 import { capitalize } from "../helperFunctions/handleCapitalize";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useEffect, useState } from "react";
-import { fetchBindersResponse } from "../services/fetchBinders";
 import { NavLink, useLocation } from "react-router-dom";
-import type { cardBinderSummary } from "../types/binderTypes";
+import { useBinderStore } from "../stores/useBinderStore";
 
 
 export const ProfilePage = () => {
   const user = useAuthStore((state) => state.userName);
   const accessToken = useAuthStore((state) => state.accessToken);
-  const [binders, setBinders] = useState<cardBinderSummary[]>([]);
+  const fetchBinders = useBinderStore(state  =>  state.fetchBinders);
+  const binders = useBinderStore(state  =>  state.binders);
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
 
@@ -26,14 +26,12 @@ export const ProfilePage = () => {
       
       try {
         setIsLoading(true);
-        const result = await fetchBindersResponse(accessToken);
+        const result = await fetchBinders(accessToken);
         
-        if(!result || !result.success ) {
+        if(!result) {
           setIsLoading(false);
           return
         }
-
-        setBinders(result.binderObjects);
       }finally {
         setIsLoading(false);
       }
@@ -41,14 +39,14 @@ export const ProfilePage = () => {
     };
 
     fetchData();
-  }, [accessToken]);
+  }, [accessToken, fetchBinders]);
 
   if(typeof user !== "string") {
     return
   }
   const capitalizedName = capitalize(user);
 
-  const renderBinder = ():React.ReactNode => {
+  const renderBinders = ():React.ReactNode => {
     if(isLoading) {
       return <div>...Loading</div>
       
@@ -110,7 +108,7 @@ export const ProfilePage = () => {
             <div
               className="grid col-start-1 row-start-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-6 overflow-auto p-2"
             >
-              {renderBinder()}
+              {renderBinders()}
               <div
                 className="flex justify-center lg:px-4"
               >

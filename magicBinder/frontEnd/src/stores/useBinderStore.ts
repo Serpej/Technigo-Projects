@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { fetchBindersResponse } from "../services/fetchBinders";
-import type { binderStoreType } from "../types/binderTypes";
+import type { binderStoreType, cardBinderSummary } from "../types/binderTypes";
 
 export const useBinderStore = create<binderStoreType>((set) => ({ 
   binders: [],
@@ -25,5 +25,8 @@ export const useBinderStore = create<binderStoreType>((set) => ({
       }
       console.error(error.message);
     }
+  },
+  addBinder: (binder: cardBinderSummary) => {
+    set((state) => ({ binders: [...state.binders, binder] }));
   }
 }))

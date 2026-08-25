@@ -1,6 +1,7 @@
 import type { NavigateFunction } from "react-router-dom";
 import type { BinderNameState } from "../types/binderTypes";
 import { createBinderService } from "../services/createBinderService";
+import { useBinderStore } from "../stores/useBinderStore";
 
 export const handleCreateBinder = async (
   event:React.ChangeEvent<HTMLFormElement>,
@@ -14,6 +15,7 @@ export const handleCreateBinder = async (
   try {
 
     const response = await createBinderService(binderName, userId, accessToken);
+    useBinderStore.getState().addBinder({ name: binderName , _id: response.binderId })
     const binderNameState: BinderNameState = {
       "binderName": binderName,
       "binderId": response.binderId

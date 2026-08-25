@@ -3,6 +3,7 @@ import type { PopulatedScryfallCard } from "./cardTypes";
 export type binderStoreType = {
   binders: cardBinderSummary[],
   fetchBinders: (accessToken: string) =>  Promise<boolean | undefined>,
+  addBinder: (binder: cardBinderSummary) => void,
 }
 
 export type cardBinderResponse = {
