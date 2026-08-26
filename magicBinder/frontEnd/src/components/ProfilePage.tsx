@@ -44,6 +44,7 @@ export const ProfilePage = () => {
   if(typeof user !== "string") {
     return
   }
+
   const capitalizedName = capitalize(user);
 
   const renderBinders = ():React.ReactNode => {
@@ -51,8 +52,11 @@ export const ProfilePage = () => {
       return <div>...Loading</div>
       
     }else if(binders.length === 0 && !isLoading) {
+
       return null
+      
     } else {
+
       return binders.map((binder, index) => 
 
         <div 

@@ -18,8 +18,6 @@ export const CardDetails = () => {
   const source = locationState.source;
   const binderCard = locationState.source === "binder" 
     ? locationState.card : "";
-  const setMessage = useMessageStore(state => state.setMessage);
-
 
   const [prints, setPrints] = useState<ScryfallCard[]>([card]);
   const [chosenCardId, setChosenCardId] = useState<string>(card.id);
@@ -33,6 +31,7 @@ export const CardDetails = () => {
   const accessToken = useAuthStore((state) => state.accessToken);
   const binders = useBinderStore(state => state.binders);
   const fetchBinders = useBinderStore(state => state.fetchBinders);
+  const setMessage = useMessageStore(state => state.setMessage);
 
   useEffect(() => {
 

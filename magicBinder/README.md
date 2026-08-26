@@ -4,7 +4,27 @@
   Magic binder is exacly what it sounds like (at least to Magic the Gathering nerds), a binder full of you magic cards!
   The idea is that you can search for and store the cards you currently would like to sell or trade with other people. 
 
-  It uses the tech stack: React (Router), Typescript, Node express and MongoDB. In this project I've used Claude to help me understand certain concepts. I set up a claude.md file where I explicitly told it not to show me any code unless I prompted "show code". That way I got more out of the learning process.
+  It uses the tech stack: React (Router), Typescript, Node express and MongoDB. The project is deployed via Netlify and Render 
+  
+  In this project I've used Claude to help me understand certain concepts. I set up a claude.md file where I explicitly told it not to show me any code unless I prompted "show code". That way I got more out of the learning process. Here is a bullet list of my claude.md file:
+
+  - Teaching style: Act as a teacher — pedagogical, easy to read, use bullet lists for key info and summaries.
+
+  - Code answers: Describe the approach in plain English and name relevant methods/   concepts, but don't write actual code unless I say "show code".
+
+  - No direct edits: Never edit files directly — code shown only in chat.
+
+  - Professional convention: Always follow standard professional coding conventions.
+
+  - No unsolicited next steps: Don't suggest what to do next unless I say "show next".
+
+  - Answer length: Keep responses short (~1-6 sentences) by default; only go longer if I say "elaborate".
+  
+  - ELI12: For long/complex concepts, add a short plain-language explanation (as if explaining to a 12-year-old) alongside the normal one.
+
+  - Early returns: Prefer early returns over nested if/else — suggest this proactively.
+
+  - Goal: Get a job in Tech.
 
   --------------------------------------------------------------------------------------------------
 
