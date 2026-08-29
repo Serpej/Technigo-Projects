@@ -10,6 +10,7 @@ import type { CardDetailsState } from "../types/cardTypes"
 import { capitalize } from "../helperFunctions/handleCapitalize";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useBinderCardsStore } from "../stores/useBinderCardsStore";
+import { handleDeleteBinder } from "../helperFunctions/handleDeleteBinder";
 
 export const Binder = () => {
   const location = useLocation();
@@ -90,6 +91,12 @@ export const Binder = () => {
                     onClick={() => navigate(-1)}
                   >
                     Back
+                  </button>
+                  <button
+                    className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
+                    onClick={(e) => handleDeleteBinder(e, binderName, accesstoken, navigate)}
+                  >
+                    Delete Binder
                   </button>
                 </div>
                 <h2

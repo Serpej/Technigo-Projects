@@ -18,3 +18,9 @@ export type DeleteCardFromBinder = {
   message: string,
   cardId: string,
 }
+
+export type DeleteBinder = {
+  success: true,
+  message: string,
+  binderName: string
+}

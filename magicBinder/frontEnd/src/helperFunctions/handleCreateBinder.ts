@@ -15,15 +15,20 @@ export const handleCreateBinder = async (
   try {
 
     const response = await createBinderService(binderName, userId, accessToken);
-    useBinderStore.getState().addBinder({ name: binderName , _id: response.binderId })
+
+    useBinderStore.getState().addBinder({ name: binderName , _id: response.binderId });
+
     const binderNameState: BinderNameState = {
       "binderName": binderName,
       "binderId": response.binderId
-    }
+    };
 
     const locationState: BinderNameState =  binderNameState; 
+
     navigate("/profilepage", { state: locationState });
+
     console.log(response);
+    
   } catch (error) {
     console.error("Failed To Add Binder: ", error)
   }
