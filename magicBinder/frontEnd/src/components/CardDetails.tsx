@@ -8,6 +8,7 @@ import { useMessageStore } from "../stores/useMessageStore";
 import { CardSearchFrom } from "./cardDetailsComponents/CardSearchFrom"
 import { AddToBinderButton } from "./cardDetailsComponents/CardSearchAddToBinderButton";
 import { DeleteCardButton } from "./cardDetailsComponents/CardSearchDeleteCardButton"
+import { handleSetBinderImage } from "../helperFunctions/handleSetBinderImage";
 import { Toast } from "./Toast";
 
 export const CardDetails = () => {
@@ -28,10 +29,13 @@ export const CardDetails = () => {
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
   const [hasFetchedCard, sethasFetchedCard] = useState<boolean>(false);
 
-  const accessToken = useAuthStore((state) => state.accessToken);
+  const accessToken = useAuthStore(state => state.accessToken);
   const binders = useBinderStore(state => state.binders);
   const fetchBinders = useBinderStore(state => state.fetchBinders);
   const setMessage = useMessageStore(state => state.setMessage);
+  const binderImage = useBinderStore(state => state.binderImage);
+  const setBinderImage = useBinderStore(state => state.setBinderImage);
+  const updateBinderImage = useBinderStore(state => state.updateBinderImage);
 
   useEffect(() => {
 
@@ -146,115 +150,128 @@ export const CardDetails = () => {
   }
 
   return(
-    <div
-      className="h-full flex items-center justify-center fixed inset-0 bg-black/60"
-      onClick={() => {navigate(-1)}}
-    >
+    <div>
       <div
-        className="lg:grid lg:grid-cols-[1fr_1fr] flex flex-col gap-5 lg:gap-0 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl py-18 lg:px-10  border-2 rounded-sm border-deep-hero-blue w-full max-w-[70vw] max-h-[80vh] overflow-auto relative mx-10"
-        onClick={(e) => {e.stopPropagation()}}
+        className="h-full flex items-center justify-center fixed inset-0 bg-black/60"
+        onClick={() => {navigate(-1)}}
       >
         <div
-          className="flex flex-col items-center min-w-0"
+          className="lg:grid lg:grid-cols-[1fr_1fr] flex flex-col gap-5 lg:gap-0 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl py-18 lg:px-10  border-2 rounded-sm border-deep-hero-blue w-full max-w-[70vw] max-h-[80vh] overflow-auto relative mx-10"
+          onClick={(e) => {e.stopPropagation()}}
         >
-          <button
-            className="absolute top-5 right-5 cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
-            onClick={() => navigate(-1)}
-          >
-            Close
-          </button>
           <div
-            className="flex flex-col h-full w-full items-center"
+            className="flex flex-col items-center min-w-0"
           >
-            <img
-              className="rounded-[4.75%/3.5%] mx-5 sm:mx-0 max-w-[40vh]"
-              src={imageUris.normal}
-              srcSet={`${imageUris.small} 146w, ${imageUris.normal} 488w, ${imageUris.large} 672w`}
-              sizes="40vh"
-              alt={card.name}
-            />
-            <div
-              className="flex justify-center gap-2 mt-4"
+            <button
+              className="absolute top-5 right-5 cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
+              onClick={() => navigate(-1)}
             >
-              { canFlip &&
-                <button
-                  className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
-                  onClick={() => setActiveFace(!activeFace)}
-                >
-                  Flip
-                </button>
-              }
-              { 
-                binderName && 
-                  source === "search" && 
-                    <AddToBinderButton 
-                      binderName= {binderName}
-                      cardId= {card.id}
-                      condition= {condition}
-                      amount= {amount}
-                      accessToken= {accessToken}
-                      setMessage= {setMessage}
-                      binders= {binders}
-                    />
-              }
-              {                
-                binderName && 
-                  source === "binder" &&
-                    <DeleteCardButton 
-                      binderName= {binderName}
-                      cardId= {binderCard ? binderCard._id : ""}
-                      accessToken= {accessToken}
-                      setMessage= {setMessage}
-                      binders= {binders}
-                      navigate= {navigate}
-                    />
-              }
+              Close
+            </button>
+            <div
+              className="flex flex-col h-full w-full items-center"
+            >
+              <img
+                className="rounded-[4.75%/3.5%] mx-5 sm:mx-0 max-w-[40vh]"
+                src={imageUris.normal}
+                srcSet={`${imageUris.small} 146w, ${imageUris.normal} 488w, ${imageUris.large} 672w`}
+                sizes="40vh"
+                alt={card.name}
+              />
+              <div
+                className="flex justify-center gap-2 mt-4"
+              >
+                {
+                  canFlip &&
+                    <button
+                      className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
+                      onClick={() => setActiveFace(!activeFace)}
+                    >
+                      Flip
+                    </button>
+                }
+                {
+                  binderName &&
+                    source === "search" &&
+                      <AddToBinderButton
+                        binderName= {binderName}
+                        cardId= {card.id}
+                        condition= {condition}
+                        amount= {amount}
+                        accessToken= {accessToken}
+                        setMessage= {setMessage}
+                        binders= {binders}
+                      />
+                }
+                {
+                  binderName &&
+                    source === "binder" &&
+                      <DeleteCardButton
+                        binderName= {binderName}
+                        cardId= {binderCard ? binderCard._id : ""}
+                        accessToken= {accessToken}
+                        setMessage= {setMessage}
+                        binders= {binders}
+                        navigate= {navigate}
+                      />
+                }
+                {
+                  binderName &&
+                    source === "binder" &&
+                      <button
+                        className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
+                        onClick={(e) => handleSetBinderImage(e, binderImage, setBinderImage, updateBinderImage, imageUris.art_crop, setMessage, accessToken, binderName)}
+                      >
+                        Set Binder Image
+                      </button>
+                }
+              </div>
             </div>
           </div>
-        </div>
-          <div
-            className="flex flex-col gap-2 p-4 mx-5 lg:m-0 lg:ml-10 bg-baltic-blue/90 border border-deep-hero-blue rounded-sm"
-          >
-            <p
-              className="font-bold text-lg"
-            >{card.name}</p>
-            <p
-              className="font-bold"
-            >{type_line}</p>
-            <div>
+            <div
+              className="flex flex-col gap-2 p-4 mx-5 lg:m-0 lg:ml-10 bg-baltic-blue/90 border border-deep-hero-blue rounded-sm"
+            >
               <p
-                className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
-              >
-                {oracleText}
-              </p>
-            </div>
-            <CardSearchFrom 
-              handleOnChangePrint= {handleOnChangePrint}
-              prints= {prints}
-              binderName= {binderName}
-              handleOnChangeCondition= {handleOnChangeCondition}
-              handleOnChangeAmount= {handleOnChangeAmount}
-              amount= {amount}
-            /> 
-            <div>
-              <a 
-                href={card.purchase_uris.cardmarket}
-                rel="noopener noreferrer"
-                target="_blank"
-                className="underline font-medium"
-              >
-                {hasFetchedCard &&
-                  (fetchedChosenCard.nonfoil 
-                  ? `Price trend: ${fetchedChosenCard.prices.eur}€` 
-                  : `Price trend: ${fetchedChosenCard.prices.eur_foil}€`)
-                }
-              </a>
-            </div>
+                className="font-bold text-lg"
+              >{card.name}</p>
+              <p
+                className="font-bold"
+              >{type_line}</p>
+              <div>
+                <p
+                  className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
+                >
+                  {oracleText}
+                </p>
+              </div>
+              <CardSearchFrom
+                handleOnChangePrint= {handleOnChangePrint}
+                prints= {prints}
+                binderName= {binderName}
+                handleOnChangeCondition= {handleOnChangeCondition}
+                handleOnChangeAmount= {handleOnChangeAmount}
+                amount= {amount}
+              />
+              <div>
+                <a
+                  href={card.purchase_uris.cardmarket}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="underline font-medium"
+                >
+                  {hasFetchedCard &&
+                    (fetchedChosenCard.nonfoil
+                    ? `Price trend: ${fetchedChosenCard.prices.eur}€`
+                    : `Price trend: ${fetchedChosenCard.prices.eur_foil}€`)
+                  }
+                </a>
+              </div>
+          </div>
         </div>
+        <Toast
+          className = "absolute bottom-30 left-[50%] -translate-x-1/2"
+        />
       </div>
-      <Toast 
-        className = "absolute bottom-30 left-[50%] -translate-x-1/2"
-      />
     </div>
   )
 }

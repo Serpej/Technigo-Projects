@@ -1,5 +1,6 @@
 import { PageBackground } from "./PageBackground";
-import deltaBackground from "../assets/deltaBackground.png"
+import deltaBackground from "../assets/deltaBackground.png";
+import  fblthlpTheLost  from "../assets/fblthlpTheLost.jpg";
 import { SearchBar } from "./SearchBar";
 import { capitalize } from "../helperFunctions/handleCapitalize";
 import { useAuthStore } from "../stores/useAuthStore";
@@ -13,6 +14,7 @@ export const ProfilePage = () => {
   const accessToken = useAuthStore((state) => state.accessToken);
   const fetchBinders = useBinderStore(state  =>  state.fetchBinders);
   const binders = useBinderStore(state  =>  state.binders);
+  const binderImage = useBinderStore(state => state.binderImage)
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
 
@@ -39,7 +41,7 @@ export const ProfilePage = () => {
     };
 
     fetchData();
-  }, [accessToken, fetchBinders]);
+  }, [accessToken, fetchBinders, binderImage]);
 
   if(typeof user !== "string") {
     return
@@ -57,7 +59,7 @@ export const ProfilePage = () => {
       
     } else {
 
-      return binders.map((binder, index) => 
+      return binders.map((binder, index) =>
 
         <div 
           className="flex justify-center lg:px-4"
@@ -68,11 +70,21 @@ export const ProfilePage = () => {
             state={{ "binderName": binder.name, "binderId": binder._id }}
             className="flex grow justify-center min-w-0 max-w-52 min-h-0 max-h-52"
           >
-            <button
-              className="flex grow min-w-0 max-w-52 justify-center items-center cursor-pointer bg-bright-purple/50 hover:bg-bright-purple/70 border-2 border-deep-hero-blue/80 shadow-2xl rounded-sm transition delay-80 hover:scale-103 hover:font-medium whitespace-nowrap"
+            <div
+              className="flex justify-center items-center flex-col border-2 border-deep-hero-blue/80 shadow-2xl bg-pitch-black/70 rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap cursor-pointer text-papyrus-white"
             >
-              {binder.name}
-            </button>
+              <div
+                className=""
+              >
+                {binder.name}
+              </div>
+              <img 
+                className="py-4"
+                src={binderImage ? binderImage : fblthlpTheLost} 
+                alt="Users chosen binder image" 
+              />
+
+            </div>
           </NavLink>
         </div>      
       )

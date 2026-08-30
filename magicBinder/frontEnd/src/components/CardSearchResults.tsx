@@ -3,7 +3,7 @@ import { fetchScryfallResponse } from "../services/ScryfallService";
 import { useSearchParams, NavLink, useLocation } from "react-router-dom";
 import oceanFloor from "../assets/oceanFloor.jpg";
 import { PageBackground  } from "./PageBackground";
-import  fblthlpTheLost  from "../assets/fblthlpTheLost.jpg"
+import  fblthlpTheLost  from "../assets/fblthlpTheLost.jpg";
 import { SearchBar } from "./SearchBar";
 import type { ScryfallCard, CardDetailsState, ScryfallSearchResult } from "../types/cardTypes";
 
