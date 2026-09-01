@@ -60,7 +60,7 @@ export const ProfilePage = () => {
     } else {
 
       return binders.map((binder, index) =>
-
+        
         <div 
           className="flex justify-center lg:px-4"
           key={index}
@@ -80,7 +80,7 @@ export const ProfilePage = () => {
               </div>
               <img 
                 className="py-4"
-                src={binderImage ? binderImage : fblthlpTheLost} 
+                src={binder.binderImage ? binder.binderImage : fblthlpTheLost} 
                 alt="Users chosen binder image" 
               />
 

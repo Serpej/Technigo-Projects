@@ -33,7 +33,6 @@ export const CardDetails = () => {
   const binders = useBinderStore(state => state.binders);
   const fetchBinders = useBinderStore(state => state.fetchBinders);
   const setMessage = useMessageStore(state => state.setMessage);
-  const binderImage = useBinderStore(state => state.binderImage);
   const setBinderImage = useBinderStore(state => state.setBinderImage);
   const updateBinderImage = useBinderStore(state => state.updateBinderImage);
 
@@ -220,7 +219,7 @@ export const CardDetails = () => {
                     source === "binder" &&
                       <button
                         className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
-                        onClick={(e) => handleSetBinderImage(e, binderImage, setBinderImage, updateBinderImage, imageUris.art_crop, setMessage, accessToken, binderName)}
+                        onClick={(e) => handleSetBinderImage(e, setBinderImage, updateBinderImage, imageUris.art_crop, setMessage, accessToken, binderName)}
                       >
                         Set Binder Image
                       </button>

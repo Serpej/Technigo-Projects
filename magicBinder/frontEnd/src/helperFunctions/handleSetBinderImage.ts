@@ -1,7 +1,6 @@
 
 export const handleSetBinderImage = (
   e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  binderImage: string,
   setBinderImage: (newBinderImage: string) => void,
   updateBinderImage: (
     binderName: string, 
@@ -19,6 +18,6 @@ export const handleSetBinderImage = (
 
   setBinderImage(image_uri);
 
-  updateBinderImage(binderName, accessToken, binderImage, setMessage);
+  updateBinderImage(binderName, accessToken, image_uri, setMessage);
 
 }

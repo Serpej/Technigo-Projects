@@ -33,17 +33,17 @@ const binderSchema = new Schema<IBinder>({
       default: 1
     }
   }],
-  binderImage: {
-    type: String,
-    validate: {
-      validator: (value: string) => typeof value === "string",
-      message: "binderImage must be a string"
-    }
-  },
-  userId: {
-    type: mongoose.Types.ObjectId,
-    required: true
-  } 
+    binderImage: {
+      type: String,
+      validate: {
+        validator: (value: string) => typeof value === "string",
+        message: "binderImage must be a string"
+      }
+    },
+    userId: {
+      type: mongoose.Types.ObjectId,
+      required: true
+    } 
 });
 
 export const CardBinder = model<IBinder>("cardBinder", binderSchema)

@@ -1,5 +1,7 @@
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
+import type { UpdateBinder } from "../types/responses";
+
 
 export const  updateBinderServiceResponse = async (
   binderName: string,
@@ -33,8 +35,11 @@ try {
       if(!updatedBinder.success) {
         return null
       }
-      
-      return updatedBinder
+
+      const successfullUpdateResults: UpdateBinder = updatedBinder;
+
+      console.log(`${successfullUpdateResults.message}: ${successfullUpdateResults.binderImage}`);
+      return successfullUpdateResults
 
 } catch (error) {
     console.log(error);

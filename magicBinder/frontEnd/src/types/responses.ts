@@ -24,3 +24,9 @@ export type DeleteBinder = {
   message: string,
   binderName: string
 }
+export type UpdateBinder = {
+  success: true,
+  message: string,
+  binderName: string,
+  binderImage: string,
+}

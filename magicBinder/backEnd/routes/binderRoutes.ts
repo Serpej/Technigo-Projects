@@ -42,7 +42,7 @@ binderRouter
       const binders = await CardBinder.find({userId: req.user._id});
 
       const binderObjects = binders.map((binder) => {
-        return { name: binder.name , _id: binder._id }
+        return { name: binder.name, binderImage: binder.binderImage, _id: binder._id }
       })
 
       res.status(200).json({
@@ -90,10 +90,10 @@ binderRouter
       return;
     }
 
-    const { binderName: name, binderImage: image } = req.body;
+    const { binderName: name, newBinderImage: image } = req.body;
 
     try {
-      const updatedBinderName = await CardBinder.findOneAndUpdate({ name: req.params.binderName, userId: req.user._id, binderImage: image}, { $set: { name }}, { returnDocument: 'after' });
+      const updatedBinderName = await CardBinder.findOneAndUpdate({ name: req.params.binderName, userId: req.user._id }, { $set: { name: name, binderImage: image }}, { returnDocument: 'after' });
 
     if(!updatedBinderName) {
       guardResponse(res, "Binder not found.");
@@ -104,6 +104,7 @@ binderRouter
       success: true,
       message: "Binder name updated.",
       binderName: name,
+      binderImage: image,
     })
 
     } catch (error) {

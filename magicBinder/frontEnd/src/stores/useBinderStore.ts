@@ -40,7 +40,7 @@ export const useBinderStore = create<binderStoreType>((set) => ({
     try {
       const response = await updateBinderServiceResponse(binderName, accessToken, newBinderImage);
 
-      if(!response.success) {
+      if(!response) {
         return
       }
 
