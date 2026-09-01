@@ -118,9 +118,9 @@ export const CardDetails = () => {
   const flipableLayouts = ["transform", "modal_dfc", "reversible_card"];
   const canFlip = flipableLayouts.includes(fetchedChosenCard.layout);
 
-  const oracleText = "card_faces" in card
-    ? `${card.card_faces[0].oracle_text} \n\n//\n\n ${card.card_faces[1].oracle_text}`
-    : card.oracle_text;
+  const oracleText = "card_faces" in fetchedChosenCard
+    ? `${fetchedChosenCard.card_faces[0].oracle_text} \n\n//\n\n ${fetchedChosenCard.card_faces[1].oracle_text}`
+    : fetchedChosenCard.oracle_text;
 
   const handleOnChangePrint = (
     e: React.ChangeEvent<HTMLSelectElement>, 
@@ -176,7 +176,7 @@ export const CardDetails = () => {
                 src={imageUris.normal}
                 srcSet={`${imageUris.small} 146w, ${imageUris.normal} 488w, ${imageUris.large} 672w`}
                 sizes="40vh"
-                alt={card.name}
+                alt={fetchedChosenCard.name}
               />
               <div
                 className="flex justify-center gap-2 mt-4"
@@ -195,7 +195,7 @@ export const CardDetails = () => {
                     source === "search" &&
                       <AddToBinderButton
                         binderName= {binderName}
-                        cardId= {card.id}
+                        cardId= {fetchedChosenCard.id}
                         condition= {condition}
                         amount= {amount}
                         accessToken= {accessToken}
@@ -233,7 +233,7 @@ export const CardDetails = () => {
             >
               <p
                 className="font-bold text-lg"
-              >{card.name}</p>
+              >{fetchedChosenCard.name}</p>
               <p
                 className="font-bold"
               >{type_line}</p>
@@ -254,7 +254,7 @@ export const CardDetails = () => {
               />
               <div>
                 <a
-                  href={card.purchase_uris.cardmarket}
+                  href={fetchedChosenCard.purchase_uris.cardmarket}
                   rel="noopener noreferrer"
                   target="_blank"
                   className="underline font-medium"
