@@ -7,7 +7,6 @@ export const DeleteCardButton = (
     cardId,
     accessToken,
     setMessage,
-    binders,
     navigate,
   }: CardDetailsDeleteButtonProps
 
@@ -31,22 +30,6 @@ export const DeleteCardButton = (
         >
           Delete Card(s)
         </button>
-        <select
-          className="font-normal pl-2 ml-2 min-w-0 border rounded-sm p-1 bg-gray-pearl-white border-pitch-black"
-          name="binders" 
-          id="binders"
-        >
-          {binders.map((binder, index) => {
-            return(
-              <option 
-                key={index} 
-                value={binder.name}
-              >
-                {`${binder.name}`}
-              </option>
-            )
-          })}
-        </select>
       </label>
     </form>
   )

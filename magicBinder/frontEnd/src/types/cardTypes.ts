@@ -157,6 +157,7 @@ export type ScryfallCalledState = {
 export type BackendCalledState = {
   "background" : Location,
   "card": FullUserCard,
+  "binderName": string,
   "source": "binder",
 }
 

@@ -17,6 +17,8 @@ export const CardDetails = () => {
   const locationState: CardDetailsState = location.state;
   const card = locationState.card;
   const source = locationState.source;
+  const activeBinder = locationState.source === "binder"
+    ? locationState.binderName : "";
   const binderCard = locationState.source === "binder" 
     ? locationState.card : "";
 
@@ -25,7 +27,7 @@ export const CardDetails = () => {
   const [activeFace, setActiveFace] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(1);
   const [condition, setCondition] = useState<string>("Near Mint");
-  const [binderName, setBinderName] = useState<string>("")
+  const [binderName, setBinderName] = useState<string>(activeBinder);
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
   const [hasFetchedCard, sethasFetchedCard] = useState<boolean>(false);
 
@@ -87,13 +89,15 @@ export const CardDetails = () => {
         setBinderName(binders[0].name);
       }
     }
-    if(binders[0]){
-      setDefaultBinderName();
-    } else {
+
+    if(!binders[0]){
       setMessage("You currently don't have any binders.");
     }
+    if(!binderName && binders[0]) {
+      setDefaultBinderName();
+    }
        
-  },[binders, setBinderName, hasFetchedBinders, setMessage]);
+  },[binders, binderName, setBinderName, hasFetchedBinders, setMessage]);
 
 
   if(!prints) {
