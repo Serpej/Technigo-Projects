@@ -74,12 +74,12 @@ export const ProfilePage = () => {
               className="flex justify-center items-center flex-col border-2 border-deep-hero-blue/80 shadow-2xl bg-pitch-black/70 rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap cursor-pointer text-papyrus-white"
             >
               <div
-                className=""
+                className="pt-2"
               >
                 {binder.name}
               </div>
               <img 
-                className="py-4"
+                className="pt-2"
                 src={binder.binderImage ? binder.binderImage : fblthlpTheLost} 
                 alt="Users chosen binder image" 
               />

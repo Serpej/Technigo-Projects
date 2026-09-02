@@ -13,6 +13,7 @@ export type CardSearchFormProps = {
 
 export type CardDetailsAddButtonProps = {
   binderName: string,
+  setBinderName: (newBinderName: string) => void,
   cardId: string,
   condition: string,
   amount: number,

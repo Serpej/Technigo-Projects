@@ -194,6 +194,7 @@ export const CardDetails = () => {
                     source === "search" &&
                       <AddToBinderButton
                         binderName= {binderName}
+                        setBinderName= {setBinderName}
                         cardId= {fetchedChosenCard.id}
                         condition= {condition}
                         amount= {amount}
