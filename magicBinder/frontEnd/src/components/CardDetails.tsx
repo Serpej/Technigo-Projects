@@ -275,17 +275,17 @@ export const CardDetails = () => {
                 binderCard &&
                   <div>
                     <p
-                      className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
+                      className="px-2 py-1 mb-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
                     >
                       {card.set_name}
                     </p>
                                       <p
-                      className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
+                      className="px-2 py-1 mb-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
                     >
                       {card.condition}
                     </p>
                     <p
-                      className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
+                      className="px-2 py-1 mb-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
                     >
                       {card.amount}
                     </p>

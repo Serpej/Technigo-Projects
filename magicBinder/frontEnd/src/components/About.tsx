@@ -1,15 +1,28 @@
+import { PageBackground } from "./PageBackground"
+
 export const About = () => {
  return(
-  <div
-    className="bg-sky-soap"
-  >
     <div
-    className=" col-start-1 row-start-1 place-self-center"
+      className="h-full grid grid-rows-[100%]"
     >
-      <h1 className=" font-bold text-4xl "> ADD</h1>
-      <h1 className=" font-bold text-4xl">SEARCH</h1>
-      <h1 className=" font-bold text-4xl"> TRADE</h1>
+      <PageBackground
+        className="grid col-start-1 row-start-1"
+      />
+
+      <div
+        className= "grid col-start-1 row-start-1 mx-5"
+      >
+        <section
+          className="flex justify-center items-center"
+        >
+          <div
+            className="flex max-w-md w-full flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue"
+          >
+            Here is where the About text is going to be
+          
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
  )
 }
