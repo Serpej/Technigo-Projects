@@ -4,7 +4,7 @@
   Magic binder is exacly what it sounds like (at least to Magic the Gathering nerds), a binder full of you magic cards!
   The idea is that you can search for and store the cards you currently would like to sell or trade with other people. 
 
-  It uses the tech stack: React (Router), Typescript, Node express and MongoDB. The project is deployed via Netlify and Render 
+  It uses the tech stack: React (Router), Typescript, Node express and MongoDB. The project is deployed via Netlify and Render.
   
   In this project I've used Claude to help me understand certain concepts. I set up a claude.md file where I explicitly told it not to show me any code unless I prompted "show code". That way I got more out of the learning process. Here is a bullet list of my claude.md file:
 
@@ -38,9 +38,7 @@
 
   5. Now I needed to connect the ScryfallAPI to my search engine and make a popup module for cardDetails. This was a new concept for me and it took me a while to get it right using React Router (passing a background and a location in location state and using them conditionally). This step is important in the process, since I need something to add to the user's binder later.
 
-  6. 
-
-  Due to a deadline I have cut some importany parts of this app. If I had more time I would create a messaging feature, where two users could communicate interest for another's cards. Right now this is meant for a smaller community where you already have other ways of contacting eachother.
+  6. Due to a deadline I have cut some importany parts of this app. If I had more time I would create a messaging feature, where two users could communicate interest for another's cards. Right now this is meant for a smaller community where you already have other ways of contacting eachother.
 
 ## View it live (cold server)
 [NETLIFY LINK](https://magicbinder.netlify.app/)
