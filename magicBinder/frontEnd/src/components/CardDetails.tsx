@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import type { CardDetailsState, ScryfallCard } from "../types/cardTypes";
+import type {CardDetailsState, ScryfallCard, FullUserCard } from "../types/cardTypes";
 import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
 import { useAuthStore } from "../stores/useAuthStore";
@@ -19,8 +19,17 @@ export const CardDetails = () => {
   const source = locationState.source;
   const activeBinder = locationState.source === "binder"
     ? locationState.binderName : "";
-  const binderCard = locationState.source === "binder" 
-    ? locationState.card : "";
+
+  const isBinderCard  = (
+    card: FullUserCard | ScryfallCard,
+    source: "binder" | "search"
+  ): card is FullUserCard => {
+    if(source !== "binder") {
+     return false
+    }
+    return true
+  }
+  const binderCard = isBinderCard(card, source);
 
   const [prints, setPrints] = useState<ScryfallCard[]>([card]);
   const [chosenCardId, setChosenCardId] = useState<string>(card.id);
@@ -79,7 +88,6 @@ export const CardDetails = () => {
     if(!hasFetchedBinders) {
       getBindersFromGlobalState();
     }
-
   },[accessToken, fetchBinders, hasFetchedBinders])
 
   useEffect(() => {
@@ -195,39 +203,40 @@ export const CardDetails = () => {
                 }
                 {
                   binderName &&
-                    source === "search" &&
-                      <AddToBinderButton
-                        binderName= {binderName}
-                        setBinderName= {setBinderName}
-                        cardId= {fetchedChosenCard.id}
-                        condition= {condition}
-                        amount= {amount}
-                        accessToken= {accessToken}
-                        setMessage= {setMessage}
-                        binders= {binders}
-                      />
+                  source === "search" &&
+                    <AddToBinderButton
+                      binderName= {binderName}
+                      setBinderName= {setBinderName}
+                      cardId= {fetchedChosenCard.id}
+                      condition= {condition}
+                      amount= {amount}
+                      accessToken= {accessToken}
+                      setMessage= {setMessage}
+                      binders= {binders}
+                    />
                 }
                 {
                   binderName &&
-                    source === "binder" &&
-                      <DeleteCardButton
-                        binderName= {binderName}
-                        cardId= {binderCard ? binderCard._id : ""}
-                        accessToken= {accessToken}
-                        setMessage= {setMessage}
-                        binders= {binders}
-                        navigate= {navigate}
-                      />
+                  source === "binder" &&
+                  binderCard &&
+                    <DeleteCardButton
+                      binderName= {binderName}
+                      cardId= {card._id}
+                      accessToken= {accessToken}
+                      setMessage= {setMessage}
+                      binders= {binders}
+                      navigate= {navigate}
+                    />
                 }
                 {
                   binderName &&
-                    source === "binder" &&
-                      <button
-                        className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
-                        onClick={(e) => handleSetBinderImage(e, setBinderImage, updateBinderImage, imageUris.art_crop, setMessage, accessToken, binderName)}
-                      >
-                        Set Binder Image
-                      </button>
+                  source === "binder" &&
+                    <button
+                      className="cursor-pointer bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 rounded-sm transition delay-80 hover:scale-105"
+                      onClick={(e) => handleSetBinderImage(e, setBinderImage, updateBinderImage, imageUris.art_crop, setMessage, accessToken, binderName)}
+                    >
+                      Set Binder Image
+                    </button>
                 }
               </div>
             </div>
@@ -248,14 +257,40 @@ export const CardDetails = () => {
                   {oracleText}
                 </p>
               </div>
-              <CardSearchFrom
-                handleOnChangePrint= {handleOnChangePrint}
-                prints= {prints}
-                binderName= {binderName}
-                handleOnChangeCondition= {handleOnChangeCondition}
-                handleOnChangeAmount= {handleOnChangeAmount}
-                amount= {amount}
-              />
+              { 
+                binderName &&
+                source === "search" &&
+                  <CardSearchFrom
+                    handleOnChangePrint= {handleOnChangePrint}
+                    prints= {prints}
+                    binderName= {binderName}
+                    handleOnChangeCondition= {handleOnChangeCondition}
+                    handleOnChangeAmount= {handleOnChangeAmount}
+                    amount= {amount}
+                  />
+              }
+              {
+                binderName && 
+                source === "binder" &&
+                binderCard &&
+                  <div>
+                    <p
+                      className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
+                    >
+                      {card.set_name}
+                    </p>
+                                      <p
+                      className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
+                    >
+                      {card.condition}
+                    </p>
+                    <p
+                      className="p-2 bg-gray-pearl-white border-pitch-black border rounded-sm whitespace-pre-line"
+                    >
+                      {card.amount}
+                    </p>
+                  </div>
+              }
               <div>
                 <a
                   href={fetchedChosenCard.purchase_uris.cardmarket}
