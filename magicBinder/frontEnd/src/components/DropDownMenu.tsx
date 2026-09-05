@@ -83,16 +83,6 @@ export const DropDownMenu = () => {
               About
             </NavLink>
           </li>
-          <li>
-            <NavLink 
-              to="/contact"
-              className={({ isActive }) => isActive 
-                ? "underline font-bold" 
-                : ""
-              }>
-              Contact
-            </NavLink>
-          </li>
         </ul>
 
     </div>
