@@ -68,18 +68,18 @@ export const ProfilePage = () => {
           <NavLink
             to="/binder"
             state={{ "binderName": binder.name, "binderId": binder._id }}
-            className="flex grow justify-center min-w-0 max-w-52 min-h-0 max-h-52"
+            className="flex items-start justify-center min-w-0 max-w-52 min-h-0 max-h-52"
           >
             <div
-              className="flex justify-center items-center flex-col border-2 border-deep-hero-blue/80 shadow-2xl bg-pitch-black/70 rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap cursor-pointer text-papyrus-white"
+              className=" relative flex justify-end items-center flex-col border-2 border-deep-hero-blue/80 shadow-2xl bg-pitch-black rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap cursor-pointer text-papyrus-white overflow-hidden h-52 min-w-0 max-w-52"
             >
               <div
-                className="pt-2"
+                className="absolute top-0 flex justify-center bg-pitch-black w-full pt-3 pb-6"
               >
                 {binder.name}
               </div>
               <img 
-                className="pt-2"
+                className="pt-2 object-cover"
                 src={binder.binderImage ? binder.binderImage : fblthlpTheLost} 
                 alt="Users chosen binder image" 
               />
@@ -90,7 +90,7 @@ export const ProfilePage = () => {
       )
     }
   }
-
+  
   return(
     <div
       className="grid grid-rows-[1fr] h-full"

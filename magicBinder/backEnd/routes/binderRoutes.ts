@@ -16,7 +16,7 @@ binderRouter
     }
     try {
       const binderName = req.body.binderName;
-      const binder = new CardBinder({ name: binderName, userId: req.user._id, binderImage: "" })
+      const binder = new CardBinder({ name: binderName, userId: req.user._id, binderImage: "", userName: req.user.name })
       await binder.save();
 
       res.status(201).json({
@@ -39,10 +39,15 @@ binderRouter
     }
 
     try {
-      const binders = await CardBinder.find({userId: req.user._id});
+      const binders = await CardBinder.find({userId: req.user._id})
 
       const binderObjects = binders.map((binder) => {
-        return { name: binder.name, binderImage: binder.binderImage, _id: binder._id }
+        return { 
+          name: binder.name,
+          binderImage: binder.binderImage,
+          _id: binder._id,
+          userName: binder.userName 
+        }
       })
 
       res.status(200).json({

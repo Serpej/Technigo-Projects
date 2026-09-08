@@ -9,7 +9,8 @@ export type  IBinder = {
     amount: number,
   }[],
   "binderImage": string,
-  "userId": mongoose.Types.ObjectId
+  "userId": mongoose.Types.ObjectId,
+  "userName": string
 };
 
 const binderSchema = new Schema<IBinder>({
@@ -43,7 +44,11 @@ const binderSchema = new Schema<IBinder>({
     userId: {
       type: mongoose.Types.ObjectId,
       required: true
-    } 
+    },
+    userName: {
+      type: String,
+      required: true,
+    }
 });
 
 export const CardBinder = model<IBinder>("cardBinder", binderSchema)

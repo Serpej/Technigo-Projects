@@ -30,7 +30,8 @@ export type cardBinderResponse = {
 export type cardBinderSummary = {
   "name": string,
   "_id": string,
-  "binderImage": string
+  "binderImage": string,
+  "userName": string
 }
 
 export type cardBinderSearchSuccessfull = {

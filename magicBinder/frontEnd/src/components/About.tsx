@@ -33,6 +33,11 @@ export const About = () => {
               >
                 React (Router), Typescript, Node express and MongoDB. The project is deployed via Netlify and Render.
               </p>
+              <a 
+                className="underline text-xl text-center text-papyrus-white"
+                href="https://github.com/Serpej/Technigo-Projects/tree/main/magicBinder">
+                Check out the code here.
+              </a> 
 
           
           </div>
