@@ -2,6 +2,7 @@ import { Header } from "./components/Header"
 import data from "./data.json"
 import { Project } from "./components/Project";
 import { useState } from "react";
+import { MailToButton } from "./components/MailToButton";
 import profileImg from "./assets/jesperIKvadrat.jpeg";
 
 
@@ -51,7 +52,11 @@ export const App = () => {
           <img className="profileImg" src={profileImg} alt="A picture of Jesper" />
           <h3>Jesper Hagerman Borgström</h3>
           <h3>+46(0)76 26 25 922</h3>
-          <h3>Jehag@live.se</h3>
+          <MailToButton
+            className="mailButton"
+            mailTo="mailto:jehag@live.se"
+            label="Jehag@live.se"
+          />
         </div>
       </div>
     </div>);

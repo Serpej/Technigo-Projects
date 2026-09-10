@@ -158,6 +158,11 @@ body {
   max-width: 125px;
 }
 
+.mailButton {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 /* Images */
 
 .project > a {
