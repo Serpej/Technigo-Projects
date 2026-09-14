@@ -40,7 +40,8 @@ export const cardBaseSchema = new Schema<ICard> ({
   },
   name: {
     type: String,
-    required: true
+    required: true,
+    index: true
   },
   type_line: {
     type: String,

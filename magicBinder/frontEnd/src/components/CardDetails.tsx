@@ -53,7 +53,7 @@ export const CardDetails = () => {
       return
     }
 
-    const fetchCardData = async () => {
+    const fetchCardPrintData = async () => {
 
       const cardPrints = await fetchCardPrint(card.prints_search_uri);
 
@@ -66,7 +66,7 @@ export const CardDetails = () => {
       sethasFetchedCard(true);
     }
 
-    fetchCardData();
+    fetchCardPrintData();
 
   },[card])
 
@@ -88,6 +88,7 @@ export const CardDetails = () => {
     if(!hasFetchedBinders) {
       getBindersFromGlobalState();
     }
+
   },[accessToken, fetchBinders, hasFetchedBinders])
 
   useEffect(() => {
