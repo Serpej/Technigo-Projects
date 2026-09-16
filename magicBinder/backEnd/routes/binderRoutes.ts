@@ -3,6 +3,7 @@ import { CardBinder } from "../models/Binder";
 import { Card } from "../models/Card";
 import { authenticateUser } from "../middleware/authenticateUser";
 import { guardResponse, serverError, requestNotFound, badRequest } from "../utils/responses";
+import { escapedRegex } from "../helperFunctions/escapeRegex";
 
 export const binderRouter = express.Router();
 
@@ -87,8 +88,8 @@ binderRouter
       serverError(res, "Server error.", error);
     }
   })
-  .get("/:cardName", authenticateUser)
-  .get("/:cardName", async (req, res) => {
+  .get("/otherUsers/:cardName", authenticateUser)
+  .get("/otherUsers/:cardName", async (req, res) => {
 
     if(!req.params.cardName || !req.user || !req.user._id) {
       guardResponse(res, "Bad request.");
@@ -96,9 +97,11 @@ binderRouter
     }
     
     const cardName = req.params.cardName;
+    const CardNameRegex = escapedRegex(cardName);
 
     try {
-      const arrayOfCardDocuments = await Card.find({ name: cardName });
+
+      const arrayOfCardDocuments = await Card.find({ name: CardNameRegex });
 
       if(arrayOfCardDocuments.length === 0) {
         res.status(200).json({
@@ -108,7 +111,7 @@ binderRouter
       }
 
       const arrayOfCardIds = arrayOfCardDocuments.map((document) => {
-        return document.id;
+        return document._id;
       })
 
       const bindersWithCard = await CardBinder.find({ "cards.cardId": { $in: arrayOfCardIds }, userId:{ $ne: req.user._id } });
