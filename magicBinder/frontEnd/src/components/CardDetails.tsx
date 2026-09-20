@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import type {CardDetailsState, ScryfallCard, FullUserCard } from "../types/cardTypes";
+import type { CardDetailsState, ScryfallCard, FullUserCard } from "../types/cardTypes";
+import type { OtherUsersCards } from "../types/responses";
 import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
 import { useAuthStore } from "../stores/useAuthStore";
@@ -10,6 +11,7 @@ import { AddToBinderButton } from "./cardDetailsComponents/CardSearchAddToBinder
 import { DeleteCardButton } from "./cardDetailsComponents/CardSearchDeleteCardButton"
 import { handleSetBinderImage } from "../helperFunctions/handleSetBinderImage";
 import { Toast } from "./Toast";
+import { handleGetOtherUsersCards } from "../helperFunctions/handleGetOtherUsersCards";
 
 export const CardDetails = () => {
   const navigate = useNavigate();
@@ -39,6 +41,7 @@ export const CardDetails = () => {
   const [binderName, setBinderName] = useState<string>(activeBinder);
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
   const [hasFetchedCard, sethasFetchedCard] = useState<boolean>(false);
+  const [otherUsersCards, setOtherUsersCards] = useState<OtherUsersCards[]>([]);
 
   const accessToken = useAuthStore(state => state.accessToken);
   const binders = useBinderStore(state => state.binders);
@@ -107,6 +110,25 @@ export const CardDetails = () => {
     }
        
   },[binders, binderName, setBinderName, hasFetchedBinders, setMessage]);
+
+  useEffect(() => {
+    if(!card) {
+      return
+    }
+    const otherUsersCards = async () => {
+    
+      const getCards = await handleGetOtherUsersCards(card.name)
+      
+      if(!getCards) {
+        return null
+      }
+
+      setOtherUsersCards(getCards)
+
+    };
+
+    otherUsersCards();
+  });
 
 
   if(!prints) {
@@ -305,6 +327,21 @@ export const CardDetails = () => {
                     : `Price trend: ${fetchedChosenCard.prices.eur_foil}€`)
                   }
                 </a>
+              </div>
+              <div>
+                <ul>
+                  {
+                    otherUsersCards && otherUsersCards.map((object) => {
+                      const binder = object.binderName;
+                      const user = object.userName;
+                      return (
+                        <li>
+                          {`${binder}(${user})`}
+                        </li>         
+                      )
+                    })
+                  }
+                </ul>
               </div>
           </div>
         </div>

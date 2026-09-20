@@ -30,3 +30,8 @@ export type UpdateBinder = {
   binderName: string,
   binderImage: string,
 }
+
+export type OtherUsersCards = {
+  userName: string,
+  binderName: string
+}
