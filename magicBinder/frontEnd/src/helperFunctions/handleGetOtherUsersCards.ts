@@ -6,11 +6,13 @@ export const handleGetOtherUsersCards = async (
 ): Promise<OtherUsersCards[] | null> => {
 
   const encodedCardName = encodeURIComponent(cardName);
-  const result = await fetchOtherUsersCards(encodedCardName);
+  const result = await fetchOtherUsersCards(encodedCardName) as { arrayOfuserNameWithBinders: OtherUsersCards[] } | undefined;
 
   if(!result) {
     return null
   }
 
-  return result
+  const { arrayOfuserNameWithBinders } = result;
+
+  return arrayOfuserNameWithBinders
 }

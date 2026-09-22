@@ -108,11 +108,11 @@ binderRouter
           message: "No matches found."   
         });
         return
-      }
+      };
 
       const arrayOfCardIds = arrayOfCardDocuments.map((document) => {
         return document._id;
-      })
+      });
 
       const bindersWithCard = await CardBinder.find({ "cards.cardId": { $in: arrayOfCardIds }, userId:{ $ne: req.user._id } });
 
@@ -121,11 +121,11 @@ binderRouter
           userName: binder.userName,
           binderName: binder.name
         }
-      })
+      });
 
       res.status(200).json({
         arrayOfuserNameWithBinders
-      })
+      });
 
     } catch (error) {
       serverError(res, "Server error.", error);

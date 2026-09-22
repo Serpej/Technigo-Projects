@@ -19,7 +19,8 @@ export const authenticateUser = async (
 
   if (!user) {
     res.status(401).json({
-      loggedOut: true 
+      loggedOut: true,
+      message: "Logged Out"
     });
     return;
   }

@@ -125,7 +125,7 @@ export const CardDetails = () => {
         return null
       }
 
-      setOtherUsersCards(getCards)
+      setOtherUsersCards(getCards);
 
     };
 
