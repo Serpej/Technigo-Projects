@@ -117,7 +117,9 @@ export const CardDetails = () => {
     }
     const otherUsersCards = async () => {
     
-      const getCards = await handleGetOtherUsersCards(card.name)
+      const getCards = await handleGetOtherUsersCards(card.name);
+
+      console.log(getCards);
       
       if(!getCards) {
         return null
@@ -128,7 +130,7 @@ export const CardDetails = () => {
     };
 
     otherUsersCards();
-  });
+  },[card]);
 
 
   if(!prints) {
@@ -331,11 +333,14 @@ export const CardDetails = () => {
               <div>
                 <ul>
                   {
-                    otherUsersCards && otherUsersCards.map((object) => {
+                    otherUsersCards && otherUsersCards.map((object, index) => {
                       const binder = object.binderName;
                       const user = object.userName;
                       return (
-                        <li>
+                        <li
+                          className="underline font-medium"
+                          key={index}
+                        >
                           {`${binder}(${user})`}
                         </li>         
                       )
