@@ -33,5 +33,6 @@ export type UpdateBinder = {
 
 export type OtherUsersCards = {
   userName: string,
+  _id: string,
   binderName: string
 }

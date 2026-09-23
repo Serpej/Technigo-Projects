@@ -310,7 +310,7 @@ const doubleFacedExtra = new Schema<IDoubleFacedExtra>({
   }
 })
 
-export const Card = model<ICard>("card", cardBaseSchema);
+export const Card = model<ICard>("Card", cardBaseSchema);
 
 export const SplitFacedCard = Card.discriminator("SplitFacedCard", splitFacedExtra);
 

@@ -119,6 +119,7 @@ binderRouter
       const arrayOfuserNameWithBinders = bindersWithCard.map((binder) => {
         return {
           userName: binder.userName,
+          _id: binder._id,
           binderName: binder.name
         }
       });

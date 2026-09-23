@@ -44,6 +44,14 @@ export const Binder = () => {
   
   },[accesstoken, binderObject, hasFetchedBinder, fetchCards])
 
+  useEffect(() => {
+
+    const resetFetch = () => setHasFetchedBinder(false);
+
+    resetFetch();
+    
+  },[binderObject])
+
   if(!binderObject){
    return null
   }

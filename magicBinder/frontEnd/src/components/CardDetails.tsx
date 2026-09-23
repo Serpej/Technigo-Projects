@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, NavLink } from "react-router-dom";
 import type { CardDetailsState, ScryfallCard, FullUserCard } from "../types/cardTypes";
 import type { OtherUsersCards } from "../types/responses";
 import { fetchCardPrint } from "../services/fetchCardPrint";
@@ -337,11 +337,15 @@ export const CardDetails = () => {
                         const binder = object.binderName;
                         const user = object.userName;
                         return (
-                          <li
-                            key={index}
-                          >
-                            {`${binder} ( ${user} )`}
-                          </li>         
+                          <li>
+                            <NavLink
+                              to={"/binder"}
+                              state={{ "binderName": object.binderName, "binderId": object._id }}
+                              key={index}
+                            >
+                              {`${binder} ( ${user} )`}
+                            </NavLink>
+                          </li>        
                         )
                       })
                     }

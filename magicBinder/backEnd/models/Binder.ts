@@ -21,7 +21,7 @@ const binderSchema = new Schema<IBinder>({
   cards: [{
     cardId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "card",
+      ref: "Card",
       required: true,
     },
     condition: {
@@ -42,7 +42,8 @@ const binderSchema = new Schema<IBinder>({
       }
     },
     userId: {
-      type: mongoose.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true
     },
     userName: {
