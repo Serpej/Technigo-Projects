@@ -118,8 +118,6 @@ export const CardDetails = () => {
     const otherUsersCards = async () => {
     
       const getCards = await handleGetOtherUsersCards(card.name);
-
-      console.log(getCards);
       
       if(!getCards) {
         return null
@@ -316,6 +314,36 @@ export const CardDetails = () => {
                     </p>
                   </div>
               }
+              {
+                otherUsersCards &&
+                <p
+                  className="font-bold"
+                >
+                  Other Users Cards
+                </p>
+              }
+              {
+                otherUsersCards &&
+                <div>
+                  <ul
+                    className="px-2 py-1 mb-2 bg-bright-purple/60 border-pitch-black border rounded-sm whitespace-pre-line underline"
+                  >
+                    {
+                      otherUsersCards.map((object, index) => {
+                        const binder = object.binderName;
+                        const user = object.userName;
+                        return (
+                          <li
+                            key={index}
+                          >
+                            {`${binder} ( ${user} )`}
+                          </li>         
+                        )
+                      })
+                    }
+                  </ul>
+                </div>
+              }
               <div>
                 <a
                   href={fetchedChosenCard.purchase_uris.cardmarket}
@@ -329,24 +357,6 @@ export const CardDetails = () => {
                     : `Price trend: ${fetchedChosenCard.prices.eur_foil}€`)
                   }
                 </a>
-              </div>
-              <div>
-                <ul>
-                  {
-                    otherUsersCards && otherUsersCards.map((object, index) => {
-                      const binder = object.binderName;
-                      const user = object.userName;
-                      return (
-                        <li
-                          className="underline font-medium"
-                          key={index}
-                        >
-                          {`${binder}(${user})`}
-                        </li>         
-                      )
-                    })
-                  }
-                </ul>
               </div>
           </div>
         </div>
