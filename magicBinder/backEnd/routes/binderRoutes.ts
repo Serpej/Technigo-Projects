@@ -88,8 +88,8 @@ binderRouter
       serverError(res, "Server error.", error);
     }
   })
-  .get("/otherUsers/:cardName", authenticateUser)
-  .get("/otherUsers/:cardName", async (req, res) => {
+  .get("/otherUsers/cards/:cardName", authenticateUser)
+  .get("/otherUsers/cards/:cardName", async (req, res) => {
 
     if(!req.params.cardName || !req.user || !req.user._id) {
       guardResponse(res, "Bad request.");

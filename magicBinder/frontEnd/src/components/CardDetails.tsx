@@ -112,13 +112,17 @@ export const CardDetails = () => {
   },[binders, binderName, setBinderName, hasFetchedBinders, setMessage]);
 
   useEffect(() => {
+
     if(!card) {
       return
     }
+
     const otherUsersCards = async () => {
     
+      setOtherUsersCards([]);
+    
       const getCards = await handleGetOtherUsersCards(card.name);
-      
+    
       if(!getCards) {
         return null
       }
@@ -315,7 +319,7 @@ export const CardDetails = () => {
                   </div>
               }
               {
-                otherUsersCards &&
+                otherUsersCards.length > 0 &&
                 <p
                   className="font-bold"
                 >
@@ -323,7 +327,7 @@ export const CardDetails = () => {
                 </p>
               }
               {
-                otherUsersCards &&
+                otherUsersCards.length > 0 &&
                 <div>
                   <ul
                     className="px-2 py-1 mb-2 bg-bright-purple/60 border-pitch-black border rounded-sm whitespace-pre-line underline"
