@@ -1,4 +1,4 @@
-import { fetchOtherUsersCards } from "../services/fetchOtherusersCardsService";
+import { fetchOtherUsersCards } from "../services/fetchOtherUsersCardsService";
 import type { OtherUsersCards } from "../types/responses";
 
 export const handleGetOtherUsersCards = async (

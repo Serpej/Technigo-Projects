@@ -88,6 +88,36 @@ binderRouter
       serverError(res, "Server error.", error);
     }
   })
+  .get("/otherUsers/:binderId", authenticateUser)
+  .get("/otherUsers/:binderId", async (req, res) => {
+
+    if (!req.user || !req.user._id) {
+      guardResponse(res, "Bad request.");
+      return
+    }
+
+    try {
+
+      const binderId = req.params.binderId;
+
+      const binder = await CardBinder.findById({
+        _id: binderId  
+      }).populate("cards.cardId");
+
+      if(!binder) {
+        guardResponse(res, "Binder not found.");
+        return;
+      }
+
+      res.status(200).json({
+        success: true,
+        binder: binder
+      });
+
+    } catch (error) {
+      serverError(res, "Server error.", error);
+    }
+  })
   .get("/otherUsers/cards/:cardName", authenticateUser)
   .get("/otherUsers/cards/:cardName", async (req, res) => {
 

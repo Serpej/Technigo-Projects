@@ -28,6 +28,10 @@ export const Binder = () => {
       if(!binderObject) {
         return
       }
+
+      if("binderId" in binderObject) {
+
+      }
       
       const binderCards = await fetchCards(binderObject.binderName, accesstoken);
 
