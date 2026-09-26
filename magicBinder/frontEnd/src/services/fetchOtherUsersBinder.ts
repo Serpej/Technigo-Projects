@@ -29,9 +29,11 @@ export const fetchOtherUsersBindersResponse = async (
     return result
 
   } catch (error) {
+
     if(!(error instanceof Error)) {
       return
     }
     console.error(error.message);
+    
   }
 }

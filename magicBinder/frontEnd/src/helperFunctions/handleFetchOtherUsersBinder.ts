@@ -14,6 +14,11 @@ export const handleFetchOtherUserBinder = async (
     }
     return result
   } catch (error) {
+
+    if(!(error instanceof Error)) {
+      return
+    }
+    console.error(error.message);
     
   }
 }
