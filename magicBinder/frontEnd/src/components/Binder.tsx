@@ -11,6 +11,7 @@ import { capitalize } from "../helperFunctions/handleCapitalize";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useBinderCardsStore } from "../stores/useBinderCardsStore";
 import { handleDeleteBinder } from "../helperFunctions/handleDeleteBinder";
+import  { handleFetchOtherUserBinder } from "../helperFunctions/handleFetchOtherUsersBinder";
 
 export const Binder = () => {
   const location = useLocation();
@@ -24,16 +25,14 @@ export const Binder = () => {
   useEffect(() => {
 
     const fecthBinderCards = async () => {
-      
+
       if(!binderObject) {
-        return
+        return 
       }
 
-      if("binderId" in binderObject) {
+      const isOtherUsersBinder = binderObject.source === "otherUser";
 
-      }
-      
-      const binderCards = await fetchCards(binderObject.binderName, accesstoken);
+      const binderCards = isOtherUsersBinder ? await handleFetchOtherUserBinder(binderObject.binderId, accesstoken) : await fetchCards(binderObject.binderName, accesstoken);
 
       if(!binderCards) {
         return 
@@ -50,7 +49,9 @@ export const Binder = () => {
 
   useEffect(() => {
 
-    const resetFetch = () => setHasFetchedBinder(false);
+    const resetFetch = () => {  
+      setHasFetchedBinder(false);
+    };
 
     resetFetch();
     

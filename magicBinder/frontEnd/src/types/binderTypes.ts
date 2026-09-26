@@ -55,4 +55,5 @@ export type cardBinder = cardBinderSummary & {
 export type BinderNameState = {
     "binderName": string,
     "binderId": string,
+    "source": "own" | "otherUser"
 }
