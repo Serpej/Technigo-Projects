@@ -20,7 +20,7 @@ export const ProfilePage = () => {
 
   const navigationState = {
     background: location
-  }
+  };
 
   useEffect(() => {
 
@@ -67,7 +67,7 @@ export const ProfilePage = () => {
         >
           <NavLink
             to="/binder"
-            state={{ "binderName": binder.name, "binderId": binder._id }}
+            state={{ "binderName": binder.name, "binderId": binder._id, "source": "own" }}
             className="flex items-start justify-center min-w-0 max-w-52 min-h-0 max-h-52"
           >
             <div
@@ -81,7 +81,7 @@ export const ProfilePage = () => {
               <img 
                 className="pt-2 object-cover"
                 src={binder.binderImage ? binder.binderImage : fblthlpTheLost} 
-                alt="Users chosen binder image" 
+                alt="Users chosen binder image"
               />
 
             </div>

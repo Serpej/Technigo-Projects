@@ -21,6 +21,7 @@ export const Binder = () => {
   const cards = useBinderCardsStore(state => state.cards);
   const fetchCards = useBinderCardsStore(state => state.fetchCards);
   const [hasFetchedBinder, setHasFetchedBinder] = useState<boolean>(false);
+  const [otherUsersBinder, setOtherUsersBinder] = useState<boolean>(false);
 
   useEffect(() => {
 
@@ -32,11 +33,17 @@ export const Binder = () => {
 
       const isOtherUsersBinder = binderObject.source === "otherUser";
 
+      if(isOtherUsersBinder){
+        setOtherUsersBinder(true);
+      }
+
       const binderCards = isOtherUsersBinder ? await handleFetchOtherUserBinder(binderObject.binderId, accesstoken) : await fetchCards(binderObject.binderName, accesstoken);
 
       if(!binderCards) {
         return 
       }
+      
+      console.log(binderObject.source);
 
       setHasFetchedBinder(true);
     }
@@ -105,12 +112,12 @@ export const Binder = () => {
                   >
                     Back
                   </button>
-                  <button
+                  {otherUsersBinder && <button
                     className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
                     onClick={(e) => handleDeleteBinder(e, binderName, accesstoken, navigate)}
                   >
                     Delete Binder
-                  </button>
+                  </button>}
                 </div>
                 <h2
                   className="text-2xl sm:text-4xl font-bold text-center"

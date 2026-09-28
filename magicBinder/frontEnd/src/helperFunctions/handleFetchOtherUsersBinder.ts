@@ -7,7 +7,7 @@ export const handleFetchOtherUserBinder = async (
  )=> {
   
   try {
-    const result = await fetchOtherUsersBindersResponse(accessToken,binderId);
+    const result = await fetchOtherUsersBindersResponse(accessToken, binderId);
 
     if(!result) {
       return null

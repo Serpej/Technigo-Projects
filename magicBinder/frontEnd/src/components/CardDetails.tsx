@@ -337,11 +337,12 @@ export const CardDetails = () => {
                         const binder = object.binderName;
                         const user = object.userName;
                         return (
-                          <li>
+                          <li
+                            key={index}
+                          >
                             <NavLink
                               to={"/binder"}
-                              state={{ "binderName": object.binderName, "binderId": object._id }}
-                              key={index}
+                              state={{ "binderName": object.binderName, "binderId": object._id, "source": "otherUser" }}
                             >
                               {`${binder} ( ${user} )`}
                             </NavLink>
