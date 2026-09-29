@@ -1,10 +1,11 @@
-import type {cardBinderResult, cardBinderSearchSuccessfull, cardBinderSearchEmpty } from "../types/binderTypes";
+import type { cardBinderResponse } from "../types/binderTypes";
+
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
 export const fetchOtherUsersBindersResponse = async (
   accessToken: string,
   otherUsersBinderId: string,
-):Promise<cardBinderResult | undefined> => {
+):Promise<cardBinderResponse | null> => {
   
   const options = {
     method: "GET",
@@ -20,20 +21,20 @@ export const fetchOtherUsersBindersResponse = async (
     const response = await fetch(`${BASE_URL}/binders/otherUsers/${otherUsersBinderId}`, options);
 
     if(!response.ok) {
-      const errorData: cardBinderSearchEmpty = await response.json();
+      const errorData = await response.json();
       throw new Error(errorData.message || `http error: ${response.status}`);
     }
 
-    const result:cardBinderSearchSuccessfull = await response.json();
+    const result: cardBinderResponse = await response.json();
+
+    if(!result.success) {
+      return null
+    }
 
     return result
 
   } catch (error) {
-
-    if(!(error instanceof Error)) {
-      return
-    }
-    console.error(error.message);
-    
+    console.error(error);
+    throw error
   }
 }

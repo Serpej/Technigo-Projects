@@ -18,6 +18,7 @@ export const fetchBinderCardSummaryService = async (
   }
 
   try {
+  
     const response = await fetch(`${BASE_URL}/binders/${binderName}`, options);
     
     if(!response.ok) {

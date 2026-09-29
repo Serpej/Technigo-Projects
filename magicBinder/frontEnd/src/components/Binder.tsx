@@ -19,6 +19,7 @@ export const Binder = () => {
   const navigate = useNavigate();
   const accesstoken = useAuthStore(state => state.accessToken);
   const cards = useBinderCardsStore(state => state.cards);
+  const setCards = useBinderCardsStore(state => state.setCards);
   const fetchCards = useBinderCardsStore(state => state.fetchCards);
   const [hasFetchedBinder, setHasFetchedBinder] = useState<boolean>(false);
   const [otherUsersBinder, setOtherUsersBinder] = useState<boolean>(false);
@@ -31,19 +32,19 @@ export const Binder = () => {
         return 
       }
 
-      const isOtherUsersBinder = binderObject.source === "otherUser";
+      const isLoggedInUsersBinder = binderObject.source === "own";
 
-      if(isOtherUsersBinder){
-        setOtherUsersBinder(true);
+      if(isLoggedInUsersBinder) {
+         await fetchCards(binderObject.binderName, accesstoken);
+      } else {
+        const binderCards = await handleFetchOtherUserBinder(binderObject.binderId, accesstoken);
+        
+        if(!binderCards) {
+          return 
+        }
+        setOtherUsersBinder(true)
+        setCards(binderCards);
       }
-
-      const binderCards = isOtherUsersBinder ? await handleFetchOtherUserBinder(binderObject.binderId, accesstoken) : await fetchCards(binderObject.binderName, accesstoken);
-
-      if(!binderCards) {
-        return 
-      }
-      
-      console.log(binderObject.source);
 
       setHasFetchedBinder(true);
     }
@@ -56,7 +57,8 @@ export const Binder = () => {
 
   useEffect(() => {
 
-    const resetFetch = () => {  
+    const resetFetch = () => {
+      setOtherUsersBinder(false);  
       setHasFetchedBinder(false);
     };
 

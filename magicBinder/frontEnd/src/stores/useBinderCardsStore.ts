@@ -4,6 +4,7 @@ import type { CardsStoreType, FullUserCard } from "../types/cardTypes";
 
 export const useBinderCardsStore = create<CardsStoreType>((set) => ({ 
   cards: [],
+  setCards: (newCards) => set(() => ({ cards: newCards })),
   fetchCards: async (binderName, accessToken) => {
 
     try {
