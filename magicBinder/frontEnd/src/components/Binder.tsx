@@ -53,7 +53,7 @@ export const Binder = () => {
       fecthBinderCards();
     }
   
-  },[accesstoken, binderObject, hasFetchedBinder, fetchCards])
+  },[accesstoken, binderObject, hasFetchedBinder, fetchCards, setCards])
 
   useEffect(() => {
 
@@ -64,7 +64,7 @@ export const Binder = () => {
 
     resetFetch();
     
-  },[binderObject])
+  },[binderObject]);
 
   if(!binderObject){
    return null
@@ -114,7 +114,7 @@ export const Binder = () => {
                   >
                     Back
                   </button>
-                  {otherUsersBinder && <button
+                  {!otherUsersBinder && <button
                     className="bg-bright-purple/80 hover:bg-bright-purple border-2 border-deep-hero-blue/80 shadow-2xl px-2 py-1 m-1 rounded-sm cursor-pointer transition delay-80 hover:scale-105 hover:font-medium"
                     onClick={(e) => handleDeleteBinder(e, binderName, accesstoken, navigate)}
                   >

@@ -42,6 +42,7 @@ export const CardDetails = () => {
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
   const [hasFetchedCard, sethasFetchedCard] = useState<boolean>(false);
   const [otherUsersCards, setOtherUsersCards] = useState<OtherUsersCards[]>([]);
+  const [isOwnUsersCards, setOwnUsersCards] = useState<boolean>(false);
 
   const accessToken = useAuthStore(state => state.accessToken);
   const binders = useBinderStore(state => state.binders);
@@ -80,11 +81,13 @@ export const CardDetails = () => {
     }
 
     const getBindersFromGlobalState = async () => {
+
       const fetchedBinders = await fetchBinders(accessToken);
 
       if(!fetchedBinders){
         return
       }
+      setOwnUsersCards(true);
       setHasFetchedBinders(true);
     }
 
@@ -242,7 +245,7 @@ export const CardDetails = () => {
                       binders= {binders}
                     />
                 }
-                {
+                {isOwnUsersCards && 
                   binderName &&
                   source === "binder" &&
                   binderCard &&
