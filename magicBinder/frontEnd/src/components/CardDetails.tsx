@@ -59,10 +59,6 @@ export const CardDetails = () => {
 
     const fetchCardPrintData = async () => {
 
-      if(ownerShip !== "own") {
-        return
-      }
-
       const cardPrints = await fetchCardPrint(card.prints_search_uri);
 
       if(!cardPrints) {

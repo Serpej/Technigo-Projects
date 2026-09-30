@@ -50,32 +50,32 @@ return(
                 onChange={(e) => handleOnChangeCondition(e)}
               >
                 <option
-                  value="near mint"
+                  value="Near Mint"
                   >
                   Near Mint
                 </option>
                 <option
-                  value="excellent"
+                  value="Excellent"
                   >
                   Excellent
                 </option>
                 <option
-                  value="good"
+                  value="Good"
                   >
                   Good
                 </option>
                 <option
-                  value="light played"
+                  value="Light Played"
                   >
                   Light Played
                 </option>
                 <option
-                  value="played"
+                  value="Played"
                   >
                   Played
                 </option>
                 <option
-                  value="poor"
+                  value="Poor"
                   >
                   Poor
                 </option>
