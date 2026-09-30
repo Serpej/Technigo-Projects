@@ -17,6 +17,7 @@ export const CardDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const locationState: CardDetailsState = location.state;
+  const ownerShip = locationState.ownerShip;
   const card = locationState.card;
   const source = locationState.source;
   const activeBinder = locationState.source === "binder"
@@ -42,7 +43,6 @@ export const CardDetails = () => {
   const [hasFetchedBinders, setHasFetchedBinders] = useState<boolean>(false);
   const [hasFetchedCard, sethasFetchedCard] = useState<boolean>(false);
   const [otherUsersCards, setOtherUsersCards] = useState<OtherUsersCards[]>([]);
-  const [isOwnUsersCards, setOwnUsersCards] = useState<boolean>(false);
 
   const accessToken = useAuthStore(state => state.accessToken);
   const binders = useBinderStore(state => state.binders);
@@ -59,6 +59,10 @@ export const CardDetails = () => {
 
     const fetchCardPrintData = async () => {
 
+      if(ownerShip !== "own") {
+        return
+      }
+
       const cardPrints = await fetchCardPrint(card.prints_search_uri);
 
       if(!cardPrints) {
@@ -72,7 +76,7 @@ export const CardDetails = () => {
 
     fetchCardPrintData();
 
-  },[card])
+  },[card, ownerShip])
 
   useEffect(() => {
 
@@ -87,7 +91,7 @@ export const CardDetails = () => {
       if(!fetchedBinders){
         return
       }
-      setOwnUsersCards(true);
+
       setHasFetchedBinders(true);
     }
 
@@ -135,7 +139,7 @@ export const CardDetails = () => {
     };
 
     otherUsersCards();
-  },[card]);
+  },[card, ownerShip]);
 
 
   if(!prints) {
@@ -245,7 +249,8 @@ export const CardDetails = () => {
                       binders= {binders}
                     />
                 }
-                {isOwnUsersCards && 
+                {
+                  ownerShip === "own" && 
                   binderName &&
                   source === "binder" &&
                   binderCard &&
@@ -259,6 +264,7 @@ export const CardDetails = () => {
                     />
                 }
                 {
+                  ownerShip === "own" &&
                   binderName &&
                   source === "binder" &&
                     <button

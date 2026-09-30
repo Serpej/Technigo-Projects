@@ -35,15 +35,20 @@ export const Binder = () => {
       const isLoggedInUsersBinder = binderObject.source === "own";
 
       if(isLoggedInUsersBinder) {
+
          await fetchCards(binderObject.binderName, accesstoken);
+
       } else {
+
         const binderCards = await handleFetchOtherUserBinder(binderObject.binderId, accesstoken);
         
         if(!binderCards) {
           return 
         }
+
         setOtherUsersBinder(true)
         setCards(binderCards);
+
       }
 
       setHasFetchedBinder(true);
@@ -143,6 +148,7 @@ export const Binder = () => {
                 card: card,
                 binderName: binderName,
                 source: "binder",
+                ownerShip: binderObject.source
               }
 
               return (
