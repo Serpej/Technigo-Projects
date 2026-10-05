@@ -100,6 +100,7 @@ export const ProfilePage = () => {
       >
         <SearchBar
           className="col-start-1 row-start-1"
+          accessToken= {accessToken}
         />
         <PageBackground
           className="col-start-1 row-start-2"

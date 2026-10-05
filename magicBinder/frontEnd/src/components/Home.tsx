@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import { PageBackground } from "./PageBackground";
 import { SearchBar } from "./SearchBar";
+import { useAuthStore } from "../stores/useAuthStore";
 
 export const Home = () => {
+
+  const accessToken = useAuthStore((state) => state.accessToken);
+
   return (
     <div className="grid grid-rows-[1fr] h-full">
       <div className="grid col-start-1 row-start-1 grid-rows-[auto_1fr] min-h-0 overflow-hidden">
         <SearchBar
           className="grid col-start-1 row-start-1"
+          accessToken= {accessToken}
         />
         <PageBackground
           className="grid col-start-1 row-start-2"

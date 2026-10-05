@@ -27,7 +27,7 @@ export const AppContent = ({ className }: AppContentProps) => {
         <Route path="/login" element={<Login />}  />
         <Route path="/signup" element={< SignUp />} />
         <Route path="/about" element={<About />} />
-        <Route path="/search" element={<CardSearchResults />} />
+        <Route path="/cardSearch" element={<CardSearchResults />} />
         <Route path="/card" element={<CardDetails />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/profilepage" element={<ProfilePage />} />
@@ -40,6 +40,7 @@ export const AppContent = ({ className }: AppContentProps) => {
         <Route path="/card" element={<CardDetails />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/newbinder" element={<NewBinder />}/>
+          <Route path="/userSearch" element={}/>
         </Route>
       </Routes>
       )}

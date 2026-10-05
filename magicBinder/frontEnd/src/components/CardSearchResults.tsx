@@ -5,6 +5,7 @@ import oceanFloor from "../assets/oceanFloor.jpg";
 import { PageBackground  } from "./PageBackground";
 import  fblthlpTheLost  from "../assets/fblthlpTheLost.jpg";
 import { SearchBar } from "./SearchBar";
+import { useAuthStore } from "../stores/useAuthStore";
 import type { ScryfallCard, CardDetailsState, ScryfallSearchResult } from "../types/cardTypes";
 
 export const CardSearchResults = () => {
@@ -12,6 +13,7 @@ export const CardSearchResults = () => {
   const [searchResult, setSearchResult] = useState<ScryfallSearchResult>();
   const query = searchParams.get("q");
   const location = useLocation();
+  const accessToken = useAuthStore((state) => state.accessToken);
 
     useEffect(() => {
       if(!query) {
@@ -43,6 +45,7 @@ export const CardSearchResults = () => {
       >
         <SearchBar
           className="grid col-start-1 row-start-1"
+          accessToken= {accessToken}
         />
         <div
           className="grid col-start-1 row-start-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
@@ -78,7 +81,8 @@ export const CardSearchResults = () => {
             const navigationState: CardDetailsState = {
               background: location,
               card: card,
-              source: "search"
+              source: "search",
+              ownerShip: "own",
             }
 
             return (

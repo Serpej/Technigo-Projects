@@ -92,6 +92,7 @@ export const Binder = () => {
       >
         <SearchBar
           className="col-start-1 row-start-1"
+          accessToken= {accesstoken}
         />
         <PageBackground
           className="col-start-1 row-start-2"
