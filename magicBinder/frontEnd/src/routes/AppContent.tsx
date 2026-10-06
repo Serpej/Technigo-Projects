@@ -5,6 +5,7 @@ import { About } from "../components/About";
 import { SignUp } from "../components/SignUp";
 import { NewBinder } from "../components/NewBinder";
 import { ProfilePage } from "../components/ProfilePage";
+import { UserSearchResults } from "../components/userSearchResults";
 import { PrivateRoutes } from "./privateRoutes";
 import { CardSearchResults } from "../components/CardSearchResults";
 import { Binder } from "../components/Binder";
@@ -32,6 +33,7 @@ export const AppContent = ({ className }: AppContentProps) => {
         <Route element={<PrivateRoutes />}>
           <Route path="/profilepage" element={<ProfilePage />} />
           <Route path="/binder" element={<Binder />}/>
+          <Route path="/userSearch" element={<UserSearchResults />}/>
         </Route>
       </Routes>
 
@@ -40,7 +42,6 @@ export const AppContent = ({ className }: AppContentProps) => {
         <Route path="/card" element={<CardDetails />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/newbinder" element={<NewBinder />}/>
-          <Route path="/userSearch" element={}/>
         </Route>
       </Routes>
       )}
