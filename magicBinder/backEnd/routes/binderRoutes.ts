@@ -3,7 +3,7 @@ import { CardBinder } from "../models/Binder";
 import { Card } from "../models/Card";
 import { authenticateUser } from "../middleware/authenticateUser";
 import { guardResponse, serverError, requestNotFound, badRequest } from "../utils/responses";
-import { escapedRegex } from "../helperFunctions/escapeRegex";
+import { exactlyMatchedRegex } from "../helperFunctions/regex";
 
 export const binderRouter = express.Router();
 
@@ -127,7 +127,7 @@ binderRouter
     }
     
     const cardName = req.params.cardName;
-    const CardNameRegex = escapedRegex(cardName);
+    const CardNameRegex = exactlyMatchedRegex(cardName);
 
     try {
 

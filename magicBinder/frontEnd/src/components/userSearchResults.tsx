@@ -28,6 +28,7 @@ export const UserSearchResults = () => {
           className="grid col-start-1 row-start-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
         >
         {query}
+          
         </div>
       </div>
     

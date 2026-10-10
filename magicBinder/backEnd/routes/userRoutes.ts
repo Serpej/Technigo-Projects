@@ -4,6 +4,7 @@ import express, { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { authenticateUser } from "../middleware/authenticateUser";
 import { requestNotFound, requestUnauthorized, serverError, badRequest} from "../utils/responses";
+import { startsWithRegex } from "../helperFunctions/regex";
 
 export const userRouter = express.Router();
 
@@ -131,7 +132,7 @@ userRouter
       );
       
       res.status(200).json({
-        message: "Password updated successfully"
+        message: "Password updated successfully."
       })
 
     } catch (error) {
@@ -139,6 +140,43 @@ userRouter
     }
 
     
+  })
+  .get("/:userId", authenticateUser)
+  .get("/:userId", async (req: Request, res: Response) => {
+    
+    if (!req.user) {
+      requestUnauthorized(res, "Update failed.");
+      return
+    }
+
+    try {
+
+      const userId = req.params.userId;
+      if(typeof userId !== "string") {
+        return
+      }
+      const userRegexp = startsWithRegex(userId);
+
+      const foundUsers = await User.find({ name: userRegexp }).lean();
+
+      if(foundUsers.length === 0) {
+        res.status(200).json({
+          found: false,
+          message: "No matching users found."
+        })
+        return
+      }
+
+      res.status(200).json({
+        found: true,
+        message: `${foundUsers.length} users found.`,
+        users: foundUsers
+      })
+
+    } catch (error) {
+      serverError(res, "Server error.", error);
+    }
+
   })
 
 
