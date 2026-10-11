@@ -8,6 +8,7 @@ export const handleCreateBinder = async (
   binderName: string,
   userId: string,
   accessToken: string,
+  userName: string,
   navigate: NavigateFunction,
 ) => {
   event.preventDefault();
@@ -16,11 +17,12 @@ export const handleCreateBinder = async (
 
     const response = await createBinderService(binderName, userId, accessToken);
 
-    useBinderStore.getState().addBinder({ name: binderName , _id: response.binderId });
+    useBinderStore.getState().addBinder({ name: binderName , _id: response.binderId, binderImage: "", userName: userName });
 
     const binderNameState: BinderNameState = {
       "binderName": binderName,
-      "binderId": response.binderId
+      "binderId": response.binderId,
+      "source": "own"
     };
 
     const locationState: BinderNameState =  binderNameState; 

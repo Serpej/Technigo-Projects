@@ -9,6 +9,7 @@ export const NewBinder = () => {
   const [binderName, setBinderName] = useState("")
   const navigate = useNavigate();
   const userId = useAuthStore((state) => state.userId);
+  const userName = useAuthStore((state) => state.userName);
   const accessToken = useAuthStore((state) => state.accessToken);
 
   return(
@@ -26,8 +27,9 @@ export const NewBinder = () => {
               e, 
               binderName, 
               userId,
-              accessToken, 
-              navigate,
+              accessToken,
+              userName, 
+              navigate
             )}
             className="flex flex-1 max-w-sm sm:max-w-md w-full min-w-0 flex-col bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-5 sm:p-18 mx-10 border-2 rounded-sm border-deep-hero-blue"
           >

@@ -1,5 +1,5 @@
 import { useLocation, useNavigate, NavLink } from "react-router-dom";
-import type { CardDetailsState, ScryfallCard, FullUserCard } from "../types/cardTypes";
+import type { CardDetailsState, ScryfallCard } from "../types/cardTypes";
 import type { OtherUsersCards } from "../types/responses";
 import { fetchCardPrint } from "../services/fetchCardPrint";
 import React, { useEffect, useState } from "react";
@@ -17,22 +17,18 @@ export const CardDetails = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const locationState: CardDetailsState = location.state;
+  const { card, source } = locationState;
   const ownerShip = locationState.ownerShip;
-  const card = locationState.card;
-  const source = locationState.source;
   const activeBinder = locationState.source === "binder"
     ? locationState.binderName : "";
 
-  const isBinderCard  = (
-    card: FullUserCard | ScryfallCard,
-    source: "binder" | "search"
-  ): card is FullUserCard => {
-    if(source !== "binder") {
+  const isBinderCard  = () => {
+    if(locationState.source === "binder") {
      return false
     }
     return true
   }
-  const binderCard = isBinderCard(card, source);
+  const binderCard = isBinderCard();
 
   const [prints, setPrints] = useState<ScryfallCard[]>([card]);
   const [chosenCardId, setChosenCardId] = useState<string>(card.id);
