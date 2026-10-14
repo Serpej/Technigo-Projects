@@ -12,6 +12,7 @@ export const ThoughtInput = ({newThought, handleNewThought, onFormSubmit}: {newT
             maxLength={200}
             minLength={5}
             required
+            autoFocus
           />
           <button className="submitThoughtButton" type="submit">❤️ Send Happy Thought! ❤️</button>
       </form>

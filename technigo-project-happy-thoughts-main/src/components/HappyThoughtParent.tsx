@@ -15,8 +15,7 @@ export const HappyThoughtParent = () => {
   const [thoughts, setThoughts] = useState<HappyThought[]>([]);
   const [newThought, setNewThought] = useState("");
 
-  const url = import.meta.env.VITE_API_URL || "http://localhost:8080";
-  //"https://happy-thoughts-api-4ful.onrender.com/thoughts"
+  const url = "http://localhost:8080" || import.meta.env.VITE_API_URL;
 
 
 // Fetches the array of posts
@@ -68,11 +67,11 @@ export const HappyThoughtParent = () => {
     setLoading(false);
   }
 
-// Handles the psot request for pressing the like button
+// Handles the post request for pressing the like button
   const handleLike = async (postId:string): Promise<void> => {
     try {
       setLoading(true);
-      const likeUrl = `https://happy-thoughts-api-4ful.onrender.com/thoughts/${postId}/like`;
+      const likeUrl = `${url}/${postId}/like`;
       const makeALike = await fetch(likeUrl,{
         method: "POST",
         headers: {

@@ -43,7 +43,7 @@ const seedDataBase = async () => {
   await new Book({ title: "Harry Potter 2", author: rowling}).save();
   await new Book({ title: "Harry Potter 3", author: rowling}).save();
   await new Book({ title: "Harry Potter 4", author: rowling}).save();
-}
+} 
 
   await seedDataBase();
 }

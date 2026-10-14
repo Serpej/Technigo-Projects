@@ -21,8 +21,6 @@ export const HappyThoughtList = ({loading, thoughts, handleLike}: {
     // Ensure that the thoughts variable is an array
   const thoughtsArray = Array.isArray(thoughts) ? thoughts : [];
 
-  console.log(typeof(thoughtsArray));
-
 
   const getRelativeDate = (thought:HappyThought) => {
     if (typeof thought.createdAt === "number") {
