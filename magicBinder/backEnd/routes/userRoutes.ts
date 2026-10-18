@@ -13,8 +13,8 @@ userRouter
     try {
       const { name, email, password } = req.body;
 
-      if(name.length < 5) {
-        badRequest(res,"Name is too short. Minimum 5 characters");
+      if(name.length < 2) {
+        badRequest(res,"Name is too short. Minimum 2 characters");
         return;
       }
 
@@ -55,6 +55,7 @@ userRouter
         id: user._id,
         accessToken: user.accessToken,
       });
+      
     } catch (error) {
       serverError(res, "Could not create user.", error);
     }
