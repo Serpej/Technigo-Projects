@@ -9,7 +9,8 @@
     "dev": "concurrently -n nodemon,tsc -c magenta,yellow \"nodemon --exec tsx server.ts\" \"npm run typecheck:watch\"",
     "typecheck:watch": "tsc --noEmit --watch --preserveWatchOutput",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -25,16 +26,20 @@
     "mongoose": "^9.6.2"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^25.7.0",
     "@types/supertest": "^7.2.1",
     "concurrently": "^10.0.6",
+    "eslint": "^10.13.0",
+    "globals": "^17.13.0",
     "mongodb-memory-server": "^11.3.0",
     "nodemon": "^3.1.14",
     "supertest": "^7.3.1",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2",
     "vitest": "^5.0.5"
   }
 }

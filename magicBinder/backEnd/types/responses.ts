@@ -3,7 +3,7 @@ export type SignUpResponse = {
   message: string,
   name: string,
   email: string,
-  id: Object,
+  id: object,
   accessToken: string,
 }
 
@@ -12,7 +12,7 @@ export type LoginResponse = {
   message: string,
   name: string,
   email: string,
-  id: Object,
+  id: object,
   accessToken: string,
 }
 
@@ -20,7 +20,7 @@ export type GetUserResponse = {
   success: boolean,
   name: string,
   email: string,
-  id: Object,
+  id: object,
   accessToken: string,
 }
 

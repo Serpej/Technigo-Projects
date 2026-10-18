@@ -28,7 +28,7 @@ describe("POST /users", () => {
     //Arrange
     const body = {
       name: "validTestName",
-      email: "validTestEmail@test.com",
+      email: "validTest@Emailtest.com",
       password: "validTestPassword123",
     }
 
