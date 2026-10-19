@@ -10,15 +10,21 @@ export const handleCardSearch = (
   event.preventDefault();
 
   try {
+
     if(!query) {
       return;
     }
+
     navigate(`/cardSearch?q=${query}`);
+
   } catch (error) {
+
     console.error("Search failed: ", error)
+
     if(error instanceof Error){
       setErrorMessage(error.message);
     }
+    
   }
 
 }

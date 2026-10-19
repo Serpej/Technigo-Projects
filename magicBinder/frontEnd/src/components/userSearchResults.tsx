@@ -1,12 +1,18 @@
 import { PageBackground } from "../components/PageBackground";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { SearchBar } from "../components/SearchBar";
 import deltaBackground2 from "../assets/deltaBackground2.jpg";
 import { useAuthStore } from "../stores/useAuthStore";
+import type { GetUserSearchResponse } from "../types/responses";
+
+
 export const UserSearchResults = () => {
+
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
   const accessToken = useAuthStore((state) => state.accessToken);
+  const location = useLocation();
+  const searchResults: GetUserSearchResponse = location.state
 
   return(
     <div
