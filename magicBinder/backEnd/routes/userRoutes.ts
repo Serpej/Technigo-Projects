@@ -145,16 +145,19 @@ userRouter
   .get("/:userName", async (req: Request, res: Response) => {
     
     if (!req.user) {
+
       requestUnauthorized(res, "Update failed.");
+
       return
-    }
+    };
 
     try {
 
       const userName = req.params.userName;
+
       if(typeof userName !== "string") {
-        return
-      }
+        return badRequest(res, "Update failed.");
+      };      
 
       const foundUsers = await User.find({ name: userName }).lean();
 
@@ -164,18 +167,23 @@ userRouter
           message: "No matching users found."
         })
         return
-      }
+      };
+
+      const filteredFoundUsers = foundUsers.map((user) => {
+        const { password, accessToken, email, __v, _id, ...safeUser } = user;
+        return safeUser
+      }); 
 
       res.status(200).json({
         found: true,
         message: `${foundUsers.length} users found.`,
-        users: foundUsers
-      })
+        users: filteredFoundUsers
+      });
 
     } catch (error) {
       serverError(res, "Server error.", error);
     }
 
-  })
+  });
 
 
