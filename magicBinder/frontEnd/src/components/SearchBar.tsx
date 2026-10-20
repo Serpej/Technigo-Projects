@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Search from "../assets/Search.svg?react";
-import { handleCardSearch } from "../helperFunctions/handleCardSearch";
-import { handleUserSearch } from "../helperFunctions/handleUserSearch";
+import { handleNaigateCardSearch } from "../helperFunctions/handleNaigateCardSearch";
+import { handleNavigateUserSearch } from "../helperFunctions/handleNavigateUserSearch";
 import { handleValue } from "../helperFunctions/handleValue"
 import { useNavigate } from "react-router-dom";
 
@@ -63,8 +63,8 @@ export const SearchBar = ({
       <form
         className="flex w-full items-center justify-center"
         onSubmit={(e) =>  searchType  
-          ? handleCardSearch(e, query, setErrorMessage, navigate)
-          : handleUserSearch(e, query, setErrorMessage, navigate)
+          ? handleNaigateCardSearch(e, query, setErrorMessage, navigate)
+          : handleNavigateUserSearch(e, query, setErrorMessage, navigate)
         }
       >
         <label 

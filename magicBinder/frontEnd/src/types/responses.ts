@@ -40,5 +40,7 @@ export type OtherUsersCards = {
 export type GetUserSearchResponse = {
   found: boolean,
   message: string,
-  users?: object[]
+  users?: {
+    name: string
+  }[]
 }
