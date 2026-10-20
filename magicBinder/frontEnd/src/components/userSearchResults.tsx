@@ -40,7 +40,7 @@ export const UserSearchResults = () => {
 
   fetchUserSearchResponse()
 
-  })
+  },[query])
 
   return(
     <div
