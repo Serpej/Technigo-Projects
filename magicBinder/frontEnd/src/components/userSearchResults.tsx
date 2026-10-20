@@ -1,9 +1,12 @@
 import { PageBackground } from "../components/PageBackground";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { SearchBar } from "../components/SearchBar";
 import deltaBackground2 from "../assets/deltaBackground2.jpg";
 import { useAuthStore } from "../stores/useAuthStore";
 import type { GetUserSearchResponse } from "../types/responses";
+import type { user } from "../types/userTypes";
+import { fetchOtherUsers } from "../services/fetchOtherUsersService";
+import { useEffect, useState } from "react";
 
 
 export const UserSearchResults = () => {
@@ -11,8 +14,33 @@ export const UserSearchResults = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
   const accessToken = useAuthStore((state) => state.accessToken);
-  const location = useLocation();
-  const searchResults: GetUserSearchResponse = location.state
+  const [users, setUsers] = useState<user[]>([])
+
+  useEffect( () => {
+  
+  const fetchUserSearchResponse = async () => {
+
+    if(query === null) {
+      //add something here later. Toast?
+      return
+    };
+
+    const searchResult: GetUserSearchResponse | undefined = await fetchOtherUsers(query);
+
+    if(!searchResult) {
+      throw new Error("Search failed: Search results undefined");
+    };
+
+    if(!searchResult.users) {
+      return null
+    };
+
+    setUsers(searchResult.users);
+  };
+
+  fetchUserSearchResponse()
+
+  })
 
   return(
     <div
@@ -33,7 +61,21 @@ export const UserSearchResults = () => {
         <div
           className="grid col-start-1 row-start-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 pt-10 bg-baltic-blue/50 backdrop-blur-sm shadow-2xl p-3  border-2 rounded-sm border-deep-hero-blue overflow-auto"
         >
-        {query}
+        {
+          users.length > 0 &&
+          <ul>
+            {users.map((user) => {
+              const name = user.name
+              return(
+                <li
+                  key={user.name}
+                >
+                  {name}
+                </li>
+              )
+            })}
+          </ul>
+        }
           
         </div>
       </div>
