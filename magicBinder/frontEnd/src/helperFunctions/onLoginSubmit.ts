@@ -23,8 +23,11 @@ export const onLoginSubmit = async (
     navigate("/profilepage");
 
   } catch (error) {
-    console.error("Login Failed: ", error)
+
+    console.error("Login Failed: ", error);
+
     if(error instanceof Error){
+
       setErrorMessage(error.message);
     }
   }

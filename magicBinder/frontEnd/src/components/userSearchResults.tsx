@@ -3,10 +3,10 @@ import { useSearchParams } from "react-router-dom";
 import { SearchBar } from "../components/SearchBar";
 import deltaBackground2 from "../assets/deltaBackground2.jpg";
 import { useAuthStore } from "../stores/useAuthStore";
-import type { GetUserSearchResponse } from "../types/responses";
 import type { user } from "../types/userTypes";
-import { fetchOtherUsers } from "../services/fetchOtherUsersService";
+import { handleUserSearch } from "../helperFunctions/handleUserSearch";
 import { useEffect, useState } from "react";
+import { useMessageStore } from "../stores/useMessageStore";
 
 
 export const UserSearchResults = () => {
@@ -14,18 +14,19 @@ export const UserSearchResults = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q");
   const accessToken = useAuthStore((state) => state.accessToken);
-  const [users, setUsers] = useState<user[]>([])
+  const [users, setUsers] = useState<user[]>([]);
+  const setMessage = useMessageStore(state => state.setMessage);
 
   useEffect( () => {
   
   const fetchUserSearchResponse = async () => {
 
     if(query === null) {
-      //add something here later. Toast?
+      setMessage("You need a search query.");
       return
     };
 
-    const searchResult: GetUserSearchResponse | undefined = await fetchOtherUsers(query);
+    const searchResult = await handleUserSearch(query);
 
     if(!searchResult) {
       throw new Error("Search failed: Search results undefined");
@@ -40,7 +41,7 @@ export const UserSearchResults = () => {
 
   fetchUserSearchResponse()
 
-  },[query])
+  },[query, setMessage])
 
   return(
     <div
