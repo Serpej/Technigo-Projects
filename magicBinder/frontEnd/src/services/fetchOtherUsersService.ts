@@ -26,17 +26,17 @@ export const fetchOtherUsers = async (
       throw new Error(`Response Status: ${response.status}`);
     };
 
-    const result: Promise<GetUserSearchResponse> = response.json();
+    const result: GetUserSearchResponse = await response.json();
 
     return result;
 
   } catch (error) {
 
     if(!(error instanceof Error)) {
-      return
+      throw new Error("Unknown error", { cause: error })
     };
 
     console.log(error.message);
-
+    throw error;
   }
 }
