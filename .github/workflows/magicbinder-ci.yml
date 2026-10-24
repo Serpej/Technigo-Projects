@@ -2,6 +2,8 @@ name: magicBinder CI
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "magicBinder/**"
       - ".github/workflows/magicbinder-ci.yml"

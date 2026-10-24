@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix frontEnd\" \"npm run dev --prefix backEnd\"",
-    "test": "concurrently \"npm run test --prefix frontEnd\" \"npm run test --prefix backEnd\"",
-    "prepare": "cd ... && husky magicbinder/.husky"
+    "dev": "concurrently \"npm run dev --prefix frontEnd\" \"npm run dev --prefix backEnd\""
   },
   "keywords": [],
   "author": "",
