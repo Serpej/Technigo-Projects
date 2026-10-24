@@ -34,6 +34,7 @@ export const AppContent = ({ className }: AppContentProps) => {
           <Route path="/profilepage" element={<ProfilePage />} />
           <Route path="/binder" element={<Binder />}/>
           <Route path="/userSearch" element={<UserSearchResults />}/>
+          <Route path="/otherUsers" elemet={}/>
         </Route>
       </Routes>
 
