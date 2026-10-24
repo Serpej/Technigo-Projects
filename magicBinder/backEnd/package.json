@@ -10,7 +10,8 @@
     "typecheck:watch": "tsc --noEmit --watch --preserveWatchOutput",
     "test": "vitest run",
     "test:watch": "vitest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
