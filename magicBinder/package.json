@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run dev --prefix frontEnd\" \"npm run dev --prefix backEnd\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "concurrently \"npm run test --prefix frontEnd\" \"npm run test --prefix backEnd\"",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
