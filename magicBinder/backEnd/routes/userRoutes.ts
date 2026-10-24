@@ -4,7 +4,6 @@ import express, { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { authenticateUser } from "../middleware/authenticateUser";
 import { requestNotFound, requestUnauthorized, serverError, badRequest} from "../utils/responses";
-import { startsWithRegex } from "../helperFunctions/regex";
 
 export const userRouter = express.Router();
 
@@ -142,8 +141,8 @@ userRouter
 
     
   })
-  .get("/:userId", authenticateUser)
-  .get("/:userId", async (req: Request, res: Response) => {
+  .get("/:userName", authenticateUser)
+  .get("/:userName", async (req: Request, res: Response) => {
     
     if (!req.user) {
       requestUnauthorized(res, "Update failed.");
@@ -152,13 +151,12 @@ userRouter
 
     try {
 
-      const userId = req.params.userId;
-      if(typeof userId !== "string") {
+      const userName = req.params.userName;
+      if(typeof userName !== "string") {
         return
       }
-      const userRegexp = startsWithRegex(userId);
 
-      const foundUsers = await User.find({ name: userRegexp }).lean();
+      const foundUsers = await User.find({ name: userName }).lean();
 
       if(foundUsers.length === 0) {
         res.status(200).json({
