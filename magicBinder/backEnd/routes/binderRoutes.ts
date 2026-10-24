@@ -127,6 +127,7 @@ binderRouter
     }
     
     const cardName = req.params.cardName;
+    
     const CardNameRegex = exactlyMatchedRegex(cardName);
 
     try {
