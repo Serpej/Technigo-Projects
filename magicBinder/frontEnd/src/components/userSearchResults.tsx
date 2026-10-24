@@ -97,6 +97,7 @@ export const UserSearchResults = () => {
                               className="text-2xl font-bold text-center"
                             >
                               {name}
+                              {"test"}
                             </div>
                           </NavLink>
                         )
