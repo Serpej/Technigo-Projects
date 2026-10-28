@@ -5,7 +5,7 @@ import { About } from "../components/About";
 import { SignUp } from "../components/SignUp";
 import { NewBinder } from "../components/NewBinder";
 import { ProfilePage } from "../components/ProfilePage";
-import { UserSearchResults } from "../components/userSearchResults";
+import { UserSearchResults } from "../components/UserSearchResults";
 import { PrivateRoutes } from "./privateRoutes";
 import { CardSearchResults } from "../components/CardSearchResults";
 import { Binder } from "../components/Binder";
