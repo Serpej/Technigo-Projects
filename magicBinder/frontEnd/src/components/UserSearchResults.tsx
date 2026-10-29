@@ -7,7 +7,7 @@ import type { user } from "../types/userTypes";
 import { handleUserSearch } from "../helperFunctions/handleUserSearch";
 import { useEffect, useState } from "react";
 import { useMessageStore } from "../stores/useMessageStore";
-import  fblthlpTheLost  from "../assets/fblthlpTheLost.jpg";
+import theWanderer from "../assets/theWanderer.jpg";
 
 
 export const UserSearchResults = () => {
@@ -103,7 +103,7 @@ export const UserSearchResults = () => {
                                 </div>
                                 <img 
                                   className="pt-2 object-cover"
-                                  src={fblthlpTheLost} 
+                                  src={theWanderer} 
                                   alt="Users chosen binder image"
                                 />
                               </div>
