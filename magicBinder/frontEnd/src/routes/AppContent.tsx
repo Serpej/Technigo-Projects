@@ -5,11 +5,12 @@ import { About } from "../components/About";
 import { SignUp } from "../components/SignUp";
 import { NewBinder } from "../components/NewBinder";
 import { ProfilePage } from "../components/ProfilePage";
-import { UserSearchResults } from "../components/userSearchResults";
+import { UserSearchResults } from "../components/UserSearchResults";
 import { PrivateRoutes } from "./privateRoutes";
 import { CardSearchResults } from "../components/CardSearchResults";
 import { Binder } from "../components/Binder";
 import { CardDetails } from "../components/CardDetails";
+import { OtherUsers } from "../components/OtherUsers";
 
 interface AppContentProps {
   className: string;
@@ -34,6 +35,7 @@ export const AppContent = ({ className }: AppContentProps) => {
           <Route path="/profilepage" element={<ProfilePage />} />
           <Route path="/binder" element={<Binder />}/>
           <Route path="/userSearch" element={<UserSearchResults />}/>
+          <Route path="/otherUsers" element={<OtherUsers />}/>
         </Route>
       </Routes>
 

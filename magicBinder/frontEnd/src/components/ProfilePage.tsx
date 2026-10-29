@@ -71,10 +71,10 @@ export const ProfilePage = () => {
             className="flex items-start justify-center min-w-0 max-w-52 min-h-0 max-h-52"
           >
             <div
-              className=" relative flex justify-end items-center flex-col border-2 border-deep-hero-blue/80 shadow-2xl bg-pitch-black rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap cursor-pointer text-papyrus-white overflow-hidden h-52 min-w-0 max-w-52"
+              className="relative flex justify-end items-center flex-col border-2 border-deep-hero-blue/80 shadow-2xl bg-pitch-black rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-normal cursor-pointer text-papyrus-white overflow-hidden h-52 min-w-0 max-w-52"
             >
               <div
-                className="absolute top-0 flex justify-center bg-pitch-black w-full pt-3 pb-6"
+                className="absolute top-0 flex justify-center text-center bg-pitch-black w-full pt-3 pb-6"
               >
                 {binder.name}
               </div>

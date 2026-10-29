@@ -36,3 +36,11 @@ export type OtherUsersCards = {
   _id: string,
   binderName: string
 }
+
+export type GetUserSearchResponse = {
+  found: boolean,
+  message: string,
+  users?: {
+    name: string
+  }[]
+}

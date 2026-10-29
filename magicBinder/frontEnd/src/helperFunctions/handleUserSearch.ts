@@ -1,24 +1,11 @@
-import type { NavigateFunction } from "react-router-dom";
+import { fetchOtherUsers } from "../services/fetchOtherUsersService";
 
-export const handleUserSearch = (
-  event:React.ChangeEvent<HTMLFormElement>,
+export const handleUserSearch = async (
   query: string,
-  setErrorMessage: React.Dispatch<React.SetStateAction<string>>,
-  navigate: NavigateFunction
 ) => {
 
-  event.preventDefault();
+  const result = await fetchOtherUsers(query);
 
-  try {
-    if(!query) {
-      return;
-    }
-    navigate(`/userSearch?q=${query}`);
-  } catch (error) {
-    console.error("Search failed: ", error)
-    if(error instanceof Error){
-      setErrorMessage(error.message);
-    }
-  }
+  return result;
 
-}
+  };

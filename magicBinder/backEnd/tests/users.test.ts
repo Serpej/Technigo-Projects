@@ -21,7 +21,6 @@ afterAll(async () => {
   await mongoServer.stop();
 });
 
-
 describe("POST /users", () => {
   it("Creates a user and returns 201 with user data, checks that password is not equal to the posted password.", async () => {
 
@@ -40,7 +39,7 @@ describe("POST /users", () => {
 
     if(user === null) {
       throw new Error("User was not saved")
-    }
+    };
 
     expect(response.status).toBe(201);
 
