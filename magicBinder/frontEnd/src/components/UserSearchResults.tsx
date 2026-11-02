@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { useMessageStore } from "../stores/useMessageStore";
 import theWanderer from "../assets/theWanderer.jpg";
 
-
 export const UserSearchResults = () => {
 
   const [searchParams] = useSearchParams();
@@ -83,15 +82,26 @@ export const UserSearchResults = () => {
                     users.length > 0 &&
                     <ul>
                       {users.map((user, index) => {
-                        const name = user.name
+
+                        const { name = user.name,
+                                _id = user._id
+                              } = user
+
+                        const navigationState = {
+                          source: "otherUser",
+                          userName: name,
+                          _id: _id
+                        }
+
                         return(
                           <div 
                             className="flex justify-center lg:px-4"
-                            key={index}
+                            key = {index}
                           >
                             <NavLink
                               className="flex items-start justify-center min-w-0 max-w-52 min-h-0 max-h-52"   
-                              to={"/otherUsers"}
+                              to="/otherUsersBinders"
+                              state= { navigationState }
                             >
                               <div
                                 className=" relative flex justify-end items-center flex-col border-2 border-deep-hero-blue/80 shadow-2xl bg-pitch-black rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap cursor-pointer text-papyrus-white overflow-hidden h-52 min-w-0 max-w-52"
@@ -104,7 +114,7 @@ export const UserSearchResults = () => {
                                 <img 
                                   className="pt-2 object-cover"
                                   src={theWanderer} 
-                                  alt="Users chosen binder image"
+                                  alt="picture of the MTG card The Wanderer"
                                 />
                               </div>
                             </NavLink>
