@@ -17,6 +17,9 @@ export const ProfilePage = () => {
   const binderImage = useBinderStore(state => state.binderImage)
   const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
+  const otherUsersBinders = location.state.source;
+  const otherUserName = location.state.name;
+  const otherUser_Id = location.state._id;
 
   const navigationState = {
     background: location
@@ -28,12 +31,30 @@ export const ProfilePage = () => {
       
       try {
         setIsLoading(true);
-        const result = await fetchBinders(accessToken);
-        
-        if(!result) {
-          setIsLoading(false);
-          return
+
+        if(otherUsersBinders === "otherUser") {
+
+          const result = await fetchOtherUsersBinder(
+            accessToken,
+            otherUserName,
+            otherUser_Id
+          );
+
+          if(!result) {
+            setIsLoading(false);
+            return
+          }
+
+        } else {
+
+          const result = await fetchBinders(accessToken);
+     
+          if(!result) {
+            setIsLoading(false);
+            return
+          }          
         }
+
       }finally {
         setIsLoading(false);
       }
