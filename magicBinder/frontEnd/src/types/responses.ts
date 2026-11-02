@@ -41,6 +41,7 @@ export type GetUserSearchResponse = {
   found: boolean,
   message: string,
   users?: {
-    name: string
+    name: string,
+    _id: string
   }[]
 }

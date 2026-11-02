@@ -156,7 +156,7 @@ userRouter
       const userName = req.params.userName;
 
       if(typeof userName !== "string") {
-        return badRequest(res, "Update failed.");
+        return badRequest(res, "Search failed.");
       };      
 
       const foundUsers = await User.find({ name: userName }).lean();
@@ -170,7 +170,7 @@ userRouter
       };
 
       const filteredFoundUsers = foundUsers.map((user) => {
-        const { password, accessToken, email, __v, _id, ...safeUser } = user;
+        const { password, accessToken, email, __v, ...safeUser } = user;
         return safeUser
       }); 
 

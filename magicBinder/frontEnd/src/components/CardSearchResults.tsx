@@ -97,7 +97,8 @@ export const CardSearchResults = () => {
                   {card.name}
                 </span>
                 <NavLink
-                  to="/card" state={navigationState}
+                  to="/card"
+                  state={navigationState}
                 >
                   <img
                     className="rounded-[4.75%/3.5%]"

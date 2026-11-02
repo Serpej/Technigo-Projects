@@ -81,7 +81,7 @@ export const ProfilePage = () => {
               <img 
                 className="pt-2 object-cover"
                 src={binder.binderImage ? binder.binderImage : fblthlpTheLost} 
-                alt="Users chosen binder image"
+                alt="picture of the MTG card Fblthlp The Lost"
               />
 
             </div>
