@@ -10,7 +10,6 @@ import { PrivateRoutes } from "./privateRoutes";
 import { CardSearchResults } from "../components/CardSearchResults";
 import { Binder } from "../components/Binder";
 import { CardDetails } from "../components/CardDetails";
-import { OtherUsersBinders } from "../components/OtherUsersBinders";
 
 interface AppContentProps {
   className: string;
@@ -32,10 +31,9 @@ export const AppContent = ({ className }: AppContentProps) => {
         <Route path="/cardSearch" element={<CardSearchResults />} />
         <Route path="/card" element={<CardDetails />} />
         <Route element={<PrivateRoutes />}>
-          <Route path="/profilepage" element={<ProfilePage />} />
+          <Route path="/profilepage/:userId?" element={<ProfilePage />} />
           <Route path="/binder" element={<Binder />}/>
           <Route path="/userSearch" element={<UserSearchResults />}/>
-          <Route path="/otherUsersBinders" element={<OtherUsersBinders />}/>
         </Route>
       </Routes>
 

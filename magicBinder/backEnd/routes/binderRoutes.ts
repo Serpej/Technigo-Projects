@@ -4,6 +4,7 @@ import { Card } from "../models/Card";
 import { authenticateUser } from "../middleware/authenticateUser";
 import { guardResponse, serverError, requestNotFound, badRequest } from "../utils/responses";
 import { exactlyMatchedRegex } from "../helperFunctions/regex";
+import { User } from "../models/User";
 
 export const binderRouter = express.Router();
 
@@ -40,6 +41,7 @@ binderRouter
     }
 
     try {
+
       const binders = await CardBinder.find({userId: req.user._id})
 
       const binderObjects = binders.map((binder) => {
@@ -88,8 +90,8 @@ binderRouter
       serverError(res, "Server error.", error);
     }
   })
-  .get("/otherUsers/:binderId", authenticateUser)
-  .get("/otherUsers/:binderId", async (req, res) => {
+  .get("/otherUsers/:userId", authenticateUser)
+  .get("/otherUsers/:userId", async (req, res) => {
 
     if (!req.user || !req.user._id) {
       guardResponse(res, "Bad request.");
@@ -98,20 +100,29 @@ binderRouter
 
     try {
 
-      const binderId = req.params.binderId;
+      const userId = req.params.userId;
 
-      const binder = await CardBinder.findById({
-        _id: binderId  
+      const binders = await CardBinder.find({
+        userId: userId  
       }).populate("cards.cardId");
 
-      if(!binder) {
-        guardResponse(res, "Binder not found.");
+      if(!binders) {
+        guardResponse(res, "Other users binders not found.");
         return;
       }
 
+      const binderObjects = binders.map((binder) => {
+        return { 
+          name: binder.name,
+          binderImage: binder.binderImage,
+          _id: binder._id,
+          userName: binder.userName 
+        }
+      });
+
       res.status(200).json({
         success: true,
-        binder: binder
+        binder: binderObjects
       });
 
     } catch (error) {

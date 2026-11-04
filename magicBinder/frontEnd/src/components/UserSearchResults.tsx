@@ -87,12 +87,6 @@ export const UserSearchResults = () => {
                                 _id = user._id
                               } = user
 
-                        const navigationState = {
-                          source: "otherUser",
-                          userName: name,
-                          _id: _id
-                        }
-
                         return(
                           <div 
                             className="flex justify-center lg:px-4"
@@ -100,8 +94,7 @@ export const UserSearchResults = () => {
                           >
                             <NavLink
                               className="flex items-start justify-center min-w-0 max-w-52 min-h-0 max-h-52"   
-                              to="/otherUsersBinders"
-                              state= { navigationState }
+                              to={ `/profilePage/${_id}` }
                             >
                               <div
                                 className=" relative flex justify-end items-center flex-col border-2 border-deep-hero-blue/80 shadow-2xl bg-pitch-black rounded-sm transition delay-80 hover:scale-103 font-medium whitespace-nowrap cursor-pointer text-papyrus-white overflow-hidden h-52 min-w-0 max-w-52"
