@@ -5,21 +5,26 @@ import { SearchBar } from "./SearchBar";
 import { capitalize } from "../helperFunctions/handleCapitalize";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useParams } from "react-router-dom";
 import { useBinderStore } from "../stores/useBinderStore";
+import type { cardBinderSummary } from "../types/binderTypes"
+import { handleOtherUsersBinders } from "../helperFunctions/handleOtherUsersBinders";
 
 
 export const ProfilePage = () => {
   const user = useAuthStore((state) => state.userName);
   const accessToken = useAuthStore((state) => state.accessToken);
   const fetchBinders = useBinderStore(state  =>  state.fetchBinders);
-  const binders = useBinderStore(state  =>  state.binders);
-  const binderImage = useBinderStore(state => state.binderImage)
-  const [isLoading, setIsLoading] = useState(false);
+  const userBinders = useBinderStore(state  =>  state.binders);
+  const binderImage = useBinderStore(state => state.binderImage);
+  const [otherUsersBinders, setOtherUsersBinders] = useState<cardBinderSummary[]>();
+  const params = useParams();
+  const otherUsers_Id = params.userId ? params.userId : "";
+  const binders = otherUsers_Id ? otherUsersBinders : userBinders;
   const location = useLocation();
-  const otherUsersBinders = location.state.source;
-  const otherUserName = location.state.name;
-  const otherUser_Id = location.state._id;
+  const [isLoading, setIsLoading] = useState(false);
+
+
 
   const navigationState = {
     background: location
@@ -30,21 +35,23 @@ export const ProfilePage = () => {
     const fetchData = async () => {
       
       try {
+      
         setIsLoading(true);
 
-        if(otherUsersBinders === "otherUser") {
+        if(otherUsers_Id) {
 
-          const result = await fetchOtherUsersBinder(
+          const result = await handleOtherUsersBinders(
             accessToken,
-            otherUserName,
-            otherUser_Id
+            otherUsers_Id
           );
 
-          if(!result) {
+          if(!result || !result.success) {
             setIsLoading(false);
             return
           }
 
+          setOtherUsersBinders(result.binderObjects);
+        
         } else {
 
           const result = await fetchBinders(accessToken);
@@ -62,7 +69,10 @@ export const ProfilePage = () => {
     };
 
     fetchData();
-  }, [accessToken, fetchBinders, binderImage]);
+  }, [accessToken, 
+      fetchBinders, 
+      binderImage,
+      otherUsers_Id]);
 
   if(typeof user !== "string") {
     return
@@ -74,13 +84,13 @@ export const ProfilePage = () => {
     if(isLoading) {
       return <div>...Loading</div>
       
-    }else if(binders.length === 0 && !isLoading) {
+    }else if(binders && binders.length === 0 && !isLoading) {
 
       return null
       
     } else {
 
-      return binders.map((binder, index) =>
+      return binders && binders.map((binder, index) =>
         
         <div 
           className="flex justify-center lg:px-4"
