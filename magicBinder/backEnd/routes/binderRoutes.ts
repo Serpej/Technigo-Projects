@@ -102,6 +102,13 @@ binderRouter
 
       const userId = req.params.userId;
 
+      const userName = await User.findById({ _id: userId });
+
+      if(!userName) {
+        guardResponse(res, "Other users binders not found.");
+        return;
+      }
+
       const binders = await CardBinder.find({
         userId: userId  
       }).populate("cards.cardId");
@@ -122,6 +129,7 @@ binderRouter
 
       res.status(200).json({
         success: true,
+        userName: userName,
         binder: binderObjects
       });
 
