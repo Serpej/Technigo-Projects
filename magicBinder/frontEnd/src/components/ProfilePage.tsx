@@ -11,7 +11,9 @@ import type { cardBinderSummary } from "../types/binderTypes"
 import { handleOtherUsersBinders } from "../helperFunctions/handleOtherUsersBinders";
 
 
-export const ProfilePage = () => {
+export const ProfilePage = (
+
+) => {
   const user = useAuthStore((state) => state.userName);
   const accessToken = useAuthStore((state) => state.accessToken);
   const fetchBinders = useBinderStore(state  =>  state.fetchBinders);
@@ -23,6 +25,7 @@ export const ProfilePage = () => {
   const binders = otherUsers_Id ? otherUsersBinders : userBinders;
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
+  const [userName, setUserName] = useState<string>("");
 
 
 
@@ -50,7 +53,13 @@ export const ProfilePage = () => {
             return
           }
 
+          if(!result.userName) {
+            setIsLoading(false);
+            return
+          }
+
           setOtherUsersBinders(result.binderObjects);
+          setUserName(result.userName);
         
         } else {
 
@@ -59,7 +68,8 @@ export const ProfilePage = () => {
           if(!result) {
             setIsLoading(false);
             return
-          }          
+          }
+
         }
 
       }finally {
@@ -72,13 +82,15 @@ export const ProfilePage = () => {
   }, [accessToken, 
       fetchBinders, 
       binderImage,
-      otherUsers_Id]);
+      otherUsers_Id,
+      user]);
 
   if(typeof user !== "string") {
     return
   }
-  
-  const capitalizedName = capitalize(binders[0].userName);
+
+  const chosenUser = otherUsers_Id ? userName : user;
+  const capitalizedName = capitalize(chosenUser);
 
   const renderBinders = ():React.ReactNode => {
     if(isLoading) {

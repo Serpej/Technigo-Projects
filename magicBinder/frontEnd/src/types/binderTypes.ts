@@ -36,6 +36,7 @@ export type cardBinderSummary = {
 
 export type cardBinderSearchSuccessfull = {
   "success": true,
+  "userName"?: string,
   "binderObjects": cardBinderSummary[] 
 }
 
