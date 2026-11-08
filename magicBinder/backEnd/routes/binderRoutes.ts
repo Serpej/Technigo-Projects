@@ -55,7 +55,7 @@ binderRouter
 
       res.status(200).json({
         success: true,
-        binderObjects
+        binderObjects: binderObjects
       })
 
     } catch (error) {
@@ -102,7 +102,7 @@ binderRouter
 
       const userId = req.params.userId;
 
-      const userName = await User.findById({ _id: userId });
+      const userName = await User.findById({ _id: userId }).lean();
 
       if(!userName) {
         guardResponse(res, "Other users binders not found.");
@@ -129,8 +129,8 @@ binderRouter
 
       res.status(200).json({
         success: true,
-        userName: userName,
-        binder: binderObjects
+        userName: userName.name,
+        binderObjects: binderObjects
       });
 
     } catch (error) {
