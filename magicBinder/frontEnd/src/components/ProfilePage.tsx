@@ -17,7 +17,7 @@ export const ProfilePage = () => {
   const fetchBinders = useBinderStore(state  =>  state.fetchBinders);
   const userBinders = useBinderStore(state  =>  state.binders);
   const binderImage = useBinderStore(state => state.binderImage);
-  const [otherUsersBinders, setOtherUsersBinders] = useState<cardBinderSummary[]>();
+  const [otherUsersBinders, setOtherUsersBinders] = useState<cardBinderSummary[]>([]);
   const params = useParams();
   const otherUsers_Id = params.userId ? params.userId : "";
   const binders = otherUsers_Id ? otherUsersBinders : userBinders;
@@ -77,20 +77,20 @@ export const ProfilePage = () => {
   if(typeof user !== "string") {
     return
   }
-
-  const capitalizedName = capitalize(user);
+  
+  const capitalizedName = capitalize(binders[0].userName);
 
   const renderBinders = ():React.ReactNode => {
     if(isLoading) {
       return <div>...Loading</div>
       
-    }else if(binders && binders.length === 0 && !isLoading) {
+    }else if( binders.length === 0 && !isLoading) {
 
       return null
       
     } else {
 
-      return binders && binders.map((binder, index) =>
+      return binders.map((binder, index) =>
         
         <div 
           className="flex justify-center lg:px-4"
@@ -150,7 +150,7 @@ export const ProfilePage = () => {
               <h2
                 className="text-2xl sm:text-4xl font-bold"
               >
-                Welcome {capitalizedName}
+                {otherUsers_Id ? `${capitalizedName}'s Binders` : `Welcome ${capitalizedName}`}
               </h2>
             </div>
             <div
