@@ -62,8 +62,8 @@ binderRouter
       serverError(res, "Server error.", error);
     }
   })
-  .get("/:binderName", authenticateUser)
-  .get("/:binderName", async (req, res) => {
+  .get("/:binderId", authenticateUser)
+  .get("/:binderId", async (req, res) => {
 
     if (!req.user || !req.user._id) {
       guardResponse(res, "Bad request.");
@@ -71,8 +71,9 @@ binderRouter
     }
 
     try {
-      const binder = await CardBinder.findOne({
-      name: req.params.binderName,
+
+      const binder = await CardBinder.findById({
+      _id: req.params.binderId,
       userId: req.user._id
       }).populate("cards.cardId");
 
@@ -83,6 +84,7 @@ binderRouter
 
       res.status(200).json({
         success: true,
+        binderName: binder.name,
         binder: binder
       });
 
@@ -131,6 +133,38 @@ binderRouter
         success: true,
         userName: userName.name,
         binderObjects: binderObjects
+      });
+
+    } catch (error) {
+      serverError(res, "Server error.", error);
+    }
+  })
+  .get("/otherUsers/:userId/:binderId", authenticateUser)
+  .get("/otherUsers/:userId/:binderId", async (req, res) => {
+
+    if (!req.user || !req.user._id) {
+      guardResponse(res, "Bad request.");
+      return
+    }
+
+    try {
+
+      const binderId = req.params.binderId;
+
+
+      const binder = await CardBinder.findById({
+       _id: binderId
+      }).populate("cards.cardId");
+
+      if(!binder) {
+        guardResponse(res, "Binder not found.");
+        return;
+      }
+
+      res.status(200).json({
+        success: true,
+        binderName: binder.name,
+        binder: binder
       });
 
     } catch (error) {

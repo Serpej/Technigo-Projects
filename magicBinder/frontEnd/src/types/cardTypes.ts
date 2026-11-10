@@ -166,9 +166,10 @@ export type BackendCalledState = {
 export type CardDetailsState = ScryfallCalledState | BackendCalledState;
 
 export type CardsStoreType = {
+  binderName: string,
   cards: FullUserCard[],
   setCards: (newCards: FullUserCard[]) =>  void,
-  fetchCards: (binderName: string, accessToken: string) =>  Promise<boolean | undefined>,
+  handleFetchBinderCards: (binderId: string, accessToken: string) =>  Promise<boolean | undefined>,
   removeCard: (cardId: string) => void
 }
 

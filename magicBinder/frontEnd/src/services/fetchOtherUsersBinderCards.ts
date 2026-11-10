@@ -2,8 +2,9 @@ import type { cardBinderResponse } from "../types/binderTypes";
 
 const BASE_URL = `${import.meta.env.VITE_API_URL}`;
 
-export const fetchOtherUsersBindersResponse = async (
+export const fetchOtherUsersBinderCards = async (
   accessToken: string,
+  otherUsersId: string,
   otherUsersBinderId: string,
 ):Promise<cardBinderResponse | null> => {
   
@@ -18,7 +19,7 @@ export const fetchOtherUsersBindersResponse = async (
   
   try {
 
-    const response = await fetch(`${BASE_URL}/binders/otherUsers/${otherUsersBinderId}`, options);
+    const response = await fetch(`${BASE_URL}/binders/otherUsers/${otherUsersId}/${otherUsersBinderId}`, options);
 
     if(!response.ok) {
       const errorData = await response.json();

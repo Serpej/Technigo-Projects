@@ -4,7 +4,7 @@ const BASE_URL=`${import.meta.env.VITE_API_URL}`;
 
 
 export const fetchBinderCardSummaryService = async (
-  binderName: string,
+  binderId: string,
   accesstoken: string
 ) => {
   
@@ -19,7 +19,7 @@ export const fetchBinderCardSummaryService = async (
 
   try {
   
-    const response = await fetch(`${BASE_URL}/binders/${binderName}`, options);
+    const response = await fetch(`${BASE_URL}/binders/${binderId}`, options);
     
     if(!response.ok) {
       const errorData = await response.json();

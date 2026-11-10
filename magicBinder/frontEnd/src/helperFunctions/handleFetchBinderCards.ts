@@ -16,16 +16,17 @@ const isKnownCardType = (card: PopulatedScryfallCard): card is PopulatedScryfall
 
 
 export const handleFetchBinderCards = async (
-  binderName: string,
+  binderId: string,
   accesstoken: string
-): Promise<FullUserCard[] | null> => {
+): Promise<{ binderName: string, filteredCardArray: FullUserCard[] } | null> => {
 
-    const cardSummariesFromBinder = await fetchBinderCardSummaryService(binderName, accesstoken);
+    const cardSummariesFromBinder = await fetchBinderCardSummaryService(binderId, accesstoken);
 
     if(!cardSummariesFromBinder) {
       return null;
     }
 
+    const binderName = cardSummariesFromBinder.binderName;
     const fullCardArray = cardSummariesFromBinder.binder.cards.map( card => {
 
       const {cardId: populatedCard, condition, amount } = card
@@ -41,6 +42,6 @@ export const handleFetchBinderCards = async (
 
     const filteredCardArray = fullCardArray.filter((card): card is FullUserCard => card !== null);
     
-    return filteredCardArray
+    return { binderName, filteredCardArray }
 
 }
