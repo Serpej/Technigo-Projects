@@ -9,19 +9,23 @@ export const authenticateUser = async (
   const token = req.get("Authorization")?.replace("Bearer ", "");
 
   if (!token) {
+
     res.status(401).json({
       loggedOut: true 
     });
+    
     return;
   }
 
   const user = await User.findOne({ accessToken: token});
 
   if (!user) {
+
     res.status(401).json({
       loggedOut: true,
       message: "Logged Out"
     });
+
     return;
   }
 

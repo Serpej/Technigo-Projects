@@ -15,6 +15,7 @@ export type binderStoreType = {
 
 export type cardBinderResponse = {
   "success": boolean,
+  "binderName": string,
   "binder": {
     "name": string,
     "cards": {

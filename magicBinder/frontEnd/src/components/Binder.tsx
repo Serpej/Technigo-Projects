@@ -2,52 +2,54 @@ import { PageBackground } from "./PageBackground";
 import deltaBackground from "../assets/deltaBackground.png"
 import { SearchBar } from "./SearchBar";
 import { Toast } from "./Toast";
-import { useLocation, useNavigate, NavLink } from "react-router-dom";
+import { useLocation, useNavigate, NavLink, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import type { BinderNameState } from "../types/binderTypes";
 import type { FullUserCard } from "../types/cardTypes";
 import type { CardDetailsState } from "../types/cardTypes"
 import { capitalize } from "../helperFunctions/handleCapitalize";
 import { useAuthStore } from "../stores/useAuthStore";
 import { useBinderCardsStore } from "../stores/useBinderCardsStore";
 import { handleDeleteBinder } from "../helperFunctions/handleDeleteBinder";
-import  { handleFetchOtherUserBinder } from "../helperFunctions/handleFetchOtherUsersBinder";
+import  { handleFetchOtherUserBinderCards } from "../helperFunctions/handleFetchOtherUserBinderCards";
 
 export const Binder = () => {
   const location = useLocation();
-  const binderObject = location.state as BinderNameState | null;
   const navigate = useNavigate();
   const accesstoken = useAuthStore(state => state.accessToken);
+  const loggedInUser = useAuthStore(state => state.userId);
+  const loggedInUsersBinderName = useBinderCardsStore(state => state.binderName);
   const cards = useBinderCardsStore(state => state.cards);
   const setCards = useBinderCardsStore(state => state.setCards);
-  const fetchCards = useBinderCardsStore(state => state.fetchCards);
+  const handleFetchBinderCards = useBinderCardsStore(state => state.handleFetchBinderCards);
+  const [binderName, setBinderName] = useState<string>("");
   const [hasFetchedBinder, setHasFetchedBinder] = useState<boolean>(false);
   const [otherUsersBinder, setOtherUsersBinder] = useState<boolean>(false);
+  const { userId, binderId } = useParams();
 
   useEffect(() => {
 
     const fecthBinderCards = async () => {
 
-      if(!binderObject) {
+      if(!userId || !binderId) {
         return 
       }
 
-      const isLoggedInUsersBinder = binderObject.source === "own";
+      if(userId === loggedInUser) {
 
-      if(isLoggedInUsersBinder) {
-
-         await fetchCards(binderObject.binderName, accesstoken);
+        await handleFetchBinderCards(binderId, accesstoken);
+        setBinderName(loggedInUsersBinderName);
 
       } else {
 
-        const binderCards = await handleFetchOtherUserBinder(binderObject.binderId, accesstoken);
+        const binder = await handleFetchOtherUserBinderCards(accesstoken, userId, binderId);
         
-        if(!binderCards) {
+        if(!binder) {
           return 
         }
 
         setOtherUsersBinder(true)
-        setCards(binderCards);
+        setCards(binder.cardArray);
+        setBinderName(binder.binderName)
 
       }
 
@@ -58,7 +60,14 @@ export const Binder = () => {
       fecthBinderCards();
     }
   
-  },[accesstoken, binderObject, hasFetchedBinder, fetchCards, setCards])
+  },[accesstoken,
+     userId,
+     binderId,
+     loggedInUser,
+     loggedInUsersBinderName,
+     handleFetchBinderCards,
+     hasFetchedBinder,
+     setCards])
 
   useEffect(() => {
 
@@ -69,19 +78,18 @@ export const Binder = () => {
 
     resetFetch();
     
-  },[binderObject]);
+  },[userId, binderId]);
 
-  if(!binderObject){
+  if(!userId || !binderId){
    return null
   }
-
-  const { binderName } = location.state;
 
   if(typeof binderName !== "string") {
     return
   }
 
   const capitalizedName = capitalize(binderName);
+  const ownership = userId === loggedInUser ? "own" : "otherUser";
 
   return(
   <div
@@ -149,7 +157,7 @@ export const Binder = () => {
                 card: card,
                 binderName: binderName,
                 source: "binder",
-                ownerShip: binderObject.source
+                ownerShip: ownership
               }
 
               return (

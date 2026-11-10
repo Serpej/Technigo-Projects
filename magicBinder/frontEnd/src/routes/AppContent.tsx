@@ -32,7 +32,7 @@ export const AppContent = ({ className }: AppContentProps) => {
         <Route path="/card" element={<CardDetails />} />
         <Route element={<PrivateRoutes />}>
           <Route path="/profilepage/:userId?" element={<ProfilePage />} />
-          <Route path="/binder" element={<Binder />}/>
+          <Route path="/profilepage/:userId/binders/:binderId" element={<Binder />}/>
           <Route path="/userSearch" element={<UserSearchResults />}/>
         </Route>
       </Routes>

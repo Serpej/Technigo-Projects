@@ -1,4 +1,4 @@
-import { fetchOtherUsersBindersResponse } from "../services/fetchOtherUsersBinderService";
+import { fetchOtherUsersBinderCards } from "../services/fetchOtherUsersBinderCards";
 import type { FullUserCard, PopulatedScryfallCard } from "../types/cardTypes";
 
 const isKnownCardType = (card: PopulatedScryfallCard): card is PopulatedScryfallCard => {
@@ -13,14 +13,19 @@ const isKnownCardType = (card: PopulatedScryfallCard): card is PopulatedScryfall
   }
 };
 
-export const handleFetchOtherUserBinder = async (
-  binderId: string,
+export const handleFetchOtherUserBinderCards = async (
   accessToken: string,
- ): Promise<FullUserCard[] | null> => {
+  otherUsersId: string,
+  binderId: string,
+ ): Promise<{ binderName: string, cardArray: FullUserCard[] } | null> => {
   
   try {
 
-    const cardSummariesFromBinder = await fetchOtherUsersBindersResponse(accessToken, binderId);
+    const cardSummariesFromBinder = await fetchOtherUsersBinderCards(
+      accessToken,
+      otherUsersId,
+      binderId,
+    );
 
     if(!cardSummariesFromBinder) {
       return null
@@ -39,9 +44,11 @@ export const handleFetchOtherUserBinder = async (
         return userCard
       });
 
-    const filteredCardArray = fullCardArray.filter((card): card is FullUserCard => card !== null);
+    const binderName = cardSummariesFromBinder.binderName;
 
-    return filteredCardArray;
+    const cardArray = fullCardArray.filter((card): card is FullUserCard => card !== null);
+
+    return { binderName, cardArray };
 
   } catch (error) {
     console.error(error);

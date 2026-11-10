@@ -15,6 +15,7 @@ export const ProfilePage = (
 
 ) => {
   const user = useAuthStore((state) => state.userName);
+  const userId = useAuthStore((state) => state.userId);
   const accessToken = useAuthStore((state) => state.accessToken);
   const fetchBinders = useBinderStore(state  =>  state.fetchBinders);
   const userBinders = useBinderStore(state  =>  state.binders);
@@ -89,6 +90,7 @@ export const ProfilePage = (
     return
   }
 
+  const chosenUserId = otherUsers_Id ? otherUsers_Id : userId;
   const chosenUser = otherUsers_Id ? userName : user;
   const capitalizedName = capitalize(chosenUser);
 
@@ -109,8 +111,7 @@ export const ProfilePage = (
           key={index}
         >
           <NavLink
-            to="/binder"
-            state={{ "binderName": binder.name, "binderId": binder._id, "source": "own" }}
+            to={`/profilepage/${chosenUserId}/binders/${binder._id}`}
             className="flex items-start justify-center min-w-0 max-w-52 min-h-0 max-h-52"
           >
             <div
@@ -172,7 +173,7 @@ export const ProfilePage = (
               <div
                 className="flex justify-center lg:px-4"
               >
-                <NavLink
+                {!otherUsers_Id && <NavLink
                   to="/newbinder"
                   state={navigationState}
                   className="flex grow justify-center min-w-0 max-w-52 min-h-0 max-h-52"
@@ -182,7 +183,7 @@ export const ProfilePage = (
                   >
                     Add Binder
                   </button>
-                </NavLink>
+                </NavLink>}
               </div>
             </div>
           </div>
